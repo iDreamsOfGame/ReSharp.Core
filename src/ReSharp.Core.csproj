@@ -22,14 +22,17 @@
     <Compile Remove="ReSharp.Core\Logs\**" />
     <Compile Remove="ReSharp.Core\Packages\**" />
     <Compile Remove="ReSharp.Core\ProjectSettings\**" />
+    <Compile Remove="ReSharp.Core\Temp\**" />
     <EmbeddedResource Remove="ReSharp.Core\Library\**" />
     <EmbeddedResource Remove="ReSharp.Core\Logs\**" />
     <EmbeddedResource Remove="ReSharp.Core\Packages\**" />
     <EmbeddedResource Remove="ReSharp.Core\ProjectSettings\**" />
+    <EmbeddedResource Remove="ReSharp.Core\Temp\**" />
     <None Remove="ReSharp.Core\Library\**" />
     <None Remove="ReSharp.Core\Logs\**" />
     <None Remove="ReSharp.Core\Packages\**" />
     <None Remove="ReSharp.Core\ProjectSettings\**" />
+    <None Remove="ReSharp.Core\Temp\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +40,8 @@
     <None Remove="ReSharp.Core\Assets\Scripts.meta" />
     <None Remove="ReSharp.Core\Assets\Scripts\link.xml" />
     <None Remove="ReSharp.Core\Assets\Scripts\link.xml.meta" />
+    <None Remove="ReSharp.Core\Assets\Scripts\ReSharp.Core.asmdef" />
+    <None Remove="ReSharp.Core\Assets\Scripts\ReSharp.Core.asmdef.meta" />
     <None Remove="ReSharp.Core\Assets\Scripts\Security.meta" />
     <None Remove="ReSharp.Core\Assets\Scripts\Security\Cryptography.meta" />
     <None Remove="ReSharp.Core\Assets\Scripts\Security\Cryptography\CryptoUtility.cs.meta" />
