@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReSharp.Core", "src\ReSharp.Core\ReSharp.Core.csproj", "{1C5EC211-E97A-4966-8025-323D39885F77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReSharp.Core", "src\ReSharp.Core.csproj", "{1C5EC211-E97A-4966-8025-323D39885F77}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReSharp.Core.Tests", "test\ReSharp.Core.Tests\ReSharp.Core.Tests.csproj", "{51D1B615-0FFE-445E-A1E3-3826B731F31B}"
 EndProject
