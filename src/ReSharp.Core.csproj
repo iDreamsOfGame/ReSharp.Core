@@ -6,14 +6,14 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\bin\Debug</OutputPath>
-    <DocumentationFile>..\bin\Debug\ReSharp.Core.xml</DocumentationFile>
+    <OutputPath>..\bin\Debug\netstandard2.0</OutputPath>
+    <DocumentationFile>..\bin\Debug\netstandard2.0\ReSharp.Core.xml</DocumentationFile>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\bin\Release</OutputPath>
-    <DocumentationFile>..\bin\Release\ReSharp.Core.xml</DocumentationFile>
+    <OutputPath>..\bin\Release\netstandard2.0</OutputPath>
+    <DocumentationFile>..\bin\Release\netstandard2.0\ReSharp.Core.xml</DocumentationFile>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
