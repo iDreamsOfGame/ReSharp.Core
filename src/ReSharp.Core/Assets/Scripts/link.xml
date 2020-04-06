@@ -1,8 +1,0 @@
-﻿<linker>
-  <assembly fullname="ReSharp.Security.DataProtection">
-    <type fullname="ReSharp.Security.DataProtection.SecretDouble" preserve="all" />
-    <type fullname="ReSharp.Security.DataProtection.SecretInt32" preserve="all" />
-    <type fullname="ReSharp.Security.DataProtection.SecretInt64" preserve="all" />
-    <type fullname="ReSharp.Security.DataProtection.SecretSingle" preserve="all" />
-  </assembly>
-</linker>
