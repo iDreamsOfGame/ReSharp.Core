@@ -1,4 +1,5 @@
-﻿// Copyright (c) Jerry Lee. All rights reserved. Licensed under the MIT License. See LICENSE in the project root for license information.
+﻿// Copyright (c) Jerry Lee. All rights reserved. Licensed under the MIT License.
+// See LICENSE in the project root for license information.
 
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
@@ -8,8 +9,9 @@ using System.Threading;
 namespace System.Collections.Generic
 {
     /// <summary>
-    /// Represents a linked stack. Implements the <see cref="System.Collections.Generic.IEnumerable{T}" /> Implements the <see
-    /// cref="System.Collections.ICollection" />
+    /// Represents a linked stack.
+    /// Implements the <see cref="System.Collections.Generic.IEnumerable{T}" />
+    /// Implements the <see cref="System.Collections.ICollection" />
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <seealso cref="System.Collections.Generic.IEnumerable{T}" />
