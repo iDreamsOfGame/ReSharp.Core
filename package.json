@@ -2,7 +2,7 @@
 	"name": "com.github.cosmos53076.resharp.core",
 	"displayName": "ReSharp.Core",
 	"description": "ReSharp.Core is a .NET Standard library.",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"unity": "2018.3",
 	"license": "MIT"
 }
