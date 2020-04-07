@@ -18,69 +18,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="ReSharp.Core\Library\**" />
-    <Compile Remove="ReSharp.Core\Logs\**" />
-    <Compile Remove="ReSharp.Core\Packages\**" />
-    <Compile Remove="ReSharp.Core\ProjectSettings\**" />
-    <Compile Remove="ReSharp.Core\Temp\**" />
-    <EmbeddedResource Remove="ReSharp.Core\Library\**" />
-    <EmbeddedResource Remove="ReSharp.Core\Logs\**" />
-    <EmbeddedResource Remove="ReSharp.Core\Packages\**" />
-    <EmbeddedResource Remove="ReSharp.Core\ProjectSettings\**" />
-    <EmbeddedResource Remove="ReSharp.Core\Temp\**" />
-    <None Remove="ReSharp.Core\Library\**" />
-    <None Remove="ReSharp.Core\Logs\**" />
-    <None Remove="ReSharp.Core\Packages\**" />
-    <None Remove="ReSharp.Core\ProjectSettings\**" />
-    <None Remove="ReSharp.Core\Temp\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="ReSharp.Core\.gitignore" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\link.xml" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\link.xml.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\ReSharp.Core.asmdef" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\ReSharp.Core.asmdef.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\Security.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\Security\Cryptography.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\Security\Cryptography\CryptoUtility.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\Security\Cryptography\Xxtea.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\Security\DataProtection.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\Security\DataProtection\DataProtectionProvider.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\Security\DataProtection\InvalidSecretDataException.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\Security\DataProtection\SecretDouble.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\Security\DataProtection\SecretInt32.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\Security\DataProtection\SecretInt64.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\Security\DataProtection\SecretSingle.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\BindingAttributes.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\Collections.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\Collections\CollectionExtensions.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\Collections\Generic.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\Collections\Generic\GenericCollectionExtensions.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\Collections\Generic\IDictionaryExtensions.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\Collections\Generic\LinkedStack.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\Collections\Generic\Tree.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\DateTimeExtensions.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\DateTimeUtility.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\EnumUtility.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\Int16Extensions.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\Int32Extensions.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\Int64Extensions.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\IO.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\IO\BinaryReaderExtensions.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\IO\FileInfoExtensions.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\IO\PathUtility.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\IO\StreamExtensions.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\MathUtility.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\ObjectExtensions.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\RandomExtensions.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\StringExtensions.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\TypeExtensions.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\UInt16Extensions.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\UInt32Extensions.cs.meta" />
-    <None Remove="ReSharp.Core\Assets\ReSharp.Core\Scripts\System\UInt64Extensions.cs.meta" />
+    <None Update="link.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
