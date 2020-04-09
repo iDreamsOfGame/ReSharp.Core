@@ -126,12 +126,22 @@ namespace System
 
             StringBuilder stringBuilder = new StringBuilder();
 
-            foreach (char ch in source)
+            for (var i = 0; i < source.Length; i++)
             {
-                if (char.IsUpper(ch))
-                    stringBuilder.Append('_').Append(char.ToLower(ch));
+                var ch = source[i];
+
+                if (i == 0)
+                {
+                    stringBuilder.Append(char.ToLower(ch));
+                }
                 else
-                    stringBuilder.Append(ch);
+                {
+                    if (char.IsUpper(ch))
+                        stringBuilder.Append('_')
+                            .Append(char.ToLower(ch));
+                    else
+                        stringBuilder.Append(ch);
+                }
             }
 
             return stringBuilder.ToString();
