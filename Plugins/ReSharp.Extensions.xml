@@ -4,6 +4,368 @@
         <name>ReSharp.Extensions</name>
     </assembly>
     <members>
+        <member name="T:ReSharp.Patterns.Command.AsyncCommand">
+            <summary>
+            A base <see cref="T:ReSharp.Patterns.Command.IAsyncCommand" /> implementation to execute asynchronous operation.
+            </summary>
+            <seealso cref="T:ReSharp.Patterns.Command.IAsyncCommand" />
+        </member>
+        <member name="M:ReSharp.Patterns.Command.AsyncCommand.Abort">
+            <summary>
+            Aborts the asynchronous operation.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.AsyncCommand.Execute(System.Action)">
+            <summary>
+            Executes this command.
+            </summary>
+            <param name="executedCallback">
+            The callback method when <see cref="T:ReSharp.Patterns.Command.AsyncCommand" /> executed to invoke.
+            </param>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.AsyncCommand.Executed">
+            <summary>
+            The <see cref="T:ReSharp.Patterns.Command.AsyncCommand" /> executed.
+            </summary>
+        </member>
+        <member name="T:ReSharp.Patterns.Command.AsyncMacroCommand">
+            <summary>
+            A base <see cref="T:ReSharp.Patterns.Command.IAsyncMacroCommand" /> implementation to executes other <see
+            cref="T:ReSharp.Patterns.Command.IAsyncCommand" /> s.
+            </summary>
+            <seealso cref="T:ReSharp.Patterns.Command.AsyncCommand" />
+            <seealso cref="T:ReSharp.Patterns.Command.IAsyncMacroCommand" />
+        </member>
+        <member name="M:ReSharp.Patterns.Command.AsyncMacroCommand.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Patterns.Command.AsyncMacroCommand" /> class.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.AsyncMacroCommand.Abort">
+            <summary>
+            Aborts asynchronous commands execution.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.AsyncMacroCommand.AddSubCommand(ReSharp.Patterns.Command.IAsyncCommand)">
+            <summary>
+            Adds an <see cref="T:ReSharp.Patterns.Command.IAsyncCommand" />.
+            </summary>
+            <param name="subCommand">
+            The <see cref="T:ReSharp.Patterns.Command.IAsyncCommand" /> to be executed by this <see cref="T:ReSharp.Patterns.Command.IAsyncMacroCommand" />.
+            </param>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.AsyncMacroCommand.Execute(System.Action)">
+            <summary>
+            Executes this command.
+            </summary>
+            <param name="executedCallback">
+            The callback method when <see cref="T:ReSharp.Patterns.Command.AsyncCommand" /> executed to invoke.
+            </param>
+        </member>
+        <member name="T:ReSharp.Patterns.Command.IAsyncCommand">
+            <summary>
+            The interface definition for an asynchronous command.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.IAsyncCommand.Abort">
+            <summary>
+            Aborts the asynchronous operation.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.IAsyncCommand.Execute(System.Action)">
+            <summary>
+            Executes this command.
+            </summary>
+            <param name="executedCallback">
+            The callback method when <see cref="T:ReSharp.Patterns.Command.IAsyncCommand" /> executed to invoke.
+            </param>
+        </member>
+        <member name="T:ReSharp.Patterns.Command.IAsyncMacroCommand">
+            <summary>
+            The interface definition for the command can execute other <see cref="T:ReSharp.Patterns.Command.IAsyncCommand" /> s.
+            </summary>
+            <seealso cref="T:ReSharp.Patterns.Command.IAsyncCommand" />
+        </member>
+        <member name="M:ReSharp.Patterns.Command.IAsyncMacroCommand.AddSubCommand(ReSharp.Patterns.Command.IAsyncCommand)">
+            <summary>
+            Adds an <see cref="T:ReSharp.Patterns.Command.IAsyncCommand" />.
+            </summary>
+            <param name="subCommand">
+            The <see cref="T:ReSharp.Patterns.Command.IAsyncCommand" /> to be executed by this <see cref="T:ReSharp.Patterns.Command.IAsyncMacroCommand" />.
+            </param>
+        </member>
+        <member name="T:ReSharp.Patterns.Command.ICommand">
+            <summary>
+            The interface definition for the command.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.ICommand.Execute">
+            <summary>
+            Executes this command.
+            </summary>
+        </member>
+        <member name="T:ReSharp.Patterns.Command.IMacroCommand">
+            <summary>
+            The interface definition for the command can execute other <see cref="T:ReSharp.Patterns.Command.ICommand" /> s.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.IMacroCommand.AddSubCommand(ReSharp.Patterns.Command.ICommand)">
+            <summary>
+            Adds an <see cref="T:ReSharp.Patterns.Command.ICommand" />.
+            </summary>
+            <param name="subCommand">
+            The <see cref="T:ReSharp.Patterns.Command.ICommand" /> to be executed by this <see cref="T:ReSharp.Patterns.Command.IMacroCommand" />.
+            </param>
+        </member>
+        <member name="T:ReSharp.Patterns.Command.IUndoableCommand">
+            <summary>
+            The interface definition for the command that can perform undo operation.
+            </summary>
+            <seealso cref="T:ReSharp.Patterns.Command.ICommand" />
+        </member>
+        <member name="M:ReSharp.Patterns.Command.IUndoableCommand.Undo">
+            <summary>
+            Performs undo operation.
+            </summary>
+        </member>
+        <member name="T:ReSharp.Patterns.Command.IUndoableMacroCommand">
+            <summary>
+            The interface definition for the macro command that can execute <see cref="T:ReSharp.Patterns.Command.IUndoableCommand"
+            />, perform undo and redo operation.
+            </summary>
+        </member>
+        <member name="P:ReSharp.Patterns.Command.IUndoableMacroCommand.CanRedo">
+            <summary>
+            Gets a value indicating whether this <see cref="T:ReSharp.Patterns.Command.IUndoableMacroCommand" /> can perform
+            redo operation.
+            </summary>
+            <value>
+            <c>true</c> if this <see cref="T:ReSharp.Patterns.Command.IUndoableMacroCommand" /> can perform redo operation;
+            otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:ReSharp.Patterns.Command.IUndoableMacroCommand.CanUndo">
+            <summary>
+            Gets a value indicating whether this <see cref="T:ReSharp.Patterns.Command.IUndoableMacroCommand" /> can perform
+            undo operation.
+            </summary>
+            <value>
+            <c>true</c> if this <see cref="T:ReSharp.Patterns.Command.IUndoableMacroCommand" /> can perform undo operation;
+            otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.IUndoableMacroCommand.Execute(ReSharp.Patterns.Command.IUndoableCommand)">
+            <summary>
+            Executes the specific <see cref="T:ReSharp.Patterns.Command.IUndoableCommand" />.
+            </summary>
+            <param name="command">The sepecified <see cref="T:ReSharp.Patterns.Command.IUndoableCommand" /> to execute.</param>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.IUndoableMacroCommand.Redo">
+            <summary>
+            Performs redo operation.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.IUndoableMacroCommand.Undo">
+            <summary>
+            Performs undo operation.
+            </summary>
+        </member>
+        <member name="T:ReSharp.Patterns.Command.MacroCommand">
+            <summary>
+            A base <see cref="T:ReSharp.Patterns.Command.IMacroCommand" /> implementation to executes other <see cref="T:ReSharp.Patterns.Command.ICommand" /> s.
+            </summary>
+            <seealso cref="T:ReSharp.Patterns.Command.ICommand" />
+            <seealso cref="T:ReSharp.Patterns.Command.IMacroCommand" />
+        </member>
+        <member name="M:ReSharp.Patterns.Command.MacroCommand.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Patterns.Command.MacroCommand" /> class.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.MacroCommand.AddSubCommand(ReSharp.Patterns.Command.ICommand)">
+            <summary>
+            Adds sub command.
+            </summary>
+            <param name="subCommand">The sub command.</param>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.MacroCommand.Execute">
+            <summary>
+            Executes this command.
+            </summary>
+        </member>
+        <member name="T:ReSharp.Patterns.Command.UndoableMacroCommand">
+            <summary>
+            A base <see cref="T:ReSharp.Patterns.Command.IUndoableMacroCommand" /> implementation to execute <see
+            cref="T:ReSharp.Patterns.Command.IUndoableCommand" />, perform undo and redo operation.
+            </summary>
+            <seealso cref="T:ReSharp.Patterns.Command.IUndoableMacroCommand" />
+        </member>
+        <member name="M:ReSharp.Patterns.Command.UndoableMacroCommand.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Patterns.Command.UndoableMacroCommand" /> class.
+            </summary>
+        </member>
+        <member name="P:ReSharp.Patterns.Command.UndoableMacroCommand.CanRedo">
+            <summary>
+            Gets a value indicating whether this <see cref="T:ReSharp.Patterns.Command.UndoableMacroCommand" /> can perform
+            redo operation.
+            </summary>
+            <value>
+            <c>true</c> if this <see cref="T:ReSharp.Patterns.Command.UndoableMacroCommand" /> can perform redo operation;
+            otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:ReSharp.Patterns.Command.UndoableMacroCommand.CanUndo">
+            <summary>
+            Gets a value indicating whether this <see cref="T:ReSharp.Patterns.Command.UndoableMacroCommand" /> can perform
+            undo operation.
+            </summary>
+            <value>
+            <c>true</c> if this <see cref="T:ReSharp.Patterns.Command.UndoableMacroCommand" /> can perform undo operation;
+            otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.UndoableMacroCommand.Execute(ReSharp.Patterns.Command.IUndoableCommand)">
+            <summary>
+            Executes the specific <see cref="T:ReSharp.Patterns.Command.IUndoableCommand" />.
+            </summary>
+            <param name="command">The sepecified <see cref="T:ReSharp.Patterns.Command.IUndoableCommand" /> to execute.</param>
+            <exception cref="T:System.ArgumentNullException"><c>command</c> is <c>null</c>.</exception>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.UndoableMacroCommand.Redo">
+            <summary>
+            Performs redo operation.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.UndoableMacroCommand.Undo">
+            <summary>
+            Performs undo operation.
+            </summary>
+        </member>
+        <member name="T:ReSharp.Patterns.Singleton`1">
+            <summary>
+            Abstract class for implementing singleton pattern of thread-safety by using double-check locking.
+            </summary>
+            <typeparam name="T">The type of the class.</typeparam>
+        </member>
+        <member name="M:ReSharp.Patterns.Singleton`1.Finalize">
+            <summary>
+            Finalizes an instance of the <see cref="T:ReSharp.Patterns.Singleton`1" /> class.
+            </summary>
+        </member>
+        <member name="P:ReSharp.Patterns.Singleton`1.Instance">
+            <summary>
+            Gets the static instance.
+            </summary>
+            <value>The static instance.</value>
+        </member>
+        <member name="M:ReSharp.Patterns.Singleton`1.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting
+            unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Singleton`1.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing">
+            <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release
+            only unmanaged resources.
+            </param>
+        </member>
+        <member name="T:ReSharp.Patterns.State.IState">
+            <summary>
+            The interface definition for the state class.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.State.IState.OnEnter(ReSharp.Patterns.State.IState)">
+            <summary>
+            Called when the state is entered.
+            </summary>
+            <param name="prevState">The previous state.</param>
+        </member>
+        <member name="M:ReSharp.Patterns.State.IState.OnExecute">
+            <summary>
+            Called when the state is executing.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.State.IState.OnExit(ReSharp.Patterns.State.IState)">
+            <summary>
+            Called when the active state is exited.
+            </summary>
+            <param name="nextState">The next state.</param>
+        </member>
+        <member name="T:ReSharp.Patterns.State.StateChangedEventArgs">
+            <summary>
+            The event args given to listeners of the <see cref="E:ReSharp.Patterns.State.StateMachine.StateChanged" /> event.
+            </summary>
+            <seealso cref="T:System.EventArgs" />
+        </member>
+        <member name="M:ReSharp.Patterns.State.StateChangedEventArgs.#ctor(ReSharp.Patterns.State.IState,ReSharp.Patterns.State.IState)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Patterns.State.StateChangedEventArgs" /> class with the
+            given information.
+            </summary>
+            <param name="previousState">
+            The state before the <see cref="E:ReSharp.Patterns.State.StateMachine.StateChanged" /> event.
+            </param>
+            <param name="state">The state after the <see cref="E:ReSharp.Patterns.State.StateMachine.StateChanged" /> event.</param>
+        </member>
+        <member name="P:ReSharp.Patterns.State.StateChangedEventArgs.PreviousState">
+            <summary>
+            Gets the state before the <see cref="E:ReSharp.Patterns.State.StateMachine.StateChanged" /> event.
+            </summary>
+            <value>The the previous state.</value>
+        </member>
+        <member name="P:ReSharp.Patterns.State.StateChangedEventArgs.State">
+            <summary>
+            Gets the state after the <see cref="E:ReSharp.Patterns.State.StateMachine.StateChanged" /> event.
+            </summary>
+            <value>The current state.</value>
+        </member>
+        <member name="T:ReSharp.Patterns.State.StateMachine">
+            <summary>
+            Represents a state machine to handle the context of state transition.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.State.StateMachine.#ctor(ReSharp.Patterns.State.IState)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Patterns.State.StateMachine" /> class with the given information.
+            </summary>
+            <param name="initialState">The initial state.</param>
+        </member>
+        <member name="E:ReSharp.Patterns.State.StateMachine.StateChanged">
+            <summary>
+            Occurs when the state changed.
+            </summary>
+        </member>
+        <member name="P:ReSharp.Patterns.State.StateMachine.CurrentState">
+            <summary>
+            Gets the state of the current.
+            </summary>
+            <value>The current state.</value>
+        </member>
+        <member name="P:ReSharp.Patterns.State.StateMachine.PreviousState">
+            <summary>
+            Gets the previous state.
+            </summary>
+            <value>The previous state.</value>
+        </member>
+        <member name="M:ReSharp.Patterns.State.StateMachine.ChangeState(ReSharp.Patterns.State.IState)">
+            <summary>
+            Change the state of this <see cref="T:ReSharp.Patterns.State.StateMachine" />.
+            </summary>
+            <param name="state">
+            The state value to set for this <see cref="T:ReSharp.Patterns.State.StateMachine" />.
+            </param>
+            <exception cref="T:System.ArgumentNullException">state</exception>
+        </member>
+        <member name="M:ReSharp.Patterns.State.StateMachine.Execute">
+            <summary>
+            Runs the state's execution logic.
+            </summary>
+        </member>
         <member name="F:System.BindingAttributes.DefaultBindingAttr">
             <summary>
             The default binding attribute.
