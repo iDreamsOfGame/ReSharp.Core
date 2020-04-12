@@ -23,7 +23,7 @@ namespace ReSharp.Security.DataProtection
 
         static DataProtectionProvider()
         {
-            int seed = MathUtility.GenerateRandomSeed();
+            int seed = Guid.NewGuid().ToString().GetHashCode();
             Random rnd = new Random(seed);
             int minValue = int.MinValue;
             int maxValue = int.MaxValue;

@@ -11,44 +11,6 @@ namespace System.IO
         #region Methods
 
         /// <summary>
-        /// Combines an array of strings into a path.
-        /// </summary>
-        /// <param name="paths">An array of parts of the path.</param>
-        /// <returns>The combined paths.</returns>
-        /// <exception cref="System.ArgumentNullException">
-        /// One of the strings in the array is <c>null</c>.
-        /// </exception>
-        public static string Combine(params string[] paths)
-        {
-            if (paths == null)
-            {
-                throw new ArgumentNullException(nameof(paths));
-            }
-
-            string path = null;
-
-            if (paths.Length > 0)
-            {
-                path = paths[0];
-
-                if (paths.Length > 1)
-                {
-                    for (int i = 1, length = paths.Length; i < length; i++)
-                    {
-                        if (paths[i] == null)
-                        {
-                            throw new ArgumentNullException(string.Format("path[{0}]", i));
-                        }
-
-                        path = Path.Combine(path, paths[i]);
-                    }
-                }
-            }
-
-            return path;
-        }
-
-        /// <summary>
         /// Unifies all the path separator chars to alternate directory separator characters.
         /// </summary>
         /// <param name="path">The source path.</param>
