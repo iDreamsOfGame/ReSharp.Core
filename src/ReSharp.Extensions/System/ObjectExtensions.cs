@@ -14,15 +14,23 @@ namespace System
         #region Methods
 
         /// <summary>
-        /// Creates a deep copy of the current <see cref="object"/>.
+        /// Creates a shallow clone of the current <see cref="object"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of object return.</typeparam>
+        /// <param name="source">The current <see cref="object"/>.</param>
+        /// <returns>A shallow clone of the current <see cref="object"/>.</returns>
+        public static T ShallowClone<T>(this T source) => (T)source.InvokeMethod("MemberwiseClone");
+
+        /// <summary>
+        /// Creates a deep clone of the current <see cref="object"/>.
         /// </summary>
         /// <param name="source">The current <see cref="object"/>.</param>
-        /// <returns>A deep copy of the current <see cref="object"/>.</returns>
+        /// <returns>A deep clone of the current <see cref="object"/>.</returns>
         public static object DeepClone(this object source)
         {
-            object target = null;
             Type targetType = source.GetType();
 
+            object target;
             if (targetType.IsValueType || source is string)
             {
                 target = source;
@@ -30,41 +38,55 @@ namespace System
             else
             {
                 target = Activator.CreateInstance(targetType);
-                MemberInfo[] memberCollection = targetType.GetMembers();
+                var memberCollection = targetType.GetMembers();
 
-                foreach (MemberInfo item in memberCollection)
+                foreach (var memberInfo in memberCollection)
                 {
-                    if (item.MemberType == MemberTypes.Field)
+                    if (memberInfo.MemberType == MemberTypes.Field)
                     {
-                        FieldInfo fieldInfo = (FieldInfo)item;
-                        object fieldValue = fieldInfo.GetValue(source);
+                        var fieldInfo = (FieldInfo)memberInfo;
+                        var fieldValue = fieldInfo.GetValue(source);
 
-                        if (fieldValue is ICloneable)
-                        {
-                            fieldInfo.SetValue(target, (fieldValue as ICloneable).Clone());
-                        }
-                        else
-                        {
-                            fieldInfo.SetValue(target, fieldValue.DeepClone());
-                        }
-                    }
-                    else if (item.MemberType == MemberTypes.Property)
-                    {
-                        PropertyInfo propertyInfo = (PropertyInfo)item;
-                        MethodInfo setMethodInfo = propertyInfo.GetSetMethod(false);
+                        if (fieldValue == null)
+                            continue;
 
-                        if (setMethodInfo != null)
+                        try
                         {
-                            object propertyValue = propertyInfo.GetValue(source, null);
-
-                            if (propertyValue is ICloneable)
+                            if (fieldValue is ICloneable)
                             {
-                                propertyInfo.SetValue(target, (propertyValue as ICloneable).Clone(), null);
+                                fieldInfo.SetValue(target, (fieldValue as ICloneable).Clone());
                             }
                             else
                             {
-                                propertyInfo.SetValue(target, propertyValue.DeepClone(), null);
+                                fieldInfo.SetValue(target, fieldValue.DeepClone());
                             }
+                        }
+                        catch (Exception) { }
+                    }
+                    else if (memberInfo.MemberType == MemberTypes.Property)
+                    {
+                        var propertyInfo = (PropertyInfo)memberInfo;
+                        var setMethodInfo = propertyInfo.GetSetMethod(false);
+
+                        if (setMethodInfo != null)
+                        {
+                            var propertyValue = propertyInfo.GetValue(source, null);
+
+                            if (propertyValue == null)
+                                continue;
+
+                            try
+                            {
+                                if (propertyValue is ICloneable)
+                                {
+                                    propertyInfo.SetValue(target, (propertyValue as ICloneable).Clone(), null);
+                                }
+                                else
+                                {
+                                    propertyInfo.SetValue(target, propertyValue.DeepClone(), null);
+                                }
+                            }
+                            catch (Exception) {  }
                         }
                     }
                 }
@@ -74,53 +96,64 @@ namespace System
         }
 
         /// <summary>
-        /// Creates a deep copy of the current <see cref="object"/>, and return an object which is
-        /// inherited from the type of current <see cref="object"/>.
+        /// Creates a deep clone of the current <see cref="object"/>, and return an object which has same fields or properties of current <see cref="object"/>.
         /// </summary>
         /// <typeparam name="T">The type of object return.</typeparam>
         /// <param name="source">The current <see cref="object"/>.</param>
-        /// <returns>The object which is inherited from the type of current <see cref="object"/>.</returns>
+        /// <returns>A deep clone of the current <see cref="object"/>.</returns>
         public static T DeepClone<T>(this object source) where T : class
         {
-            Type sourceType = source.GetType();
-            Type targetType = typeof(T);
+            var sourceType = source.GetType();
+            var targetType = typeof(T);
 
-            T target = (T)Activator.CreateInstance(targetType);
-            MemberInfo[] memberCollection = sourceType.GetMembers();
+            var target = (T)Activator.CreateInstance(targetType);
+            var memberCollection = sourceType.GetMembers();
 
-            foreach (MemberInfo item in memberCollection)
+            foreach (MemberInfo memberInfo in memberCollection)
             {
-                if (item.MemberType == MemberTypes.Field)
+                if (memberInfo.MemberType == MemberTypes.Field)
                 {
-                    FieldInfo fieldInfo = (FieldInfo)item;
-                    object fieldValue = fieldInfo.GetValue(source);
+                    var fieldInfo = (FieldInfo)memberInfo;
+                    var fieldValue = fieldInfo.GetValue(source);
 
-                    if (fieldValue is ICloneable)
+                    if (fieldValue == null)
+                        continue;
+                    try
                     {
-                        fieldInfo.SetValue(target, (fieldValue as ICloneable).Clone());
-                    }
-                    else
-                    {
-                        fieldInfo.SetValue(target, fieldValue.DeepClone());
-                    }
-                }
-                else if (item.MemberType == MemberTypes.Property)
-                {
-                    PropertyInfo propertyInfo = (PropertyInfo)item;
-                    MethodInfo setMethodInfo = propertyInfo.GetSetMethod(false);
-
-                    if (setMethodInfo != null)
-                    {
-                        object propertyValue = propertyInfo.GetValue(source, null);
-
-                        if (propertyValue is ICloneable)
+                        if (fieldValue is ICloneable)
                         {
-                            propertyInfo.SetValue(target, (propertyValue as ICloneable).Clone(), null);
+                            fieldInfo.SetValue(target, (fieldValue as ICloneable).Clone());
                         }
                         else
                         {
-                            propertyInfo.SetValue(target, propertyValue.DeepClone(), null);
+                            fieldInfo.SetValue(target, fieldValue.DeepClone());
                         }
+                    }
+                    catch (Exception) { }
+                }
+                else if (memberInfo.MemberType == MemberTypes.Property)
+                {
+                    var propertyInfo = (PropertyInfo)memberInfo;
+                    var setMethodInfo = propertyInfo.GetSetMethod(false);
+
+                    if (setMethodInfo != null)
+                    {
+                        var propertyValue = propertyInfo.GetValue(source, null);
+
+                        if (propertyValue == null)
+                            continue;
+                        try
+                        {
+                            if (propertyValue is ICloneable)
+                            {
+                                propertyInfo.SetValue(target, (propertyValue as ICloneable).Clone(), null);
+                            }
+                            else
+                            {
+                                propertyInfo.SetValue(target, propertyValue.DeepClone(), null);
+                            }
+                        }
+                        catch (Exception) { }
                     }
                 }
             }
