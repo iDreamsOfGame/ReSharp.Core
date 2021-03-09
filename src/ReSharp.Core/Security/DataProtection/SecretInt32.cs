@@ -2,6 +2,7 @@
 // See LICENSE in the project root for license information.
 
 using System;
+using System.Globalization;
 using System.Runtime.Serialization;
 
 namespace ReSharp.Security.DataProtection
@@ -31,10 +32,7 @@ namespace ReSharp.Security.DataProtection
         /// Initializes a new instance of the <see cref="SecretInt32" /> struct with the <see cref="int" /> value to encrypt.
         /// </summary>
         /// <param name="value">The <see cref="int" /> value to encrypt.</param>
-        public SecretInt32(int value)
-        {
-            this.value = DataProtectionProvider.Protect(value, out check);
-        }
+        public SecretInt32(int value) => this.value = DataProtectionProvider.Protect(value, out check);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SecretInt32" /> struct.
@@ -43,7 +41,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="context">The context.</param>
         public SecretInt32(SerializationInfo info, StreamingContext context)
         {
-            int value = info.GetInt32("v");
+            var value = info.GetInt32("v");
             this.value = DataProtectionProvider.Protect(value, out check);
         }
 
@@ -92,10 +90,7 @@ namespace ReSharp.Security.DataProtection
         /// </summary>
         /// <param name="value">The <see cref="SecretInt32" /> structure.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator int(SecretInt32 value)
-        {
-            return value.Value;
-        }
+        public static implicit operator int(SecretInt32 value) => value.Value;
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="SecretInt32" /> to <see cref="long" />.
@@ -113,10 +108,7 @@ namespace ReSharp.Security.DataProtection
         /// </summary>
         /// <param name="value">The <see cref="int" /> value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator SecretInt32(int value)
-        {
-            return new SecretInt32(value);
-        }
+        public static implicit operator SecretInt32(int value) => new SecretInt32(value);
 
         /// <summary>
         /// Subtracts a <see cref="SecretInt32" /> structure from a <see cref="SecretInt32" /> structure.
@@ -124,11 +116,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="x">A <see cref="SecretInt32" /> structure.</param>
         /// <param name="y">A <see cref="SecretInt32" /> structure.</param>
         /// <returns>A <see cref="SecretInt32" /> structure whose <see name="Value" /> property contains the results of the subtraction.</returns>
-        public static SecretInt32 operator -(SecretInt32 x, SecretInt32 y)
-        {
-            int result = x.Value - y.Value;
-            return new SecretInt32(result);
-        }
+        public static SecretInt32 operator -(SecretInt32 x, SecretInt32 y) => new SecretInt32(x.Value - y.Value);
 
         /// <summary>
         /// Decrements the <see cref="SecretInt32" /> operand by one.
@@ -139,7 +127,7 @@ namespace ReSharp.Security.DataProtection
         /// </returns>
         public static SecretInt32 operator --(SecretInt32 value)
         {
-            int result = value.Value;
+            var result = value.Value;
             return new SecretInt32(--result);
         }
 
@@ -160,11 +148,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="x">A <see cref="SecretInt32" /> structure.</param>
         /// <param name="y">A <see cref="SecretInt32" /> structure.</param>
         /// <returns>A <see cref="SecretInt32" /> structure whose <see name="Value" /> property contains the remainder.</returns>
-        public static SecretInt32 operator %(SecretInt32 x, SecretInt32 y)
-        {
-            int result = x.Value % y.Value;
-            return new SecretInt32(result);
-        }
+        public static SecretInt32 operator %(SecretInt32 x, SecretInt32 y) => new SecretInt32(x.Value % y.Value);
 
         /// <summary>
         /// Computes the product of the two <see cref="SecretInt32" /> parameters.
@@ -172,11 +156,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="x">A <see cref="SecretInt32" /> structure.</param>
         /// <param name="y">A <see cref="SecretInt32" /> structure.</param>
         /// <returns>A <see cref="SecretInt32" /> structure whose <see name="Value" /> property contains the product of the two parameters.</returns>
-        public static SecretInt32 operator *(SecretInt32 x, SecretInt32 y)
-        {
-            int result = x.Value * y.Value;
-            return new SecretInt32(result);
-        }
+        public static SecretInt32 operator *(SecretInt32 x, SecretInt32 y) => new SecretInt32(x.Value * y.Value);
 
         /// <summary>
         /// Divides the first <see cref="SecretInt32" /> parameter from the second.
@@ -184,11 +164,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="x">A <see cref="SecretInt32" /> structure.</param>
         /// <param name="y">A <see cref="SecretInt32" /> structure.</param>
         /// <returns>A <see cref="SecretInt32" /> structure whose <see name="Value" /> property contains the result of the division.</returns>
-        public static SecretInt32 operator /(SecretInt32 x, SecretInt32 y)
-        {
-            int result = x.Value / y.Value;
-            return new SecretInt32(result);
-        }
+        public static SecretInt32 operator /(SecretInt32 x, SecretInt32 y) => new SecretInt32(x.Value / y.Value);
 
         /// <summary>
         /// Computes the sum of the two specified <see cref="SecretInt32" /> structures.
@@ -198,11 +174,7 @@ namespace ReSharp.Security.DataProtection
         /// <returns>
         /// A <see cref="SecretInt32" /> structure whose <see name="Value" /> property contains the sum of the specified <see cref="SecretInt32" /> structures.
         /// </returns>
-        public static SecretInt32 operator +(SecretInt32 x, SecretInt32 y)
-        {
-            int result = x.Value + y.Value;
-            return new SecretInt32(result);
-        }
+        public static SecretInt32 operator +(SecretInt32 x, SecretInt32 y) => new SecretInt32(x.Value + y.Value);
 
         /// <summary>
         /// Increments the <see cref="SecretInt32" /> operand by 1.
@@ -213,7 +185,7 @@ namespace ReSharp.Security.DataProtection
         /// </returns>
         public static SecretInt32 operator ++(SecretInt32 value)
         {
-            int result = value.Value;
+            var result = value.Value;
             return new SecretInt32(++result);
         }
 
@@ -223,10 +195,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="left">A <see cref="SecretInt32" /> structure.</param>
         /// <param name="right">A <see cref="SecretInt32" /> structure.</param>
         /// <returns><c>true</c> if the first instance is less than the second instance. Otherwise, <c>false</c>.</returns>
-        public static bool operator <(SecretInt32 left, SecretInt32 right)
-        {
-            return left.Value < right.Value;
-        }
+        public static bool operator <(SecretInt32 left, SecretInt32 right) => left.Value < right.Value;
 
         /// <summary>
         /// Compares the two <see cref="SecretInt32" /> parameters to determine whether the first is less than or equal to the second.
@@ -234,10 +203,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="left">A <see cref="SecretInt32" /> structure.</param>
         /// <param name="right">A <see cref="SecretInt32" /> structure.</param>
         /// <returns><c>true</c> if the first instance is less than or equal to the second instance. Otherwise, <c>false</c>.</returns>
-        public static bool operator <=(SecretInt32 left, SecretInt32 right)
-        {
-            return left.Value <= right.Value;
-        }
+        public static bool operator <=(SecretInt32 left, SecretInt32 right) => left.Value <= right.Value;
 
         /// <summary>
         /// Performs a logical comparison of the two <see cref="SecretInt32" /> parameters to determine whether they are equal.
@@ -253,10 +219,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="left">A <see cref="SecretInt32" /> structure.</param>
         /// <param name="right">A <see cref="SecretInt32" /> structure.</param>
         /// <returns><c>true</c> if the first instance is greater than the second instance. Otherwise, <c>false</c>.</returns>
-        public static bool operator >(SecretInt32 left, SecretInt32 right)
-        {
-            return left.Value > right.Value;
-        }
+        public static bool operator >(SecretInt32 left, SecretInt32 right) => left.Value > right.Value;
 
         /// <summary>
         /// Compares the two <see cref="SecretInt32" /> parameters to determine whether the first is greater than or equal to the second.
@@ -264,10 +227,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="left">A <see cref="SecretInt32" /> structure.</param>
         /// <param name="right">A <see cref="SecretInt32" /> structure.</param>
         /// <returns><c>true</c> if the first instance is greater than or equal to the second instance. Otherwise, <c>false</c>.</returns>
-        public static bool operator >=(SecretInt32 left, SecretInt32 right)
-        {
-            return left.Value >= right.Value;
-        }
+        public static bool operator >=(SecretInt32 left, SecretInt32 right) => left.Value >= right.Value;
 
         /// <summary>
         /// Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance
@@ -275,10 +235,7 @@ namespace ReSharp.Security.DataProtection
         /// </summary>
         /// <param name="other">An object to compare with this instance.</param>
         /// <returns>A value that indicates the relative order of the objects being compared.</returns>
-        public int CompareTo(SecretInt32 other)
-        {
-            return Value.CompareTo(other.Value);
-        }
+        public int CompareTo(SecretInt32 other) => Value.CompareTo(other.Value);
 
         /// <summary>
         /// Determines whether the specified object is equal to the current object.
@@ -312,29 +269,20 @@ namespace ReSharp.Security.DataProtection
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
-        public override int GetHashCode()
-        {
-            return value.GetHashCode();
-        }
+        public override int GetHashCode() => value.GetHashCode();
 
         /// <summary>
         /// Populates a <see cref="System.Runtime.Serialization.SerializationInfo" /> with the data needed to serialize the target object.
         /// </summary>
         /// <param name="info">The <see cref="System.Runtime.Serialization.SerializationInfo" /> to populate with data.</param>
         /// <param name="context">The destination (see <see cref="System.Runtime.Serialization.StreamingContext" />) for this serialization.</param>
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            info.AddValue("v", Value);
-        }
+        public void GetObjectData(SerializationInfo info, StreamingContext context) => info.AddValue("v", Value);
 
         /// <summary>
         /// Returns a <see cref="string" /> that represents this instance.
         /// </summary>
         /// <returns>A <see cref="string" /> that represents this instance.</returns>
-        public override string ToString()
-        {
-            return Value.ToString();
-        }
+        public override string ToString() => Value.ToString(CultureInfo.InvariantCulture);
 
         #endregion Methods
     }

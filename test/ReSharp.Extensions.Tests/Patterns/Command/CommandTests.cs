@@ -11,8 +11,8 @@ namespace ReSharp.Tests.Patterns.Command
         [TestMethod]
         public void AsyncCommandExecute()
         {
-            Counter counter = new Counter(0);
-            IncrementAsyncCommand cmd = new IncrementAsyncCommand(counter);
+            var counter = new Counter(0);
+            var cmd = new IncrementAsyncCommand(counter);
             cmd.Execute(() =>
             {
                 Assert.AreEqual(1, cmd.Counter.Count);
@@ -22,8 +22,8 @@ namespace ReSharp.Tests.Patterns.Command
         [TestMethod]
         public void AsyncMacroCommandExecute()
         {
-            AsyncArithmeticOperationsCommand cmd = new AsyncArithmeticOperationsCommand();
-            Counter counter = new Counter(-1);
+            var cmd = new AsyncArithmeticOperationsCommand();
+            var counter = new Counter(-1);
             cmd.Initialize(counter);
             cmd.Execute(() =>
             {
@@ -34,8 +34,8 @@ namespace ReSharp.Tests.Patterns.Command
         [TestMethod]
         public void MacroCommandExecute()
         {
-            ArithmeticOperationsCommand cmd = new ArithmeticOperationsCommand();
-            Counter counter = new Counter(-1);
+            var cmd = new ArithmeticOperationsCommand();
+            var counter = new Counter(-1);
             cmd.Initialize(counter);
             cmd.Execute();
             Assert.AreEqual(-2, cmd.Counter.Count);
@@ -44,8 +44,8 @@ namespace ReSharp.Tests.Patterns.Command
         [TestMethod]
         public void SimpleCommandExecute()
         {
-            Counter counter = new Counter(0);
-            IncrementCommand cmd = new IncrementCommand(counter);
+            var counter = new Counter(0);
+            var cmd = new IncrementCommand(counter);
             cmd.Execute();
             Assert.AreEqual(1, cmd.Counter.Count);
         }
@@ -53,8 +53,8 @@ namespace ReSharp.Tests.Patterns.Command
         [TestMethod]
         public void UndoableMacroCommandRedo()
         {
-            Counter counter = new Counter(0);
-            UndoableMacroCommand macroCommand = new UndoableMacroCommand();
+            var counter = new Counter(0);
+            var macroCommand = new UndoableMacroCommand();
             IUndoableCommand cmd = new DecrementUndoableCommand(counter);
             macroCommand.Execute(cmd);
             cmd = new DecrementUndoableCommand(counter);
@@ -69,8 +69,8 @@ namespace ReSharp.Tests.Patterns.Command
         [TestMethod]
         public void UndoableMacroCommandUndo()
         {
-            Counter counter = new Counter(0);
-            UndoableMacroCommand macroCommand = new UndoableMacroCommand();
+            var counter = new Counter(0);
+            var macroCommand = new UndoableMacroCommand();
             IUndoableCommand cmd = new DecrementUndoableCommand(counter);
             macroCommand.Execute(cmd);
             cmd = new DecrementUndoableCommand(counter);

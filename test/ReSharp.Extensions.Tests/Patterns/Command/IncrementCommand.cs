@@ -20,8 +20,7 @@ namespace ReSharp.Tests.Patterns.Command
         public override void Execute(Action executedCallback)
         {
             base.Execute(executedCallback);
-            Thread thread = new Thread(new ThreadStart(Do));
-            thread.Start();
+            new Thread(new ThreadStart(Do)).Start();
         }
 
         private void Do()

@@ -32,10 +32,7 @@ namespace ReSharp.Security.DataProtection
         /// Initializes a new instance of the <see cref="SecretSingle" /> struct with the <see cref="float" /> value to encrypt.
         /// </summary>
         /// <param name="value">The <see cref="float" /> value to encrypt.</param>
-        public SecretSingle(float value)
-        {
-            this.value = DataProtectionProvider.Protect(value, out check);
-        }
+        public SecretSingle(float value) => this.value = DataProtectionProvider.Protect(value, out check);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SecretSingle" /> struct.
@@ -44,7 +41,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="context">The context.</param>
         public SecretSingle(SerializationInfo info, StreamingContext context)
         {
-            float value = info.GetSingle("v");
+            var value = info.GetSingle("v");
             this.value = DataProtectionProvider.Protect(value, out check);
         }
 
@@ -82,40 +79,28 @@ namespace ReSharp.Security.DataProtection
         /// </summary>
         /// <param name="value">The <see cref="SecretSingle" /> structure.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator float(SecretSingle value)
-        {
-            return value.Value;
-        }
+        public static implicit operator float(SecretSingle value) => value.Value;
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="float" /> to <see cref="SecretSingle" />.
         /// </summary>
         /// <param name="value">The <see cref="SecretSingle" /> structure.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator SecretSingle(float value)
-        {
-            return new SecretSingle(value);
-        }
+        public static implicit operator SecretSingle(float value) => new SecretSingle(value);
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="SecretInt32" /> to <see cref="SecretSingle" />.
         /// </summary>
         /// <param name="value">The <see cref="SecretInt32" /> structure.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator SecretSingle(SecretInt32 value)
-        {
-            return new SecretSingle(value.Value);
-        }
+        public static implicit operator SecretSingle(SecretInt32 value) => new SecretSingle(value.Value);
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="SecretInt64" /> to <see cref="SecretSingle" />.
         /// </summary>
         /// <param name="value">The <see cref="SecretInt64" /> structure.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator SecretSingle(SecretInt64 value)
-        {
-            return new SecretSingle(value.Value);
-        }
+        public static implicit operator SecretSingle(SecretInt64 value) => new SecretSingle(value.Value);
 
         /// <summary>
         /// Subtracts a <see cref="SecretSingle" /> structure from a <see cref="SecretSingle" /> structure.
@@ -123,11 +108,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="x">A <see cref="SecretSingle" /> structure.</param>
         /// <param name="y">A <see cref="SecretSingle" /> structure.</param>
         /// <returns>A <see cref="SecretSingle" /> structure whose <see name="Value" /> property contains the results of the subtraction.</returns>
-        public static SecretSingle operator -(SecretSingle x, SecretSingle y)
-        {
-            float result = x.Value - y.Value;
-            return new SecretSingle(result);
-        }
+        public static SecretSingle operator -(SecretSingle x, SecretSingle y) => new SecretSingle(x.Value - y.Value);
 
         /// <summary>
         /// Decrements the <see cref="SecretSingle" /> operand by one.
@@ -138,7 +119,7 @@ namespace ReSharp.Security.DataProtection
         /// </returns>
         public static SecretSingle operator --(SecretSingle value)
         {
-            float result = value.Value;
+            var result = value.Value;
             return new SecretSingle(--result);
         }
 
@@ -159,11 +140,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="x">A <see cref="SecretSingle" /> structure.</param>
         /// <param name="y">A <see cref="SecretSingle" /> structure.</param>
         /// <returns>A <see cref="SecretSingle" /> structure whose <see name="Value" /> property contains the remainder.</returns>
-        public static SecretSingle operator %(SecretSingle x, SecretSingle y)
-        {
-            float result = x.Value % y.Value;
-            return new SecretSingle(result);
-        }
+        public static SecretSingle operator %(SecretSingle x, SecretSingle y) => new SecretSingle(x.Value % y.Value);
 
         /// <summary>
         /// Computes the product of the two <see cref="SecretSingle" /> parameters.
@@ -171,11 +148,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="x">A <see cref="SecretSingle" /> structure.</param>
         /// <param name="y">A <see cref="SecretSingle" /> structure.</param>
         /// <returns>A <see cref="SecretSingle" /> structure whose <see name="Value" /> property contains the product of the two parameters.</returns>
-        public static SecretSingle operator *(SecretSingle x, SecretSingle y)
-        {
-            float result = x.Value * y.Value;
-            return new SecretSingle(result);
-        }
+        public static SecretSingle operator *(SecretSingle x, SecretSingle y) => new SecretSingle(x.Value * y.Value);
 
         /// <summary>
         /// Divides the first <see cref="SecretSingle" /> parameter from the second.
@@ -183,11 +156,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="x">A <see cref="SecretSingle" /> structure.</param>
         /// <param name="y">A <see cref="SecretSingle" /> structure.</param>
         /// <returns>A <see cref="SecretSingle" /> structure whose <see name="Value" /> property contains the result of the division.</returns>
-        public static SecretSingle operator /(SecretSingle x, SecretSingle y)
-        {
-            float result = x.Value / y.Value;
-            return new SecretSingle(result);
-        }
+        public static SecretSingle operator /(SecretSingle x, SecretSingle y) => new SecretSingle(x.Value / y.Value);
 
         /// <summary>
         /// Computes the sum of the two specified <see cref="SecretSingle" /> structures.
@@ -197,11 +166,7 @@ namespace ReSharp.Security.DataProtection
         /// <returns>
         /// A <see cref="SecretSingle" /> structure whose <see name="Value" /> property contains the sum of the specified <see cref="SecretSingle" /> structures.
         /// </returns>
-        public static SecretSingle operator +(SecretSingle x, SecretSingle y)
-        {
-            float result = x.Value + y.Value;
-            return new SecretSingle(result);
-        }
+        public static SecretSingle operator +(SecretSingle x, SecretSingle y) => new SecretSingle(x.Value + y.Value);
 
         /// <summary>
         /// Increments the <see cref="SecretSingle" /> operand by 1.
@@ -212,7 +177,7 @@ namespace ReSharp.Security.DataProtection
         /// </returns>
         public static SecretSingle operator ++(SecretSingle value)
         {
-            float result = value.Value;
+            var result = value.Value;
             return new SecretSingle(++result);
         }
 
@@ -222,10 +187,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="left">A <see cref="SecretSingle" /> structure.</param>
         /// <param name="right">A <see cref="SecretSingle" /> structure.</param>
         /// <returns><c>true</c> if the first instance is less than the second instance. Otherwise, <c>false</c>.</returns>
-        public static bool operator <(SecretSingle left, SecretSingle right)
-        {
-            return left.Value < right.Value;
-        }
+        public static bool operator <(SecretSingle left, SecretSingle right) => left.Value < right.Value;
 
         /// <summary>
         /// Compares the two <see cref="SecretSingle" /> parameters to determine whether the first is less than or equal to the second.
@@ -233,10 +195,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="left">A <see cref="SecretSingle" /> structure.</param>
         /// <param name="right">A <see cref="SecretSingle" /> structure.</param>
         /// <returns><c>true</c> if the first instance is less than or equal to the second instance. Otherwise, <c>false</c>.</returns>
-        public static bool operator <=(SecretSingle left, SecretSingle right)
-        {
-            return left.Value <= right.Value;
-        }
+        public static bool operator <=(SecretSingle left, SecretSingle right) => left.Value <= right.Value;
 
         /// <summary>
         /// Performs a logical comparison of the two <see cref="SecretSingle" /> parameters to determine whether they are equal.
@@ -252,10 +211,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="left">A <see cref="SecretSingle" /> structure.</param>
         /// <param name="right">A <see cref="SecretSingle" /> structure.</param>
         /// <returns><c>true</c> if the first instance is greater than the second instance. Otherwise, <c>false</c>.</returns>
-        public static bool operator >(SecretSingle left, SecretSingle right)
-        {
-            return left.Value > right.Value;
-        }
+        public static bool operator >(SecretSingle left, SecretSingle right) => left.Value > right.Value;
 
         /// <summary>
         /// Compares the two <see cref="SecretSingle" /> parameters to determine whether the first is greater than or equal to the second.
@@ -263,10 +219,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="left">A <see cref="SecretSingle" /> structure.</param>
         /// <param name="right">A <see cref="SecretSingle" /> structure.</param>
         /// <returns><c>true</c> if the first instance is greater than or equal to the second instance. Otherwise, <c>false</c>.</returns>
-        public static bool operator >=(SecretSingle left, SecretSingle right)
-        {
-            return left.Value >= right.Value;
-        }
+        public static bool operator >=(SecretSingle left, SecretSingle right) => left.Value >= right.Value;
 
         /// <summary>
         /// Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance
@@ -274,10 +227,7 @@ namespace ReSharp.Security.DataProtection
         /// </summary>
         /// <param name="other">An object to compare with this instance.</param>
         /// <returns>A value that indicates the relative order of the objects being compared.</returns>
-        public int CompareTo(SecretSingle other)
-        {
-            return value.CompareTo(other.Value);
-        }
+        public int CompareTo(SecretSingle other) => value.CompareTo(other.Value);
 
         /// <summary>
         /// Determines whether the specified object is equal to the current object.
@@ -311,29 +261,20 @@ namespace ReSharp.Security.DataProtection
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
-        public override int GetHashCode()
-        {
-            return value.GetHashCode();
-        }
+        public override int GetHashCode() => value.GetHashCode();
 
         /// <summary>
         /// Populates a <see cref="System.Runtime.Serialization.SerializationInfo" /> with the data needed to serialize the target object.
         /// </summary>
         /// <param name="info">The <see cref="System.Runtime.Serialization.SerializationInfo" /> to populate with data.</param>
         /// <param name="context">The destination (see <see cref="System.Runtime.Serialization.StreamingContext" />) for this serialization.</param>
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            info.AddValue("v", Value);
-        }
+        public void GetObjectData(SerializationInfo info, StreamingContext context) => info.AddValue("v", Value);
 
         /// <summary>
         /// Returns a <see cref="string" /> that represents this instance.
         /// </summary>
         /// <returns>A <see cref="string" /> that represents this instance.</returns>
-        public override string ToString()
-        {
-            return Value.ToString(CultureInfo.InvariantCulture);
-        }
+        public override string ToString() => Value.ToString(CultureInfo.InvariantCulture);
 
         #endregion Methods
     }

@@ -98,7 +98,7 @@ namespace ReSharp.Security.Cryptography
 
         private static uint[] Decrypt(uint[] v, uint[] k)
         {
-            int n = v.Length - 1;
+            var n = v.Length - 1;
             if (n < 1)
             {
                 return v;
@@ -126,7 +126,7 @@ namespace ReSharp.Security.Cryptography
 
         private static uint[] Encrypt(uint[] v, uint[] k)
         {
-            int n = v.Length - 1;
+            var n = v.Length - 1;
             if (n < 1)
             {
                 return v;
@@ -155,7 +155,7 @@ namespace ReSharp.Security.Cryptography
         {
             if (key.Length == 16)
                 return key;
-            byte[] fixedkey = new byte[16];
+            var fixedkey = new byte[16];
             if (key.Length < 16)
             {
                 key.CopyTo(fixedkey, 0);
@@ -174,10 +174,10 @@ namespace ReSharp.Security.Cryptography
 
         private static byte[] ToByteArray(uint[] data, bool includeLength)
         {
-            int n = data.Length << 2;
+            var n = data.Length << 2;
             if (includeLength)
             {
-                int m = (int)data[data.Length - 1];
+                var m = (int)data[data.Length - 1];
                 n -= 4;
                 if ((m < n - 3) || (m > n))
                 {
@@ -185,8 +185,8 @@ namespace ReSharp.Security.Cryptography
                 }
                 n = m;
             }
-            byte[] result = new byte[n];
-            for (int i = 0; i < n; i++)
+            var result = new byte[n];
+            for (var i = 0; i < n; i++)
             {
                 result[i] = (byte)(data[i >> 2] >> ((i & 3) << 3));
             }
@@ -195,8 +195,8 @@ namespace ReSharp.Security.Cryptography
 
         private static uint[] ToUInt32Array(byte[] data, bool includeLength)
         {
-            int length = data.Length;
-            int n = (((length & 3) == 0) ? (length >> 2) : ((length >> 2) + 1));
+            var length = data.Length;
+            var n = (((length & 3) == 0) ? (length >> 2) : ((length >> 2) + 1));
             uint[] result;
             if (includeLength)
             {
@@ -207,7 +207,7 @@ namespace ReSharp.Security.Cryptography
             {
                 result = new uint[n];
             }
-            for (int i = 0; i < length; i++)
+            for (var i = 0; i < length; i++)
             {
                 result[i >> 2] |= (uint)data[i] << ((i & 3) << 3);
             }

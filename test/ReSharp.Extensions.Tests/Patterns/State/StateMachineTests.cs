@@ -11,17 +11,26 @@ namespace ReSharp.Tests.Patterns.State
         [TestMethod]
         public void ChangeStateTest()
         {
-            StateMachine context = new StateMachine();
-            TestState state = new TestState();
+            var context = new StateMachine();
+            var state = new TestState();
             context.ChangeState(state);
             Assert.AreSame(state, context.CurrentState);
         }
 
         [TestMethod]
+        public void RaiseStateChangedEventTest()
+        {
+            var context = new StateMachine();
+            var state = new TestState();
+            context.StateChanged += (sender, e) => { Assert.AreSame(e.State, state); };
+            context.ChangeState(state);
+        }
+
+        [TestMethod]
         public void StateOnEnterTest()
         {
-            StateMachine context = new StateMachine();
-            TestState state = new TestState();
+            var context = new StateMachine();
+            var state = new TestState();
             context.ChangeState(state);
             Assert.AreEqual(1, state.Count);
         }
@@ -29,8 +38,8 @@ namespace ReSharp.Tests.Patterns.State
         [TestMethod]
         public void StateOnExecuteTest()
         {
-            StateMachine context = new StateMachine();
-            TestState state = new TestState();
+            var context = new StateMachine();
+            var state = new TestState();
             context.ChangeState(state);
             context.Execute();
             Assert.AreEqual(3, state.Count);
@@ -39,22 +48,13 @@ namespace ReSharp.Tests.Patterns.State
         [TestMethod]
         public void StateOnExitTest()
         {
-            StateMachine context = new StateMachine();
-            TestState state = new TestState();
+            var context = new StateMachine();
+            var state = new TestState();
             context.ChangeState(state);
             context.Execute();
-            TestState state2 = new TestState();
+            var state2 = new TestState();
             context.ChangeState(state2);
             Assert.AreEqual(2, state.Count);
-        }
-
-        [TestMethod]
-        public void RaiseStateChangedEventTest()
-        {
-            StateMachine context = new StateMachine();
-            TestState state = new TestState();
-            context.StateChanged += (sender, e) => { Assert.AreSame(e.State, state); };
-            context.ChangeState(state);
         }
 
         #endregion Methods

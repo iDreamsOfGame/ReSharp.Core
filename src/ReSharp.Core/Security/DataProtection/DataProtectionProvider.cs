@@ -23,13 +23,13 @@ namespace ReSharp.Security.DataProtection
 
         static DataProtectionProvider()
         {
-            int seed = Guid.NewGuid().ToString().GetHashCode();
-            Random rnd = new Random(seed);
-            int minValue = int.MinValue;
-            int maxValue = int.MaxValue;
-            Key = rnd.Next(int.MinValue, int.MaxValue);
+            var seed = Guid.NewGuid().ToString().GetHashCode();
+            var random = new Random(seed);
+            var minValue = int.MinValue;
+            var maxValue = int.MaxValue;
+            Key = random.Next(int.MinValue, int.MaxValue);
             LongKey = ((long)Key << 32) + Key;
-            CheckKey = rnd.Next(minValue, maxValue);
+            CheckKey = random.Next(minValue, maxValue);
             CheckLongKey = ((long)CheckKey << 32) + CheckKey;
         }
 
@@ -45,7 +45,7 @@ namespace ReSharp.Security.DataProtection
         /// <returns>The encrypted <see cref="double"/> value.</returns>
         internal static long Protect(double value, out long check)
         {
-            long result = BitConverter.DoubleToInt64Bits(value);
+            var result = BitConverter.DoubleToInt64Bits(value);
             return Protect(result, out check);
         }
 
@@ -57,7 +57,7 @@ namespace ReSharp.Security.DataProtection
         /// <returns>The encrypted <see cref="float "/> value.</returns>
         internal static int Protect(float value, out int check)
         {
-            int result = BitConverter.ToInt32(BitConverter.GetBytes(value), 0);
+            var result = BitConverter.ToInt32(BitConverter.GetBytes(value), 0);
             return Protect(result, out check);
         }
 
@@ -69,8 +69,8 @@ namespace ReSharp.Security.DataProtection
         /// <returns>The encrypted <see cref="long"/> value.</returns>
         internal static long Protect(long value, out long check)
         {
-            long result = (value ^ LongKey);
-            check = (value ^ CheckLongKey);
+            var result = value ^ LongKey;
+            check = value ^ CheckLongKey;
             return result;
         }
 
@@ -82,8 +82,8 @@ namespace ReSharp.Security.DataProtection
         /// <returns>The encrypted <see cref="int"/> value.</returns>
         internal static int Protect(int value, out int check)
         {
-            int result = (value ^ Key);
-            check = (value ^ CheckKey);
+            var result = value ^ Key;
+            check = value ^ CheckKey;
             return result;
         }
 
@@ -98,7 +98,7 @@ namespace ReSharp.Security.DataProtection
         /// </exception>
         internal static int Unprotect(int value, int check)
         {
-            int result = value ^ Key;
+            var result = value ^ Key;
             check ^= CheckKey;
 
             if (result == check)
@@ -120,7 +120,7 @@ namespace ReSharp.Security.DataProtection
         /// </exception>
         internal static long Unprotect(long value, long check)
         {
-            long result = value ^ LongKey;
+            var result = value ^ LongKey;
             check ^= CheckLongKey;
 
             if (result == check)
@@ -139,7 +139,7 @@ namespace ReSharp.Security.DataProtection
         /// <returns>The decrypted <see cref="double"/> value.</returns>
         internal static double UnprotectDouble(long value, long check)
         {
-            long result = Unprotect(value, check);
+            var result = Unprotect(value, check);
             return BitConverter.Int64BitsToDouble(result);
         }
 
@@ -151,7 +151,7 @@ namespace ReSharp.Security.DataProtection
         /// <returns>The encrypted <see cref="float"/> value.</returns>
         internal static float UnprotectSingle(int value, int check)
         {
-            int result = Unprotect(value, check);
+            var result = Unprotect(value, check);
             return BitConverter.ToSingle(BitConverter.GetBytes(result), 0);
         }
 
