@@ -366,29 +366,89 @@
             Runs the state's execution logic.
             </summary>
         </member>
-        <member name="F:System.BindingAttributes.DefaultBindingAttr">
+        <member name="F:System.BindingFlagsCollection.DefaultBindingFlags">
             <summary>
-            The default binding attribute.
+            The default binding flags.
             </summary>
         </member>
-        <member name="F:System.BindingAttributes.DefaultInstanceBindingAttr">
+        <member name="F:System.BindingFlagsCollection.InstanceBindingFlags">
             <summary>
-            The default instance binding attribute.
+            The default instance binding flags.
             </summary>
         </member>
-        <member name="F:System.BindingAttributes.DefaultStaticBindingAttr">
+        <member name="F:System.BindingFlagsCollection.InstanceGetFieldBindingFlags">
             <summary>
-            The default static binding attribute.
+            The default instance get field binding flags.
             </summary>
         </member>
-        <member name="F:System.BindingAttributes.DefaultStaticGetFieldBindingAttr">
+        <member name="F:System.BindingFlagsCollection.InstanceSetFieldBindingFlags">
             <summary>
-            The default static get field binding attribute.
+            The default instance set field binding flags.
             </summary>
         </member>
-        <member name="F:System.BindingAttributes.DefaultStaticGetPropertyBindingAttr">
+        <member name="F:System.BindingFlagsCollection.InstanceFieldBindingFlags">
             <summary>
-            The default static get property binding attribute.
+            The default instance get and set field binding flags.
+            </summary>
+        </member>
+        <member name="F:System.BindingFlagsCollection.InstanceGetPropertyBindingFlags">
+            <summary>
+            The default instance get property binding flags.
+            </summary>
+        </member>
+        <member name="F:System.BindingFlagsCollection.InstanceSetPropertyBindingFlags">
+            <summary>
+            The default instance set property binding flags.
+            </summary>
+        </member>
+        <member name="F:System.BindingFlagsCollection.InstancePropertyBindingFlags">
+            <summary>
+            The default instance property binding flags.
+            </summary>
+        </member>
+        <member name="F:System.BindingFlagsCollection.ConstructorBindingFlags">
+            <summary>
+            The default binding flags for constructor.
+            </summary>
+        </member>
+        <member name="F:System.BindingFlagsCollection.StaticBindingFlags">
+            <summary>
+            The default static binding flags.
+            </summary>
+        </member>
+        <member name="F:System.BindingFlagsCollection.StaticConstructorBindingFlags">
+            <summary>
+            The default binding flags for static constructor.
+            </summary>
+        </member>
+        <member name="F:System.BindingFlagsCollection.StaticGetFieldBindingFlags">
+            <summary>
+            The default static get field binding flags.
+            </summary>
+        </member>
+        <member name="F:System.BindingFlagsCollection.StaticSetFieldBindingFlags">
+            <summary>
+            The default static set field binding flags.
+            </summary>
+        </member>
+        <member name="F:System.BindingFlagsCollection.StaticFieldBindingFlags">
+            <summary>
+            The default static field binding flags.
+            </summary>
+        </member>
+        <member name="F:System.BindingFlagsCollection.StaticGetPropertyBindingFlags">
+            <summary>
+            The default static get property binding flags.
+            </summary>
+        </member>
+        <member name="F:System.BindingFlagsCollection.StaticSetPropertyBindingFlags">
+            <summary>
+            The default static set property binding flags.
+            </summary>
+        </member>
+        <member name="F:System.BindingFlagsCollection.StaticPropertyBindingFlags">
+            <summary>
+            The default static property binding flags.
             </summary>
         </member>
         <member name="T:System.Collections.CollectionExtensions">
@@ -1085,40 +1145,37 @@
             Extension methods collection of <see cref="T:System.Object"/>.
             </summary>
         </member>
-        <member name="M:System.ObjectExtensions.DeepClone(System.Object)">
+        <member name="M:System.ObjectExtensions.ShallowClone``1(``0)">
             <summary>
-            Creates a deep copy of the current <see cref="T:System.Object"/>.
-            </summary>
-            <param name="source">The current <see cref="T:System.Object"/>.</param>
-            <returns>A deep copy of the current <see cref="T:System.Object"/>.</returns>
-        </member>
-        <member name="M:System.ObjectExtensions.DeepClone``1(System.Object)">
-            <summary>
-            Creates a deep copy of the current <see cref="T:System.Object"/>, and return an object which is
-            inherited from the type of current <see cref="T:System.Object"/>.
+            Creates a shallow clone of the current <see cref="T:System.Object"/>.
             </summary>
             <typeparam name="T">The type of object return.</typeparam>
             <param name="source">The current <see cref="T:System.Object"/>.</param>
-            <returns>The object which is inherited from the type of current <see cref="T:System.Object"/>.</returns>
+            <returns>A shallow clone of the current <see cref="T:System.Object"/>.</returns>
         </member>
-        <member name="M:System.ObjectExtensions.GetEventInvocationList(System.Object,System.Reflection.EventInfo)">
+        <member name="M:System.ObjectExtensions.DeepClone(System.Object)">
             <summary>
-            Returns the invocation list of the specific <see cref="T:System.Reflection.EventInfo"/> of the target <see cref="T:System.Object"/>.
+            Creates a deep clone of the current <see cref="T:System.Object"/>.
             </summary>
-            <param name="source">The source.</param>
-            <param name="eventInfo">The specific <see cref="T:System.Reflection.EventInfo"/>.</param>
-            <returns>
-            The invocation list of the specific <see cref="T:System.Reflection.EventInfo"/> of the target <see cref="T:System.Object"/>
-            </returns>
-            <exception cref="T:System.ArgumentNullException"><c>eventInfo</c> is <c>null</c>.</exception>
+            <param name="source">The current <see cref="T:System.Object"/>.</param>
+            <returns>A deep clone of the current <see cref="T:System.Object"/>.</returns>
         </member>
-        <member name="M:System.ObjectExtensions.GetFieldValue(System.Object,System.String)">
+        <member name="M:System.ObjectExtensions.DeepClone``1(System.Object)">
             <summary>
-            Gets the normal field value by a given field name.
+            Creates a deep clone of the current <see cref="T:System.Object"/>, and return an object which has same fields or properties of current <see cref="T:System.Object"/>.
             </summary>
-            <param name="source">The object whose field value will be returned.</param>
-            <param name="fieldName">The string containing the name of the data field to get.</param>
-            <returns>An object containing the value of the field reflected by this instance.</returns>
+            <typeparam name="T">The type of object return.</typeparam>
+            <param name="source">The current <see cref="T:System.Object"/>.</param>
+            <returns>A deep clone of the current <see cref="T:System.Object"/>.</returns>
+        </member>
+        <member name="M:System.ObjectExtensions.GetEventField(System.Object,System.String,System.Reflection.BindingFlags)">
+            <summary>
+            Searches for the event field with the specified name.
+            </summary>
+            <param name="source"></param>
+            <param name="eventName"></param>
+            <param name="bindingFlags"></param>
+            <returns></returns>
         </member>
         <member name="M:System.ObjectExtensions.GetFieldValue(System.Object,System.String,System.Reflection.BindingFlags)">
             <summary>
@@ -1126,48 +1183,65 @@
             </summary>
             <param name="source">The object whose field value will be returned.</param>
             <param name="fieldName">The string containing the name of the data field to get.</param>
-            <param name="bindingAttr">
+            <param name="bindingFlags">
             A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
             search is conducted.
             </param>
             <returns>An object containing the value of the field reflected by this instance.</returns>
+        </member>
+        <member name="M:System.ObjectExtensions.SetFieldValue(System.Object,System.String,System.Object,System.Reflection.BindingFlags)">
+            <summary>
+            Sets the object field value by a given field name, a bitmask comprised of one or more
+            <see cref="T:System.Reflection.BindingFlags"/> and the value to set.
+            </summary>
+            <param name="source">The object whose field value to set.</param>
+            <param name="fieldName">Name of the field.</param>
+            <param name="value">The value to set.</param>
+            <param name="bindingFlags">
+            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
+            search is conducted.
+            </param>
         </member>
         <member name="M:System.ObjectExtensions.GetFieldValuePairs(System.Object,System.Reflection.BindingFlags)">
             <summary>
             Gets the field value pairs.
             </summary>
             <param name="source">The source.</param>
-            <param name="bindingAttr">The binding attribute.</param>
+            <param name="bindingFlags">
+            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
+            search is conducted.
+            </param>
             <returns>The field value pairs of the type.</returns>
         </member>
-        <member name="M:System.ObjectExtensions.GetPropertyValue(System.Object,System.String,System.Object[])">
-            <summary>
-            Gets the property value of by a given property name and index values for indexed properties.
-            </summary>
-            <param name="source">The object whose property value will be returned.</param>
-            <param name="propertyName">The name of the property.</param>
-            <param name="index">
-            Optional index values for indexed properties. The indexes of indexed properties are
-            zero-based. This value should be null for non-indexed properties.
-            </param>
-            <returns>An object containing the value of the property reflected by this instance.</returns>
-        </member>
-        <member name="M:System.ObjectExtensions.GetPropertyValue(System.Object,System.String,System.Reflection.BindingFlags,System.Object[])">
+        <member name="M:System.ObjectExtensions.GetPropertyValue(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)">
             <summary>
             Gets the property value of by a given property name, a bitmask comprised of one or more
             <see cref="T:System.Reflection.BindingFlags"/> and index values for indexed properties.
             </summary>
             <param name="source">The object whose property value will be returned.</param>
             <param name="propertyName">The name of the property.</param>
-            <param name="bindingAttr">
-            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
-            search is conducted.
-            </param>
             <param name="index">
             Optional index values for indexed properties. The indexes of indexed properties are
             zero-based. This value should be null for non-indexed properties.
             </param>
+            <param name="bindingFlags">
+            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
+            search is conducted.
+            </param>
             <returns>An object containing the value of the property reflected by this instance.</returns>
+        </member>
+        <member name="M:System.ObjectExtensions.SetPropertyValue(System.Object,System.String,System.Object,System.Reflection.BindingFlags)">
+            <summary>
+            Sets the object property value by a given property name, a bitmask comprised of one or
+            more <see cref="T:System.Reflection.BindingFlags"/> and the value to set.
+            </summary>
+            <param name="source">The object whose property value to set.</param>
+            <param name="propertyName">Name of the property.</param>
+            <param name="value">The value to set.</param>
+            <param name="bindingFlags">
+            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
+            search is conducted.
+            </param>
         </member>
         <member name="M:System.ObjectExtensions.GetPropertyValuePairs(System.Object,System.Reflection.BindingFlags)">
             <summary>
@@ -1177,15 +1251,6 @@
             <param name="bindingAttr">The binding attribute.</param>
             <returns>The property value pairs of the type.</returns>
         </member>
-        <member name="M:System.ObjectExtensions.HasMethod(System.Object,System.String)">
-            <summary>
-            Determines whether has the specified method by a given name with the default instance of
-            bitmask comprised of <see cref="T:System.Reflection.BindingFlags"/>.
-            </summary>
-            <param name="source">The object to search.</param>
-            <param name="methodName">Name of the method.</param>
-            <returns><c>true</c> if this object has the specified method; otherwise, <c>false</c>.</returns>
-        </member>
         <member name="M:System.ObjectExtensions.HasMethod(System.Object,System.String,System.Reflection.BindingFlags)">
             <summary>
             Determines whether has the specified method by a given name and a bitmask comprised of
@@ -1193,27 +1258,27 @@
             </summary>
             <param name="source">The object to search.</param>
             <param name="methodName">Name of the method.</param>
-            <param name="bindingAttr">
+            <param name="bindingFlags">
             A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
             search is conducted.
             </param>
             <returns><c>true</c> if this object has the specified method; otherwise, <c>false</c>.</returns>
         </member>
-        <member name="M:System.ObjectExtensions.InvokeGenericMethod(System.Object,System.String,System.Type[],System.Object[])">
+        <member name="M:System.ObjectExtensions.InvokeMethod(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)">
             <summary>
-            Invokes the generic method by a given name, the type to be substituted for the type
-            parameters of the current generic method definition and parameters for the method with
-            the default instance bitmask comprised of <see cref="T:System.Reflection.BindingFlags"/>.
+            Invokes the method by a given name, a bitmask comprised of one or more <see
+            cref="T:System.Reflection.BindingFlags"/> and parameters for the method.
             </summary>
             <param name="source">The object on which to invoke the method.</param>
             <param name="methodName">Name of the method.</param>
-            <param name="genericTypes">
-            Types to be substituted for the type parameters of the current generic method definition.
-            </param>
             <param name="parameters">The parameters for the method.</param>
+            <param name="bindingFlags">
+            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
+            search is conducted.
+            </param>
             <returns>An object containing the return value of the invoked method.</returns>
         </member>
-        <member name="M:System.ObjectExtensions.InvokeGenericMethod(System.Object,System.String,System.Type[],System.Reflection.BindingFlags,System.Object[])">
+        <member name="M:System.ObjectExtensions.InvokeGenericMethod(System.Object,System.String,System.Type[],System.Object[],System.Reflection.BindingFlags)">
             <summary>
             Invokes the generic method by a given name, the type to be substituted for the type
             parameters of the current generic method definition, a bitmask comprised of one or more
@@ -1224,93 +1289,33 @@
             <param name="genericTypes">
             Types to be substituted for the type parameters of the current generic method definition.
             </param>
-            <param name="bindingAttr">
+            <param name="parameters">The parameters for the method.</param>
+            <param name="bindingFlags">
             A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
             search is conducted.
             </param>
-            <param name="parameters">The parameters for the method.</param>
             <returns>An object containing the return value of the invoked method.</returns>
         </member>
-        <member name="M:System.ObjectExtensions.InvokeMethod(System.Object,System.String,System.Object[])">
-            <summary>
-            Invokes the method by a given name and parameters for the method with the default
-            instance bitmask comprised of <see cref="T:System.Reflection.BindingFlags"/>.
-            </summary>
-            <param name="source">The object on which to invoke the method.</param>
-            <param name="methodName">Name of the method.</param>
-            <param name="parameters">The parameters for the method.</param>
-            <returns>An object containing the return value of the invoked method.</returns>
-        </member>
-        <member name="M:System.ObjectExtensions.InvokeMethod(System.Object,System.String,System.Reflection.BindingFlags,System.Object[])">
-            <summary>
-            Invokes the method by a given name, a bitmask comprised of one or more <see
-            cref="T:System.Reflection.BindingFlags"/> and parameters for the method.
-            </summary>
-            <param name="source">The object on which to invoke the method.</param>
-            <param name="methodName">Name of the method.</param>
-            <param name="bindingAttr">
-            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
-            search is conducted.
-            </param>
-            <param name="parameters">The parameters for the method.</param>
-            <returns>An object containing the return value of the invoked method.</returns>
-        </member>
-        <member name="M:System.ObjectExtensions.RemoveAllEventHandlers(System.Object)">
-            <summary>
-            Removes all event handlers from an event source.
-            </summary>
-            <param name="source">The event source.</param>
-        </member>
-        <member name="M:System.ObjectExtensions.RemoveEventHandlers(System.Object,System.String)">
+        <member name="M:System.ObjectExtensions.RemoveEventHandlers(System.Object,System.String,System.Reflection.BindingFlags)">
             <summary>
             Removes event handlers from an event source by given name of event.
             </summary>
             <param name="source">The event source.</param>
             <param name="eventName">The name of the event.</param>
-        </member>
-        <member name="M:System.ObjectExtensions.SetObjectFieldValue(System.Object,System.String,System.Object)">
-            <summary>
-            Sets the object field value by a given field name and the value to set with the default
-            instance attribute of <see cref="T:System.Reflection.BindingFlags"/>.
-            </summary>
-            <param name="source">The object whose field value to set.</param>
-            <param name="fieldName">Name of the field.</param>
-            <param name="value">The value to set.</param>
-        </member>
-        <member name="M:System.ObjectExtensions.SetObjectFieldValue(System.Object,System.String,System.Reflection.BindingFlags,System.Object)">
-            <summary>
-            Sets the object field value by a given field name, a bitmask comprised of one or more
-            <see cref="T:System.Reflection.BindingFlags"/> and the value to set.
-            </summary>
-            <param name="source">The object whose field value to set.</param>
-            <param name="fieldName">Name of the field.</param>
-            <param name="bindingAttr">
+            <param name="bindingFlags">
             A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
             search is conducted.
             </param>
-            <param name="value">The value to set.</param>
         </member>
-        <member name="M:System.ObjectExtensions.SetObjectPropertyValue(System.Object,System.String,System.Object)">
+        <member name="M:System.ObjectExtensions.RemoveAllEventHandlers(System.Object,System.Reflection.BindingFlags)">
             <summary>
-            Sets the object property value by a given property name and the value to set with the
-            default instance attribute of <see cref="T:System.Reflection.BindingFlags"/>.
+            Removes all event handlers from an event source.
             </summary>
-            <param name="source">The object whose property value to set.</param>
-            <param name="propertyName">Name of the property.</param>
-            <param name="value">The value to set.</param>
-        </member>
-        <member name="M:System.ObjectExtensions.SetObjectPropertyValue(System.Object,System.String,System.Reflection.BindingFlags,System.Object)">
-            <summary>
-            Sets the object property value by a given property name, a bitmask comprised of one or
-            more <see cref="T:System.Reflection.BindingFlags"/> and the value to set.
-            </summary>
-            <param name="source">The object whose property value to set.</param>
-            <param name="propertyName">Name of the property.</param>
-            <param name="bindingAttr">
+            <param name="source">The event source.</param>
+            <param name="bindingFlags">
             A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
             search is conducted.
             </param>
-            <param name="value">The value to set.</param>
         </member>
         <member name="T:System.RandomExtensions">
             <summary>
@@ -1456,18 +1461,30 @@
             </summary>
             <param name="type">The <see cref="T:System.Type"/> to get static field value.</param>
             <param name="fieldName">Name of the field.</param>
-            <param name="bindingAttr">
+            <param name="bindingFlags">
             A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
             search is conducted.
             </param>
             <returns>The value of the static field.</returns>
+        </member>
+        <member name="M:System.TypeExtensions.SetStaticFieldValue(System.Type,System.String,System.Object,System.Reflection.BindingFlags)">
+            <summary>
+            Sets the static field value of the <see cref="T:System.Type"/>.
+            </summary>
+            <param name="type">The <see cref="T:System.Type"/> to set static field value.</param>
+            <param name="fieldName">Name of the field.</param>
+            <param name="value">The value of the static field to set.</param>
+            <param name="bindingFlags">
+            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
+            search is conducted.
+            </param>
         </member>
         <member name="M:System.TypeExtensions.GetStaticFieldValuePairs(System.Type,System.Reflection.BindingFlags)">
             <summary>
             Gets the static field value pairs.
             </summary>
             <param name="type">The type.</param>
-            <param name="bindingAttr">
+            <param name="bindingFlags">
             A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
             search is conducted.
             </param>
@@ -1479,32 +1496,64 @@
             </summary>
             <param name="type">The <see cref="T:System.Type"/> to get static property value.</param>
             <param name="propertyName">Name of the property.</param>
-            <param name="bindingAttr">
+            <param name="bindingFlags">
             A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
             search is conducted.
             </param>
             <returns>The value of the static property.</returns>
+        </member>
+        <member name="M:System.TypeExtensions.SetStaticPropertyValue(System.Type,System.String,System.Object,System.Reflection.BindingFlags)">
+            <summary>
+            Sets the static property value of the <see cref="T:System.Type"/>.
+            </summary>
+            <param name="type">The <see cref="T:System.Type"/> to set static property value.</param>
+            <param name="propertyName">Name of the property.</param>
+            <param name="value">The value of the static property.</param>
+            <param name="bindingFlags">
+            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
+            search is conducted.
+            </param>
         </member>
         <member name="M:System.TypeExtensions.GetStaticPropertyValuePairs(System.Type,System.Reflection.BindingFlags)">
             <summary>
             Gets the static property value pairs.
             </summary>
             <param name="type">The type.</param>
-            <param name="bindingAttr">
+            <param name="bindingFlags">
             A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
             search is conducted.
             </param>
             <returns>The static property value pairs of the type.</returns>
         </member>
-        <member name="M:System.TypeExtensions.HasStaticMethod(System.Type,System.String)">
+        <member name="M:System.TypeExtensions.HasStaticMethod(System.Type,System.String,System.Reflection.BindingFlags)">
             <summary>
             Determines whether this <see cref="T:System.Type"/> has the static method by a given name.
             </summary>
             <param name="type">The <see cref="T:System.Type"/>.</param>
             <param name="methodName">Name of the method.</param>
+            <param name="bindingFlags">
+            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
+            search is conducted.
+            </param>
             <returns><c>true</c> if this <see cref="T:System.Type"/> [has static method]; otherwise, <c>false</c>.</returns>
         </member>
-        <member name="M:System.TypeExtensions.InvokeConstructor(System.Type,System.Reflection.BindingFlags,System.Type[],System.Object[])">
+        <member name="M:System.TypeExtensions.InvokeConstructor(System.Type,System.Object[],System.Reflection.BindingFlags)">
+            <summary>
+            Invokes the constructor of the <see cref="T:System.Type"/> by a given <see cref="T:System.Type"/>, a
+            bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> and the parameters for the constructor.
+            </summary>
+            <param name="type">The <see cref="T:System.Type"/> to invoke constructor.</param>
+            <param name="parameters">
+            An array of values that matches the number, order and type (under the constraints of the
+            default binder) of the parameters for this constructor.
+            </param>
+            <param name="bindingFlags">
+            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
+            search is conducted.
+            </param>
+            <returns>An instance of the class associated with the constructor.</returns>
+        </member>
+        <member name="M:System.TypeExtensions.InvokeConstructor(System.Type,System.Type[],System.Object[],System.Reflection.BindingFlags)">
             <summary>
             Invokes the constructor of the <see cref="T:System.Type"/> by a given <see cref="T:System.Type"/>, a
             bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/>, an array of <see
@@ -1512,10 +1561,6 @@
             constructor to get and the parameters for the constructor.
             </summary>
             <param name="type">The <see cref="T:System.Type"/> to invoke constructor.</param>
-            <param name="bindingAttr">
-            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
-            search is conducted.
-            </param>
             <param name="types">
             An array of <see cref="T:System.Type"/> objects representing the number, order, and type of the
             parameters for the constructor to get.
@@ -1524,54 +1569,13 @@
             An array of values that matches the number, order and type (under the constraints of the
             default binder) of the parameters for this constructor.
             </param>
-            <returns>An instance of the class associated with the constructor.</returns>
-        </member>
-        <member name="M:System.TypeExtensions.InvokeConstructor(System.Type,System.Object[])">
-            <summary>
-            Invokes the constructor of the <see cref="T:System.Type"/> by a given <see cref="T:System.Type"/> and the
-            parameters for the constructor with the default instance bitmask comprised of <see cref="T:System.Reflection.BindingFlags"/>.
-            </summary>
-            <param name="type">The <see cref="T:System.Type"/> to invoke constructor.</param>
-            <param name="parameters">
-            An array of values that matches the number, order and type (under the constraints of the
-            default binder) of the parameters for this constructor.
-            </param>
-            <returns>An instance of the class associated with the constructor.</returns>
-        </member>
-        <member name="M:System.TypeExtensions.InvokeConstructor(System.Type,System.Reflection.BindingFlags,System.Object[])">
-            <summary>
-            Invokes the constructor of the <see cref="T:System.Type"/> by a given <see cref="T:System.Type"/>, a
-            bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> and the parameters for the constructor.
-            </summary>
-            <param name="type">The <see cref="T:System.Type"/> to invoke constructor.</param>
-            <param name="bindingAttr">
+            <param name="bindingFlags">
             A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
             search is conducted.
             </param>
-            <param name="parameters">
-            An array of values that matches the number, order and type (under the constraints of the
-            default binder) of the parameters for this constructor.
-            </param>
             <returns>An instance of the class associated with the constructor.</returns>
         </member>
-        <member name="M:System.TypeExtensions.InvokeConstructor(System.Type,System.Type[],System.Object[])">
-            <summary>
-            Invokes the constructor of the <see cref="T:System.Type"/> by a given <see cref="T:System.Type"/>, an
-            array of <see cref="T:System.Type"/> objects representing the number, order, and type of the
-            parameters for the constructor to get and the parameters for the constructor.
-            </summary>
-            <param name="type">The <see cref="T:System.Type"/> to invoke constructor.</param>
-            <param name="types">
-            An array of <see cref="T:System.Type"/> objects representing the number, order, and type of the
-            parameters for the constructor to get.
-            </param>
-            <param name="parameters">
-            An array of values that matches the number, order and type (under the constraints of the
-            default binder) of the parameters for this constructor.
-            </param>
-            <returns>An instance of the class associated with the constructor.</returns>
-        </member>
-        <member name="M:System.TypeExtensions.InvokeGenericStaticMethod(System.Type,System.String,System.Type[],System.Object[])">
+        <member name="M:System.TypeExtensions.InvokeGenericStaticMethod(System.Type,System.String,System.Type[],System.Object[],System.Reflection.BindingFlags)">
             <summary>
             Invokes the generic static method of the <see cref="T:System.Type"/> by the given <see
             cref="T:System.Type"/>, a given name, a generic <see cref="T:System.Type"/> and the parameters for the
@@ -1583,27 +1587,13 @@
             Types to be substituted for the type parameters for the current generic method definition.
             </param>
             <param name="parameters">The parameters for the generic static method.</param>
-            <returns>The object of the method return.</returns>
-        </member>
-        <member name="M:System.TypeExtensions.InvokeGenericStaticMethod(System.Type,System.String,System.Type[],System.Reflection.BindingFlags,System.Object[])">
-            <summary>
-            Invokes the generic static method of the <see cref="T:System.Type"/> by the given <see
-            cref="T:System.Type"/>, a given name, a generic <see cref="T:System.Type"/> and the parameters for the
-            static method.
-            </summary>
-            <param name="type">The <see cref="T:System.Type"/> to invoke generic static method.</param>
-            <param name="methodName">Name of the method.</param>
-            <param name="genericTypes">
-            Types to be substituted for the type parameters for the current generic method definition.
-            </param>
-            <param name="bindingAttr">
+            <param name="bindingFlags">
             A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
             search is conducted.
             </param>
-            <param name="parameters">The parameters for the generic static method.</param>
             <returns>The object of the method return.</returns>
         </member>
-        <member name="M:System.TypeExtensions.InvokeStaticMethod(System.Type,System.String,System.Type[],System.Object[])">
+        <member name="M:System.TypeExtensions.InvokeStaticMethod(System.Type,System.String,System.Type[],System.Object[],System.Reflection.BindingFlags)">
             <summary>
             Invokes the static method by a given <see cref="T:System.Type"/>, a given name of method, an
             array of <see cref="T:System.Type"/> objects representing the number, order, and type of the
@@ -1616,19 +1606,32 @@
             parameters for the static method to get.
             </param>
             <param name="parameters">The parameters for the static method.</param>
+            <param name="bindingFlags">
+            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
+            search is conducted.
+            </param>
             <returns>The object of static method return.</returns>
         </member>
-        <member name="M:System.TypeExtensions.InvokeStaticMethod(System.Type,System.String,System.Type[],System.Object[]@)">
+        <member name="M:System.TypeExtensions.InvokeStaticMethod(System.Type,System.String,System.Type[],System.Object[]@,System.Reflection.BindingFlags)">
             <summary>
-            Invokes the static method.
+            Invokes the static method by a given <see cref="T:System.Type"/>, a given name of method, an
+            array of <see cref="T:System.Type"/> objects representing the number, order, and type of the
+            parameters for the static method to get and the parameters for the static method.
             </summary>
-            <param name="type">The type.</param>
+            <param name="type">The <see cref="T:System.Type"/> to invoke static method.</param>
             <param name="methodName">Name of the method.</param>
-            <param name="types">The types array of parameters.</param>
+            <param name="types">
+            An array of <see cref="T:System.Type"/> objects representing the number, order, and type of the
+            parameters for the static method to get.
+            </param>
             <param name="parameters">The referenced parameters.</param>
+            <param name="bindingFlags">
+            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
+            search is conducted.
+            </param>
             <returns>The object of static method return.</returns>
         </member>
-        <member name="M:System.TypeExtensions.InvokeStaticMethod(System.Type,System.String,System.Object[])">
+        <member name="M:System.TypeExtensions.InvokeStaticMethod(System.Type,System.String,System.Object[],System.Reflection.BindingFlags)">
             <summary>
             Invokes the static method of the <see cref="T:System.Type"/> by a given <see cref="T:System.Type"/>, a
             given name of method and the parameters for the static method.
@@ -1636,23 +1639,11 @@
             <param name="type">The <see cref="T:System.Type"/> to invoke static method.</param>
             <param name="methodName">Name of the method.</param>
             <param name="parameters">The parameters for the static method.</param>
+            <param name="bindingFlags">
+            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
+            search is conducted.
+            </param>
             <returns>The object of static method return.</returns>
-        </member>
-        <member name="M:System.TypeExtensions.SetStaticFieldValue(System.Type,System.String,System.Object)">
-            <summary>
-            Sets the static field value of the <see cref="T:System.Type"/>.
-            </summary>
-            <param name="type">The <see cref="T:System.Type"/> to set static field value.</param>
-            <param name="fieldName">Name of the field.</param>
-            <param name="value">The value of the static field to set.</param>
-        </member>
-        <member name="M:System.TypeExtensions.SetStaticPropertyValue(System.Type,System.String,System.Object)">
-            <summary>
-            Sets the static property value of the <see cref="T:System.Type"/>.
-            </summary>
-            <param name="type">The <see cref="T:System.Type"/> to set static property value.</param>
-            <param name="propertyName">Name of the property.</param>
-            <param name="value">The value of the static property.</param>
         </member>
         <member name="T:System.UInt16Extensions">
             <summary>

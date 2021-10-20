@@ -1,3 +1,16 @@
+# [1.0.2] - 2021-10-20
+
+
+## Fixed:
+
+- **ObjectExtensions** fixed bugs of extension method **RemoveEventHandler** and **RemoveAllEventHandlers**.
+
+  
+
+## Added:
+
+  - **ObjectExtensionsTests** test cases added.
+
 # [1.0.0] - 2020-04-12
 
 
