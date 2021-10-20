@@ -1,14 +1,42 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using ReSharp.Patterns.State;
 
 namespace ReSharp.Tests.Patterns.State
 {
-    [TestClass]
+    [TestFixture]
     public class StateMachineTests
     {
+        private class TestState : IState
+        {
+            #region Properties
+
+            public int Count { get; private set; }
+
+            #endregion Properties
+
+            #region Methods
+
+            public void OnEnter(IState prevState)
+            {
+                Count++;
+            }
+
+            public void OnExecute()
+            {
+                Count += 2;
+            }
+
+            public void OnExit(IState nextState)
+            {
+                Count--;
+            }
+
+            #endregion Methods
+        }
+        
         #region Methods
 
-        [TestMethod]
+        [Test]
         public void ChangeStateTest()
         {
             var context = new StateMachine();
@@ -17,7 +45,7 @@ namespace ReSharp.Tests.Patterns.State
             Assert.AreSame(state, context.CurrentState);
         }
 
-        [TestMethod]
+        [Test]
         public void RaiseStateChangedEventTest()
         {
             var context = new StateMachine();
@@ -26,7 +54,7 @@ namespace ReSharp.Tests.Patterns.State
             context.ChangeState(state);
         }
 
-        [TestMethod]
+        [Test]
         public void StateOnEnterTest()
         {
             var context = new StateMachine();
@@ -35,7 +63,7 @@ namespace ReSharp.Tests.Patterns.State
             Assert.AreEqual(1, state.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void StateOnExecuteTest()
         {
             var context = new StateMachine();
@@ -45,7 +73,7 @@ namespace ReSharp.Tests.Patterns.State
             Assert.AreEqual(3, state.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void StateOnExitTest()
         {
             var context = new StateMachine();

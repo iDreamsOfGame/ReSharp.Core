@@ -6,12 +6,12 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{EE8040C0-7D41-4E72-BD52-738AD157E75C}</ProjectGuid>
+        <ProjectGuid>{A22E3634-ECC8-47BA-ACFE-B4D73977F258}</ProjectGuid>
         <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>ReSharp.Extensions.Tests</RootNamespace>
-        <AssemblyName>ReSharp.Extensions.Tests</AssemblyName>
+        <RootNamespace>ReShaprp.Core.Tests</RootNamespace>
+        <AssemblyName>ReShaprp.Core.Tests</AssemblyName>
         <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
@@ -45,20 +45,10 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Patterns\Command\CommandTests.cs" />
-        <Compile Include="Patterns\SingletonTests.cs" />
-        <Compile Include="Patterns\State\StateMachineTests.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="System\ObjectExtensionsTests.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />
-    </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\..\src\ReSharp.Extensions\ReSharp.Extensions.csproj">
-        <Project>{c1219933-5260-4d39-a592-7ea01723a1f1}</Project>
-        <Name>ReSharp.Extensions</Name>
-      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

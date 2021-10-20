@@ -1,15 +1,15 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using NUnit.Framework;
 using ReSharp.Patterns;
 
 namespace ReSharp.Tests.Patterns
 {
-    [TestClass]
+    [TestFixture]
     public class SingletonTests
     {
         #region Methods
 
-        [TestMethod]
+        [Test]
         public void AreSameInstance()
         {
             var instanceA = SingletonTestClass.Instance;
@@ -17,18 +17,27 @@ namespace ReSharp.Tests.Patterns
             Assert.AreSame(instanceA, instanceB);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(MissingMethodException))]
+        [Test]
         public void CanThrowMissingMethodException()
         {
-            SingletonTestClassWithoutConstructor.Instance.Foo();
+            try
+            {
+                SingletonTestClassWithoutConstructor.Instance.Foo();
+            }
+            catch (Exception e)
+            {
+                Assert.IsTrue(e is MissingMethodException);
+                return;
+            }
+                
+            Assert.Fail();
         }
 
         #endregion Methods
 
         #region Classes
 
-        private class SingletonTestClass : Singleton<SingletonTestClass>
+        public class SingletonTestClass : Singleton<SingletonTestClass>
         {
             #region Constructors
 
@@ -39,7 +48,7 @@ namespace ReSharp.Tests.Patterns
             #endregion Constructors
         }
 
-        private class SingletonTestClassWithoutConstructor : Singleton<SingletonTestClassWithoutConstructor>
+        public class SingletonTestClassWithoutConstructor : Singleton<SingletonTestClassWithoutConstructor>
         {
             #region Methods
 
