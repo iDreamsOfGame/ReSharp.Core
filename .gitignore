@@ -348,4 +348,4 @@ MigrationBackup/
 .ionide/
 
 # idea (cross platform JetBrains Rider) working folder
-.idea/
+.idea
