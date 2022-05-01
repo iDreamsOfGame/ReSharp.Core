@@ -19,9 +19,9 @@ namespace System
         /// <returns>The random seed.</returns>
         public static int GenerateRandomSeed()
         {
-            byte[] bytes = new byte[4];
-            RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
-            rng.GetBytes(bytes);
+            var bytes = new byte[4];
+            var rngCryptoServiceProvider = new RNGCryptoServiceProvider();
+            rngCryptoServiceProvider.GetBytes(bytes);
             return BitConverter.ToInt32(bytes, 0);
         }
 
@@ -31,9 +31,9 @@ namespace System
         /// <returns>The Gaussian Random Number.</returns>
         public static float GenGaussianRandomNumber()
         {
-            Random rnd = new Random(DateTime.Now.Millisecond);
-            float x1 = (float)rnd.NextDouble();
-            float x2 = (float)rnd.NextDouble();
+            var random = new Random(DateTime.Now.Millisecond);
+            var x1 = (float)random.NextDouble();
+            var x2 = (float)random.NextDouble();
 
             if (x1 == 0.0f)
                 x1 = 0.01f;
@@ -46,30 +46,21 @@ namespace System
         /// </summary>
         /// <param name="number">The number.</param>
         /// <returns>The reciprocal of the number.</returns>
-        public static float GetReciprocal(float number)
-        {
-            return 1.0f / number;
-        }
+        public static float GetReciprocal(float number) => 1.0f / number;
 
         /// <summary>
         /// Determines whether the specific <see cref="int"/> is odd.
         /// </summary>
         /// <param name="n">The <see cref="int"/>.</param>
         /// <returns><c>true</c> if the specific <see cref="int"/> is odd; otherwise, <c>false</c>.</returns>
-        public static bool IsOdd(int n)
-        {
-            return Convert.ToBoolean(n & 1);
-        }
+        public static bool IsOdd(int n) => Convert.ToBoolean(n & 1);
 
         /// <summary>
         /// Determines whether the specific <see cref="float"/> is odd.
         /// </summary>
         /// <param name="n">The <see cref="float"/>.</param>
         /// <returns><c>true</c> if the specific <see cref="float"/> is odd; otherwise, <c>false</c>.</returns>
-        public static bool IsOdd(float n)
-        {
-            return IsOdd((int)Math.Floor(n));
-        }
+        public static bool IsOdd(float n) => IsOdd((int)Math.Floor(n));
 
         #endregion Methods
     }

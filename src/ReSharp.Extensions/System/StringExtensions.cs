@@ -31,10 +31,7 @@ namespace System
         /// <returns>
         /// <c>true</c> if the specified <see cref="string"/> has value; otherwise, <c>false</c>.
         /// </returns>
-        public static bool HasValue(this string source)
-        {
-            return !string.IsNullOrEmpty(source);
-        }
+        public static bool HasValue(this string source) => !string.IsNullOrEmpty(source);
 
         /// <summary>
         /// Reports the zero-based index of the first occurrence of the specified string in this
@@ -60,7 +57,7 @@ namespace System
             }
 
             int i = 0, j = 0, result = -1;
-            int[] nextIndexs = GetNextIndexs(value);
+            var nextIndexCollection = GetNextIndexCollection(value);
 
             while (i < source.Length && j < value.Length)
             {
@@ -71,7 +68,7 @@ namespace System
                 }
                 else
                 {
-                    j = nextIndexs[j];
+                    j = nextIndexCollection[j];
                 }
             }
 
@@ -97,7 +94,7 @@ namespace System
                 throw new ArgumentNullException(nameof(source));
             }
 
-            char[] chars = source.ToCharArray();
+            var chars = source.ToCharArray();
             Array.Reverse(chars);
             return new string(chars);
         }
@@ -109,7 +106,7 @@ namespace System
         /// <returns>The specified string converted to camel case.</returns>
         public static string ToCamelCase(this string source)
         {
-            char[] chars = source.ToCharArray();
+            var chars = source.ToCharArray();
             chars[0] = char.ToLower(chars[0]);
             return new string(chars);
         }
@@ -124,7 +121,7 @@ namespace System
             if (string.IsNullOrEmpty(source))
                 throw new ArgumentNullException(nameof(source));
 
-            StringBuilder stringBuilder = new StringBuilder();
+            var stringBuilder = new StringBuilder();
 
             for (var i = 0; i < source.Length; i++)
             {
@@ -154,7 +151,7 @@ namespace System
         /// <returns>The specified string converted to title case.</returns>
         public static string ToTitleCase(this string source)
         {
-            char[] chars = source.ToCharArray();
+            var chars = source.ToCharArray();
             chars[0] = char.ToUpper(chars[0]);
             return new string(chars);
         }
@@ -164,10 +161,7 @@ namespace System
         /// </summary>
         /// <param name="source">The source string.</param>
         /// <returns>The string with removing all whitespace characters.</returns>
-        public static string TrimAll(this string source)
-        {
-            return source.TrimAll(whitespaceChars);
-        }
+        public static string TrimAll(this string source) => source.TrimAll(whitespaceChars);
 
         /// <summary>
         /// Trims all characters assigned.
@@ -178,17 +172,13 @@ namespace System
         public static string TrimAll(this string source, params char[] trimChars)
         {
             if (trimChars == null)
-            {
                 return source.TrimAll();
-            }
-            else
-            {
-                string[] stringArr = source.Split(trimChars, StringSplitOptions.RemoveEmptyEntries);
-                return string.Join("", stringArr);
-            }
+
+            var stringArr = source.Split(trimChars, StringSplitOptions.RemoveEmptyEntries);
+            return string.Join("", stringArr);
         }
 
-        private static int[] GetNextIndexs(string value)
+        private static int[] GetNextIndexCollection(string value)
         {
             if (value == null)
             {
@@ -196,8 +186,8 @@ namespace System
             }
 
             int j = 0, k = -1;
-            int[] nextIndexs = new int[value.Length];
-            nextIndexs[0] = -1;
+            var nextIndexCollection = new int[value.Length];
+            nextIndexCollection[0] = -1;
 
             while (j < value.Length - 1)
             {
@@ -208,20 +198,20 @@ namespace System
 
                     if (value[j] != value[k])
                     {
-                        nextIndexs[j] = k;
+                        nextIndexCollection[j] = k;
                     }
                     else
                     {
-                        nextIndexs[j] = nextIndexs[k];
+                        nextIndexCollection[j] = nextIndexCollection[k];
                     }
                 }
                 else
                 {
-                    k = nextIndexs[k];
+                    k = nextIndexCollection[k];
                 }
             }
 
-            return nextIndexs;
+            return nextIndexCollection;
         }
 
         #endregion Methods

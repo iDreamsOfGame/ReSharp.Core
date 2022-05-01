@@ -17,10 +17,10 @@ namespace System.Collections.Generic
         /// <param name="item">The object to add to the <see cref="ICollection{T}"/>.</param>
         public static void AddUnique<T>(this ICollection<T> source, T item)
         {
-            if (!source.Contains(item))
-            {
-                source.Add(item);
-            }
+            if (source.Contains(item))
+                return;
+            
+            source.Add(item);
         }
 
         #endregion Methods

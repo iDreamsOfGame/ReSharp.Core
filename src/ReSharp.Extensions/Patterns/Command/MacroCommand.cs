@@ -48,7 +48,7 @@ namespace ReSharp.Patterns.Command
         {
             while (commandQueue.Count > 0)
             {
-                ICommand subCommand = commandQueue.Dequeue();
+                var subCommand = commandQueue.Dequeue();
                 subCommand.Execute();
             }
         }

@@ -13,7 +13,7 @@ namespace System
         /// <summary>
         /// Returns a random double that is within a specific range.
         /// </summary>
-        /// <param name="source">The <see cref="Random"/> to return a randome double.</param>
+        /// <param name="source">The <see cref="Random"/> to return a random <see cref="double"/> value.</param>
         /// <param name="minValue">The inclusive lower bound of the random number returned.</param>
         /// <param name="maxValue">
         /// The exclusive upper bound of the random number returned. <c>maxValue</c> must be greater
@@ -32,8 +32,8 @@ namespace System
                 throw new ArgumentOutOfRangeException(nameof(minValue), "minValue is greater than maxValue.");
             }
 
-            double range = maxValue - minValue;
-            double result = 0d;
+            var range = maxValue - minValue;
+            double result;
 
             if (range <= double.MaxValue)
             {
@@ -59,7 +59,7 @@ namespace System
         /// <summary>
         /// Returns a random 64-bit signed integer that is within a specific range.
         /// </summary>
-        /// <param name="source">The <see cref="Random"/> to return a randome 64-bit signed integer.</param>
+        /// <param name="source">The <see cref="Random"/> to return a random 64-bit signed integer.</param>
         /// <param name="minValue">The inclusive lower bound of the random number returned.</param>
         /// <param name="maxValue">
         /// The exclusive upper bound of the random number returned. <c>maxValue</c> must be greater
@@ -78,17 +78,8 @@ namespace System
                 throw new ArgumentOutOfRangeException(nameof(minValue), "minValue is greater than maxValue.");
             }
 
-            long range = maxValue - minValue;
-            double result = 0L;
-
-            if (range <= double.MaxValue)
-            {
-                result = (source.NextDouble() * range + minValue);
-            }
-            else
-            {
-                result = (source.NextDouble() * double.MaxValue + minValue);
-            }
+            var range = maxValue - minValue;
+            var result = source.NextDouble() * range + minValue;
 
             if (double.IsPositiveInfinity(result))
             {
@@ -124,8 +115,8 @@ namespace System
                 throw new ArgumentOutOfRangeException(nameof(minValue), "minValue is greater than maxValue.");
             }
 
-            float range = maxValue - minValue;
-            float result = 0f;
+            var range = maxValue - minValue;
+            float result;
 
             if (range <= float.MaxValue)
             {

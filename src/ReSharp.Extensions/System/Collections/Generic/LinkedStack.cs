@@ -3,6 +3,7 @@
 
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 
@@ -61,21 +62,9 @@ namespace System.Collections.Generic
         /// Gets the number of elements contained in the <see cref="LinkedStack{T}" />.
         /// </summary>
         /// <value>The number of elements contained in the <see cref="LinkedStack{T}" />.</value>
-        public int Count
-        {
-            get
-            {
-                return list.Count;
-            }
-        }
+        public int Count => list.Count;
 
-        bool ICollection.IsSynchronized
-        {
-            get
-            {
-                return false;
-            }
-        }
+        bool ICollection.IsSynchronized => false;
 
         object ICollection.SyncRoot
         {
@@ -151,10 +140,7 @@ namespace System.Collections.Generic
         /// Returns an enumerator for the <see cref="LinkedStack{T}" />.
         /// </summary>
         /// <returns>An <see cref="LinkedStack{T}.Enumerator" /> for the <see cref="LinkedStack{T}" />.</returns>
-        public Enumerator GetEnumerator()
-        {
-            return new Enumerator(this);
-        }
+        public Enumerator GetEnumerator() => new Enumerator(this);
 
         /// <summary>
         /// Returns the object at the top of the <see cref="LinkedStack{T}" /> without removing it.
@@ -184,7 +170,7 @@ namespace System.Collections.Generic
             }
 
             version++;
-            T lastItem = list.Last.Value;
+            var lastItem = list.Last.Value;
             list.RemoveLast();
             return lastItem;
         }
@@ -203,28 +189,7 @@ namespace System.Collections.Generic
         /// Copies the <see cref="LinkedStack{T}" /> to a new array.
         /// </summary>
         /// <returns>A new array containing copies of the elements of the <see cref="LinkedStack{T}" />.</returns>
-        public T[] ToArray()
-        {
-            T[] array = new T[list.Count];
-            LinkedListNode<T> node = list.Last;
-            int index = 0;
-
-            while (node != null)
-            {
-                array[index] = node.Value;
-
-                if (node.Previous != list.Last)
-                {
-                    node = node.Previous;
-                }
-                else
-                {
-                    node = null;
-                }
-            }
-
-            return array;
-        }
+        public T[] ToArray() => list.ToArray();
 
         /// <summary>
         /// Tries to get the object at the top of the <see cref="LinkedStack{T}" /> without removing it, and returns a value that indicates whether
@@ -236,15 +201,14 @@ namespace System.Collections.Generic
         /// <returns><c>true</c> if the object at the top of the <see cref="LinkedStack{T}" /> exists, <c>false</c> otherwise.</returns>
         public bool TryPeek(out T result)
         {
-            result = default;
-
-            if (list.Last != null)
+            if (list.Last == null)
             {
-                result = list.Last.Value;
-                return true;
+                result = default;
+                return false;
             }
 
-            return false;
+            result = list.Last.Value;
+            return true;
         }
 
         /// <summary>
@@ -256,17 +220,17 @@ namespace System.Collections.Generic
         /// <returns><c>true</c> if the object at the top of the <see cref="LinkedStack{T}" /> exists, <c>false</c> otherwise.</returns>
         public bool TryPop(out T result)
         {
-            result = default;
-
-            if (list.Last != null)
+            if (list.Last == null)
             {
-                result = list.Last.Value;
-                list.RemoveLast();
-                version++;
-                return true;
+                result = default;
+                return false;
             }
 
-            return false;
+
+            result = list.Last.Value;
+            list.RemoveLast();
+            version++;
+            return true;
         }
 
         void ICollection.CopyTo(Array array, int arrayIndex)
@@ -286,7 +250,7 @@ namespace System.Collections.Generic
                 throw new ArgumentException("The number of elements in the source LinkedStack<T> is greater than the available space from index to the end of the destination array.");
             }
 
-            ICollection collection = list as ICollection;
+            var collection = (ICollection)list;
             collection.CopyTo(array, arrayIndex);
             Array.Reverse(array, arrayIndex, Count);
         }
@@ -311,9 +275,9 @@ namespace System.Collections.Generic
         /// </summary>
         /// <seealso cref="System.Collections.Generic.IEnumerator{T}" />
         /// <seealso cref="System.Collections.IEnumerator" />
-        [Serializable()]
+        [Serializable]
         [SuppressMessage("Microsoft.Performance", "CA1815:OverrideEqualsAndOperatorEqualsOnValueTypes", Justification = "not an expected scenario")]
-        public struct Enumerator : IEnumerator<T>, IEnumerator
+        public struct Enumerator : IEnumerator<T>
         {
             #region Fields
 
@@ -413,7 +377,7 @@ namespace System.Collections.Generic
             /// <exception cref="InvalidOperationException">The collection was modified after the enumerator was created.</exception>
             public bool MoveNext()
             {
-                bool retval;
+                bool retrieval;
 
                 if (version != stack.version)
                 {
@@ -424,14 +388,14 @@ namespace System.Collections.Generic
                 {
                     node = stack.list.Last;
                     index = stack.Count - 1;
-                    retval = (index >= 0);
+                    retrieval = index >= 0;
 
-                    if (retval)
+                    if (retrieval)
                     {
                         currentElement = node.Value;
                     }
 
-                    return retval;
+                    return retrieval;
                 }
 
                 if (index == -1)
@@ -439,9 +403,9 @@ namespace System.Collections.Generic
                     return false;
                 }
 
-                retval = (--index >= 0);
+                retrieval = (--index >= 0);
 
-                if (retval)
+                if (retrieval)
                 {
                     currentElement = node.Value;
                     node = node.Previous;
@@ -451,7 +415,7 @@ namespace System.Collections.Generic
                     currentElement = default(T);
                 }
 
-                return retval;
+                return retrieval;
             }
 
             void IEnumerator.Reset()
@@ -462,7 +426,7 @@ namespace System.Collections.Generic
                 }
 
                 index = -2;
-                currentElement = default(T);
+                currentElement = default;
             }
 
             #endregion Methods

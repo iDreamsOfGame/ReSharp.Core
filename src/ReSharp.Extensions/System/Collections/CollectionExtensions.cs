@@ -21,7 +21,7 @@ namespace System.Collections
         /// </returns>
         public static int AddUnique(this IList source, object value)
         {
-            int position = -1;
+            var position = -1;
 
             if (!source.Contains(value))
             {
@@ -41,14 +41,14 @@ namespace System.Collections
         /// </param>
         public static void CopyTo(this IList source, IList target, int index = 0)
         {
-            int sourceLength = source.Count;
-            int targetLength = target.Count;
+            var sourceLength = source.Count;
+            var targetLength = target.Count;
 
             index = Math.Max(Math.Min(sourceLength - 1, index), 0);
 
-            for (int i = index; i < sourceLength; ++i)
+            for (var i = index; i < sourceLength; ++i)
             {
-                int j = i - index;
+                var j = i - index;
 
                 if (j < targetLength)
                 {
@@ -65,21 +65,20 @@ namespace System.Collections
         /// <returns>The index of maximum object in the <see cref="IList"/>.</returns>
         public static int IndexOfMax(this IList source, int count)
         {
-            int index = -1;
-            int length = source.Count;
+            var index = -1;
+            var length = source.Count;
 
             count = Math.Max(Math.Min(count, source.Count), 0);
 
-            if (length > 1)
+            if (length <= 1) 
+                return index;
+            
+            index = 0;
+            for (var i = 0; i < count; ++i)
             {
-                index = 0;
-
-                for (int i = 0; i < count; ++i)
+                if (((IComparable)source[i]).CompareTo(source[index]) > 0)
                 {
-                    if ((source[i] as IComparable).CompareTo(source[index]) > 0)
-                    {
-                        index = i;
-                    }
+                    index = i;
                 }
             }
 
@@ -94,13 +93,12 @@ namespace System.Collections
         /// <param name="b">The second index of element in the <see cref="IList"/> to swap.</param>
         public static void Swap(this IList source, int a, int b)
         {
-            if (a >= 0 && a < source.Count
-                && b >= 0 && b < source.Count)
-            {
-                object temp = source[b];
-                source[b] = source[a];
-                source[a] = temp;
-            }
+            if (a < 0 || a >= source.Count || b < 0 || b >= source.Count) 
+                return;
+            
+            var temp = source[b];
+            source[b] = source[a];
+            source[a] = temp;
         }
 
         /// <summary>
@@ -110,14 +108,14 @@ namespace System.Collections
         /// <returns>The array string representation of the value of <see cref="IList"/>.</returns>
         public static string ToArrayString(this IList source)
         {
-            string[] strArr = new string[source.Count];
+            var stringCollection = new string[source.Count];
 
             for (int i = 0, length = source.Count; i < length; ++i)
             {
-                strArr[i] = source[i].ToString();
+                stringCollection[i] = source[i].ToString();
             }
 
-            return string.Format("{{ {0} }}", string.Join(", ", strArr));
+            return $"{{ {string.Join(", ", stringCollection)} }}";
         }
 
         #endregion Methods

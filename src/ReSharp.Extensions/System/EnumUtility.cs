@@ -11,9 +11,9 @@ namespace System
         #region Methods
 
         /// <summary>
-        /// Converts the <see cref="string"/> to the sepecified <see cref="Enum"/> value.
+        /// Converts the <see cref="string"/> to the specified <see cref="Enum"/> value.
         /// </summary>
-        /// <typeparam name="TEnum">The type of the sepecified <see cref="Enum"/>.</typeparam>
+        /// <typeparam name="TEnum">The type of the specified <see cref="Enum"/>.</typeparam>
         /// <param name="value">The <see cref="string"/> of the value of <see cref="Enum"/>.</param>
         /// <param name="ignoreCase"><c>true</c> to ignore case; <c>false</c> to regard case.</param>
         /// <returns>The <see cref="Enum"/> value.</returns>

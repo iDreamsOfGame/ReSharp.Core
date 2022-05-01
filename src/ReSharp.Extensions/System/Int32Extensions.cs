@@ -17,7 +17,7 @@ namespace System
         /// <returns>A 4-byte signed integer in reverse.</returns>
         public static int Reverse(this int source)
         {
-            byte[] data = BitConverter.GetBytes(source);
+            var data = BitConverter.GetBytes(source);
             Array.Reverse(data);
             return BitConverter.ToInt32(data, 0);
         }

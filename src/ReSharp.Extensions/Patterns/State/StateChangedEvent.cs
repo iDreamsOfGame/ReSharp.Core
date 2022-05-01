@@ -22,7 +22,6 @@ namespace ReSharp.Patterns.State
         /// </param>
         /// <param name="state">The state after the <see cref="StateMachine.StateChanged" /> event.</param>
         public StateChangedEventArgs(IState previousState, IState state)
-            : base()
         {
             PreviousState = previousState;
             State = state;

@@ -162,11 +162,11 @@ namespace ReSharp.Security.Cryptography
         /// </returns>
         public static string GenerateRandomKeyString(int length = 16, bool includeNumbers = true, bool includeLowercaseCharacters = true, bool includeUppercaseCharacters = true, bool includeSpecialCharacters = true)
         {
-            byte[] buffer = new byte[4];
+            var buffer = new byte[4];
             new RNGCryptoServiceProvider().GetBytes(buffer);
-            Random random = new Random(BitConverter.ToInt32(buffer, 0));
-            StringBuilder result = new StringBuilder();
-            StringBuilder group = new StringBuilder();
+            var random = new Random(BitConverter.ToInt32(buffer, 0));
+            var result = new StringBuilder();
+            var group = new StringBuilder();
 
             if (includeNumbers)
             {
@@ -188,9 +188,9 @@ namespace ReSharp.Security.Cryptography
                 group.Append(SpecialCharacters);
             }
 
-            string groupString = group.ToString();
+            var groupString = group.ToString();
 
-            for (int i = 0; i < length; i++)
+            for (var i = 0; i < length; i++)
             {
                 result.Append(groupString.Substring(random.Next(0, groupString.Length - 1), 1));
             }
@@ -215,8 +215,8 @@ namespace ReSharp.Security.Cryptography
                 throw new ArgumentNullException(nameof(plainText));
             }
 
-            byte[] cipher = Md5Encrypt(DefaultEncoding.GetBytes(plainText));
-            string cipherText = BitConverter.ToString(cipher).Replace("-", "");
+            var cipher = Md5Encrypt(DefaultEncoding.GetBytes(plainText));
+            var cipherText = BitConverter.ToString(cipher).Replace("-", "");
             return outputAsLowerCase ? cipherText.ToLower() : cipherText;
         }
 
@@ -233,9 +233,9 @@ namespace ReSharp.Security.Cryptography
                 throw new ArgumentNullException(nameof(plainText));
             }
 
-            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+            using (var cryptoServiceProvider = new MD5CryptoServiceProvider())
             {
-                return md5.ComputeHash(plainText, 4, 8);
+                return cryptoServiceProvider.ComputeHash(plainText, 4, 8);
             }
         }
 
@@ -256,11 +256,11 @@ namespace ReSharp.Security.Cryptography
                 throw new ArgumentNullException(nameof(plainText));
             }
 
-            byte[] cipherText = Md5HashEncrypt(DefaultEncoding.GetBytes(plainText));
-            StringBuilder builder = new StringBuilder();
-            foreach (var b in cipherText)
+            var cipherTextRawData = Md5HashEncrypt(DefaultEncoding.GetBytes(plainText));
+            var builder = new StringBuilder();
+            foreach (var byteData in cipherTextRawData)
             {
-                builder.Append(b.ToString(outputAsLowerCase ? "x" : "X"));
+                builder.Append(byteData.ToString(outputAsLowerCase ? "x" : "X"));
             }
             return builder.ToString();
         }

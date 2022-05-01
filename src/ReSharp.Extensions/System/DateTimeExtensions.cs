@@ -30,6 +30,19 @@ namespace System
         }
 
         /// <summary>
+        /// Converts the value of the current <see cref="System.DateTime"/> object to a local timestamp in milliseconds.
+        /// </summary>
+        /// <param name="dateTime">The current <see cref="System.DateTime"/> object.</param>
+        /// <returns>
+        /// The value of the current <see cref="System.DateTime"/> object expressed as a local timestamp in milliseconds.
+        /// </returns>
+        public static long ToTimestampInMilliseconds(this DateTime dateTime)
+        {
+            var timeSpan = dateTime.ToLocalTime() - StartTime.ToLocalTime();
+            return Convert.ToInt64(timeSpan.TotalMilliseconds);
+        }
+
+        /// <summary>
         /// Converts the value of the current <see cref="System.DateTime"/> object to an UTC timestamp.
         /// </summary>
         /// <param name="dateTime">The current <see cref="System.DateTime"/> object.</param>
@@ -38,8 +51,21 @@ namespace System
         /// </returns>
         public static long ToTimestampUtc(this DateTime dateTime)
         {
-            var timeSpan = dateTime.ToUniversalTime() - StartTime;
+            var timeSpan = dateTime.ToUniversalTime() - StartTime.ToUniversalTime();
             return Convert.ToInt64(timeSpan.TotalSeconds);
+        }
+
+        /// <summary>
+        /// Converts the value of the current <see cref="System.DateTime"/> object to an UTC timestamp in milliseconds.
+        /// </summary>
+        /// <param name="dateTime">The current <see cref="System.DateTime"/> object.</param>
+        /// <returns>
+        /// The value of the current <see cref="System.DateTime"/> object expressed as an UTC timestamp in milliseconds.
+        /// </returns>
+        public static long ToTimestampInMillisecondsUtc(this DateTime dateTime)
+        {
+            var timeSpan = dateTime.ToUniversalTime() - StartTime.ToUniversalTime();
+            return Convert.ToInt64(timeSpan.TotalMilliseconds);
         }
 
         #endregion Methods

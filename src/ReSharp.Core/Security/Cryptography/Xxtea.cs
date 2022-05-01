@@ -18,14 +18,8 @@ namespace ReSharp.Security.Cryptography
 
         #region Methods
 
-        public static byte[] Decrypt(byte[] data, byte[] key)
-        {
-            if (data.Length == 0)
-            {
-                return data;
-            }
-            return ToByteArray(Decrypt(ToUInt32Array(data, false), ToUInt32Array(FixKey(key), false)), true);
-        }
+        public static byte[] Decrypt(byte[] data, byte[] key) => 
+            data.Length == 0 ? data : ToByteArray(Decrypt(ToUInt32Array(data, false), ToUInt32Array(FixKey(key), false)), true);
 
         public static byte[] Decrypt(byte[] data, string key)
         {
@@ -103,14 +97,17 @@ namespace ReSharp.Security.Cryptography
             {
                 return v;
             }
-            uint z, y = v[0], sum, e;
-            int p, q = 6 + 52 / (n + 1);
+
+            var y = v[0];
+            var q = 6 + 52 / (n + 1);
             unchecked
             {
-                sum = (uint)(q * Delta);
+                var sum = (uint)(q * Delta);
                 while (sum != 0)
                 {
-                    e = sum >> 2 & 3;
+                    var e = sum >> 2 & 3;
+                    int p;
+                    uint z;
                     for (p = n; p > 0; p--)
                     {
                         z = v[p - 1];
@@ -131,14 +128,18 @@ namespace ReSharp.Security.Cryptography
             {
                 return v;
             }
-            uint z = v[n], y, sum = 0, e;
-            int p, q = 6 + 52 / (n + 1);
+
+            var z = v[n];
+            uint sum = 0;
+            var q = 6 + 52 / (n + 1);
             unchecked
             {
                 while (0 < q--)
                 {
                     sum += Delta;
-                    e = sum >> 2 & 3;
+                    var e = sum >> 2 & 3;
+                    int p;
+                    uint y;
                     for (p = 0; p < n; p++)
                     {
                         y = v[p + 1];
@@ -155,16 +156,16 @@ namespace ReSharp.Security.Cryptography
         {
             if (key.Length == 16)
                 return key;
-            var fixedkey = new byte[16];
+            var fixedKey = new byte[16];
             if (key.Length < 16)
             {
-                key.CopyTo(fixedkey, 0);
+                key.CopyTo(fixedKey, 0);
             }
             else
             {
-                Array.Copy(key, 0, fixedkey, 0, 16);
+                Array.Copy(key, 0, fixedKey, 0, 16);
             }
-            return fixedkey;
+            return fixedKey;
         }
 
         private static uint MX(uint sum, uint y, uint z, int p, uint e, uint[] k)
@@ -179,7 +180,7 @@ namespace ReSharp.Security.Cryptography
             {
                 var m = (int)data[data.Length - 1];
                 n -= 4;
-                if ((m < n - 3) || (m > n))
+                if (m < n - 3 || m > n)
                 {
                     return null;
                 }
@@ -196,7 +197,7 @@ namespace ReSharp.Security.Cryptography
         private static uint[] ToUInt32Array(byte[] data, bool includeLength)
         {
             var length = data.Length;
-            var n = (((length & 3) == 0) ? (length >> 2) : ((length >> 2) + 1));
+            var n = (length & 3) == 0 ? length >> 2 : (length >> 2) + 1;
             uint[] result;
             if (includeLength)
             {

@@ -25,11 +25,9 @@ namespace ReSharp.Security.DataProtection
         {
             var seed = Guid.NewGuid().ToString().GetHashCode();
             var random = new Random(seed);
-            var minValue = int.MinValue;
-            var maxValue = int.MaxValue;
             Key = random.Next(int.MinValue, int.MaxValue);
             LongKey = ((long)Key << 32) + Key;
-            CheckKey = random.Next(minValue, maxValue);
+            CheckKey = random.Next(int.MinValue, int.MaxValue);
             CheckLongKey = ((long)CheckKey << 32) + CheckKey;
         }
 
@@ -90,7 +88,7 @@ namespace ReSharp.Security.DataProtection
         /// <summary>
         /// Decrypts the <see cref="int"/> value with encryption.
         /// </summary>
-        /// <param name="value">The <see cref="int"/> value to decrpt.</param>
+        /// <param name="value">The <see cref="int"/> value to decrypt.</param>
         /// <param name="check">The check for the original <see cref="int"/> value.</param>
         /// <returns>The decrypted <see cref="int"/> value.</returns>
         /// <exception cref="InvalidSecretDataException">

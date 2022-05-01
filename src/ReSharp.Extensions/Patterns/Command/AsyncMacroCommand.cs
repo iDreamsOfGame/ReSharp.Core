@@ -32,7 +32,6 @@ namespace ReSharp.Patterns.Command
         /// Initializes a new instance of the <see cref="AsyncMacroCommand" /> class.
         /// </summary>
         public AsyncMacroCommand()
-            : base()
         {
             isAborted = false;
             executed = false;

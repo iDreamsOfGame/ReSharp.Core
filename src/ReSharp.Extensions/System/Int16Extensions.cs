@@ -17,7 +17,7 @@ namespace System
         /// <returns>A 2-byte signed short integer in reverse.</returns>
         public static short Reverse(this short source)
         {
-            byte[] data = BitConverter.GetBytes(source);
+            var data = BitConverter.GetBytes(source);
             Array.Reverse(data);
             return BitConverter.ToInt16(data, 0);
         }

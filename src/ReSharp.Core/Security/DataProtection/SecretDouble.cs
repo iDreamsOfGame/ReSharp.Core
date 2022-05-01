@@ -41,8 +41,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="context">The context.</param>
         public SecretDouble(SerializationInfo info, StreamingContext context)
         {
-            var value = info.GetDouble("v");
-            this.value = DataProtectionProvider.Protect(value, out check);
+            value = DataProtectionProvider.Protect(info.GetDouble("v"), out check);
         }
 
         #endregion Constructors

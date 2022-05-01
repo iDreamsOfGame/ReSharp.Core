@@ -62,7 +62,7 @@ namespace ReSharp.Patterns.Command
         /// <summary>
         /// Executes the specific <see cref="IUndoableCommand" />.
         /// </summary>
-        /// <param name="command">The sepecified <see cref="IUndoableCommand" /> to execute.</param>
+        /// <param name="command">The specified <see cref="IUndoableCommand" /> to execute.</param>
         /// <exception cref="ArgumentNullException"><c>command</c> is <c>null</c>.</exception>
         public void Execute(IUndoableCommand command)
         {
@@ -84,7 +84,7 @@ namespace ReSharp.Patterns.Command
             if (!CanRedo)
                 return;
 
-            IUndoableCommand command = redoCommandStack.Pop();
+            var command = redoCommandStack.Pop();
             command.Execute();
             undoCommandStack.Push(command);
         }
@@ -97,7 +97,7 @@ namespace ReSharp.Patterns.Command
             if (!CanUndo)
                 return;
 
-            IUndoableCommand command = undoCommandStack.Pop();
+            var command = undoCommandStack.Pop();
             command.Undo();
             redoCommandStack.Push(command);
         }

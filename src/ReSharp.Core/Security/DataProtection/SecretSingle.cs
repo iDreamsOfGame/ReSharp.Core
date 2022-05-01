@@ -41,8 +41,7 @@ namespace ReSharp.Security.DataProtection
         /// <param name="context">The context.</param>
         public SecretSingle(SerializationInfo info, StreamingContext context)
         {
-            var value = info.GetSingle("v");
-            this.value = DataProtectionProvider.Protect(value, out check);
+            value = DataProtectionProvider.Protect(info.GetSingle("v"), out check);
         }
 
         #endregion Constructors

@@ -17,7 +17,7 @@ namespace System
         /// <returns>A 8-byte signed long integer in reverse.</returns>
         public static long Reverse(this long source)
         {
-            byte[] data = BitConverter.GetBytes(source);
+            var data = BitConverter.GetBytes(source);
             Array.Reverse(data);
             return BitConverter.ToInt64(data, 0);
         }

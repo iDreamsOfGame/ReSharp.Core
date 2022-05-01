@@ -63,13 +63,12 @@ namespace System.Collections.Generic
         public static TResult MergeLeft<TResult, TKey, TValue>(this TResult source, params IDictionary<TKey, TValue>[] others)
             where TResult : IDictionary<TKey, TValue>, new()
         {
-            TResult newMap = new TResult();
-            foreach (IDictionary<TKey, TValue> src in
-                (new List<IDictionary<TKey, TValue>> { source }).Concat(others))
+            var newMap = new TResult();
+            foreach (var src in new List<IDictionary<TKey, TValue>> { source }.Concat(others))
             {
-                foreach (KeyValuePair<TKey, TValue> p in src)
+                foreach (var pair in src)
                 {
-                    newMap[p.Key] = p.Value;
+                    newMap[pair.Key] = pair.Value;
                 }
             }
             return newMap;

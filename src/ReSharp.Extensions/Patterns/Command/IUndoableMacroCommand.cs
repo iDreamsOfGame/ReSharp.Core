@@ -44,7 +44,7 @@ namespace ReSharp.Patterns.Command
         /// <summary>
         /// Executes the specific <see cref="IUndoableCommand" />.
         /// </summary>
-        /// <param name="command">The sepecified <see cref="IUndoableCommand" /> to execute.</param>
+        /// <param name="command">The specified <see cref="IUndoableCommand" /> to execute.</param>
         void Execute(IUndoableCommand command);
 
         /// <summary>

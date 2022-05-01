@@ -3,6 +3,7 @@
 
 using System;
 using System.Reflection;
+// ReSharper disable StaticMemberInGenericType
 
 namespace ReSharp.Patterns
 {
@@ -56,8 +57,8 @@ namespace ReSharp.Patterns
                 {
                     if (instance != null)
                         return instance;
-                    Type type = typeof(T);
-                    ConstructorInfo ctor = type.GetConstructor(BindingFlags.CreateInstance | BindingFlags.Instance | BindingFlags.NonPublic, null, Type.EmptyTypes, null);
+                    var type = typeof(T);
+                    var ctor = type.GetConstructor(BindingFlags.CreateInstance | BindingFlags.Instance | BindingFlags.NonPublic, null, Type.EmptyTypes, null);
 
                     if (ctor != null)
                     {
