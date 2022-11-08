@@ -182,7 +182,7 @@
             <summary>
             Decrypts the <see cref="T:System.Int32"/> value with encryption.
             </summary>
-            <param name="value">The <see cref="T:System.Int32"/> value to decrpt.</param>
+            <param name="value">The <see cref="T:System.Int32"/> value to decrypt.</param>
             <param name="check">The check for the original <see cref="T:System.Int32"/> value.</param>
             <returns>The decrypted <see cref="T:System.Int32"/> value.</returns>
             <exception cref="T:ReSharp.Security.DataProtection.InvalidSecretDataException">

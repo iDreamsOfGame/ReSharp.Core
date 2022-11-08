@@ -158,7 +158,7 @@
             <summary>
             Executes the specific <see cref="T:ReSharp.Patterns.Command.IUndoableCommand" />.
             </summary>
-            <param name="command">The sepecified <see cref="T:ReSharp.Patterns.Command.IUndoableCommand" /> to execute.</param>
+            <param name="command">The specified <see cref="T:ReSharp.Patterns.Command.IUndoableCommand" /> to execute.</param>
         </member>
         <member name="M:ReSharp.Patterns.Command.IUndoableMacroCommand.Redo">
             <summary>
@@ -229,7 +229,7 @@
             <summary>
             Executes the specific <see cref="T:ReSharp.Patterns.Command.IUndoableCommand" />.
             </summary>
-            <param name="command">The sepecified <see cref="T:ReSharp.Patterns.Command.IUndoableCommand" /> to execute.</param>
+            <param name="command">The specified <see cref="T:ReSharp.Patterns.Command.IUndoableCommand" /> to execute.</param>
             <exception cref="T:System.ArgumentNullException"><c>command</c> is <c>null</c>.</exception>
         </member>
         <member name="M:ReSharp.Patterns.Command.UndoableMacroCommand.Redo">
@@ -550,6 +550,28 @@
             <param name="source">The source dictionary.</param>
             <param name="others">The other dictionaries.</param>
             <returns>The dictionary contains all values of source dictionary and others.</returns>
+        </member>
+        <member name="T:System.Collections.Generic.IListExtensions">
+            <summary>
+            Extension methods for interface <see cref="T:System.Collections.Generic.IList`1"/>.
+            </summary>
+        </member>
+        <member name="M:System.Collections.Generic.IListExtensions.FisherYatesShuffle``1(System.Collections.Generic.IList{``0},System.Int32)">
+            <summary>
+            Implements Fisher-Yates shuffle algorithm.
+            </summary>
+            <param name="list">The <see cref="T:System.Collections.Generic.IList`1"/> object. </param>
+            <param name="seed">The random seed. </param>
+            <typeparam name="T">The type of list item. </typeparam>
+        </member>
+        <member name="M:System.Collections.Generic.IListExtensions.RandomSort``1(System.Collections.Generic.IList{``0},System.Int32)">
+            <summary>
+            Sort list items randomly.
+            </summary>
+            <param name="list">The <see cref="T:System.Collections.Generic.IList`1"/> object. </param>
+            <param name="seed">The random seed. </param>
+            <typeparam name="T">The type of list item. </typeparam>
+            <returns>The new see cref="IList{T}"/> object that already randomly sorted. </returns>
         </member>
         <member name="T:System.Collections.Generic.LinkedStack`1">
             <summary>
@@ -900,6 +922,15 @@
             The value of the current <see cref="T:System.DateTime"/> object expressed as a local timestamp.
             </returns>
         </member>
+        <member name="M:System.DateTimeExtensions.ToTimestampInMilliseconds(System.DateTime)">
+            <summary>
+            Converts the value of the current <see cref="T:System.DateTime"/> object to a local timestamp in milliseconds.
+            </summary>
+            <param name="dateTime">The current <see cref="T:System.DateTime"/> object.</param>
+            <returns>
+            The value of the current <see cref="T:System.DateTime"/> object expressed as a local timestamp in milliseconds.
+            </returns>
+        </member>
         <member name="M:System.DateTimeExtensions.ToTimestampUtc(System.DateTime)">
             <summary>
             Converts the value of the current <see cref="T:System.DateTime"/> object to an UTC timestamp.
@@ -907,6 +938,15 @@
             <param name="dateTime">The current <see cref="T:System.DateTime"/> object.</param>
             <returns>
             The value of the current <see cref="T:System.DateTime"/> object expressed as an UTC timestamp.
+            </returns>
+        </member>
+        <member name="M:System.DateTimeExtensions.ToTimestampInMillisecondsUtc(System.DateTime)">
+            <summary>
+            Converts the value of the current <see cref="T:System.DateTime"/> object to an UTC timestamp in milliseconds.
+            </summary>
+            <param name="dateTime">The current <see cref="T:System.DateTime"/> object.</param>
+            <returns>
+            The value of the current <see cref="T:System.DateTime"/> object expressed as an UTC timestamp in milliseconds.
             </returns>
         </member>
         <member name="T:System.DateTimeUtility">
@@ -933,12 +973,26 @@
             <param name="timestamp">The locale timestamp.</param>
             <returns>A <see cref="T:System.DateTime" /> object represents the local timestamp.</returns>
         </member>
+        <member name="M:System.DateTimeUtility.ParseTimestampInMilliseconds(System.Int64)">
+            <summary>
+            Converts a local timestamp in milliseconds to a <see cref="T:System.DateTime" /> object.
+            </summary>
+            <param name="timestamp">The locale timestamp in milliseconds.</param>
+            <returns>A <see cref="T:System.DateTime" /> object represents the local timestamp in milliseconds.</returns>
+        </member>
         <member name="M:System.DateTimeUtility.ParseTimestampUtc(System.Int64)">
             <summary>
             Converts an UTC timestamp to a <see cref="T:System.DateTime" /> object.
             </summary>
             <param name="timestamp">The UTC timestamp.</param>
             <returns>A <see cref="T:System.DateTime" /> object represents the UTC timestamp.</returns>
+        </member>
+        <member name="M:System.DateTimeUtility.ParseTimestampInMillisecondsUtc(System.Int64)">
+            <summary>
+            Converts an UTC timestamp in milliseconds to a <see cref="T:System.DateTime" /> object.
+            </summary>
+            <param name="timestamp">The UTC timestamp in milliseconds.</param>
+            <returns>A <see cref="T:System.DateTime" /> object represents the UTC timestamp in milliseconds.</returns>
         </member>
         <member name="T:System.EnumUtility">
             <summary>
@@ -947,9 +1001,9 @@
         </member>
         <member name="M:System.EnumUtility.ConvertToEnum``1(System.String,System.Boolean)">
             <summary>
-            Converts the <see cref="T:System.String"/> to the sepecified <see cref="T:System.Enum"/> value.
+            Converts the <see cref="T:System.String"/> to the specified <see cref="T:System.Enum"/> value.
             </summary>
-            <typeparam name="TEnum">The type of the sepecified <see cref="T:System.Enum"/>.</typeparam>
+            <typeparam name="TEnum">The type of the specified <see cref="T:System.Enum"/>.</typeparam>
             <param name="value">The <see cref="T:System.String"/> of the value of <see cref="T:System.Enum"/>.</param>
             <param name="ignoreCase"><c>true</c> to ignore case; <c>false</c> to regard case.</param>
             <returns>The <see cref="T:System.Enum"/> value.</returns>
@@ -1326,7 +1380,7 @@
             <summary>
             Returns a random double that is within a specific range.
             </summary>
-            <param name="source">The <see cref="T:System.Random"/> to return a randome double.</param>
+            <param name="source">The <see cref="T:System.Random"/> to return a random <see cref="T:System.Double"/> value.</param>
             <param name="minValue">The inclusive lower bound of the random number returned.</param>
             <param name="maxValue">
             The exclusive upper bound of the random number returned. <c>maxValue</c> must be greater
@@ -1343,7 +1397,7 @@
             <summary>
             Returns a random 64-bit signed integer that is within a specific range.
             </summary>
-            <param name="source">The <see cref="T:System.Random"/> to return a randome 64-bit signed integer.</param>
+            <param name="source">The <see cref="T:System.Random"/> to return a random 64-bit signed integer.</param>
             <param name="minValue">The inclusive lower bound of the random number returned.</param>
             <param name="maxValue">
             The exclusive upper bound of the random number returned. <c>maxValue</c> must be greater
@@ -1372,6 +1426,32 @@
             <c>minValue</c> equals <c>maxValue</c>, <c>minValue</c> is returned.
             </returns>
             <exception cref="T:System.ArgumentOutOfRangeException"><c>minValue</c> is greater than <c>maxValue</c>.</exception>
+        </member>
+        <member name="T:System.RandomUtility">
+            <summary>
+            Provides static methods to generate pseudo-random number.
+            </summary>
+        </member>
+        <member name="M:System.RandomUtility.NextDouble(System.Double,System.Double)">
+            <summary>
+            Returns a random floating-point number that is greater than or equal to <b>minValue</b>, and less than <b>maxValue</b>.
+            </summary>
+            <param name="minValue">The inclusive lower bound of the random floating-point number returned. </param>
+            <param name="maxValue">The exclusive upper bound of the random floating-point number returned.
+            <b>maxValue</b> must be greater than or equal to <b>minValue</b>. </param>
+            <returns>A floating-point number is greater than or equal to <b>minValue</b>, and less than <b>maxValue</b>. </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><b>minValue</b> is greater than <b>maxValue</b>. </exception>
+        </member>
+        <member name="M:System.RandomUtility.NextDoubleSequence(System.Int32,System.Double,System.Double)">
+            <summary>
+            Returns a sequence with random floating-point numbers that are greater than or equal to <b>minValue</b>, and less than <b>maxValue</b>.
+            </summary>
+            <param name="count">The count of sequence. </param>
+            <param name="minValue">The inclusive lower bound of the random floating-point numbers returned. </param>
+            <param name="maxValue">The exclusive upper bound of the random floating-point numbers returned.
+            <b>maxValue</b> must be greater than or equal to <b>minValue</b>. </param>
+            <returns>A sequence with random floating-point number are greater than or equal to <b>minValue</b>, and less than <b>maxValue</b>. </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><b>minValue</b> is greater than <b>maxValue</b>. </exception>
         </member>
         <member name="T:System.StringExtensions">
             <summary>
@@ -1680,6 +1760,18 @@
             </summary>
             <param name="source">The <see cref="T:System.UInt64"/> to reverse.</param>
             <returns>A 8-byte unsigned long integer in reverse.</returns>
+        </member>
+        <member name="T:System.Utility">
+            <summary>
+            Provides generic utilities.
+            </summary>
+        </member>
+        <member name="M:System.Utility.GenerateGuidString(System.Boolean)">
+            <summary>
+            Generate GUID string.
+            </summary>
+            <param name="withHyphen">If the result string connect with hyphen. </param>
+            <returns>The GUID string. </returns>
         </member>
     </members>
 </doc>
