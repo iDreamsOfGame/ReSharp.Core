@@ -4,6 +4,29 @@
         <name>ReSharp.Extensions</name>
     </assembly>
     <members>
+        <member name="T:ReSharp.Patterns.CachingFactoryTemplate`2">
+            <summary>
+            The template of caching factory design pattern.
+            </summary>
+            <typeparam name="TKey">The type of key to get instance type. </typeparam>
+            <typeparam name="TInterface">The type of interface that instance implemented. </typeparam>
+        </member>
+        <member name="M:ReSharp.Patterns.CachingFactoryTemplate`2.#ctor(System.Collections.Generic.Dictionary{`0,System.Type})">
+            <summary>
+            Initializes a new instance of the <see>
+                <cref>CachingFactoryTemplate</cref>
+            </see>.
+            </summary>
+            <param name="keyTypeMap">The key and instance type pairs. </param>
+        </member>
+        <member name="M:ReSharp.Patterns.CachingFactoryTemplate`2.GetInstance(`0,System.Object[])">
+            <summary>
+            Gets an instance.
+            </summary>
+            <param name="key">The key of the instance type to get. </param>
+            <param name="parameters">The parameters of instance constructor. </param>
+            <returns></returns>
+        </member>
         <member name="T:ReSharp.Patterns.Command.AsyncCommand">
             <summary>
             A base <see cref="T:ReSharp.Patterns.Command.IAsyncCommand" /> implementation to execute asynchronous operation.
@@ -242,6 +265,29 @@
             Performs undo operation.
             </summary>
         </member>
+        <member name="T:ReSharp.Patterns.SimpleFactoryTemplate`2">
+            <summary>
+            The template of simple factory design pattern.
+            </summary>
+            <typeparam name="TKey">The type of key to get instance type. </typeparam>
+            <typeparam name="TInterface">The type of interface that instance implemented. </typeparam>
+        </member>
+        <member name="M:ReSharp.Patterns.SimpleFactoryTemplate`2.#ctor(System.Collections.Generic.Dictionary{`0,System.Type})">
+            <summary>
+            Initializes a new instance of the <see>
+                <cref>SimpleFactoryTemplate</cref>
+            </see>.
+            </summary>
+            <param name="keyTypeMap">The key and instance type pairs. </param>
+        </member>
+        <member name="M:ReSharp.Patterns.SimpleFactoryTemplate`2.GetInstance(`0,System.Object[])">
+            <summary>
+            Gets an instance.
+            </summary>
+            <param name="key">The key of the instance type to get. </param>
+            <param name="parameters">The parameters of instance constructor. </param>
+            <returns></returns>
+        </member>
         <member name="T:ReSharp.Patterns.Singleton`1">
             <summary>
             Abstract class for implementing singleton pattern of thread-safety by using double-check locking.
@@ -364,6 +410,11 @@
         <member name="M:ReSharp.Patterns.State.StateMachine.Execute">
             <summary>
             Runs the state's execution logic.
+            </summary>
+        </member>
+        <member name="T:System.BindingFlagsCollection">
+            <summary>
+            The collection of <see cref="T:System.Reflection.BindingFlags"/>.
             </summary>
         </member>
         <member name="F:System.BindingFlagsCollection.DefaultBindingFlags">
