@@ -5,7 +5,10 @@ using System.Reflection;
 
 namespace System
 {
-    internal static class BindingFlagsCollection
+    /// <summary>
+    /// The collection of <see cref="BindingFlags"/>.
+    /// </summary>
+    public static class BindingFlagsCollection
     {
         #region Fields
 
