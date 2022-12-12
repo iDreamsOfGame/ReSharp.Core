@@ -2,6 +2,7 @@
 // See LICENSE in the project root for license information.
 
 using System.Linq;
+// ReSharper disable InconsistentNaming
 
 namespace System.Collections.Generic
 {
@@ -10,8 +11,6 @@ namespace System.Collections.Generic
     /// </summary>
     public static class IDictionaryExtensions
     {
-        #region Methods
-
         /// <summary>
         /// Adds the value with unique key.
         /// </summary>
@@ -46,10 +45,8 @@ namespace System.Collections.Generic
         /// <param name="source">The source Dictionary object.</param>
         /// <param name="value">The value.</param>
         /// <returns>The value object.</returns>
-        public static TKey GetKey<TKey, TValue>(this IDictionary<TKey, TValue> source, TValue value)
-        {
-            return source.FirstOrDefault(q => q.Value.Equals(value)).Key;
-        }
+        public static TKey GetKey<TKey, TValue>(this IDictionary<TKey, TValue> source, TValue value) => 
+            source.FirstOrDefault(q => q.Value.Equals(value)).Key;
 
         /// <summary>
         /// Merges dictionaries.
@@ -71,9 +68,8 @@ namespace System.Collections.Generic
                     newMap[pair.Key] = pair.Value;
                 }
             }
+
             return newMap;
         }
-
-        #endregion Methods
     }
 }

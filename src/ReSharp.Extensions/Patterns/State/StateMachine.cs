@@ -10,8 +10,6 @@ namespace ReSharp.Patterns.State
     /// </summary>
     public class StateMachine
     {
-        #region Constructors
-
         /// <summary>
         /// Initializes a new instance of the <see cref="StateMachine" /> class with the given information.
         /// </summary>
@@ -22,42 +20,22 @@ namespace ReSharp.Patterns.State
             CurrentState?.OnEnter(null);
         }
 
-        #endregion Constructors
-
-        #region Events
-
         /// <summary>
         /// Occurs when the state changed.
         /// </summary>
         public event EventHandler<StateChangedEventArgs> StateChanged;
 
-        #endregion Events
-
-        #region Properties
-
         /// <summary>
         /// Gets the state of the current.
         /// </summary>
         /// <value>The current state.</value>
-        public IState CurrentState
-        {
-            get;
-            private set;
-        }
+        public IState CurrentState { get; private set; }
 
         /// <summary>
         /// Gets the previous state.
         /// </summary>
         /// <value>The previous state.</value>
-        public IState PreviousState
-        {
-            get;
-            private set;
-        }
-
-        #endregion Properties
-
-        #region Methods
+        public IState PreviousState { get; private set; }
 
         /// <summary>
         /// Change the state of this <see cref="ReSharp.Patterns.State.StateMachine" />.
@@ -69,9 +47,7 @@ namespace ReSharp.Patterns.State
         public void ChangeState(IState state)
         {
             if (state == null)
-            {
                 throw new ArgumentNullException(nameof(state));
-            }
 
             if (CurrentState == state)
                 return;
@@ -92,7 +68,5 @@ namespace ReSharp.Patterns.State
         {
             CurrentState?.OnExecute();
         }
-
-        #endregion Methods
     }
 }

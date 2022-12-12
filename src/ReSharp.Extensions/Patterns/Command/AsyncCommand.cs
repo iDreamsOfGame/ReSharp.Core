@@ -11,13 +11,7 @@ namespace ReSharp.Patterns.Command
     /// <seealso cref="ReSharp.Patterns.Command.IAsyncCommand" />
     public abstract class AsyncCommand : IAsyncCommand
     {
-        #region Fields
-
         private Action executedCallback;
-
-        #endregion Fields
-
-        #region Methods
 
         /// <summary>
         /// Aborts the asynchronous operation.
@@ -44,7 +38,5 @@ namespace ReSharp.Patterns.Command
         {
             executedCallback?.Invoke();
         }
-
-        #endregion Methods
     }
 }

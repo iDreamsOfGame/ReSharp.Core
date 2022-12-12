@@ -8,8 +8,6 @@ namespace System
     /// </summary>
     public static class EnumUtility
     {
-        #region Methods
-
         /// <summary>
         /// Converts the <see cref="string"/> to the specified <see cref="Enum"/> value.
         /// </summary>
@@ -17,11 +15,6 @@ namespace System
         /// <param name="value">The <see cref="string"/> of the value of <see cref="Enum"/>.</param>
         /// <param name="ignoreCase"><c>true</c> to ignore case; <c>false</c> to regard case.</param>
         /// <returns>The <see cref="Enum"/> value.</returns>
-        public static TEnum ConvertToEnum<TEnum>(string value, bool ignoreCase = false)
-        {
-            return (TEnum)Enum.Parse(typeof(TEnum), value, ignoreCase);
-        }
-
-        #endregion Methods
+        public static TEnum ConvertToEnum<TEnum>(string value, bool ignoreCase = false) => (TEnum)Enum.Parse(typeof(TEnum), value, ignoreCase);
     }
 }

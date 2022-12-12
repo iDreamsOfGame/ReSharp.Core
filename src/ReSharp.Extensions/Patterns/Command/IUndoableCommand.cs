@@ -9,13 +9,9 @@ namespace ReSharp.Patterns.Command
     /// <seealso cref="ICommand" />
     public interface IUndoableCommand : ICommand
     {
-        #region Methods
-
         /// <summary>
         /// Performs undo operation.
         /// </summary>
         void Undo();
-
-        #endregion Methods
     }
 }

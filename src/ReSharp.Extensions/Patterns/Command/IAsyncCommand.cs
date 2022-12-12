@@ -10,8 +10,6 @@ namespace ReSharp.Patterns.Command
     /// </summary>
     public interface IAsyncCommand
     {
-        #region Methods
-
         /// <summary>
         /// Aborts the asynchronous operation.
         /// </summary>
@@ -24,7 +22,5 @@ namespace ReSharp.Patterns.Command
         /// The callback method when <see cref="IAsyncCommand" /> executed to invoke.
         /// </param>
         void Execute(Action executedCallback);
-
-        #endregion Methods
     }
 }

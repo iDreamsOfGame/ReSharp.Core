@@ -11,8 +11,6 @@ namespace System
     /// </summary>
     public sealed class MathUtility
     {
-        #region Methods
-
         /// <summary>
         /// Generates the random seed.
         /// </summary>
@@ -34,7 +32,6 @@ namespace System
             var random = new Random(DateTime.Now.Millisecond);
             var x1 = (float)random.NextDouble();
             var x2 = (float)random.NextDouble();
-
             if (x1 == 0.0f)
                 x1 = 0.01f;
 
@@ -61,7 +58,5 @@ namespace System
         /// <param name="n">The <see cref="float"/>.</param>
         /// <returns><c>true</c> if the specific <see cref="float"/> is odd; otherwise, <c>false</c>.</returns>
         public static bool IsOdd(float n) => IsOdd((int)Math.Floor(n));
-
-        #endregion Methods
     }
 }

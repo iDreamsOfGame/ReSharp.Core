@@ -9,8 +9,6 @@ namespace ReSharp.Patterns.Command
     /// </summary>
     public interface IUndoableMacroCommand
     {
-        #region Properties
-
         /// <summary>
         /// Gets a value indicating whether this <see cref="IUndoableMacroCommand" /> can perform
         /// redo operation.
@@ -19,10 +17,7 @@ namespace ReSharp.Patterns.Command
         /// <c>true</c> if this <see cref="IUndoableMacroCommand" /> can perform redo operation;
         /// otherwise, <c>false</c>.
         /// </value>
-        bool CanRedo
-        {
-            get;
-        }
+        bool CanRedo { get; }
 
         /// <summary>
         /// Gets a value indicating whether this <see cref="IUndoableMacroCommand" /> can perform
@@ -32,14 +27,7 @@ namespace ReSharp.Patterns.Command
         /// <c>true</c> if this <see cref="IUndoableMacroCommand" /> can perform undo operation;
         /// otherwise, <c>false</c>.
         /// </value>
-        bool CanUndo
-        {
-            get;
-        }
-
-        #endregion Properties
-
-        #region Methods
+        bool CanUndo { get; }
 
         /// <summary>
         /// Executes the specific <see cref="IUndoableCommand" />.
@@ -56,7 +44,5 @@ namespace ReSharp.Patterns.Command
         /// Performs undo operation.
         /// </summary>
         void Undo();
-
-        #endregion Methods
     }
 }

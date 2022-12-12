@@ -17,8 +17,6 @@ namespace System.Collections.Generic
     [ComVisible(false)]
     public class Tree<T> : IEnumerable<T>
     {
-        #region Constructors
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Tree{T}" /> class.
         /// </summary>
@@ -36,23 +34,11 @@ namespace System.Collections.Generic
             Root = root;
         }
 
-        #endregion Constructors
-
-        #region Properties
-
         /// <summary>
         /// Gets or sets the root <see cref="TreeNode{T}" />.
         /// </summary>
         /// <value>The root <see cref="TreeNode{T}" />.</value>
-        public TreeNode<T> Root
-        {
-            get;
-            set;
-        }
-
-        #endregion Properties
-
-        #region Methods
+        public TreeNode<T> Root { get; set; }
 
         /// <summary>
         /// Returns an enumerator that iterates through a collection.
@@ -71,7 +57,7 @@ namespace System.Collections.Generic
         {
             if (Root == null)
                 return null;
-            
+
             IList<T> list = new List<T>();
             PostorderTraverse(Root, list);
             return list;
@@ -83,9 +69,9 @@ namespace System.Collections.Generic
         /// <returns>The <see cref="System.Collections.Generic.IList{T}" /> contains the results of pre-order traversal.</returns>
         public IList<T> PreoderTraverse()
         {
-            if (Root == null) 
+            if (Root == null)
                 return null;
-            
+
             IList<T> list = new List<T>();
             PreoderTraverse(Root, list);
             return list;
@@ -97,9 +83,9 @@ namespace System.Collections.Generic
         /// <returns>An enumerator that can be used to iterate through the collection.</returns>
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
-            IList<T> list = PreoderTraverse();
+            var list = PreoderTraverse();
 
-            foreach (T item in list)
+            foreach (var item in list)
             {
                 yield return item;
             }
@@ -108,16 +94,12 @@ namespace System.Collections.Generic
         private void PostorderTraverse(TreeNode<T> node, IList<T> list)
         {
             if (node == null)
-            {
                 throw new ArgumentNullException(nameof(node));
-            }
 
             if (list == null)
-            {
                 throw new ArgumentNullException(nameof(list));
-            }
 
-            foreach (var child in node.children)
+            foreach (var child in node.Children)
             {
                 PostorderTraverse(child, list);
             }
@@ -128,24 +110,18 @@ namespace System.Collections.Generic
         private void PreoderTraverse(TreeNode<T> node, IList<T> list)
         {
             if (node == null)
-            {
                 throw new ArgumentNullException(nameof(node));
-            }
 
             if (list == null)
-            {
                 throw new ArgumentNullException(nameof(list));
-            }
 
             list.Add(node.Value);
 
-            foreach (var child in node.children)
+            foreach (var child in node.Children)
             {
                 PreoderTraverse(child, list);
             }
         }
-
-        #endregion Methods
     }
 
     /// <summary>
@@ -158,21 +134,11 @@ namespace System.Collections.Generic
     [ComVisible(false)]
     public sealed class TreeNode<T> : ICollection<T>, ICollection
     {
-        #region Fields
+        internal LinkedList<TreeNode<T>> Children;
 
-        internal LinkedList<TreeNode<T>> children;
-
-        internal T item;
-
-        internal TreeNode<T> parent;
-
-        internal Tree<T> tree;
-
+        internal T Item;
+        
         private object syncRoot;
-
-        #endregion Fields
-
-        #region Constructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TreeNode{T}" /> class, containing the specified value.
@@ -180,13 +146,9 @@ namespace System.Collections.Generic
         /// <param name="value">The value to contain in the <see cref="TreeNode{T}" />.</param>
         public TreeNode(T value)
         {
-            item = value;
-            children = new LinkedList<TreeNode<T>>();
+            Item = value;
+            Children = new LinkedList<TreeNode<T>>();
         }
-
-        #endregion Constructors
-
-        #region Properties
 
         /// <summary>
         /// Gets the array contains ancestor <see cref="TreeNode{T}" /> s.
@@ -196,16 +158,17 @@ namespace System.Collections.Generic
         {
             get
             {
-                if (!IsLeaf) 
+                if (!IsLeaf)
                     return null;
-                
+
                 var list = new List<TreeNode<T>>();
-                var ancestor = parent;
+                var ancestor = Parent;
                 while (ancestor != null)
                 {
                     list.Add(ancestor);
-                    ancestor = ancestor.parent;
+                    ancestor = ancestor.Parent;
                 }
+
                 return list.ToArray();
             }
         }
@@ -214,7 +177,7 @@ namespace System.Collections.Generic
         /// Gets the degree of this <see cref="TreeNode{T}" />, that means the total number of children nodes.
         /// </summary>
         /// <value>The degree of this <see cref="TreeNode{T}" />.</value>
-        public int Degree => children.Count;
+        public int Degree => Children.Count;
 
         /// <summary>
         /// Gets a value indicating whether this <see cref="TreeNode{T}" /> is leaf node of the <see cref="Tree{T}" />.
@@ -226,42 +189,31 @@ namespace System.Collections.Generic
         /// Gets a value indicating whether this <see cref="TreeNode{T}" /> is root node of the <see cref="Tree{T}" />.
         /// </summary>
         /// <value><c>true</c> if this <see cref="TreeNode{T}" /> is root node; otherwise, <c>false</c>.</value>
-        public bool IsRoot => parent == null;
+        public bool IsRoot => Parent == null;
 
         /// <summary>
         /// Gets the zero-based depth of the tree node in the <see cref="Tree{T}" />.
         /// </summary>
         /// <value>The zero-based depth of the tree node in the <see cref="Tree{T}" />.</value>
-        public int Level
-        {
-            get
-            {
-                if (IsRoot)
-                {
-                    return 1;
-                }
-
-                return parent.Level + 1;
-            }
-        }
+        public int Level => IsRoot ? 1 : Parent.Level + 1;
 
         /// <summary>
         /// Gets the parent <see cref="TreeNode{T}" /> of this <see cref="TreeNode{T}" />.
         /// </summary>
         /// <value>The parent <see cref="TreeNode{T}" /> of this <see cref="TreeNode{T}" />.</value>
-        public TreeNode<T> Parent => parent;
+        public TreeNode<T> Parent { get; private set; }
 
         /// <summary>
         /// Gets the <see cref="Tree{T}" /> who owns this <see cref="TreeNode{T}" />.
         /// </summary>
         /// <value>The <see cref="Tree{T}" /> who owns this <see cref="TreeNode{T}" />.</value>
-        public Tree<T> Tree => tree;
+        public Tree<T> Tree { get; private set; }
 
         /// <summary>
         /// Gets the value contained in the <see cref="TreeNode{T}" />.
         /// </summary>
         /// <value>The value contained in the <see cref="TreeNode{T}" />.</value>
-        public T Value => item;
+        public T Value => Item;
 
         int ICollection<T>.Count => Degree;
 
@@ -276,17 +228,11 @@ namespace System.Collections.Generic
             get
             {
                 if (syncRoot == null)
-                {
                     Interlocked.CompareExchange<object>(ref syncRoot, new object(), null);
-                }
 
                 return syncRoot;
             }
         }
-
-        #endregion Properties
-
-        #region Methods
 
         /// <summary>
         /// Adds a new child <see cref="TreeNode{T}" /> containing the specified value.
@@ -295,7 +241,7 @@ namespace System.Collections.Generic
         /// <returns>The new child <see cref="TreeNode{T}" /> containing value.</returns>
         public TreeNode<T> AddChild(T value)
         {
-            TreeNode<T> child = new TreeNode<T>(value);
+            var child = new TreeNode<T>(value);
             InternalInsertChildLast(child);
             return child;
         }
@@ -314,7 +260,7 @@ namespace System.Collections.Generic
         /// </summary>
         public void Clear()
         {
-            children.Clear();
+            Children.Clear();
         }
 
         /// <summary>
@@ -324,10 +270,7 @@ namespace System.Collections.Generic
         /// The value to locate in the children nodes of this <see cref="TreeNode{T}" />. The value can be <c>null</c> for reference types.
         /// </param>
         /// <returns><c>true</c> if <c>value</c> is found in the children nodes of this <see cref="TreeNode{T}" />; otherwise, <c>false</c>.</returns>
-        public bool ContainsChild(T value)
-        {
-            return FindChild(value) != null;
-        }
+        public bool ContainsChild(T value) => FindChild(value) != null;
 
         /// <summary>
         /// Copies the children nodes to a compatible one-dimensional <see cref="System.Array" />, starting at the specified index of the target array.
@@ -346,22 +289,15 @@ namespace System.Collections.Generic
         public void CopyTo(T[] array, int arrayIndex)
         {
             if (array == null)
-            {
                 throw new ArgumentNullException(nameof(array));
-            }
 
             if (arrayIndex < 0 || arrayIndex > array.Length)
-            {
                 throw new ArgumentOutOfRangeException(nameof(arrayIndex), "index is less than zero. ");
-            }
 
             if (array.Length - arrayIndex < Degree)
-            {
                 throw new ArgumentException("The number of elements in the source TreeNode<T> is greater than the available space from index to the end of the destination array.");
-            }
 
-            var node = children.First;
-
+            var node = Children.First;
             while (node != null)
             {
                 array[arrayIndex++] = node.Value.Value;
@@ -376,7 +312,7 @@ namespace System.Collections.Generic
         /// <returns>The first child <see cref="TreeNode{T}" /> that contains the specified value, if found; otherwise, <c>null</c>.</returns>
         public TreeNode<T> FindChild(T value)
         {
-            foreach (var node in children)
+            foreach (var node in Children)
             {
                 if (node.Value.Equals(value))
                 {
@@ -393,7 +329,7 @@ namespace System.Collections.Generic
         /// <returns>An enumerator that can be used to iterate through the <see cref="IEnumerator{T}" />.</returns>
         public IEnumerator<T> GetEnumerator()
         {
-            foreach (TreeNode<T> child in children)
+            foreach (TreeNode<T> child in Children)
             {
                 yield return child.Value;
             }
@@ -409,11 +345,11 @@ namespace System.Collections.Generic
         /// </returns>
         public bool RemoveChild(T value)
         {
-            foreach (TreeNode<T> node in children)
+            foreach (TreeNode<T> node in Children)
             {
                 if (node.Value.Equals(value))
                 {
-                    return children.Remove(node);
+                    return Children.Remove(node);
                 }
             }
 
@@ -426,7 +362,7 @@ namespace System.Collections.Generic
         /// <param name="child">The child <see cref="TreeNode{T}" /> to remove from the <see cref="Tree{T}" />.</param>
         public void RemoveChild(TreeNode<T> child)
         {
-            children.Remove(child);
+            Children.Remove(child);
         }
 
         void ICollection<T>.Add(T item)
@@ -434,37 +370,24 @@ namespace System.Collections.Generic
             AddChild(item);
         }
 
-        bool ICollection<T>.Contains(T item)
-        {
-            return ContainsChild(item);
-        }
+        bool ICollection<T>.Contains(T item) => ContainsChild(item);
 
         void ICollection.CopyTo(Array array, int index)
         {
             if (array == null)
-            {
                 throw new ArgumentNullException(nameof(array));
-            }
 
             if (array.Rank != 1)
-            {
                 throw new ArgumentException("array is multidimensional. ", nameof(array));
-            }
 
             if (array.GetLowerBound(0) != 0)
-            {
                 throw new ArgumentException("array does not have zero-based indexing. ", nameof(array));
-            }
 
             if (index < 0)
-            {
                 throw new ArgumentOutOfRangeException(nameof(index), "index is less than zero.");
-            }
 
             if (array.Length - index < Degree)
-            {
                 throw new ArgumentException("The number of elements in the source ICollection is greater than the available space from index to the end of the destination array. ", nameof(array));
-            }
 
             if (array is T[] array2)
             {
@@ -476,19 +399,15 @@ namespace System.Collections.Generic
                 // element type of the Array is derived from T, we can't figure out if we can successfully copy the element beforehand.
                 var targetType = array.GetType().GetElementType();
                 var sourceType = typeof(T);
-                var message = "The type of the source ICollection cannot be cast automatically to the type of the destination array. ";
+                const string message = "The type of the source ICollection cannot be cast automatically to the type of the destination array. ";
 
                 if (targetType != null && !(targetType.IsAssignableFrom(sourceType) || sourceType.IsAssignableFrom(targetType)))
-                {
                     throw new ArgumentException(message);
-                }
 
                 if (!(array is object[] objects))
-                {
                     throw new ArgumentException(message);
-                }
 
-                var node = children.First;
+                var node = Children.First;
 
                 try
                 {
@@ -505,30 +424,22 @@ namespace System.Collections.Generic
             }
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        bool ICollection<T>.Remove(T item)
-        {
-            return RemoveChild(item);
-        }
+        bool ICollection<T>.Remove(T item) => RemoveChild(item);
 
         internal void Invalidate()
         {
-            tree = null;
-            parent = null;
-            children = null;
+            Tree = null;
+            Parent = null;
+            Children = null;
         }
 
         private void InternalInsertChildLast(TreeNode<T> child)
         {
-            child.parent = this;
-            child.tree = tree;
-            children.AddLast(child);
+            child.Parent = this;
+            child.Tree = Tree;
+            Children.AddLast(child);
         }
-
-        #endregion Methods
     }
 }

@@ -8,8 +8,6 @@ namespace System.IO
     /// </summary>
     public static class BinaryReaderExtensions
     {
-        #region Methods
-
         /// <summary>
         /// Reads the specified number of bytes in reverse from the current stream into a byte array
         /// and advances the current position by that number of bytes.
@@ -25,7 +23,7 @@ namespace System.IO
         /// </returns>
         public static byte[] ReadBytesReverse(this BinaryReader reader, int count)
         {
-            byte[] data = reader.ReadBytes(count);
+            var data = reader.ReadBytes(count);
             Array.Reverse(data);
             return data;
         }
@@ -38,7 +36,7 @@ namespace System.IO
         /// <returns>A 2-byte signed short integer in reverse read from the current stream.</returns>
         public static short ReadInt16Reverse(this BinaryReader reader)
         {
-            short value = reader.ReadInt16();
+            var value = reader.ReadInt16();
             return value.Reverse();
         }
 
@@ -50,7 +48,7 @@ namespace System.IO
         /// <returns>A 4-byte signed integer in reverse read from the current stream.</returns>
         public static int ReadInt32Reverse(this BinaryReader reader)
         {
-            int value = reader.ReadInt32();
+            var value = reader.ReadInt32();
             return value.Reverse();
         }
 
@@ -62,7 +60,7 @@ namespace System.IO
         /// <returns>A 8-byte signed long integer in reverse read from the current stream.</returns>
         public static long ReadInt64Reverse(this BinaryReader reader)
         {
-            long value = reader.ReadInt64();
+            var value = reader.ReadInt64();
             return value.Reverse();
         }
 
@@ -74,7 +72,7 @@ namespace System.IO
         /// <returns>A 2-byte unsigned short integer in reverse read from this stream.</returns>
         public static ushort ReadUInt16Reverse(this BinaryReader reader)
         {
-            ushort value = reader.ReadUInt16();
+            var value = reader.ReadUInt16();
             return value.Reverse();
         }
 
@@ -86,7 +84,7 @@ namespace System.IO
         /// <returns>A 4-byte unsigned integer in reverse read from this stream.</returns>
         public static uint ReadUInt32Reverse(this BinaryReader reader)
         {
-            uint value = reader.ReadUInt32();
+            var value = reader.ReadUInt32();
             return value.Reverse();
         }
 
@@ -98,10 +96,8 @@ namespace System.IO
         /// <returns>A 8-byte unsigned long integer in reverse read from this stream.</returns>
         public static ulong ReadUInt64Reverse(this BinaryReader reader)
         {
-            ulong value = reader.ReadUInt64();
+            var value = reader.ReadUInt64();
             return value.Reverse();
         }
-
-        #endregion Methods
     }
 }

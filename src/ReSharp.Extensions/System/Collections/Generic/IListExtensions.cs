@@ -1,3 +1,7 @@
+// Copyright (c) Jerry Lee. All rights reserved. Licensed under the MIT License.
+// See LICENSE in the project root for license information.
+
+// ReSharper disable InconsistentNaming
 namespace System.Collections.Generic
 {
     /// <summary>
@@ -38,6 +42,7 @@ namespace System.Collections.Generic
             foreach (var item in list) {
                 newList.Insert(random.Next(newList.Count), item);
             }
+            
             return newList;
         }
     }

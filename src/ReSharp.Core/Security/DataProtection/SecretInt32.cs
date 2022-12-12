@@ -19,20 +19,18 @@ namespace ReSharp.Security.DataProtection
     [Serializable]
     public struct SecretInt32 : IEquatable<SecretInt32>, IComparable<SecretInt32>, ISerializable
     {
-        #region Fields
-
         private int check;
+
         private int value;
-
-        #endregion Fields
-
-        #region Constructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SecretInt32" /> struct with the <see cref="int" /> value to encrypt.
         /// </summary>
         /// <param name="value">The <see cref="int" /> value to encrypt.</param>
-        public SecretInt32(int value) => this.value = DataProtectionProvider.Protect(value, out check);
+        public SecretInt32(int value)
+        {
+            this.value = DataProtectionProvider.Protect(value, out check);
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SecretInt32" /> struct.
@@ -44,10 +42,6 @@ namespace ReSharp.Security.DataProtection
             value = DataProtectionProvider.Protect(info.GetInt32("v"), out check);
         }
 
-        #endregion Constructors
-
-        #region Properties
-
         /// <summary>
         /// Gets the original <see cref="int" /> value.
         /// </summary>
@@ -57,10 +51,6 @@ namespace ReSharp.Security.DataProtection
             get => DataProtectionProvider.Unprotect(value, check);
             set => this.value = DataProtectionProvider.Protect(value, out check);
         }
-
-        #endregion Properties
-
-        #region Methods
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="SecretInt32" /> to <see cref="double" />.
@@ -282,7 +272,5 @@ namespace ReSharp.Security.DataProtection
         /// </summary>
         /// <returns>A <see cref="string" /> that represents this instance.</returns>
         public override string ToString() => Value.ToString(CultureInfo.InvariantCulture);
-
-        #endregion Methods
     }
 }

@@ -9,8 +9,6 @@ namespace ReSharp.Patterns.Command
     /// <seealso cref="ReSharp.Patterns.Command.IAsyncCommand" />
     public interface IAsyncMacroCommand : IAsyncCommand
     {
-        #region Methods
-
         /// <summary>
         /// Adds an <see cref="IAsyncCommand" />.
         /// </summary>
@@ -18,7 +16,5 @@ namespace ReSharp.Patterns.Command
         /// The <see cref="IAsyncCommand" /> to be executed by this <see cref="IAsyncMacroCommand" />.
         /// </param>
         void AddSubCommand(IAsyncCommand subCommand);
-
-        #endregion Methods
     }
 }

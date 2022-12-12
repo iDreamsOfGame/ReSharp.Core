@@ -4,6 +4,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+// ReSharper disable UseArrayEmptyMethod
+
 // ReSharper disable InvertIf
 
 namespace System
@@ -26,7 +28,6 @@ namespace System
         public static object GetStaticFieldValue(this Type type, string fieldName, BindingFlags bindingFlags = BindingFlagsCollection.StaticGetFieldBindingFlags)
         {
             object fieldValue = null;
-
             var targetType = type;
 
             while (targetType != null)
@@ -46,7 +47,7 @@ namespace System
 
             return fieldValue;
         }
-        
+
         /// <summary>
         /// Sets the static field value of the <see cref="Type"/>.
         /// </summary>
@@ -57,7 +58,10 @@ namespace System
         /// A bitmask comprised of one or more <see cref="BindingFlags"/> that specify how the
         /// search is conducted.
         /// </param>
-        public static void SetStaticFieldValue(this Type type, string fieldName, object value, BindingFlags bindingFlags = BindingFlagsCollection.StaticSetFieldBindingFlags)
+        public static void SetStaticFieldValue(this Type type,
+            string fieldName,
+            object value,
+            BindingFlags bindingFlags = BindingFlagsCollection.StaticSetFieldBindingFlags)
         {
             var targetType = type;
 
@@ -124,7 +128,7 @@ namespace System
 
             return propertyValue;
         }
-        
+
         /// <summary>
         /// Sets the static property value of the <see cref="Type"/>.
         /// </summary>
@@ -135,7 +139,10 @@ namespace System
         /// A bitmask comprised of one or more <see cref="BindingFlags"/> that specify how the
         /// search is conducted.
         /// </param>
-        public static void SetStaticPropertyValue(this Type type, string propertyName, object value, BindingFlags bindingFlags = BindingFlagsCollection.StaticSetPropertyBindingFlags)
+        public static void SetStaticPropertyValue(this Type type,
+            string propertyName,
+            object value,
+            BindingFlags bindingFlags = BindingFlagsCollection.StaticSetPropertyBindingFlags)
         {
             var targetType = type;
 
@@ -217,7 +224,7 @@ namespace System
             var ctor = type.GetConstructor(bindingFlags, null, types, new ParameterModifier[0]);
             return ctor != null ? ctor.Invoke(parameters) : null;
         }
-        
+
         /// <summary>
         /// Invokes the constructor of the <see cref="Type"/> by a given <see cref="Type"/>, a
         /// bitmask comprised of one or more <see cref="BindingFlags"/>, an array of <see
@@ -238,7 +245,10 @@ namespace System
         /// search is conducted.
         /// </param>
         /// <returns>An instance of the class associated with the constructor.</returns>
-        public static object InvokeConstructor(this Type type, Type[] types, object[] parameters = null, BindingFlags bindingFlags = BindingFlagsCollection.ConstructorBindingFlags)
+        public static object InvokeConstructor(this Type type,
+            Type[] types,
+            object[] parameters = null,
+            BindingFlags bindingFlags = BindingFlagsCollection.ConstructorBindingFlags)
         {
             var ctor = type.GetConstructor(bindingFlags, null, types, new ParameterModifier[0]);
             return ctor != null ? ctor.Invoke(parameters) : null;
@@ -260,13 +270,16 @@ namespace System
         /// search is conducted.
         /// </param>
         /// <returns>The object of the method return.</returns>
-        public static object InvokeGenericStaticMethod(this Type type, string methodName, Type[] genericTypes, object[] parameters = null, BindingFlags bindingFlags = BindingFlagsCollection.StaticBindingFlags)
+        public static object InvokeGenericStaticMethod(this Type type,
+            string methodName,
+            Type[] genericTypes,
+            object[] parameters = null,
+            BindingFlags bindingFlags = BindingFlagsCollection.StaticBindingFlags)
         {
             var methodInfo = type.GetMethod(methodName, bindingFlags);
-
-            if (methodInfo == null) 
+            if (methodInfo == null)
                 return null;
-            
+
             var genericMethodInfo = methodInfo.MakeGenericMethod(genericTypes);
             return genericMethodInfo.Invoke(null, parameters);
         }
@@ -288,12 +301,16 @@ namespace System
         /// search is conducted.
         /// </param>
         /// <returns>The object of static method return.</returns>
-        public static object InvokeStaticMethod(this Type type, string methodName, Type[] types, object[] parameters = null, BindingFlags bindingFlags = BindingFlagsCollection.StaticBindingFlags)
+        public static object InvokeStaticMethod(this Type type,
+            string methodName,
+            Type[] types,
+            object[] parameters = null,
+            BindingFlags bindingFlags = BindingFlagsCollection.StaticBindingFlags)
         {
-            var info = type.GetMethod(methodName, bindingFlags, null, CallingConventions.Any,  types, new ParameterModifier[0]);
+            var info = type.GetMethod(methodName, bindingFlags, null, CallingConventions.Any, types, new ParameterModifier[0]);
             return info != null ? info.Invoke(null, parameters) : null;
         }
-        
+
         /// <summary>
         /// Invokes the static method by a given <see cref="Type"/>, a given name of method, an
         /// array of <see cref="Type"/> objects representing the number, order, and type of the
@@ -311,10 +328,12 @@ namespace System
         /// search is conducted.
         /// </param>
         /// <returns>The object of static method return.</returns>
-        public static object InvokeStaticMethod(this Type type, string methodName, Type[] types, ref object[] parameters, BindingFlags bindingFlags = BindingFlagsCollection.StaticBindingFlags)
-        {
-            return type.InvokeStaticMethod(methodName, types, parameters, bindingFlags);
-        }
+        public static object InvokeStaticMethod(this Type type,
+            string methodName,
+            Type[] types,
+            ref object[] parameters,
+            BindingFlags bindingFlags = BindingFlagsCollection.StaticBindingFlags) =>
+            type.InvokeStaticMethod(methodName, types, parameters, bindingFlags);
 
         /// <summary>
         /// Invokes the static method of the <see cref="Type"/> by a given <see cref="Type"/>, a
@@ -328,7 +347,10 @@ namespace System
         /// search is conducted.
         /// </param>
         /// <returns>The object of static method return.</returns>
-        public static object InvokeStaticMethod(this Type type, string methodName, object[] parameters = null, BindingFlags bindingFlags = BindingFlagsCollection.StaticBindingFlags)
+        public static object InvokeStaticMethod(this Type type,
+            string methodName,
+            object[] parameters = null,
+            BindingFlags bindingFlags = BindingFlagsCollection.StaticBindingFlags)
         {
             var types = Type.EmptyTypes;
 

@@ -8,8 +8,6 @@ namespace ReSharp.Patterns.State
     /// </summary>
     public interface IState
     {
-        #region Methods
-
         /// <summary>
         /// Called when the state is entered.
         /// </summary>
@@ -26,7 +24,5 @@ namespace ReSharp.Patterns.State
         /// </summary>
         /// <param name="nextState">The next state.</param>
         void OnExit(IState nextState);
-
-        #endregion Methods
     }
 }

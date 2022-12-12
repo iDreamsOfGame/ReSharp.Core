@@ -18,20 +18,18 @@ namespace ReSharp.Security.DataProtection
     [Serializable]
     public struct SecretInt64 : IEquatable<SecretInt64>, IComparable<SecretInt64>, ISerializable
     {
-        #region Fields
-
         private long check;
+
         private long value;
-
-        #endregion Fields
-
-        #region Constructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SecretInt64" /> struct with the <see cref="long" /> value to encrypt.
         /// </summary>
         /// <param name="value">The <see cref="long" /> value to encrypt.</param>
-        public SecretInt64(long value) => this.value = DataProtectionProvider.Protect(value, out check);
+        public SecretInt64(long value)
+        {
+            this.value = DataProtectionProvider.Protect(value, out check);
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SecretInt64" /> struct.
@@ -43,10 +41,6 @@ namespace ReSharp.Security.DataProtection
             value = DataProtectionProvider.Protect(info.GetInt64("v"), out check);
         }
 
-        #endregion Constructors
-
-        #region Properties
-
         /// <summary>
         /// Gets the original <see cref="long" /> value.
         /// </summary>
@@ -56,10 +50,6 @@ namespace ReSharp.Security.DataProtection
             get => DataProtectionProvider.Unprotect(value, check);
             set => this.value = DataProtectionProvider.Protect(value, out check);
         }
-
-        #endregion Properties
-
-        #region Methods
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="SecretInt64" /> to <see cref="double" />.
@@ -277,7 +267,5 @@ namespace ReSharp.Security.DataProtection
         /// </summary>
         /// <returns>A <see cref="string" /> that represents this instance.</returns>
         public override string ToString() => Value.ToString();
-
-        #endregion Methods
     }
 }

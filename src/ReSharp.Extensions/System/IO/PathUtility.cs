@@ -8,28 +8,20 @@ namespace System.IO
     /// </summary>
     public static class PathUtility
     {
-        #region Methods
-
         /// <summary>
         /// Unifies all the path separator chars to alternate directory separator characters.
         /// </summary>
         /// <param name="path">The source path.</param>
         /// <returns>The unified path.</returns>
-        public static string UnifyToAltDirectorySeparatorChar(string path)
-        {
-            return path.Replace(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
-        }
+        public static string UnifyToAltDirectorySeparatorChar(string path) => 
+            path.Replace(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
 
         /// <summary>
         /// Unifies all the path alternate separator chars to directory separator characters.
         /// </summary>
         /// <param name="path">The path.</param>
         /// <returns>System.String.</returns>
-        public static string UnifyToDirectorySeparatorChar(string path)
-        {
-            return path.Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
-        }
-
-        #endregion Methods
+        public static string UnifyToDirectorySeparatorChar(string path) => 
+            path.Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
     }
 }

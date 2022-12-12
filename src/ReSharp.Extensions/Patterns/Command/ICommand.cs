@@ -8,13 +8,9 @@ namespace ReSharp.Patterns.Command
     /// </summary>
     public interface ICommand
     {
-        #region Methods
-
         /// <summary>
         /// Executes this command.
         /// </summary>
         void Execute();
-
-        #endregion Methods
     }
 }

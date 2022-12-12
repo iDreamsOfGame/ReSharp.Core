@@ -8,13 +8,10 @@ namespace System
     /// </summary>
     public static class DateTimeExtensions
     {
-        #region Fields
-
-        internal static readonly DateTime StartTime = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-
-        #endregion Fields
-
-        #region Methods
+        /// <summary>
+        /// The <see cref="System.DateTime"/> start position.
+        /// </summary>
+        public static readonly DateTime StartTime = new DateTime(1970, 1, 1, 0, 0, 0, 0);
 
         /// <summary>
         /// Converts the value of the current <see cref="System.DateTime"/> object to a local timestamp.
@@ -67,7 +64,5 @@ namespace System
             var timeSpan = dateTime.ToUniversalTime() - StartTime.ToUniversalTime();
             return Convert.ToInt64(timeSpan.TotalMilliseconds);
         }
-
-        #endregion Methods
     }
 }

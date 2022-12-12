@@ -8,8 +8,6 @@ namespace System.IO
     /// </summary>
     public static class FileInfoExtensions
     {
-        #region Methods
-
         /// <summary>
         /// Renames the file.
         /// </summary>
@@ -17,12 +15,12 @@ namespace System.IO
         /// <param name="newFileName">The new file name.</param>
         public static void Rename(this FileInfo source, string newFileName)
         {
-            string dirPath = source.DirectoryName;
-            string destPath = Path.Combine(dirPath, newFileName);
+            var dirPath = source.DirectoryName;
+            if (string.IsNullOrEmpty(dirPath))
+                return;
+            
+            var destPath = Path.Combine(dirPath, newFileName);
             source.MoveTo(destPath);
-            source = new FileInfo(destPath);
         }
-
-        #endregion Methods
     }
 }

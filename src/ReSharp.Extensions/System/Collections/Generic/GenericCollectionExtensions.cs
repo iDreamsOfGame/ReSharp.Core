@@ -8,8 +8,6 @@ namespace System.Collections.Generic
     /// </summary>
 	public static class GenericCollectionExtensions
     {
-        #region Methods
-
         /// <summary>
         /// Adds a unique item to the <see cref="ICollection{T}"/>.
         /// </summary>
@@ -22,7 +20,5 @@ namespace System.Collections.Generic
             
             source.Add(item);
         }
-
-        #endregion Methods
     }
 }

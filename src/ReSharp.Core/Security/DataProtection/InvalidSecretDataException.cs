@@ -11,16 +11,7 @@ namespace ReSharp.Security.DataProtection
     /// <seealso cref="Exception"/>
     public class InvalidSecretDataException : Exception
     {
-        #region Fields
-
-        /// <summary>
-        /// The error message.
-        /// </summary>
         private const string ErrorMessage = "The secret data is invalid! result={0}, check={1}, key={2}, checkKey={3}";
-
-        #endregion Fields
-
-        #region Constructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InvalidSecretDataException"/> class.
@@ -45,7 +36,5 @@ namespace ReSharp.Security.DataProtection
             : base(string.Format(ErrorMessage, result, check, key, checkKey))
         {
         }
-
-        #endregion Constructors
     }
 }

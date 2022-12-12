@@ -3,6 +3,7 @@
 
 using System;
 using System.Reflection;
+
 // ReSharper disable StaticMemberInGenericType
 
 namespace ReSharp.Patterns
@@ -13,17 +14,11 @@ namespace ReSharp.Patterns
     /// <typeparam name="T">The type of the class.</typeparam>
     public abstract class Singleton<T> : IDisposable where T : class
     {
-        #region Fields
-
         private static readonly object SyncRoot = new object();
 
         private static bool disposed;
 
         private static volatile T instance;
-
-        #endregion Fields
-
-        #region Destructors
 
         /// <summary>
         /// Finalizes an instance of the <see cref="Singleton{T}" /> class.
@@ -32,10 +27,6 @@ namespace ReSharp.Patterns
         {
             Dispose(false);
         }
-
-        #endregion Destructors
-
-        #region Properties
 
         /// <summary>
         /// Gets the static instance.
@@ -74,10 +65,6 @@ namespace ReSharp.Patterns
             }
         }
 
-        #endregion Properties
-
-        #region Methods
-
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting
         /// unmanaged resources.
@@ -100,7 +87,5 @@ namespace ReSharp.Patterns
             instance = null;
             disposed = true;
         }
-
-        #endregion Methods
     }
 }

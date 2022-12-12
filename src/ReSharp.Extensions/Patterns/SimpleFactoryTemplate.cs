@@ -1,3 +1,6 @@
+// Copyright (c) Jerry Lee. All rights reserved. Licensed under the MIT License.
+// See LICENSE in the project root for license information.
+
 using System;
 using System.Collections.Generic;
 
@@ -6,9 +9,10 @@ namespace ReSharp.Patterns
     /// <summary>
     /// The template of simple factory design pattern.
     /// </summary>
+    /// <typeparam name="TInstance">The type of the factory instance. </typeparam>
     /// <typeparam name="TKey">The type of key to get instance type. </typeparam>
     /// <typeparam name="TInterface">The type of interface that instance implemented. </typeparam>
-    public abstract class SimpleFactoryTemplate<TKey, TInterface>
+    public abstract class SimpleFactoryTemplate<TInstance, TKey, TInterface> : Singleton<TInstance> where TInstance : class
     {
         private readonly Dictionary<TKey, Type> keyTypeMap;
 

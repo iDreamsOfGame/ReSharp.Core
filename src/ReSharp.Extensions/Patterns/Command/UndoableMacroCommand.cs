@@ -13,14 +13,9 @@ namespace ReSharp.Patterns.Command
     /// <seealso cref="IUndoableMacroCommand" />
     public class UndoableMacroCommand : IUndoableMacroCommand
     {
-        #region Fields
-
         private readonly Stack<IUndoableCommand> redoCommandStack;
+
         private readonly Stack<IUndoableCommand> undoCommandStack;
-
-        #endregion Fields
-
-        #region Constructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UndoableMacroCommand" /> class.
@@ -30,10 +25,6 @@ namespace ReSharp.Patterns.Command
             undoCommandStack = new Stack<IUndoableCommand>();
             redoCommandStack = new Stack<IUndoableCommand>();
         }
-
-        #endregion Constructors
-
-        #region Properties
 
         /// <summary>
         /// Gets a value indicating whether this <see cref="UndoableMacroCommand" /> can perform
@@ -54,10 +45,6 @@ namespace ReSharp.Patterns.Command
         /// otherwise, <c>false</c>.
         /// </value>
         public bool CanUndo => undoCommandStack.Count > 0;
-
-        #endregion Properties
-
-        #region Methods
 
         /// <summary>
         /// Executes the specific <see cref="IUndoableCommand" />.
@@ -101,7 +88,5 @@ namespace ReSharp.Patterns.Command
             command.Undo();
             redoCommandStack.Push(command);
         }
-
-        #endregion Methods
     }
 }

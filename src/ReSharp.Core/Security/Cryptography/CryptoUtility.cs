@@ -4,6 +4,7 @@
 using System;
 using System.Security.Cryptography;
 using System.Text;
+// ReSharper disable ReturnTypeCanBeEnumerable.Global
 
 namespace ReSharp.Security.Cryptography
 {
@@ -12,17 +13,15 @@ namespace ReSharp.Security.Cryptography
     /// </summary>
     public static class CryptoUtility
     {
-        #region Fields
-
         private const string LowercaseCharacters = "abcdefghijklmnopqrstuvwxyz";
+
         private const string Numbers = "0123456789";
+
         private const string SpecialCharacters = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+
         private const string UppercaseCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
         private static readonly Encoding DefaultEncoding = Encoding.UTF8;
-
-        #endregion Fields
-
-        #region Methods
 
         /// <summary>
         /// Decrypts the cipher text by using the AES encryption algorithm.
@@ -34,21 +33,12 @@ namespace ReSharp.Security.Cryptography
         public static byte[] AesDecrypt(byte[] cipherText, byte[] key)
         {
             if (cipherText == null || cipherText.Length == 0)
-            {
                 throw new ArgumentNullException(nameof(cipherText));
-            }
 
             if (key == null || key.Length == 0)
-            {
                 throw new ArgumentNullException(nameof(key));
-            }
 
-            using (var rm = new RijndaelManaged
-            {
-                Key = key,
-                Mode = CipherMode.ECB,
-                Padding = PaddingMode.PKCS7
-            })
+            using (var rm = new RijndaelManaged { Key = key, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
             {
                 using (var transform = rm.CreateDecryptor())
                 {
@@ -67,14 +57,10 @@ namespace ReSharp.Security.Cryptography
         public static string AesDecrypt(string cipherText, string key)
         {
             if (string.IsNullOrEmpty(cipherText))
-            {
                 throw new ArgumentNullException(nameof(cipherText));
-            }
 
             if (string.IsNullOrEmpty(key))
-            {
                 throw new ArgumentNullException(nameof(key));
-            }
 
             return DefaultEncoding.GetString(AesDecrypt(DefaultEncoding.GetBytes(cipherText), DefaultEncoding.GetBytes(key)));
         }
@@ -89,21 +75,12 @@ namespace ReSharp.Security.Cryptography
         public static byte[] AesEncrypt(byte[] plainText, byte[] key)
         {
             if (plainText == null || plainText.Length == 0)
-            {
                 throw new ArgumentNullException(nameof(plainText));
-            }
 
             if (key == null || key.Length == 0)
-            {
                 throw new ArgumentNullException(nameof(key));
-            }
 
-            using (var rm = new RijndaelManaged
-            {
-                Key = key,
-                Mode = CipherMode.ECB,
-                Padding = PaddingMode.PKCS7
-            })
+            using (var rm = new RijndaelManaged { Key = key, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
             {
                 using (var transform = rm.CreateEncryptor())
                 {
@@ -122,14 +99,10 @@ namespace ReSharp.Security.Cryptography
         public static string AesEncrypt(string plainText, string key)
         {
             if (string.IsNullOrEmpty(plainText))
-            {
                 throw new ArgumentNullException(nameof(plainText));
-            }
 
             if (string.IsNullOrEmpty(key))
-            {
                 throw new ArgumentNullException(nameof(key));
-            }
 
             return DefaultEncoding.GetString(AesEncrypt(DefaultEncoding.GetBytes(plainText), DefaultEncoding.GetBytes(key)));
         }
@@ -143,9 +116,14 @@ namespace ReSharp.Security.Cryptography
         /// <param name="includeUppercaseCharacters">if set to <c>true</c> [include uppercase characters].</param>
         /// <param name="includeSpecialCharacters">if set to <c>true</c> [include special characters].</param>
         /// <returns>The key data for encryption.</returns>
-        public static byte[] GenerateRandomKey(int length = 16, bool includeNumbers = true, bool includeLowercaseCharacters = true, bool includeUppercaseCharacters = true, bool includeSpecialCharacters = true)
+        public static byte[] GenerateRandomKey(int length = 16, 
+            bool includeNumbers = true, 
+            bool includeLowercaseCharacters = true, 
+            bool includeUppercaseCharacters = true, 
+            bool includeSpecialCharacters = true)
         {
-            return DefaultEncoding.GetBytes(GenerateRandomKeyString(length, includeNumbers, includeLowercaseCharacters, includeUppercaseCharacters, includeSpecialCharacters));
+            var keyString = GenerateRandomKeyString(length, includeNumbers, includeLowercaseCharacters, includeUppercaseCharacters, includeSpecialCharacters);
+            return DefaultEncoding.GetBytes(keyString);
         }
 
         /// <summary>
@@ -160,7 +138,11 @@ namespace ReSharp.Security.Cryptography
         /// <returns>
         /// The key string for encryption, which is original plain text that encoding by UTF-8.
         /// </returns>
-        public static string GenerateRandomKeyString(int length = 16, bool includeNumbers = true, bool includeLowercaseCharacters = true, bool includeUppercaseCharacters = true, bool includeSpecialCharacters = true)
+        public static string GenerateRandomKeyString(int length = 16, 
+            bool includeNumbers = true, 
+            bool includeLowercaseCharacters = true, 
+            bool includeUppercaseCharacters = true, 
+            bool includeSpecialCharacters = true)
         {
             var buffer = new byte[4];
             new RNGCryptoServiceProvider().GetBytes(buffer);
@@ -169,24 +151,16 @@ namespace ReSharp.Security.Cryptography
             var group = new StringBuilder();
 
             if (includeNumbers)
-            {
                 group.Append(Numbers);
-            }
 
             if (includeLowercaseCharacters)
-            {
                 group.Append(LowercaseCharacters);
-            }
 
             if (includeUppercaseCharacters)
-            {
                 group.Append(UppercaseCharacters);
-            }
 
             if (includeSpecialCharacters)
-            {
                 group.Append(SpecialCharacters);
-            }
 
             var groupString = group.ToString();
 
@@ -211,9 +185,7 @@ namespace ReSharp.Security.Cryptography
         public static string Md5Encrypt(string plainText, bool outputAsLowerCase = true)
         {
             if (string.IsNullOrEmpty(plainText))
-            {
                 throw new ArgumentNullException(nameof(plainText));
-            }
 
             var cipher = Md5Encrypt(DefaultEncoding.GetBytes(plainText));
             var cipherText = BitConverter.ToString(cipher).Replace("-", "");
@@ -229,9 +201,7 @@ namespace ReSharp.Security.Cryptography
         public static byte[] Md5Encrypt(byte[] plainText)
         {
             if (plainText == null || plainText.Length == 0)
-            {
                 throw new ArgumentNullException(nameof(plainText));
-            }
 
             using (var cryptoServiceProvider = new MD5CryptoServiceProvider())
             {
@@ -252,9 +222,7 @@ namespace ReSharp.Security.Cryptography
         public static string Md5HashEncrypt(string plainText, bool outputAsLowerCase = true)
         {
             if (string.IsNullOrEmpty(plainText))
-            {
                 throw new ArgumentNullException(nameof(plainText));
-            }
 
             var cipherTextRawData = Md5HashEncrypt(DefaultEncoding.GetBytes(plainText));
             var builder = new StringBuilder();
@@ -262,6 +230,7 @@ namespace ReSharp.Security.Cryptography
             {
                 builder.Append(byteData.ToString(outputAsLowerCase ? "x" : "X"));
             }
+
             return builder.ToString();
         }
 
@@ -274,9 +243,7 @@ namespace ReSharp.Security.Cryptography
         public static byte[] Md5HashEncrypt(byte[] plainText)
         {
             if (plainText == null || plainText.Length == 0)
-            {
                 throw new ArgumentNullException(nameof(plainText));
-            }
 
             using (var md5 = MD5.Create())
             {
@@ -294,14 +261,10 @@ namespace ReSharp.Security.Cryptography
         public static string XxteaDecrypt(string cipherText, string key)
         {
             if (string.IsNullOrEmpty(cipherText))
-            {
                 throw new ArgumentNullException(nameof(cipherText));
-            }
 
             if (string.IsNullOrEmpty(key))
-            {
                 throw new ArgumentNullException(nameof(key));
-            }
 
             return DefaultEncoding.GetString(Xxtea.Decrypt(DefaultEncoding.GetBytes(cipherText), key));
         }
@@ -316,14 +279,10 @@ namespace ReSharp.Security.Cryptography
         public static byte[] XxteaDecrypt(byte[] cipherText, byte[] key)
         {
             if (cipherText == null || cipherText.Length == 0)
-            {
                 throw new ArgumentNullException(nameof(cipherText));
-            }
 
             if (key == null || key.Length == 0)
-            {
                 throw new ArgumentNullException(nameof(key));
-            }
 
             return Xxtea.Decrypt(cipherText, key);
         }
@@ -338,14 +297,10 @@ namespace ReSharp.Security.Cryptography
         public static string XxteaEncrypt(string plainText, string key)
         {
             if (string.IsNullOrEmpty(plainText))
-            {
                 throw new ArgumentNullException(nameof(plainText));
-            }
 
             if (string.IsNullOrEmpty(key))
-            {
                 throw new ArgumentNullException(nameof(key));
-            }
 
             return DefaultEncoding.GetString(Xxtea.Encrypt(plainText, key));
         }
@@ -360,18 +315,12 @@ namespace ReSharp.Security.Cryptography
         public static byte[] XxteaEncrypt(byte[] plainText, byte[] key)
         {
             if (plainText == null || plainText.Length == 0)
-            {
                 throw new ArgumentNullException(nameof(plainText));
-            }
 
             if (key == null || key.Length == 0)
-            {
                 throw new ArgumentNullException(nameof(key));
-            }
 
             return Xxtea.Encrypt(plainText, key);
         }
-
-        #endregion Methods
     }
 }

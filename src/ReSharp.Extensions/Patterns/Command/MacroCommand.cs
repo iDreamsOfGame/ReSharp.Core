@@ -12,13 +12,7 @@ namespace ReSharp.Patterns.Command
     /// <seealso cref="IMacroCommand" />
     public class MacroCommand : ICommand, IMacroCommand
     {
-        #region Fields
-
         private readonly Queue<ICommand> commandQueue;
-
-        #endregion Fields
-
-        #region Constructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MacroCommand" /> class.
@@ -27,10 +21,6 @@ namespace ReSharp.Patterns.Command
         {
             commandQueue = new Queue<ICommand>();
         }
-
-        #endregion Constructors
-
-        #region Methods
 
         /// <summary>
         /// Adds sub command.
@@ -52,7 +42,5 @@ namespace ReSharp.Patterns.Command
                 subCommand.Execute();
             }
         }
-
-        #endregion Methods
     }
 }

@@ -8,8 +8,6 @@ namespace ReSharp.Patterns.Command
     /// </summary>
     public interface IMacroCommand
     {
-        #region Methods
-
         /// <summary>
         /// Adds an <see cref="ICommand" />.
         /// </summary>
@@ -17,7 +15,5 @@ namespace ReSharp.Patterns.Command
         /// The <see cref="ICommand" /> to be executed by this <see cref="IMacroCommand" />.
         /// </param>
         void AddSubCommand(ICommand subCommand);
-
-        #endregion Methods
     }
 }

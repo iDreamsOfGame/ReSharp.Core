@@ -10,19 +10,12 @@ namespace System
     /// </summary>
     public static class StringExtensions
     {
-        #region Fields
-
         /// <summary>
         /// The whitespace chars definitions.
         /// </summary>
-        private static readonly char[] whitespaceChars = new char[]
-        {
+        private static readonly char[] WhitespaceChars = {
             '\t', '\n', '\v', '\f', '\r', ' ', '\x0085', '\x00a0', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '​', '\u2028', '\u2029', '﻿'
         };
-
-        #endregion Fields
-
-        #region Methods
 
         /// <summary>
         /// Determines whether the specified <see cref="string"/> has value.
@@ -47,14 +40,10 @@ namespace System
         public static int KmpIndexOf(this string source, string value)
         {
             if (source == null)
-            {
                 throw new ArgumentNullException(nameof(source));
-            }
 
             if (value == string.Empty)
-            {
                 return 0;
-            }
 
             int i = 0, j = 0, result = -1;
             var nextIndexCollection = GetNextIndexCollection(value);
@@ -73,9 +62,7 @@ namespace System
             }
 
             if (j >= value.Length)
-            {
                 result = i - value.Length;
-            }
 
             return result;
         }
@@ -90,9 +77,7 @@ namespace System
         public static string Reverse(this string source)
         {
             if (!HasValue(source))
-            {
                 throw new ArgumentNullException(nameof(source));
-            }
 
             var chars = source.ToCharArray();
             Array.Reverse(chars);
@@ -161,7 +146,7 @@ namespace System
         /// </summary>
         /// <param name="source">The source string.</param>
         /// <returns>The string with removing all whitespace characters.</returns>
-        public static string TrimAll(this string source) => source.TrimAll(whitespaceChars);
+        public static string TrimAll(this string source) => source.TrimAll(WhitespaceChars);
 
         /// <summary>
         /// Trims all characters assigned.
@@ -181,9 +166,7 @@ namespace System
         private static int[] GetNextIndexCollection(string value)
         {
             if (value == null)
-            {
                 throw new ArgumentNullException(nameof(value));
-            }
 
             int j = 0, k = -1;
             var nextIndexCollection = new int[value.Length];
@@ -213,7 +196,5 @@ namespace System
 
             return nextIndexCollection;
         }
-
-        #endregion Methods
     }
 }

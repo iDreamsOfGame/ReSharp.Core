@@ -21,18 +21,12 @@ namespace System.Collections.Generic
     [ComVisible(false)]
     public class LinkedStack<T> : IEnumerable<T>, ICollection
     {
-        #region Fields
-
         private readonly LinkedList<T> list;
 
         [NonSerialized]
         private object syncRoot;
 
         private int version;
-
-        #endregion Fields
-
-        #region Constructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LinkedStack{T}" /> class.
@@ -53,10 +47,6 @@ namespace System.Collections.Generic
             list = new LinkedList<T>(collection);
             version = 0;
         }
-
-        #endregion Constructors
-
-        #region Properties
 
         /// <summary>
         /// Gets the number of elements contained in the <see cref="LinkedStack{T}" />.
@@ -79,10 +69,6 @@ namespace System.Collections.Generic
             }
         }
 
-        #endregion Properties
-
-        #region Methods
-
         /// <summary>
         /// Removes all objects from the <see cref="LinkedStack{T}" />.
         /// </summary>
@@ -96,10 +82,7 @@ namespace System.Collections.Generic
         /// </summary>
         /// <param name="item">The object to locate in the <see cref="LinkedStack{T}" />. The value can be null for reference types.</param>
         /// <returns><c>true</c> if <c>item</c> is found in the <see cref="LinkedStack{T}" />; otherwise, <c>false</c>.</returns>
-        public bool Contains(T item)
-        {
-            return list.Contains(item);
-        }
+        public bool Contains(T item) => list.Contains(item);
 
         /// <summary>
         /// Copies the <see cref="LinkedStack{T}" /> to an existing one-dimensional <see cref="System.Array" />, starting at the specified array index.
@@ -118,19 +101,13 @@ namespace System.Collections.Generic
         public void CopyTo(T[] array, int arrayIndex)
         {
             if (array == null)
-            {
                 throw new ArgumentNullException(nameof(array));
-            }
 
             if (arrayIndex < 0 || arrayIndex > array.Length)
-            {
                 throw new ArgumentOutOfRangeException(nameof(arrayIndex), "arrayIndex is less than zero. ");
-            }
 
             if (array.Length - arrayIndex < Count)
-            {
                 throw new ArgumentException("The number of elements in the source LinkedStack<T> is greater than the available space from index to the end of the destination array.");
-            }
 
             list.CopyTo(array, arrayIndex);
             Array.Reverse(array, arrayIndex, Count);
@@ -150,9 +127,7 @@ namespace System.Collections.Generic
         public T Peek()
         {
             if (Count == 0)
-            {
                 throw new InvalidOperationException("Empty stack");
-            }
 
             return list.Last.Value;
         }
@@ -165,9 +140,7 @@ namespace System.Collections.Generic
         public T Pop()
         {
             if (Count == 0)
-            {
                 throw new InvalidOperationException("Empty stack");
-            }
 
             version++;
             var lastItem = list.Last.Value;
@@ -225,8 +198,7 @@ namespace System.Collections.Generic
                 result = default;
                 return false;
             }
-
-
+            
             result = list.Last.Value;
             list.RemoveLast();
             version++;
@@ -236,38 +208,22 @@ namespace System.Collections.Generic
         void ICollection.CopyTo(Array array, int arrayIndex)
         {
             if (array == null)
-            {
                 throw new ArgumentNullException(nameof(array));
-            }
 
             if (arrayIndex < 0 || arrayIndex > array.Length)
-            {
                 throw new ArgumentOutOfRangeException(nameof(arrayIndex), "arrayIndex is less than zero. ");
-            }
 
             if (array.Length - arrayIndex < Count)
-            {
                 throw new ArgumentException("The number of elements in the source LinkedStack<T> is greater than the available space from index to the end of the destination array.");
-            }
 
             var collection = (ICollection)list;
             collection.CopyTo(array, arrayIndex);
             Array.Reverse(array, arrayIndex, Count);
         }
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
-        {
-            return new Enumerator(this);
-        }
+        IEnumerator<T> IEnumerable<T>.GetEnumerator() => new Enumerator(this);
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return new Enumerator(this);
-        }
-
-        #endregion Methods
-
-        #region Structs
+        IEnumerator IEnumerable.GetEnumerator() => new Enumerator(this);
 
         /// <summary>
         /// Enumerates the elements of a <see cref="LinkedStack{T}" />. Implements the <see cref="System.Collections.Generic.IEnumerator{T}" />.
@@ -279,17 +235,15 @@ namespace System.Collections.Generic
         [SuppressMessage("Microsoft.Performance", "CA1815:OverrideEqualsAndOperatorEqualsOnValueTypes", Justification = "not an expected scenario")]
         public struct Enumerator : IEnumerator<T>
         {
-            #region Fields
-
             private T currentElement;
+
             private int index;
+
             private LinkedListNode<T> node;
+
             private LinkedStack<T> stack;
+
             private int version;
-
-            #endregion Fields
-
-            #region Constructors
 
             internal Enumerator(LinkedStack<T> stack)
             {
@@ -297,12 +251,8 @@ namespace System.Collections.Generic
                 version = stack.version;
                 index = -2;
                 node = null;
-                currentElement = default(T);
+                currentElement = default;
             }
-
-            #endregion Constructors
-
-            #region Properties
 
             /// <summary>
             /// Gets the element at the current position of the enumerator. Implements the <see
@@ -316,17 +266,15 @@ namespace System.Collections.Generic
             {
                 get
                 {
-                    if (index == -2)
+                    switch (index)
                     {
-                        throw new InvalidOperationException("Enum not started");
+                        case -2:
+                            throw new InvalidOperationException("Enum not started");
+                        case -1:
+                            throw new InvalidOperationException("Enum ended");
+                        default:
+                            return currentElement;
                     }
-
-                    if (index == -1)
-                    {
-                        throw new InvalidOperationException("Enum ended");
-                    }
-
-                    return currentElement;
                 }
             }
 
@@ -341,23 +289,17 @@ namespace System.Collections.Generic
             {
                 get
                 {
-                    if (index == -2)
+                    switch (index)
                     {
-                        throw new InvalidOperationException("Enum not started");
+                        case -2:
+                            throw new InvalidOperationException("Enum not started");
+                        case -1:
+                            throw new InvalidOperationException("Enum ended");
+                        default:
+                            return currentElement;
                     }
-
-                    if (index == -1)
-                    {
-                        throw new InvalidOperationException("Enum ended");
-                    }
-
-                    return currentElement;
                 }
             }
-
-            #endregion Properties
-
-            #region Methods
 
             /// <summary>
             /// Releases all resources used by the <see cref="LinkedStack{T}.Enumerator" />.
@@ -384,26 +326,26 @@ namespace System.Collections.Generic
                     throw new InvalidOperationException("Enum failed version");
                 }
 
-                if (index == -2)
+                switch (index)
                 {
-                    node = stack.list.Last;
-                    index = stack.Count - 1;
-                    retrieval = index >= 0;
-
-                    if (retrieval)
+                    case -2:
                     {
-                        currentElement = node.Value;
+                        node = stack.list.Last;
+                        index = stack.Count - 1;
+                        retrieval = index >= 0;
+
+                        if (retrieval)
+                        {
+                            currentElement = node.Value;
+                        }
+
+                        return retrieval;
                     }
-
-                    return retrieval;
+                    case -1:
+                        return false;
                 }
 
-                if (index == -1)
-                {
-                    return false;
-                }
-
-                retrieval = (--index >= 0);
+                retrieval = --index >= 0;
 
                 if (retrieval)
                 {
@@ -412,7 +354,7 @@ namespace System.Collections.Generic
                 }
                 else
                 {
-                    currentElement = default(T);
+                    currentElement = default;
                 }
 
                 return retrieval;
@@ -428,10 +370,6 @@ namespace System.Collections.Generic
                 index = -2;
                 currentElement = default;
             }
-
-            #endregion Methods
         }
-
-        #endregion Structs
     }
 }

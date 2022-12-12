@@ -19,20 +19,18 @@ namespace ReSharp.Security.DataProtection
     [Serializable]
     public struct SecretDouble : IEquatable<SecretDouble>, IComparable<SecretDouble>, ISerializable
     {
-        #region Fields
-
         private long check;
+
         private long value;
-
-        #endregion Fields
-
-        #region Constructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SecretDouble" /> struct with the <see cref="double" /> to encrypt.
         /// </summary>
         /// <param name="value">The <see cref="double" /> to encrypt.</param>
-        public SecretDouble(double value) => this.value = DataProtectionProvider.Protect(value, out check);
+        public SecretDouble(double value)
+        {
+            this.value = DataProtectionProvider.Protect(value, out check);
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SecretDouble" /> struct.
@@ -44,10 +42,6 @@ namespace ReSharp.Security.DataProtection
             value = DataProtectionProvider.Protect(info.GetDouble("v"), out check);
         }
 
-        #endregion Constructors
-
-        #region Properties
-
         /// <summary>
         /// Gets the original <see cref="double" /> value.
         /// </summary>
@@ -57,10 +51,6 @@ namespace ReSharp.Security.DataProtection
             get => DataProtectionProvider.UnprotectDouble(value, check);
             set => this.value = DataProtectionProvider.Protect(value, out check);
         }
-
-        #endregion Properties
-
-        #region Methods
 
         /// <summary>
         /// Performs an implicit conversion from <see cref="SecretDouble" /> to <see cref="double" />.
@@ -232,14 +222,10 @@ namespace ReSharp.Security.DataProtection
         public override bool Equals(object obj)
         {
             if (obj == null)
-            {
                 return false;
-            }
 
             if (obj.GetType() != GetType())
-            {
                 return false;
-            }
 
             var result = (SecretDouble)obj;
             return result == this;
@@ -270,7 +256,5 @@ namespace ReSharp.Security.DataProtection
         /// </summary>
         /// <returns>A <see cref="string" /> that represents this instance.</returns>
         public override string ToString() => Value.ToString(CultureInfo.InvariantCulture);
-
-        #endregion Methods
     }
 }

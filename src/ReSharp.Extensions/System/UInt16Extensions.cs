@@ -8,18 +8,11 @@ namespace System
     /// </summary>
     public static class UInt16Extensions
     {
-        #region Methods
-
         /// <summary>
         /// Reverse and advances the position of the source by two bytes.
         /// </summary>
         /// <param name="source">The <see cref="ushort"/> to reverse.</param>
         /// <returns>A 2-byte unsigned short integer in reverse.</returns>
-        public static ushort Reverse(this ushort source)
-        {
-            return (ushort)((source & 0xFFU) << 8 | (source & 0xFF00U) >> 8);
-        }
-
-        #endregion Methods
+        public static ushort Reverse(this ushort source) => (ushort)((source & 0xFFU) << 8 | (source & 0xFF00U) >> 8);
     }
 }

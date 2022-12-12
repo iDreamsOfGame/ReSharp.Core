@@ -11,8 +11,6 @@ namespace ReSharp.Patterns.State
     /// <seealso cref="System.EventArgs" />
     public class StateChangedEventArgs : EventArgs
     {
-        #region Constructors
-
         /// <summary>
         /// Initializes a new instance of the <see cref="StateChangedEventArgs" /> class with the
         /// given information.
@@ -20,35 +18,23 @@ namespace ReSharp.Patterns.State
         /// <param name="previousState">
         /// The state before the <see cref="StateMachine.StateChanged" /> event.
         /// </param>
-        /// <param name="state">The state after the <see cref="StateMachine.StateChanged" /> event.</param>
-        public StateChangedEventArgs(IState previousState, IState state)
+        /// <param name="currentState">The state after the <see cref="StateMachine.StateChanged" /> event.</param>
+        public StateChangedEventArgs(IState previousState, IState currentState)
         {
             PreviousState = previousState;
-            State = state;
+            CurrentState = currentState;
         }
-
-        #endregion Constructors
-
-        #region Properties
 
         /// <summary>
         /// Gets the state before the <see cref="StateMachine.StateChanged" /> event.
         /// </summary>
         /// <value>The the previous state.</value>
-        public IState PreviousState
-        {
-            get;
-        }
+        public IState PreviousState { get; }
 
         /// <summary>
         /// Gets the state after the <see cref="StateMachine.StateChanged" /> event.
         /// </summary>
         /// <value>The current state.</value>
-        public IState State
-        {
-            get;
-        }
-
-        #endregion Properties
+        public IState CurrentState { get; }
     }
 }

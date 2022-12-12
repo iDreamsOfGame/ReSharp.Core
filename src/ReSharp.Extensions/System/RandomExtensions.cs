@@ -8,8 +8,6 @@ namespace System
     /// </summary>
     public static class RandomExtensions
     {
-        #region Methods
-
         /// <summary>
         /// Returns a random double that is within a specific range.
         /// </summary>
@@ -28,9 +26,7 @@ namespace System
         public static double NextDouble(this Random source, double minValue, double maxValue)
         {
             if (minValue > maxValue)
-            {
                 throw new ArgumentOutOfRangeException(nameof(minValue), "minValue is greater than maxValue.");
-            }
 
             var range = maxValue - minValue;
             double result;
@@ -74,9 +70,7 @@ namespace System
         public static long NextLong(this Random source, long minValue, long maxValue)
         {
             if (minValue > maxValue)
-            {
                 throw new ArgumentOutOfRangeException(nameof(minValue), "minValue is greater than maxValue.");
-            }
 
             var range = maxValue - minValue;
             var result = source.NextDouble() * range + minValue;
@@ -111,9 +105,7 @@ namespace System
         public static float NextSingle(this Random source, float minValue, float maxValue)
         {
             if (minValue > maxValue)
-            {
                 throw new ArgumentOutOfRangeException(nameof(minValue), "minValue is greater than maxValue.");
-            }
 
             var range = maxValue - minValue;
             float result;
@@ -138,7 +130,5 @@ namespace System
 
             return result;
         }
-
-        #endregion Methods
     }
 }

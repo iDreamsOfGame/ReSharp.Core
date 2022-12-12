@@ -1,15 +1,14 @@
 ﻿// Copyright (c) Jerry Lee. All rights reserved. Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
+// ReSharper disable SwapViaDeconstruction
 namespace System.Collections
 {
     /// <summary>
     /// Extension methods for collection classes.
     /// </summary>
-	public static class CollectionExtensions
+    public static class CollectionExtensions
     {
-        #region Methods
-
         /// <summary>
         /// Adds a unique item to the <see cref="IList"/>.
         /// </summary>
@@ -24,9 +23,7 @@ namespace System.Collections
             var position = -1;
 
             if (!source.Contains(value))
-            {
                 position = source.Add(value);
-            }
 
             return position;
         }
@@ -70,9 +67,9 @@ namespace System.Collections
 
             count = Math.Max(Math.Min(count, source.Count), 0);
 
-            if (length <= 1) 
+            if (length <= 1)
                 return index;
-            
+
             index = 0;
             for (var i = 0; i < count; ++i)
             {
@@ -93,9 +90,9 @@ namespace System.Collections
         /// <param name="b">The second index of element in the <see cref="IList"/> to swap.</param>
         public static void Swap(this IList source, int a, int b)
         {
-            if (a < 0 || a >= source.Count || b < 0 || b >= source.Count) 
+            if (a < 0 || a >= source.Count || b < 0 || b >= source.Count)
                 return;
-            
+
             var temp = source[b];
             source[b] = source[a];
             source[a] = temp;
@@ -117,7 +114,5 @@ namespace System.Collections
 
             return $"{{ {string.Join(", ", stringCollection)} }}";
         }
-
-        #endregion Methods
     }
 }

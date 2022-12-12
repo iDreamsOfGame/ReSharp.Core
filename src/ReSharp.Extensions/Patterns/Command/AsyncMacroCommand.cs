@@ -14,8 +14,6 @@ namespace ReSharp.Patterns.Command
     /// <seealso cref="ReSharp.Patterns.Command.IAsyncMacroCommand" />
     public class AsyncMacroCommand : AsyncCommand, IAsyncMacroCommand
     {
-        #region Fields
-
         private readonly Queue<IAsyncCommand> commandQueue;
 
         private bool executed;
@@ -23,10 +21,6 @@ namespace ReSharp.Patterns.Command
         private IAsyncCommand executingSubCommand;
 
         private bool isAborted;
-
-        #endregion Fields
-
-        #region Constructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AsyncMacroCommand" /> class.
@@ -37,10 +31,6 @@ namespace ReSharp.Patterns.Command
             executed = false;
             commandQueue = new Queue<IAsyncCommand>();
         }
-
-        #endregion Constructors
-
-        #region Methods
 
         /// <summary>
         /// Aborts asynchronous commands execution.
@@ -73,6 +63,7 @@ namespace ReSharp.Patterns.Command
         {
             if (CheckAbortedOrExecuted())
                 return;
+            
             base.Execute(executedCallback);
             ExecuteNextSubCommand();
         }
@@ -95,7 +86,5 @@ namespace ReSharp.Patterns.Command
                 executed = true;
             }
         }
-
-        #endregion Methods
     }
 }

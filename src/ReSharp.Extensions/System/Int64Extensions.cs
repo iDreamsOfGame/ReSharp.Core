@@ -8,8 +8,6 @@ namespace System
     /// </summary>
     public static class Int64Extensions
     {
-        #region Methods
-
         /// <summary>
         /// Reverse and advances the position of the source by eight bytes.
         /// </summary>
@@ -21,7 +19,5 @@ namespace System
             Array.Reverse(data);
             return BitConverter.ToInt64(data, 0);
         }
-
-        #endregion Methods
     }
 }

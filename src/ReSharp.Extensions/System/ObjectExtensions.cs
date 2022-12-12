@@ -4,6 +4,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+// ReSharper disable ConvertIfStatementToSwitchStatement
 
 namespace System
 {
@@ -144,27 +145,27 @@ namespace System
                     var propertyInfo = (PropertyInfo)memberInfo;
                     var setMethodInfo = propertyInfo.GetSetMethod(false);
 
-                    if (setMethodInfo != null)
-                    {
-                        var propertyValue = propertyInfo.GetValue(source, null);
+                    if (setMethodInfo == null) 
+                        continue;
+                    
+                    var propertyValue = propertyInfo.GetValue(source, null);
 
-                        if (propertyValue == null)
-                            continue;
-                        try
+                    if (propertyValue == null)
+                        continue;
+                    try
+                    {
+                        if (propertyValue is ICloneable cloneable)
                         {
-                            if (propertyValue is ICloneable cloneable)
-                            {
-                                propertyInfo.SetValue(target, cloneable.Clone(), null);
-                            }
-                            else
-                            {
-                                propertyInfo.SetValue(target, propertyValue.DeepClone(), null);
-                            }
+                            propertyInfo.SetValue(target, cloneable.Clone(), null);
                         }
-                        catch (Exception)
+                        else
                         {
-                            // ignored
+                            propertyInfo.SetValue(target, propertyValue.DeepClone(), null);
                         }
+                    }
+                    catch (Exception)
+                    {
+                        // ignored
                     }
                 }
             }
@@ -238,13 +239,11 @@ namespace System
         /// </param>
         public static void SetFieldValue(this object source, string fieldName, object value, BindingFlags bindingFlags = BindingFlagsCollection.InstanceSetFieldBindingFlags)
         {
-            var type = source.GetType();
-            var info = type.GetField(fieldName, bindingFlags);
-
-            if (info != null)
-            {
-                info.SetValue(source, value);
-            }
+            var info = source.GetType().GetField(fieldName, bindingFlags);
+            if (info == null)
+                return;
+            
+            info.SetValue(source, value);
         }
 
         /// <summary>
@@ -301,13 +300,11 @@ namespace System
         /// </param>
         public static void SetPropertyValue(this object source, string propertyName, object value, BindingFlags bindingFlags = BindingFlagsCollection.InstanceSetPropertyBindingFlags)
         {
-            var type = source.GetType();
-            var info = type.GetProperty(propertyName, bindingFlags);
-
-            if (info != null)
-            {
-                info.SetValue(source, value, null);
-            }
+            var info = source.GetType().GetProperty(propertyName, bindingFlags);
+            if (info == null) 
+                return;
+            
+            info.SetValue(source, value, null);
         }
 
         /// <summary>
@@ -378,9 +375,7 @@ namespace System
         /// <returns>An object containing the return value of the invoked method.</returns>
         public static object InvokeGenericMethod(this object source, string methodName, Type[] genericTypes, object[] parameters = null, BindingFlags bindingFlags = BindingFlagsCollection.InstanceBindingFlags)
         {
-            var type = source.GetType();
-            var methodInfo = type.GetMethod(methodName, bindingFlags);
-
+            var methodInfo = source.GetType().GetMethod(methodName, bindingFlags);
             if (methodInfo == null)
                 return null;
             

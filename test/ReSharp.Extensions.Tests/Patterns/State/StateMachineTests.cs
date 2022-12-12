@@ -50,7 +50,7 @@ namespace ReSharp.Tests.Patterns.State
         {
             var context = new StateMachine();
             var state = new TestState();
-            context.StateChanged += (sender, e) => { Assert.AreSame(e.State, state); };
+            context.StateChanged += (sender, e) => { Assert.AreSame(e.CurrentState, state); };
             context.ChangeState(state);
         }
 

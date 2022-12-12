@@ -8,8 +8,6 @@ namespace System.IO
     /// </summary>
     public static class StreamExtensions
     {
-        #region Methods
-
         /// <summary>
         /// Convert a <see cref="Stream"/> to a byte array.
         /// </summary>
@@ -17,21 +15,19 @@ namespace System.IO
         /// <returns>The byte array converted.</returns>
         public static byte[] ToByteArray(this Stream input)
         {
-            byte[] buffer = new byte[16 * 1024];
+            var buffer = new byte[16 * 1024];
 
-            using (var ms = new MemoryStream())
+            using (var stream = new MemoryStream())
             {
                 int read;
 
                 while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
                 {
-                    ms.Write(buffer, 0, read);
+                    stream.Write(buffer, 0, read);
                 }
 
-                return ms.ToArray();
+                return stream.ToArray();
             }
         }
-
-        #endregion Methods
     }
 }

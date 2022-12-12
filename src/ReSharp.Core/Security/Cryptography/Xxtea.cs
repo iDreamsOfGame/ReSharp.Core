@@ -8,87 +8,40 @@ namespace ReSharp.Security.Cryptography
 {
     internal static class Xxtea
     {
-        #region Fields
-
         private const uint Delta = 0x9E3779B9;
 
         private static readonly Encoding DefaultEncoding = Encoding.UTF8;
 
-        #endregion Fields
+        public static byte[] Decrypt(byte[] data, byte[] key) => data.Length == 0 ? data : ToByteArray(Decrypt(ToUInt32Array(data, false), ToUInt32Array(FixKey(key), false)), true);
 
-        #region Methods
+        public static byte[] Decrypt(byte[] data, string key) => Decrypt(data, DefaultEncoding.GetBytes(key));
 
-        public static byte[] Decrypt(byte[] data, byte[] key) => 
-            data.Length == 0 ? data : ToByteArray(Decrypt(ToUInt32Array(data, false), ToUInt32Array(FixKey(key), false)), true);
+        public static byte[] DecryptBase64String(string data, byte[] key) => Decrypt(Convert.FromBase64String(data), key);
 
-        public static byte[] Decrypt(byte[] data, string key)
-        {
-            return Decrypt(data, DefaultEncoding.GetBytes(key));
-        }
+        public static byte[] DecryptBase64String(string data, string key) => Decrypt(Convert.FromBase64String(data), key);
 
-        public static byte[] DecryptBase64String(string data, byte[] key)
-        {
-            return Decrypt(Convert.FromBase64String(data), key);
-        }
+        public static string DecryptToString(byte[] data, byte[] key) => DefaultEncoding.GetString(Decrypt(data, key));
 
-        public static byte[] DecryptBase64String(string data, string key)
-        {
-            return Decrypt(Convert.FromBase64String(data), key);
-        }
+        public static string DecryptToString(byte[] data, string key) => DefaultEncoding.GetString(Decrypt(data, key));
 
-        public static string DecryptToString(byte[] data, byte[] key)
-        {
-            return DefaultEncoding.GetString(Decrypt(data, key));
-        }
+        public static byte[] Encrypt(byte[] data, byte[] key) => 
+            data.Length == 0 
+                ? data
+                : ToByteArray(Encrypt(ToUInt32Array(data, true), ToUInt32Array(FixKey(key), false)), false);
 
-        public static string DecryptToString(byte[] data, string key)
-        {
-            return DefaultEncoding.GetString(Decrypt(data, key));
-        }
+        public static byte[] Encrypt(string data, byte[] key) => Encrypt(DefaultEncoding.GetBytes(data), key);
 
-        public static byte[] Encrypt(byte[] data, byte[] key)
-        {
-            if (data.Length == 0)
-            {
-                return data;
-            }
-            return ToByteArray(Encrypt(ToUInt32Array(data, true), ToUInt32Array(FixKey(key), false)), false);
-        }
+        public static byte[] Encrypt(byte[] data, string key) => Encrypt(data, DefaultEncoding.GetBytes(key));
 
-        public static byte[] Encrypt(string data, byte[] key)
-        {
-            return Encrypt(DefaultEncoding.GetBytes(data), key);
-        }
+        public static byte[] Encrypt(string data, string key) => Encrypt(DefaultEncoding.GetBytes(data), DefaultEncoding.GetBytes(key));
 
-        public static byte[] Encrypt(byte[] data, string key)
-        {
-            return Encrypt(data, DefaultEncoding.GetBytes(key));
-        }
+        public static string EncryptToBase64String(byte[] data, byte[] key) => Convert.ToBase64String(Encrypt(data, key));
 
-        public static byte[] Encrypt(string data, string key)
-        {
-            return Encrypt(DefaultEncoding.GetBytes(data), DefaultEncoding.GetBytes(key));
-        }
+        public static string EncryptToBase64String(string data, byte[] key) => Convert.ToBase64String(Encrypt(data, key));
 
-        public static string EncryptToBase64String(byte[] data, byte[] key)
-        {
-            return Convert.ToBase64String(Encrypt(data, key));
-        }
+        public static string EncryptToBase64String(byte[] data, string key) => Convert.ToBase64String(Encrypt(data, key));
 
-        public static string EncryptToBase64String(string data, byte[] key)
-        {
-            return Convert.ToBase64String(Encrypt(data, key));
-        }
-
-        public static string EncryptToBase64String(byte[] data, string key)
-        {
-            return Convert.ToBase64String(Encrypt(data, key));
-        }
-
-        public static string EncryptToBase64String(string data, string key)
-        {
-            return Convert.ToBase64String(Encrypt(data, key));
-        }
+        public static string EncryptToBase64String(string data, string key) => Convert.ToBase64String(Encrypt(data, key));
 
         private static uint[] Decrypt(uint[] v, uint[] k)
         {
@@ -111,13 +64,15 @@ namespace ReSharp.Security.Cryptography
                     for (p = n; p > 0; p--)
                     {
                         z = v[p - 1];
-                        y = v[p] -= MX(sum, y, z, p, e, k);
+                        y = v[p] -= Mx(sum, y, z, p, e, k);
                     }
+
                     z = v[n];
-                    y = v[0] -= MX(sum, y, z, p, e, k);
+                    y = v[0] -= Mx(sum, y, z, p, e, k);
                     sum -= Delta;
                 }
             }
+
             return v;
         }
 
@@ -143,12 +98,14 @@ namespace ReSharp.Security.Cryptography
                     for (p = 0; p < n; p++)
                     {
                         y = v[p + 1];
-                        z = v[p] += MX(sum, y, z, p, e, k);
+                        z = v[p] += Mx(sum, y, z, p, e, k);
                     }
+
                     y = v[0];
-                    z = v[n] += MX(sum, y, z, p, e, k);
+                    z = v[n] += Mx(sum, y, z, p, e, k);
                 }
             }
+
             return v;
         }
 
@@ -165,13 +122,17 @@ namespace ReSharp.Security.Cryptography
             {
                 Array.Copy(key, 0, fixedKey, 0, 16);
             }
+
             return fixedKey;
         }
 
-        private static uint MX(uint sum, uint y, uint z, int p, uint e, uint[] k)
-        {
-            return (z >> 5 ^ y << 2) + (y >> 3 ^ z << 4) ^ (sum ^ y) + (k[p & 3 ^ e] ^ z);
-        }
+        private static uint Mx(uint sum,
+            uint y,
+            uint z,
+            int p,
+            uint e,
+            uint[] k) =>
+            (z >> 5 ^ y << 2) + (y >> 3 ^ z << 4) ^ (sum ^ y) + (k[p & 3 ^ e] ^ z);
 
         private static byte[] ToByteArray(uint[] data, bool includeLength)
         {
@@ -184,13 +145,16 @@ namespace ReSharp.Security.Cryptography
                 {
                     return null;
                 }
+
                 n = m;
             }
+
             var result = new byte[n];
             for (var i = 0; i < n; i++)
             {
                 result[i] = (byte)(data[i >> 2] >> ((i & 3) << 3));
             }
+
             return result;
         }
 
@@ -208,13 +172,13 @@ namespace ReSharp.Security.Cryptography
             {
                 result = new uint[n];
             }
+
             for (var i = 0; i < length; i++)
             {
                 result[i >> 2] |= (uint)data[i] << ((i & 3) << 3);
             }
+
             return result;
         }
-
-        #endregion Methods
     }
 }
