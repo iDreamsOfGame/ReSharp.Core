@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using ReSharp.Extensions;
 
 namespace System.Tests
 {
@@ -16,15 +17,9 @@ namespace System.Tests
 
     public class EventTester
     {
-        private event EventHandler testEvent2;
-        
         public event EventHandler TestEvent;
 
-        public event EventHandler TestEvent2
-        {
-            add => testEvent2 += value;
-            remove => testEvent2 -= value;
-        }
+        public event EventHandler TestEvent2;
 
         public int CounterA { get; private set; } = 10;
 
@@ -36,7 +31,7 @@ namespace System.Tests
             TestEvent2 += OnTestEvent2;
             this.RemoveAllEventHandlers();
             TestEvent?.Invoke(this, EventArgs.Empty);
-            testEvent2?.Invoke(this, EventArgs.Empty);
+            TestEvent2?.Invoke(this, EventArgs.Empty);
         }
 
         public void Test2()
@@ -45,7 +40,7 @@ namespace System.Tests
             TestEvent2 += OnTestEvent2;
             this.RemoveEventHandlers("TestEvent");
             TestEvent?.Invoke(this, EventArgs.Empty);
-            testEvent2?.Invoke(this, EventArgs.Empty);
+            TestEvent2?.Invoke(this, EventArgs.Empty);
         }
 
         private void OnTestEvent(object sender, EventArgs e)

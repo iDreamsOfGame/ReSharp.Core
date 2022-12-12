@@ -1,10 +1,13 @@
 ﻿// Copyright (c) Jerry Lee. All rights reserved. Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading;
 
-namespace System.Collections.Generic
+namespace ReSharp.Extensions
 {
     /// <summary>
     /// Represents a tree data structure.

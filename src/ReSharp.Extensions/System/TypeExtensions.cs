@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Jerry Lee. All rights reserved. Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -8,7 +9,7 @@ using System.Reflection;
 
 // ReSharper disable InvertIf
 
-namespace System
+namespace ReSharp.Extensions
 {
     /// <summary>
     /// Extension method collection for <see cref="System.Type"/>.

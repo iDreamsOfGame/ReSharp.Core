@@ -1,7 +1,9 @@
 ﻿// Copyright (c) Jerry Lee. All rights reserved. Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
-namespace System
+using System;
+
+namespace ReSharp.Extensions
 {
     /// <summary>
     /// Provides utilities to deal with <see cref="Enum"/>.

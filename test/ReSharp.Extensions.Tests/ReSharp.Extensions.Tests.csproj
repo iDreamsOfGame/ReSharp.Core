@@ -44,9 +44,6 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Patterns\Command\CommandTests.cs" />
-        <Compile Include="Patterns\SingletonTests.cs" />
-        <Compile Include="Patterns\State\StateMachineTests.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="System\ObjectExtensionsTests.cs" />
     </ItemGroup>

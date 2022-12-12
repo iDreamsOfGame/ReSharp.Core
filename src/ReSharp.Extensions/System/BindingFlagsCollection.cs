@@ -3,7 +3,7 @@
 
 using System.Reflection;
 
-namespace System
+namespace ReSharp.Extensions
 {
     /// <summary>
     /// The collection of <see cref="BindingFlags"/>.

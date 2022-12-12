@@ -6,4 +6,8 @@
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ReSharp.Extensions\ReSharp.Extensions.csproj" />
+  </ItemGroup>
+
 </Project>

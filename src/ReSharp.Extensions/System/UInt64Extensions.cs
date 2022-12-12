@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Jerry Lee. All rights reserved. Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
-namespace System
+namespace ReSharp.Extensions
 {
     /// <summary>
     /// Extension methods collection of <see cref="ulong"/>.

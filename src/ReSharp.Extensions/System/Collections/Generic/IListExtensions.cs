@@ -2,7 +2,11 @@
 // See LICENSE in the project root for license information.
 
 // ReSharper disable InconsistentNaming
-namespace System.Collections.Generic
+
+using System;
+using System.Collections.Generic;
+
+namespace ReSharp.Extensions
 {
     /// <summary>
     /// Extension methods for interface <see cref="IList{T}"/>.

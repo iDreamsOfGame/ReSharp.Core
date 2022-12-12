@@ -2,7 +2,11 @@
 // See LICENSE in the project root for license information.
 
 // ReSharper disable SwapViaDeconstruction
-namespace System.Collections
+
+using System;
+using System.Collections;
+
+namespace ReSharp.Extensions
 {
     /// <summary>
     /// Extension methods for collection classes.

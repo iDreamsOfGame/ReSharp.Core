@@ -3,8 +3,9 @@
 
 using System;
 using System.Collections.Generic;
+using ReSharp.Extensions;
 
-namespace ReSharp.Patterns
+namespace ReSharp.Patterns.Factory
 {
     /// <summary>
     /// The template of simple factory design pattern.

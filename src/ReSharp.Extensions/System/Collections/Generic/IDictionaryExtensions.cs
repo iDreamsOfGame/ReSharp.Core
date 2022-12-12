@@ -1,10 +1,12 @@
 ﻿// Copyright (c) Jerry Lee. All rights reserved. Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
+using System;
+using System.Collections.Generic;
 using System.Linq;
 // ReSharper disable InconsistentNaming
 
-namespace System.Collections.Generic
+namespace ReSharp.Extensions
 {
     /// <summary>
     /// Extension methods for interface <see cref="IDictionary{TKey, TValue}"/>.

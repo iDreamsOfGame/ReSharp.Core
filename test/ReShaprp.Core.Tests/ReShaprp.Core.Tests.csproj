@@ -44,10 +44,19 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Patterns\Command\CommandTests.cs" />
+        <Compile Include="Patterns\SingletonTests.cs" />
+        <Compile Include="Patterns\State\StateMachineTests.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\ReSharp.Core\ReSharp.Core.csproj">
+        <Project>{b0edeb0c-ab69-4fd6-9d6a-bf4d50cf7b76}</Project>
+        <Name>ReSharp.Core</Name>
+      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

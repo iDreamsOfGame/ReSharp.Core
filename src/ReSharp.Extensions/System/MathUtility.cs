@@ -1,9 +1,10 @@
 ﻿// Copyright (c) Jerry Lee. All rights reserved. Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
+using System;
 using System.Security.Cryptography;
 
-namespace System
+namespace ReSharp.Extensions
 {
     /// <summary>
     /// Provides constants and static methods for trigonometric, logarithmic, and other common
