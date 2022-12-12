@@ -4,14 +4,15 @@
         <name>ReSharp.Extensions</name>
     </assembly>
     <members>
-        <member name="T:ReSharp.Patterns.CachingFactoryTemplate`2">
+        <member name="T:ReSharp.Patterns.CachingFactoryTemplate`3">
             <summary>
             The template of caching factory design pattern.
             </summary>
+            <typeparam name="TInstance">The type of the factory instance. </typeparam>
             <typeparam name="TKey">The type of key to get instance type. </typeparam>
             <typeparam name="TInterface">The type of interface that instance implemented. </typeparam>
         </member>
-        <member name="M:ReSharp.Patterns.CachingFactoryTemplate`2.#ctor(System.Collections.Generic.Dictionary{`0,System.Type})">
+        <member name="M:ReSharp.Patterns.CachingFactoryTemplate`3.#ctor(System.Collections.Generic.Dictionary{`1,System.Type})">
             <summary>
             Initializes a new instance of the <see>
                 <cref>CachingFactoryTemplate</cref>
@@ -19,13 +20,28 @@
             </summary>
             <param name="keyTypeMap">The key and instance type pairs. </param>
         </member>
-        <member name="M:ReSharp.Patterns.CachingFactoryTemplate`2.GetInstance(`0,System.Object[])">
+        <member name="M:ReSharp.Patterns.CachingFactoryTemplate`3.GetInstance(`1,System.Object[])">
             <summary>
             Gets an instance.
             </summary>
             <param name="key">The key of the instance type to get. </param>
             <param name="parameters">The parameters of instance constructor. </param>
             <returns></returns>
+        </member>
+        <member name="M:ReSharp.Patterns.CachingFactoryTemplate`3.ClearCache(System.Action{`2})">
+            <summary>
+            Clear the instance cache.
+            </summary>
+            <param name="handler"></param>
+        </member>
+        <member name="M:ReSharp.Patterns.CachingFactoryTemplate`3.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing">
+            <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release
+            only unmanaged resources.
+            </param>
         </member>
         <member name="T:ReSharp.Patterns.Command.AsyncCommand">
             <summary>
@@ -265,14 +281,15 @@
             Performs undo operation.
             </summary>
         </member>
-        <member name="T:ReSharp.Patterns.SimpleFactoryTemplate`2">
+        <member name="T:ReSharp.Patterns.SimpleFactoryTemplate`3">
             <summary>
             The template of simple factory design pattern.
             </summary>
+            <typeparam name="TInstance">The type of the factory instance. </typeparam>
             <typeparam name="TKey">The type of key to get instance type. </typeparam>
             <typeparam name="TInterface">The type of interface that instance implemented. </typeparam>
         </member>
-        <member name="M:ReSharp.Patterns.SimpleFactoryTemplate`2.#ctor(System.Collections.Generic.Dictionary{`0,System.Type})">
+        <member name="M:ReSharp.Patterns.SimpleFactoryTemplate`3.#ctor(System.Collections.Generic.Dictionary{`1,System.Type})">
             <summary>
             Initializes a new instance of the <see>
                 <cref>SimpleFactoryTemplate</cref>
@@ -280,7 +297,7 @@
             </summary>
             <param name="keyTypeMap">The key and instance type pairs. </param>
         </member>
-        <member name="M:ReSharp.Patterns.SimpleFactoryTemplate`2.GetInstance(`0,System.Object[])">
+        <member name="M:ReSharp.Patterns.SimpleFactoryTemplate`3.GetInstance(`1,System.Object[])">
             <summary>
             Gets an instance.
             </summary>
@@ -356,7 +373,7 @@
             <param name="previousState">
             The state before the <see cref="E:ReSharp.Patterns.State.StateMachine.StateChanged" /> event.
             </param>
-            <param name="state">The state after the <see cref="E:ReSharp.Patterns.State.StateMachine.StateChanged" /> event.</param>
+            <param name="currentState">The state after the <see cref="E:ReSharp.Patterns.State.StateMachine.StateChanged" /> event.</param>
         </member>
         <member name="P:ReSharp.Patterns.State.StateChangedEventArgs.PreviousState">
             <summary>
@@ -364,7 +381,7 @@
             </summary>
             <value>The the previous state.</value>
         </member>
-        <member name="P:ReSharp.Patterns.State.StateChangedEventArgs.State">
+        <member name="P:ReSharp.Patterns.State.StateChangedEventArgs.CurrentState">
             <summary>
             Gets the state after the <see cref="E:ReSharp.Patterns.State.StateMachine.StateChanged" /> event.
             </summary>
@@ -964,6 +981,11 @@
             Extension methods collection of <see cref="T:System.DateTime"/>.
             </summary>
         </member>
+        <member name="F:System.DateTimeExtensions.StartTime">
+            <summary>
+            The <see cref="T:System.DateTime"/> start position.
+            </summary>
+        </member>
         <member name="M:System.DateTimeExtensions.ToTimestamp(System.DateTime)">
             <summary>
             Converts the value of the current <see cref="T:System.DateTime"/> object to a local timestamp.
@@ -1509,7 +1531,7 @@
             Extension methods collection of <see cref="T:System.String"/>.
             </summary>
         </member>
-        <member name="F:System.StringExtensions.whitespaceChars">
+        <member name="F:System.StringExtensions.WhitespaceChars">
             <summary>
             The whitespace chars definitions.
             </summary>

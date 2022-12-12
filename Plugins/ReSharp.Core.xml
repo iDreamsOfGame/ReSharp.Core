@@ -146,86 +146,11 @@
             <returns>The raw data of cipher text.</returns>
             <exception cref="T:System.ArgumentNullException">plainText or key</exception>
         </member>
-        <member name="M:ReSharp.Security.DataProtection.DataProtectionProvider.Protect(System.Double,System.Int64@)">
-            <summary>
-            Encrypts the <see cref="T:System.Double"/> value.
-            </summary>
-            <param name="value">The <see cref="T:System.Double"/> value to encrypt.</param>
-            <param name="check">The check for the <see cref="T:System.Double"/> value.</param>
-            <returns>The encrypted <see cref="T:System.Double"/> value.</returns>
-        </member>
-        <member name="M:ReSharp.Security.DataProtection.DataProtectionProvider.Protect(System.Single,System.Int32@)">
-            <summary>
-            Encrypts the <see cref="T:System.Single"/> value.
-            </summary>
-            <param name="value">The <see cref="T:System.Single"/> value to encrypt.</param>
-            <param name="check">The check for the <see cref="T:System.Single"/> value.</param>
-            <returns>The encrypted <see cref="T:System.Single"/> value.</returns>
-        </member>
-        <member name="M:ReSharp.Security.DataProtection.DataProtectionProvider.Protect(System.Int64,System.Int64@)">
-            <summary>
-            Encrypts the <see cref="T:System.Int64"/> value.
-            </summary>
-            <param name="value">The <see cref="T:System.Int64"/> value to encrypt.</param>
-            <param name="check">The check for the <see cref="T:System.Int64"/> value.</param>
-            <returns>The encrypted <see cref="T:System.Int64"/> value.</returns>
-        </member>
-        <member name="M:ReSharp.Security.DataProtection.DataProtectionProvider.Protect(System.Int32,System.Int32@)">
-            <summary>
-            Encrypts the <see cref="T:System.Int32"/> value.
-            </summary>
-            <param name="value">The <see cref="T:System.Int32"/> value to encrypt.</param>
-            <param name="check">The check for the <see cref="T:System.Int32"/> value.</param>
-            <returns>The encrypted <see cref="T:System.Int32"/> value.</returns>
-        </member>
-        <member name="M:ReSharp.Security.DataProtection.DataProtectionProvider.Unprotect(System.Int32,System.Int32)">
-            <summary>
-            Decrypts the <see cref="T:System.Int32"/> value with encryption.
-            </summary>
-            <param name="value">The <see cref="T:System.Int32"/> value to decrypt.</param>
-            <param name="check">The check for the original <see cref="T:System.Int32"/> value.</param>
-            <returns>The decrypted <see cref="T:System.Int32"/> value.</returns>
-            <exception cref="T:ReSharp.Security.DataProtection.InvalidSecretDataException">
-            If the <see cref="T:System.Int32"/> value with encryption has been modified.
-            </exception>
-        </member>
-        <member name="M:ReSharp.Security.DataProtection.DataProtectionProvider.Unprotect(System.Int64,System.Int64)">
-            <summary>
-            Decrypts the <see cref="T:System.Int64"/> value with encryption.
-            </summary>
-            <param name="value">The <see cref="T:System.Int64"/> value with encryption.</param>
-            <param name="check">The check for the original <see cref="T:System.Int64"/> value.</param>
-            <returns>The decrypted <see cref="T:System.Int64"/> value.</returns>
-            <exception cref="T:ReSharp.Security.DataProtection.InvalidSecretDataException">
-            If the <see cref="T:System.Int64"/> data with encryption has been modified.
-            </exception>
-        </member>
-        <member name="M:ReSharp.Security.DataProtection.DataProtectionProvider.UnprotectDouble(System.Int64,System.Int64)">
-            <summary>
-            Decrypts the <see cref="T:System.Double"/> value with encryption.
-            </summary>
-            <param name="value">The <see cref="T:System.Double"/> value with encryption.</param>
-            <param name="check">The check for the original <see cref="T:System.Double"/> value.</param>
-            <returns>The decrypted <see cref="T:System.Double"/> value.</returns>
-        </member>
-        <member name="M:ReSharp.Security.DataProtection.DataProtectionProvider.UnprotectSingle(System.Int32,System.Int32)">
-            <summary>
-            Decrypts the <see cref="T:System.Single"/> value with encryption.
-            </summary>
-            <param name="value">The <see cref="T:System.Single"/> value to decrypt.</param>
-            <param name="check">The check for the original <see cref="T:System.Single"/> value.</param>
-            <returns>The encrypted <see cref="T:System.Single"/> value.</returns>
-        </member>
         <member name="T:ReSharp.Security.DataProtection.InvalidSecretDataException">
             <summary>
             The exception that is thrown when the value in secret data has been modified.
             </summary>
             <seealso cref="T:System.Exception"/>
-        </member>
-        <member name="F:ReSharp.Security.DataProtection.InvalidSecretDataException.ErrorMessage">
-            <summary>
-            The error message.
-            </summary>
         </member>
         <member name="M:ReSharp.Security.DataProtection.InvalidSecretDataException.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
