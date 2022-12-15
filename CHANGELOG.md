@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.0] - 2022-12-10
 
-### Added:
+### Added
 
 - Adds **SimpleFactoryTemplate** to implement simple factory desgin pattern.
 - Adds **CachingFactoryTemplate** to implement caching factory desgin pattern.
@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2020-04-24
 
-### Features:
+### Added
 
 - **CryptoUtility** provides static methods for data encryption/decryption
 - **SecretDouble**, **SecretInt32**, **SecretInt64**, **SecretSingle** provides data protection in memory
