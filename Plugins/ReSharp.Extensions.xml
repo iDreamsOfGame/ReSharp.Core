@@ -1024,24 +1024,25 @@
             Extension methods collection of <see cref="T:System.Random"/>.
             </summary>
         </member>
-        <member name="M:ReSharp.Extensions.RandomExtensions.NextDouble(System.Random,System.Double,System.Double)">
+        <member name="M:ReSharp.Extensions.RandomExtensions.RangeInt64(System.Random)">
             <summary>
-            Returns a random double that is within a specific range.
+            Returns a non-negative random integer.
             </summary>
-            <param name="source">The <see cref="T:System.Random"/> to return a random <see cref="T:System.Double"/> value.</param>
-            <param name="minValue">The inclusive lower bound of the random number returned.</param>
-            <param name="maxValue">
-            The exclusive upper bound of the random number returned. <c>maxValue</c> must be greater
-            than or equal to <c>minValue</c>.
-            </param>
-            <returns>
-            A double greater than or equal to <c>minValue</c> and less than <c>maxValue</c>; that
-            is, the range of return values includes <c>minValue</c> but not <c>maxValue</c>. If
-            <c>minValue</c> equals <c>maxValue</c>, <c>minValue</c> is returned.
-            </returns>
-            <exception cref="T:System.ArgumentOutOfRangeException"><c>minValue</c> is greater than <c>maxValue</c>.</exception>
+            <param name="source">The <see cref="T:System.Random"/> to return a random 64-bit signed integer.</param>
+            <returns>A 64-bit signed integer that is greater than or equal to 0 and less than <see cref="F:System.Int64.MaxValue"/>.</returns>
         </member>
-        <member name="M:ReSharp.Extensions.RandomExtensions.NextLong(System.Random,System.Int64,System.Int64)">
+        <member name="M:ReSharp.Extensions.RandomExtensions.RangeInt64(System.Random,System.Int64)">
+            <summary>
+            Returns a non-negative random integer that is less than the specified maximum.
+            </summary>
+            <param name="source">The <see cref="T:System.Random"/> to return a random 64-bit signed integer.</param>
+            <param name="maxValue">The exclusive upper bound of the random number to be generated. maxValue must be greater than or equal to 0.</param>
+            <returns>
+            A 64-bit signed integer that is greater than or equal to 0, and less than <c>maxValue</c>;
+            that is, the range of return values ordinarily includes 0 but not <c>maxValue</c>. However, if <c>maxValue</c> equals 0, <c>maxValue</c> is returned.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Extensions.RandomExtensions.RangeInt64(System.Random,System.Int64,System.Int64)">
             <summary>
             Returns a random 64-bit signed integer that is within a specific range.
             </summary>
@@ -1058,7 +1059,14 @@
             </returns>
             <exception cref="T:System.ArgumentOutOfRangeException"><c>minValue</c> is greater than <c>maxValue</c>.</exception>
         </member>
-        <member name="M:ReSharp.Extensions.RandomExtensions.NextSingle(System.Random,System.Single,System.Single)">
+        <member name="M:ReSharp.Extensions.RandomExtensions.RangeSingle(System.Random)">
+            <summary>
+            Returns a random floating-point number that is greater than or equal to 0.0, and less than 1.0.
+            </summary>
+            <param name="source">The <see cref="T:System.Random"/> to return a random floating-point number.</param>
+            <returns>A single-precision floating point number that is greater than or equal to 0.0, and less than 1.0.</returns>
+        </member>
+        <member name="M:ReSharp.Extensions.RandomExtensions.RangeSingle(System.Random,System.Single,System.Single)">
             <summary>
             Returns a random single that is within a specific range.
             </summary>
@@ -1069,7 +1077,24 @@
             than or equal to <c>minValue</c>.
             </param>
             <returns>
-            A single greater than or equal to <c>minValue</c> and less than <c>maxValue</c>; that
+            A single greater than or equal to <c>minValue</c> and less than <c>maxValue</c>;
+            that is, the range of return values includes <c>minValue</c> but not <c>maxValue</c>.
+            If <c>minValue</c> equals <c>maxValue</c>, <c>minValue</c> is returned.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"><c>minValue</c> is greater than <c>maxValue</c>.</exception>
+        </member>
+        <member name="M:ReSharp.Extensions.RandomExtensions.RangeDouble(System.Random,System.Double,System.Double)">
+            <summary>
+            Returns a random double that is within a specific range.
+            </summary>
+            <param name="source">The <see cref="T:System.Random"/> to return a random <see cref="T:System.Double"/> value.</param>
+            <param name="minValue">The inclusive lower bound of the random number returned.</param>
+            <param name="maxValue">
+            The exclusive upper bound of the random number returned. <c>maxValue</c> must be greater
+            than or equal to <c>minValue</c>.
+            </param>
+            <returns>
+            A double greater than or equal to <c>minValue</c> and less than <c>maxValue</c>; that
             is, the range of return values includes <c>minValue</c> but not <c>maxValue</c>. If
             <c>minValue</c> equals <c>maxValue</c>, <c>minValue</c> is returned.
             </returns>
@@ -1080,15 +1105,104 @@
             Provides static methods to generate pseudo-random number.
             </summary>
         </member>
-        <member name="M:ReSharp.Extensions.RandomUtility.NextDouble(System.Double,System.Double)">
+        <member name="P:ReSharp.Extensions.RandomUtility.RandomWithSeed">
             <summary>
-            Returns a random floating-point number that is greater than or equal to <b>minValue</b>, and less than <b>maxValue</b>.
+            Gets the <see cref="T:System.Random"/> object with random seed initialized.
             </summary>
-            <param name="minValue">The inclusive lower bound of the random floating-point number returned. </param>
-            <param name="maxValue">The exclusive upper bound of the random floating-point number returned.
-            <b>maxValue</b> must be greater than or equal to <b>minValue</b>. </param>
-            <returns>A floating-point number is greater than or equal to <b>minValue</b>, and less than <b>maxValue</b>. </returns>
-            <exception cref="T:System.ArgumentOutOfRangeException"><b>minValue</b> is greater than <b>maxValue</b>. </exception>
+        </member>
+        <member name="M:ReSharp.Extensions.RandomUtility.NextBytesWithRandomSeed(System.Byte[])">
+            <summary>
+            Fills the elements of a specified array of bytes with random numbers on random seed initialized.
+            </summary>
+            <param name="buffer">The array to be filled with random numbers.</param>
+        </member>
+        <member name="M:ReSharp.Extensions.RandomUtility.NextWithRandomSeed">
+            <summary>
+            Returns a non-negative random integer on random seed initialized.
+            </summary>
+            <returns>A 32-bit signed integer that is greater than or equal to 0 and less than <see cref="F:System.Int32.MaxValue"/>.</returns>
+        </member>
+        <member name="M:ReSharp.Extensions.RandomUtility.NextWithRandomSeed(System.Int32)">
+             <summary>
+             Returns a non-negative random integer that is less than the specified maximum on random seed initialized.
+             </summary>
+             <param name="maxValue">The exclusive upper bound of the random number to be generated. <c>maxValue</c> must be greater than or equal to 0.</param>
+             <returns>
+            A 32-bit signed integer that is greater than or equal to 0, and less than <c>maxValue</c>;
+             that is, the range of return values ordinarily includes 0 but not <c>maxValue</c>. However, if <c>maxValue</c> equals 0, <c>maxValue</c> is returned.
+             </returns>
+        </member>
+        <member name="M:ReSharp.Extensions.RandomUtility.NextWithRandomSeed(System.Int32,System.Int32)">
+            <summary>
+            Returns a random integer that is within a specified range on random seed initialized.
+            </summary>
+            <param name="minValue">The inclusive lower bound of the random number returned.</param>
+            <param name="maxValue">The exclusive upper bound of the random number returned. <c>maxValue</c> must be greater than or equal to <c>minValue</c>.</param>
+            <returns>
+            A 32-bit signed integer greater than or equal to <c>minValue</c> and less than <c>maxValue</c>;
+            that is, the range of return values includes <c>minValue</c> but not <c>maxValue</c>. If minValue equals <c>maxValue</c>, minValue is returned.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Extensions.RandomUtility.NextInt64WithRandomSeed">
+            <summary>
+            Returns a non-negative random integer on random seed initialized.
+            </summary>
+            <returns>A 64-bit signed integer that is greater than or equal to 0 and less than <see cref="F:System.Int64.MaxValue"/>.</returns>
+        </member>
+        <member name="M:ReSharp.Extensions.RandomUtility.NextInt64WithRandomSeed(System.Int64)">
+             <summary>
+             Returns a non-negative random integer that is less than the specified maximum on random seed initialized.
+             </summary>
+             <param name="maxValue">The exclusive upper bound of the random number to be generated. <c>maxValue</c> must be greater than or equal to 0.</param>
+             <returns>
+            A 64-bit signed integer that is greater than or equal to 0, and less than <c>maxValue</c>;
+             that is, the range of return values ordinarily includes 0 but not <c>maxValue</c>. However, if <c>maxValue</c> equals 0, <c>maxValue</c> is returned.
+             </returns>
+        </member>
+        <member name="M:ReSharp.Extensions.RandomUtility.NextInt64WithRandomSeed(System.Int64,System.Int64)">
+            <summary>
+            Returns a random integer that is within a specified range on random seed initialized.
+            </summary>
+            <param name="minValue">The inclusive lower bound of the random number returned.</param>
+            <param name="maxValue">The exclusive upper bound of the random number returned. <c>maxValue</c> must be greater than or equal to <c>minValue</c>.</param>
+            <returns>
+            A 64-bit signed integer greater than or equal to <c>minValue</c> and less than <c>maxValue</c>;
+            that is, the range of return values includes <c>minValue</c> but not <c>maxValue</c>. If minValue equals <c>maxValue</c>, minValue is returned.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Extensions.RandomUtility.NextSingleWithRandomSeed">
+            <summary>
+            Returns a random floating-point number that is greater than or equal to 0.0, and less than 1.0 on random seed initialized.
+            </summary>
+            <returns>A single-precision floating point number that is greater than or equal to 0.0, and less than 1.0.</returns>
+        </member>
+        <member name="M:ReSharp.Extensions.RandomUtility.NextSingleWithRandomSeed(System.Single,System.Single)">
+            <summary>
+            Returns a random floating-point number that is within a specified range on random seed initialized.
+            </summary>
+            <param name="minValue">The inclusive lower bound of the random number returned.</param>
+            <param name="maxValue">The exclusive upper bound of the random number returned. <c>maxValue</c> must be greater than or equal to <c>minValue</c>.</param>
+            <returns>
+            A single-precision floating point number greater than or equal to <c>minValue</c> and less than <c>maxValue</c>;
+            that is, the range of return values includes <c>minValue</c> but not <c>maxValue</c>. If minValue equals <c>maxValue</c>, minValue is returned.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Extensions.RandomUtility.NextDoubleWithRandomSeed">
+            <summary>
+            Returns a random floating-point number that is greater than or equal to 0.0, and less than 1.0 on random seed initialized.
+            </summary>
+            <returns>A double-precision floating point number that is greater than or equal to 0.0, and less than 1.0.</returns>
+        </member>
+        <member name="M:ReSharp.Extensions.RandomUtility.NextDoubleWithRandomSeed(System.Double,System.Double)">
+            <summary>
+            Returns a random floating-point number that is within a specified range on random seed initialized.
+            </summary>
+            <param name="minValue">The inclusive lower bound of the random number returned.</param>
+            <param name="maxValue">The exclusive upper bound of the random number returned. <c>maxValue</c> must be greater than or equal to <c>minValue</c>.</param>
+            <returns>
+            A double-precision floating point number greater than or equal to <c>minValue</c> and less than <c>maxValue</c>;
+            that is, the range of return values includes <c>minValue</c> but not <c>maxValue</c>. If minValue equals <c>maxValue</c>, minValue is returned.
+            </returns>
         </member>
         <member name="M:ReSharp.Extensions.RandomUtility.NextDoubleSequence(System.Int32,System.Double,System.Double)">
             <summary>
