@@ -529,13 +529,6 @@
             <param name="list">The <see cref="T:System.Collections.IList"/> object. </param>
             <param name="seed">The random seed. </param>
         </member>
-        <member name="M:ReSharp.Extensions.IListExtensions.KnuthDurstenfeldShuffle(System.Collections.IList,System.Int32)">
-            <summary>
-            Implements Knuth-Durstenfeld Shuffle algorithm.
-            </summary>
-            <param name="list">The <see cref="T:System.Collections.IList"/> object. </param>
-            <param name="seed">The random seed. </param>
-        </member>
         <member name="M:ReSharp.Extensions.IListExtensions.ToArrayString(System.Collections.IList)">
             <summary>
             Converts the value of the current <see cref="T:System.Collections.IList"/> to its equivalent array string representation.
