@@ -1,17 +1,16 @@
 ﻿// Copyright (c) Jerry Lee. All rights reserved. Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
-// ReSharper disable SwapViaDeconstruction
-
 using System;
 using System.Collections;
+// ReSharper disable InconsistentNaming
 
 namespace ReSharp.Extensions
 {
     /// <summary>
-    /// Extension methods for collection classes.
+    /// Extension methods for interface <see cref="IList"/>.
     /// </summary>
-    public static class CollectionExtensions
+    public static class IListExtensions
     {
         /// <summary>
         /// Adds a unique item to the <see cref="IList"/>.
@@ -100,6 +99,36 @@ namespace ReSharp.Extensions
             var temp = source[b];
             source[b] = source[a];
             source[a] = temp;
+        }
+        
+        /// <summary>
+        /// Implements Fisher-Yates Shuffle algorithm.
+        /// </summary>
+        /// <param name="list">The <see cref="IList"/> object. </param>
+        /// <param name="seed">The random seed. </param>
+        public static void FisherYatesShuffle(this IList list, int seed = 0)
+        {
+            var random = seed == 0 ? new Random() : new Random(seed);
+            for (var i = 0; i < list.Count; i++)
+            {
+                var randomIndex = random.Next(list.Count);
+                list.Swap(i, randomIndex);
+            }
+        }
+
+        /// <summary>
+        /// Implements Knuth-Durstenfeld Shuffle algorithm.
+        /// </summary>
+        /// <param name="list">The <see cref="IList"/> object. </param>
+        /// <param name="seed">The random seed. </param>
+        public static void KnuthDurstenfeldShuffle(this IList list, int seed = 0)
+        {
+            var random = seed == 0 ? new Random() : new Random(seed);
+            for (var i = 0; i < list.Count; i++)
+            {
+                var randomIndex = random.Next(list.Count - i);
+                list.Swap(i, randomIndex);
+            }
         }
 
         /// <summary>

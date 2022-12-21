@@ -1,7 +1,7 @@
+using System;
 using NUnit.Framework;
-using ReSharp.Extensions;
 
-namespace System.Tests
+namespace ReSharp.Extensions.Tests
 {
     public class IdInfo
     {
