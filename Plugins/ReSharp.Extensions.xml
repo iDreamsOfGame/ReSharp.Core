@@ -94,55 +94,6 @@
             The default static property binding flags.
             </summary>
         </member>
-        <member name="T:ReSharp.Extensions.CollectionExtensions">
-            <summary>
-            Extension methods for collection classes.
-            </summary>
-        </member>
-        <member name="M:ReSharp.Extensions.CollectionExtensions.AddUnique(System.Collections.IList,System.Object)">
-            <summary>
-            Adds a unique item to the <see cref="T:System.Collections.IList"/>.
-            </summary>
-            <param name="source">A <see cref="T:System.Collections.IList"/> to add unique item.</param>
-            <param name="value">The object to add to the <see cref="T:System.Collections.IList"/>.</param>
-            <returns>
-            The position into which the new element was inserted, or -1 to indicate that the item
-            was not inserted into the collection.
-            </returns>
-        </member>
-        <member name="M:ReSharp.Extensions.CollectionExtensions.CopyTo(System.Collections.IList,System.Collections.IList,System.Int32)">
-            <summary>
-            Copies all the elements of the <see cref="T:System.Collections.IList"/> to the specific <see cref="T:System.Collections.IList"/>.
-            </summary>
-            <param name="source">The source object of the <see cref="T:System.Collections.IList"/>.</param>
-            <param name="target">The target object of the <see cref="T:System.Collections.IList"/>.</param>
-            <param name="index">
-            A 32-bit integer that represents the index in <see cref="T:System.Collections.IList"/> at which copying begins.
-            </param>
-        </member>
-        <member name="M:ReSharp.Extensions.CollectionExtensions.IndexOfMax(System.Collections.IList,System.Int32)">
-            <summary>
-            Searches for the maximum object and returns the index of object in the <see cref="T:System.Collections.IList"/>.
-            </summary>
-            <param name="source">The <see cref="T:System.Collections.IList"/> to search.</param>
-            <param name="count">The number of objects in the section to search.</param>
-            <returns>The index of maximum object in the <see cref="T:System.Collections.IList"/>.</returns>
-        </member>
-        <member name="M:ReSharp.Extensions.CollectionExtensions.Swap(System.Collections.IList,System.Int32,System.Int32)">
-            <summary>
-            Swaps a element in one index with another element in another index.
-            </summary>
-            <param name="source">The <see cref="T:System.Collections.IList"/> to swap elements.</param>
-            <param name="a">The first index of element in the <see cref="T:System.Collections.IList"/> to swap.</param>
-            <param name="b">The second index of element in the <see cref="T:System.Collections.IList"/> to swap.</param>
-        </member>
-        <member name="M:ReSharp.Extensions.CollectionExtensions.ToArrayString(System.Collections.IList)">
-            <summary>
-            Converts the value of the current <see cref="T:System.Collections.IList"/> to its equivalent array string representation.
-            </summary>
-            <param name="source">The source <see cref="T:System.Collections.IList"/> object.</param>
-            <returns>The array string representation of the value of <see cref="T:System.Collections.IList"/>.</returns>
-        </member>
         <member name="T:ReSharp.Extensions.GenericCollectionExtensions">
             <summary>
             Extension methods for generic collection classes.
@@ -193,28 +144,6 @@
             <param name="source">The source dictionary.</param>
             <param name="others">The other dictionaries.</param>
             <returns>The dictionary contains all values of source dictionary and others.</returns>
-        </member>
-        <member name="T:ReSharp.Extensions.IListExtensions">
-            <summary>
-            Extension methods for interface <see cref="T:System.Collections.Generic.IList`1"/>.
-            </summary>
-        </member>
-        <member name="M:ReSharp.Extensions.IListExtensions.FisherYatesShuffle``1(System.Collections.Generic.IList{``0},System.Int32)">
-            <summary>
-            Implements Fisher-Yates shuffle algorithm.
-            </summary>
-            <param name="list">The <see cref="T:System.Collections.Generic.IList`1"/> object. </param>
-            <param name="seed">The random seed. </param>
-            <typeparam name="T">The type of list item. </typeparam>
-        </member>
-        <member name="M:ReSharp.Extensions.IListExtensions.RandomSort``1(System.Collections.Generic.IList{``0},System.Int32)">
-            <summary>
-            Sort list items randomly.
-            </summary>
-            <param name="list">The <see cref="T:System.Collections.Generic.IList`1"/> object. </param>
-            <param name="seed">The random seed. </param>
-            <typeparam name="T">The type of list item. </typeparam>
-            <returns>The new see cref="IList{T}"/> object that already randomly sorted. </returns>
         </member>
         <member name="T:ReSharp.Extensions.LinkedStack`1">
             <summary>
@@ -550,6 +479,69 @@
             Removes the child <see cref="T:ReSharp.Extensions.TreeNode`1" /> from the <see cref="T:ReSharp.Extensions.Tree`1" />.
             </summary>
             <param name="child">The child <see cref="T:ReSharp.Extensions.TreeNode`1" /> to remove from the <see cref="T:ReSharp.Extensions.Tree`1" />.</param>
+        </member>
+        <member name="T:ReSharp.Extensions.IListExtensions">
+            <summary>
+            Extension methods for interface <see cref="T:System.Collections.IList"/>.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Extensions.IListExtensions.AddUnique(System.Collections.IList,System.Object)">
+            <summary>
+            Adds a unique item to the <see cref="T:System.Collections.IList"/>.
+            </summary>
+            <param name="source">A <see cref="T:System.Collections.IList"/> to add unique item.</param>
+            <param name="value">The object to add to the <see cref="T:System.Collections.IList"/>.</param>
+            <returns>
+            The position into which the new element was inserted, or -1 to indicate that the item
+            was not inserted into the collection.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Extensions.IListExtensions.CopyTo(System.Collections.IList,System.Collections.IList,System.Int32)">
+            <summary>
+            Copies all the elements of the <see cref="T:System.Collections.IList"/> to the specific <see cref="T:System.Collections.IList"/>.
+            </summary>
+            <param name="source">The source object of the <see cref="T:System.Collections.IList"/>.</param>
+            <param name="target">The target object of the <see cref="T:System.Collections.IList"/>.</param>
+            <param name="index">
+            A 32-bit integer that represents the index in <see cref="T:System.Collections.IList"/> at which copying begins.
+            </param>
+        </member>
+        <member name="M:ReSharp.Extensions.IListExtensions.IndexOfMax(System.Collections.IList,System.Int32)">
+            <summary>
+            Searches for the maximum object and returns the index of object in the <see cref="T:System.Collections.IList"/>.
+            </summary>
+            <param name="source">The <see cref="T:System.Collections.IList"/> to search.</param>
+            <param name="count">The number of objects in the section to search.</param>
+            <returns>The index of maximum object in the <see cref="T:System.Collections.IList"/>.</returns>
+        </member>
+        <member name="M:ReSharp.Extensions.IListExtensions.Swap(System.Collections.IList,System.Int32,System.Int32)">
+            <summary>
+            Swaps a element in one index with another element in another index.
+            </summary>
+            <param name="source">The <see cref="T:System.Collections.IList"/> to swap elements.</param>
+            <param name="a">The first index of element in the <see cref="T:System.Collections.IList"/> to swap.</param>
+            <param name="b">The second index of element in the <see cref="T:System.Collections.IList"/> to swap.</param>
+        </member>
+        <member name="M:ReSharp.Extensions.IListExtensions.FisherYatesShuffle(System.Collections.IList,System.Int32)">
+            <summary>
+            Implements Fisher-Yates Shuffle algorithm.
+            </summary>
+            <param name="list">The <see cref="T:System.Collections.IList"/> object. </param>
+            <param name="seed">The random seed. </param>
+        </member>
+        <member name="M:ReSharp.Extensions.IListExtensions.KnuthDurstenfeldShuffle(System.Collections.IList,System.Int32)">
+            <summary>
+            Implements Knuth-Durstenfeld Shuffle algorithm.
+            </summary>
+            <param name="list">The <see cref="T:System.Collections.IList"/> object. </param>
+            <param name="seed">The random seed. </param>
+        </member>
+        <member name="M:ReSharp.Extensions.IListExtensions.ToArrayString(System.Collections.IList)">
+            <summary>
+            Converts the value of the current <see cref="T:System.Collections.IList"/> to its equivalent array string representation.
+            </summary>
+            <param name="source">The source <see cref="T:System.Collections.IList"/> object.</param>
+            <returns>The array string representation of the value of <see cref="T:System.Collections.IList"/>.</returns>
         </member>
         <member name="T:ReSharp.Extensions.DateTimeExtensions">
             <summary>
