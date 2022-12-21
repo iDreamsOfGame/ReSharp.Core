@@ -109,24 +109,9 @@ namespace ReSharp.Extensions
         public static void FisherYatesShuffle(this IList list, int seed = 0)
         {
             var random = seed == 0 ? new Random() : new Random(seed);
-            for (var i = 0; i < list.Count; i++)
+            for (var i = list.Count - 1; i > 0; i--)
             {
-                var randomIndex = random.Next(list.Count);
-                list.Swap(i, randomIndex);
-            }
-        }
-
-        /// <summary>
-        /// Implements Knuth-Durstenfeld Shuffle algorithm.
-        /// </summary>
-        /// <param name="list">The <see cref="IList"/> object. </param>
-        /// <param name="seed">The random seed. </param>
-        public static void KnuthDurstenfeldShuffle(this IList list, int seed = 0)
-        {
-            var random = seed == 0 ? new Random() : new Random(seed);
-            for (var i = 0; i < list.Count; i++)
-            {
-                var randomIndex = random.Next(list.Count - i);
+                var randomIndex = random.Next(i);
                 list.Swap(i, randomIndex);
             }
         }
