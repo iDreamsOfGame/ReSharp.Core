@@ -3,6 +3,16 @@ using NUnit.Framework;
 
 namespace ReSharp.Extensions.Tests
 {
+    public class EnumDescription : Attribute
+    {
+        public EnumDescription(string label)
+        {
+            Label = label;
+        }
+        
+        public string Label { get; }
+    }
+    
     public class IdInfo
     {
         public int IdNumber;
@@ -57,6 +67,12 @@ namespace ReSharp.Extensions.Tests
     [TestFixture]
     public class ObjectExtensionsTests
     {
+        public enum TestEnum
+        {
+            [EnumDescription("Value 1")]
+            Value1
+        }
+        
         [Test]
         public void ShallowCloneTest()
         {
@@ -107,6 +123,14 @@ namespace ReSharp.Extensions.Tests
             var p2 = p1.DeepClone<Person>();
             p2.IdInfo.IdNumber = 65;
             Assert.AreNotEqual(p1.IdInfo.IdNumber, p2.IdInfo.IdNumber);
+        }
+
+        [Test]
+        public void GetCustomAttributeTest()
+        {
+            var enumValue = TestEnum.Value1;
+            var attribute = enumValue.GetCustomAttribute<EnumDescription>();
+            Assert.AreEqual("Value 1", attribute.Label);
         }
 
         [Test]

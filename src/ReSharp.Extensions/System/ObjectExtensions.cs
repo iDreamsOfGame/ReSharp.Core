@@ -173,6 +173,23 @@ namespace ReSharp.Extensions
 
             return target;
         }
+        
+        /// <summary>
+        /// Gets an custom attribute on an object.
+        /// </summary>
+        /// <param name="source">The object. </param>
+        /// <param name="inherit">
+        /// <c>true</c> to search this member's inheritance chain to find the attributes; otherwise, <c>false</c>. This parameter is ignored for properties and events.
+        /// </param>
+        /// <typeparam name="T">The type of the custom attribute you want to retrieve. </typeparam>
+        /// <returns>The attribute of type <c>T</c> that exists on the object. </returns>
+        public static T GetCustomAttribute<T>(this object source, bool inherit = true) where T : Attribute
+        {
+            var type = source.GetType();
+            var memInfo = type.GetMember(source.ToString());
+            var attributes = memInfo[0].GetCustomAttributes(typeof(T), inherit);
+            return attributes.Length > 0 ? (T)attributes[0] : null;
+        }
 
         /// <summary>
         /// Searches for the event field with the specified name.
