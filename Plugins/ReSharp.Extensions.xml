@@ -855,6 +855,17 @@
             <param name="source">The current <see cref="T:System.Object"/>.</param>
             <returns>A deep clone of the current <see cref="T:System.Object"/>.</returns>
         </member>
+        <member name="M:ReSharp.Extensions.ObjectExtensions.GetCustomAttribute``1(System.Object,System.Boolean)">
+            <summary>
+            Gets an custom attribute on an object.
+            </summary>
+            <param name="source">The object. </param>
+            <param name="inherit">
+            <c>true</c> to search this member's inheritance chain to find the attributes; otherwise, <c>false</c>. This parameter is ignored for properties and events.
+            </param>
+            <typeparam name="T">The type of the custom attribute you want to retrieve. </typeparam>
+            <returns>The attribute of type <c>T</c> that exists on the object. </returns>
+        </member>
         <member name="M:ReSharp.Extensions.ObjectExtensions.GetEventField(System.Object,System.String,System.Reflection.BindingFlags)">
             <summary>
             Searches for the event field with the specified name.
