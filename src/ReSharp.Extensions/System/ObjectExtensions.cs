@@ -186,9 +186,9 @@ namespace ReSharp.Extensions
         public static T GetCustomAttribute<T>(this object source, bool inherit = true) where T : Attribute
         {
             var type = source.GetType();
-            var memberInfos = type.GetMember(source.ToString());
-            var attributes = memberInfos[0].GetCustomAttributes(typeof(T), inherit);
-            return attributes.Length > 0 ? (T)attributes[0] : null;
+            var memberInfoCollection = type.GetMember(source.ToString());
+            var attributes = memberInfoCollection[0].GetCustomAttributes(typeof(T), inherit);
+            return attributes.Length > 0 ? (T)attributes[0] : default;
         }
 
         /// <summary>

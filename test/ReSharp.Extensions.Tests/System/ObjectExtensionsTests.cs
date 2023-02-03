@@ -1,18 +1,9 @@
 using System;
 using NUnit.Framework;
+using DescriptionAttribute = System.ComponentModel.DescriptionAttribute;
 
 namespace ReSharp.Extensions.Tests
 {
-    public class EnumDescription : Attribute
-    {
-        public EnumDescription(string label)
-        {
-            Label = label;
-        }
-        
-        public string Label { get; }
-    }
-    
     public class IdInfo
     {
         public int IdNumber;
@@ -69,7 +60,7 @@ namespace ReSharp.Extensions.Tests
     {
         public enum TestEnum
         {
-            [EnumDescription("Value 1")]
+            [Description("Value 1")]
             Value1
         }
         
@@ -129,8 +120,8 @@ namespace ReSharp.Extensions.Tests
         public void GetCustomAttributeTest()
         {
             var enumValue = TestEnum.Value1;
-            var attribute = enumValue.GetCustomAttribute<EnumDescription>();
-            Assert.AreEqual("Value 1", attribute.Label);
+            var attribute = enumValue.GetCustomAttribute<DescriptionAttribute>();
+            Assert.AreEqual("Value 1", attribute.Description);
         }
 
         [Test]
