@@ -653,6 +653,14 @@
             <param name="source">The <see cref="T:System.Int16"/> to reverse.</param>
             <returns>A 2-byte signed short integer in reverse.</returns>
         </member>
+        <member name="M:ReSharp.Extensions.Int16Extensions.GetLastDigits(System.Int16,System.Int32)">
+            <summary>
+            Gets the integer number that the last <c>digits</c> present.
+            </summary>
+            <param name="source">The <see cref="T:System.Int16"/> to convert.</param>
+            <param name="digits">The digits. </param>
+            <returns></returns>
+        </member>
         <member name="T:ReSharp.Extensions.Int32Extensions">
             <summary>
             Extension methods collection of <see cref="T:System.Int32"/>.
@@ -665,6 +673,14 @@
             <param name="source">The <see cref="T:System.Int32"/> to reverse.</param>
             <returns>A 4-byte signed integer in reverse.</returns>
         </member>
+        <member name="M:ReSharp.Extensions.Int32Extensions.GetLastDigits(System.Int32,System.Int32)">
+            <summary>
+            Gets the integer number that the last <c>digits</c> present.
+            </summary>
+            <param name="source">The <see cref="T:System.Int32"/> to convert.</param>
+            <param name="digits">The digits. </param>
+            <returns></returns>
+        </member>
         <member name="T:ReSharp.Extensions.Int64Extensions">
             <summary>
             Extension methods collection of <see cref="T:System.Int64"/>.
@@ -676,6 +692,14 @@
             </summary>
             <param name="source">The <see cref="T:System.Int64"/> to reverse.</param>
             <returns>A 8-byte signed long integer in reverse.</returns>
+        </member>
+        <member name="M:ReSharp.Extensions.Int64Extensions.GetLastDigits(System.Int64,System.Int32)">
+            <summary>
+            Gets the integer number that the last <c>digits</c> present.
+            </summary>
+            <param name="source">The <see cref="T:System.Int64"/> to convert.</param>
+            <param name="digits">The digits. </param>
+            <returns></returns>
         </member>
         <member name="T:ReSharp.Extensions.BinaryReaderExtensions">
             <summary>
@@ -1495,6 +1519,14 @@
             <param name="source">The <see cref="T:System.UInt16"/> to reverse.</param>
             <returns>A 2-byte unsigned short integer in reverse.</returns>
         </member>
+        <member name="M:ReSharp.Extensions.UInt16Extensions.GetLastDigits(System.UInt16,System.Int32)">
+            <summary>
+            Gets the integer number that the last <c>digits</c> present.
+            </summary>
+            <param name="source">The <see cref="T:System.UInt16"/> to convert.</param>
+            <param name="digits">The digits. </param>
+            <returns></returns>
+        </member>
         <member name="T:ReSharp.Extensions.UInt32Extensions">
             <summary>
             Extension methods collection of <see cref="T:System.UInt32"/>.
@@ -1507,6 +1539,14 @@
             <param name="source">The <see cref="T:System.UInt32"/> to reverse.</param>
             <returns>A 4-byte unsigned integer in reverse.</returns>
         </member>
+        <member name="M:ReSharp.Extensions.UInt32Extensions.GetLastDigits(System.UInt32,System.Int32)">
+            <summary>
+            Gets the integer number that the last <c>digits</c> present.
+            </summary>
+            <param name="source">The <see cref="T:System.UInt32"/> to convert.</param>
+            <param name="digits">The digits. </param>
+            <returns></returns>
+        </member>
         <member name="T:ReSharp.Extensions.UInt64Extensions">
             <summary>
             Extension methods collection of <see cref="T:System.UInt64"/>.
@@ -1518,6 +1558,14 @@
             </summary>
             <param name="source">The <see cref="T:System.UInt64"/> to reverse.</param>
             <returns>A 8-byte unsigned long integer in reverse.</returns>
+        </member>
+        <member name="M:ReSharp.Extensions.UInt64Extensions.GetLastDigits(System.UInt64,System.Int32)">
+            <summary>
+            Gets the integer number that the last <c>digits</c> present.
+            </summary>
+            <param name="source">The <see cref="T:System.UInt64"/> to convert.</param>
+            <param name="digits">The digits. </param>
+            <returns></returns>
         </member>
         <member name="T:ReSharp.Extensions.Utility">
             <summary>
