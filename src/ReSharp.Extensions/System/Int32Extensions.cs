@@ -21,5 +21,19 @@ namespace ReSharp.Extensions
             Array.Reverse(data);
             return BitConverter.ToInt32(data, 0);
         }
+
+        /// <summary>
+        /// Gets the integer number that the last <c>digits</c> present.
+        /// </summary>
+        /// <param name="source">The <see cref="int"/> to convert.</param>
+        /// <param name="digits">The digits. </param>
+        /// <returns></returns>
+        public static int GetLastDigits(this int source, int digits = 1)
+        {
+            if (digits <= 0)
+                throw new ArgumentException("digits must be greater than zero!");
+                
+            return Math.Abs(source) % (int)Math.Pow(10, digits);
+        }
     }
 }
