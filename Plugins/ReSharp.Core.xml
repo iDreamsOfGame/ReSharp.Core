@@ -434,141 +434,179 @@
             Provides cryptographic service.
             </summary>
         </member>
+        <member name="F:ReSharp.Security.Cryptography.CryptoUtility.DefaultEncoding">
+            <summary>
+            Default coding for encryption or decryption. 
+            </summary>
+        </member>
         <member name="M:ReSharp.Security.Cryptography.CryptoUtility.AesDecrypt(System.Byte[],System.Byte[])">
             <summary>
-            Decrypts the cipher text by using the AES encryption algorithm.
+            Decrypts the cipher text by using the AES encryption algorithm. 
             </summary>
-            <param name="cipherText">The raw data of cipher text.</param>
-            <param name="key">The raw data of key.</param>
-            <returns>The raw data of plain text.</returns>
+            <param name="cipherText">The raw data of cipher text. </param>
+            <param name="key">The raw data of key. </param>
+            <returns>The raw data of plain text. </returns>
             <exception cref="T:System.ArgumentNullException">cipherText or key</exception>
         </member>
         <member name="M:ReSharp.Security.Cryptography.CryptoUtility.AesDecrypt(System.String,System.String)">
             <summary>
-            Decrypts the cipher text by using the AES encryption algorithm.
+            Decrypts the cipher text by using the AES encryption algorithm. 
             </summary>
-            <param name="cipherText">The cipher text.</param>
-            <param name="key">The key.</param>
-            <returns>The plain text.</returns>
+            <param name="cipherText">The cipher text. </param>
+            <param name="key">The key. </param>
+            <returns>The plain text. </returns>
             <exception cref="T:System.ArgumentNullException">cipherText or key</exception>
         </member>
         <member name="M:ReSharp.Security.Cryptography.CryptoUtility.AesEncrypt(System.Byte[],System.Byte[])">
             <summary>
-            Encrypts the plain text by using the AES encryption algorithm.
+            Encrypts the plain text by using the AES encryption algorithm. 
             </summary>
-            <param name="plainText">The raw data of plain text.</param>
-            <param name="key">The raw data of key.</param>
-            <returns>The raw data of cipher text.</returns>
+            <param name="plainText">The raw data of plain text. </param>
+            <param name="key">The raw data of key. </param>
+            <returns>The raw data of cipher text. </returns>
             <exception cref="T:System.ArgumentNullException">plainText or key</exception>
         </member>
         <member name="M:ReSharp.Security.Cryptography.CryptoUtility.AesEncrypt(System.String,System.String)">
             <summary>
-            Encrypts the plain text by using the AES encryption algorithm.
+            Encrypts the plain text by using the AES encryption algorithm. 
             </summary>
-            <param name="plainText">The plaintext.</param>
-            <param name="key">The key.</param>
-            <returns>The cipher text.</returns>
+            <param name="plainText">The plaintext. </param>
+            <param name="key">The key. </param>
+            <returns>The cipher text. </returns>
             <exception cref="T:System.ArgumentNullException">plainText or key</exception>
         </member>
         <member name="M:ReSharp.Security.Cryptography.CryptoUtility.GenerateRandomKey(System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
             <summary>
-            Generates the random key data for encryption.
+            Generates the random key data for encryption. 
             </summary>
-            <param name="length">The length of key string.</param>
-            <param name="includeNumbers">if set to <c>true</c> [include numbers].</param>
-            <param name="includeLowercaseCharacters">if set to <c>true</c> [include lowercase characters].</param>
-            <param name="includeUppercaseCharacters">if set to <c>true</c> [include uppercase characters].</param>
-            <param name="includeSpecialCharacters">if set to <c>true</c> [include special characters].</param>
-            <returns>The key data for encryption.</returns>
+            <param name="length">The length of key string. </param>
+            <param name="includeNumbers">if set to <c>true</c> [include numbers]. </param>
+            <param name="includeLowercaseCharacters">if set to <c>true</c> [include lowercase characters]. </param>
+            <param name="includeUppercaseCharacters">if set to <c>true</c> [include uppercase characters]. </param>
+            <param name="includeSpecialCharacters">if set to <c>true</c> [include special characters]. </param>
+            <returns>The key data for encryption. </returns>
         </member>
         <member name="M:ReSharp.Security.Cryptography.CryptoUtility.GenerateRandomKeyString(System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
             <summary>
-            Generates the random key string for encryption, which is original plain text that
-            encoding by UTF-8.
+            Generates the random key string for encryption, which is original plain text that encoding by UTF-8. 
             </summary>
-            <param name="length">The length of key string.</param>
-            <param name="includeNumbers">if set to <c>true</c> [include numbers].</param>
-            <param name="includeLowercaseCharacters">if set to <c>true</c> [include lowercase characters].</param>
-            <param name="includeUppercaseCharacters">if set to <c>true</c> [include uppercase characters].</param>
-            <param name="includeSpecialCharacters">if set to <c>true</c> [include special characters].</param>
-            <returns>
-            The key string for encryption, which is original plain text that encoding by UTF-8.
-            </returns>
+            <param name="length">The length of key string. </param>
+            <param name="includeNumbers">if set to <c>true</c> [include numbers]. </param>
+            <param name="includeLowercaseCharacters">if set to <c>true</c> [include lowercase characters]. </param>
+            <param name="includeUppercaseCharacters">if set to <c>true</c> [include uppercase characters]. </param>
+            <param name="includeSpecialCharacters">if set to <c>true</c> [include special characters]. </param>
+            <returns>The key string for encryption, which is original plain text that encoding by UTF-8. </returns>
         </member>
-        <member name="M:ReSharp.Security.Cryptography.CryptoUtility.Md5Encrypt(System.String,System.Boolean)">
+        <member name="M:ReSharp.Security.Cryptography.CryptoUtility.Md5Encrypt(System.String,System.Text.Encoding,System.Boolean)">
             <summary>
-            Encrypts the plain text by using the MD5 encryption algorithm. The length of the cipher
-            text is 16.
+            Encrypts the plain text to 16 bit cipher text by using the MD5 Hash encryption algorithm. 
             </summary>
-            <param name="plainText">The plain text.</param>
-            <param name="outputAsLowerCase">
-            if set to <c>true</c> [output cipher text as lower case].
-            </param>
-            <returns>The cipher text.</returns>
+            <param name="plainText">The plain text. </param>
+            <param name="encoding">The <see cref="T:System.Text.Encoding"/> of plain text. </param>
+            <param name="lowerCase">if set to <c>true</c> [output cipher text as lowerCase case]. </param>
+            <returns>The cipher text. </returns>
             <exception cref="T:System.ArgumentNullException">plainText</exception>
         </member>
-        <member name="M:ReSharp.Security.Cryptography.CryptoUtility.Md5Encrypt(System.Byte[])">
+        <member name="M:ReSharp.Security.Cryptography.CryptoUtility.Md5HashEncrypt(System.String,System.Text.Encoding,System.Boolean)">
             <summary>
-            Encrypts the raw data of plain text by using the MD5 encryption algorithm.
+            Encrypts the plain text to cipher text by using the MD5 Hash encryption algorithm. 
             </summary>
-            <param name="plainText">The raw data of plain text.</param>
-            <returns>The raw data of cipher text.</returns>
+            <param name="plainText">The plain text. </param>
+            <param name="encoding">The <see cref="T:System.Text.Encoding"/> of plain text. </param>
+            <param name="lowerCase">if set to <c>true</c> [output cipher text as lowerCase case]. </param>
+            <returns>The cipher text. </returns>
             <exception cref="T:System.ArgumentNullException">plainText</exception>
         </member>
-        <member name="M:ReSharp.Security.Cryptography.CryptoUtility.Md5HashEncrypt(System.String,System.Boolean)">
+        <member name="M:ReSharp.Security.Cryptography.CryptoUtility.Md5EncryptToBase64(System.String,System.Text.Encoding)">
             <summary>
-            Encrypts the plain text by using the MD5 Hash encryption algorithm. The length of cipher
-            text is 32.
+            Encrypts the plain text to 16 bit cipher text in base 64 by using the MD5 Hash encryption algorithm. 
             </summary>
-            <param name="plainText">The plain text.</param>
-            <param name="outputAsLowerCase">
-            if set to <c>true</c> [output cipher text as lower case].
-            </param>
-            <returns>The cipher text.</returns>
+            <param name="plainText">The plain text. </param>
+            <param name="encoding">The <see cref="T:System.Text.Encoding"/> of plain text. </param>
+            <returns>The string representation, in base 64, of the contents of the cipher text. </returns>
             <exception cref="T:System.ArgumentNullException">plainText</exception>
+        </member>
+        <member name="M:ReSharp.Security.Cryptography.CryptoUtility.Md5HashEncryptToBase64(System.String,System.Text.Encoding)">
+            <summary>
+            Encrypts the plain text to cipher text in base 64 by using the MD5 Hash encryption algorithm. 
+            </summary>
+            <param name="plainText">The plain text. </param>
+            <param name="encoding">The <see cref="T:System.Text.Encoding"/> of plain text. </param>
+            <returns>The string representation, in base 64, of the contents of the cipher text. </returns>
+            <exception cref="T:System.ArgumentNullException">plainText</exception>
+        </member>
+        <member name="M:ReSharp.Security.Cryptography.CryptoUtility.Md5Encrypt(System.Byte[],System.Boolean)">
+            <summary>
+            Encrypts the raw data of plain text to 16 bit cipher text by using the MD5 Hash encryption algorithm. 
+            </summary>
+            <param name="rawData">The raw data of plain text. </param>
+            <param name="lowerCase">if set to <c>true</c> [output cipher text as lower case]. </param>
+            <returns>The cipher text. </returns>
+        </member>
+        <member name="M:ReSharp.Security.Cryptography.CryptoUtility.Md5HashEncrypt(System.Byte[],System.Boolean)">
+            <summary>
+            Encrypts the raw data of plain text to cipher text by using the MD5 Hash encryption algorithm. 
+            </summary>
+            <param name="rawData">The raw data of plain text. </param>
+            <param name="lowerCase">if set to <c>true</c> [output cipher text as lower case]. </param>
+            <returns>The cipher text. </returns>
+        </member>
+        <member name="M:ReSharp.Security.Cryptography.CryptoUtility.Md5EncryptToBase64(System.Byte[])">
+            <summary>
+            Encrypts the raw data of plain text to 16 bit cipher text in base 64 by using the MD5 Hash encryption algorithm. 
+            </summary>
+            <param name="rawData">The raw data of plain text. </param>
+            <returns>The string representation, in base 64, of the 16 bit contents of the cipher text. </returns>
+        </member>
+        <member name="M:ReSharp.Security.Cryptography.CryptoUtility.Md5HashEncryptToBase64(System.Byte[])">
+            <summary>
+            Encrypts the raw data of plain text to cipher text in base 64 by using the MD5 Hash encryption algorithm. 
+            </summary>
+            <param name="rawData">The raw data of plain text. </param>
+            <returns>The string representation, in base 64, of the contents of the cipher text. </returns>
         </member>
         <member name="M:ReSharp.Security.Cryptography.CryptoUtility.Md5HashEncrypt(System.Byte[])">
             <summary>
-            Encrypts the raw data of plain text by using the MD5 Hash encryption algorithm.
+            Encrypts the raw data of plain text by using the MD5 Hash encryption algorithm. 
             </summary>
-            <param name="plainText">The raw data of plain text.</param>
-            <returns>The raw data of cipher text.</returns>
+            <param name="rawData">The raw data of plain text. </param>
+            <returns>The raw data of cipher text. </returns>
             <exception cref="T:System.ArgumentNullException">plainText</exception>
         </member>
         <member name="M:ReSharp.Security.Cryptography.CryptoUtility.XxteaDecrypt(System.String,System.String)">
             <summary>
-            Decrypts the cipher text by using the XXTEA encryption algorithm.
+            Decrypts the cipher text by using the XXTEA encryption algorithm. 
             </summary>
-            <param name="cipherText">The cipher text.</param>
-            <param name="key">The key.</param>
-            <returns>The plain text.</returns>
+            <param name="cipherText">The cipher text. </param>
+            <param name="key">The key. </param>
+            <returns>The plain text. </returns>
             <exception cref="T:System.ArgumentNullException">cipherText or key</exception>
         </member>
         <member name="M:ReSharp.Security.Cryptography.CryptoUtility.XxteaDecrypt(System.Byte[],System.Byte[])">
             <summary>
-            Decrypts the raw data of cipher text by using the XXTEA encryption algorithm.
+            Decrypts the raw data of cipher text by using the XXTEA encryption algorithm. 
             </summary>
-            <param name="cipherText">The raw data of cipher text.</param>
-            <param name="key">The raw data of key.</param>
-            <returns>The raw data of plain text.</returns>
+            <param name="cipherText">The raw data of cipher text. </param>
+            <param name="key">The raw data of key. </param>
+            <returns>The raw data of plain text. </returns>
             <exception cref="T:System.ArgumentNullException">cipherText or key</exception>
         </member>
         <member name="M:ReSharp.Security.Cryptography.CryptoUtility.XxteaEncrypt(System.String,System.String)">
             <summary>
-            Encrypts the plain text by using the XXTEA encryption algorithm.
+            Encrypts the plain text by using the XXTEA encryption algorithm. 
             </summary>
-            <param name="plainText">The plain text.</param>
-            <param name="key">The key.</param>
-            <returns>The cipher text.</returns>
+            <param name="plainText">The plain text. </param>
+            <param name="key">The key. </param>
+            <returns>The cipher text. </returns>
             <exception cref="T:System.ArgumentNullException">plainText or key</exception>
         </member>
         <member name="M:ReSharp.Security.Cryptography.CryptoUtility.XxteaEncrypt(System.Byte[],System.Byte[])">
             <summary>
-            Encrypts the raw data of plain text by using the XXTEA encryption algorithm.
+            Encrypts the raw data of plain text by using the XXTEA encryption algorithm. 
             </summary>
-            <param name="plainText">The raw da of plain text.</param>
-            <param name="key">The raw data of key.</param>
-            <returns>The raw data of cipher text.</returns>
+            <param name="plainText">The raw da of plain text. </param>
+            <param name="key">The raw data of key. </param>
+            <returns>The raw data of cipher text. </returns>
             <exception cref="T:System.ArgumentNullException">plainText or key</exception>
         </member>
         <member name="T:ReSharp.Security.DataProtection.InvalidSecretDataException">
