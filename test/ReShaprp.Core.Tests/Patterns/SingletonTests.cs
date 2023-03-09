@@ -7,8 +7,6 @@ namespace ReSharp.Tests.Patterns
     [TestFixture]
     public class SingletonTests
     {
-        #region Methods
-
         [Test]
         public void AreSameInstance()
         {
@@ -29,36 +27,22 @@ namespace ReSharp.Tests.Patterns
                 Assert.IsTrue(e is MissingMethodException);
                 return;
             }
-                
+
             Assert.Fail();
         }
 
-        #endregion Methods
-
-        #region Classes
-
         public class SingletonTestClass : Singleton<SingletonTestClass>
         {
-            #region Constructors
-
             private SingletonTestClass()
             {
             }
-
-            #endregion Constructors
         }
 
         public class SingletonTestClassWithoutConstructor : Singleton<SingletonTestClassWithoutConstructor>
         {
-            #region Methods
-
             public void Foo()
             {
             }
-
-            #endregion Methods
         }
-
-        #endregion Classes
     }
 }

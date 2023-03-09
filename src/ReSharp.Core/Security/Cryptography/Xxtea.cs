@@ -4,6 +4,8 @@
 using System;
 using System.Text;
 
+// ReSharper disable UseIndexFromEndExpression
+
 namespace ReSharp.Security.Cryptography
 {
     internal static class Xxtea

@@ -8,13 +8,7 @@ namespace ReSharp.Tests.Patterns.State
     {
         private class TestState : IState
         {
-            #region Properties
-
             public int Count { get; private set; }
-
-            #endregion Properties
-
-            #region Methods
 
             public void OnEnter(IState prevState)
             {
@@ -30,11 +24,7 @@ namespace ReSharp.Tests.Patterns.State
             {
                 Count--;
             }
-
-            #endregion Methods
         }
-        
-        #region Methods
 
         [Test]
         public void ChangeStateTest()
@@ -84,7 +74,5 @@ namespace ReSharp.Tests.Patterns.State
             context.ChangeState(state2);
             Assert.AreEqual(2, state.Count);
         }
-
-        #endregion Methods
     }
 }
