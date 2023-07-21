@@ -14,7 +14,8 @@ namespace ReSharp.Extensions
         /// <summary>
         /// The whitespace chars definitions.
         /// </summary>
-        private static readonly char[] WhitespaceChars = {
+        private static readonly char[] WhitespaceChars =
+        {
             '\t', '\n', '\v', '\f', '\r', ' ', '\x0085', '\x00a0', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '​', '\u2028', '\u2029', '﻿'
         };
 
@@ -31,14 +32,15 @@ namespace ReSharp.Extensions
         /// Reports the zero-based index of the first occurrence of the specified string in this
         /// instance by KMP algorithm.
         /// </summary>
-        /// <param name="source">The source string.</param>
-        /// <param name="value">The string to seek.</param>
+        /// <param name="source">The source string. </param>
+        /// <param name="value">The string to seek. </param>
+        /// <param name="ignoreCase">Specifies that <see cref="string"/> comparisons should ignore case. </param>
         /// <returns>
         /// The zero-based index position of <b>value</b> if that string is found, or -1 if it is
         /// not. If <b>value</b> is <see cref="string.Empty"/>, the return value is 0.
         /// </returns>
         /// <exception cref="System.ArgumentNullException"><b>source</b> is <b>null</b>.</exception>
-        public static int KmpIndexOf(this string source, string value)
+        public static int KmpIndexOf(this string source, string value, bool ignoreCase = false)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
@@ -51,7 +53,7 @@ namespace ReSharp.Extensions
 
             while (i < source.Length && j < value.Length)
             {
-                if (j == -1 || source[i] == value[j])
+                if (j == -1 || (ignoreCase ? char.ToLower(source[i]) == char.ToLower(value[j]) : source[i] == value[j]))
                 {
                     i++;
                     j++;

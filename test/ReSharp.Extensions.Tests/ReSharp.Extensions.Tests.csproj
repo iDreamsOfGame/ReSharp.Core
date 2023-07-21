@@ -48,6 +48,7 @@
         <Compile Include="System\Collections\Generic\IListExtensionsTests.cs" />
         <Compile Include="System\Int32ExtensionsTests.cs" />
         <Compile Include="System\ObjectExtensionsTests.cs" />
+        <Compile Include="System\StringExtensionsTests.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />
