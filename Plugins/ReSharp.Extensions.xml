@@ -1254,13 +1254,14 @@
             <c>true</c> if the specified <see cref="T:System.String"/> has value; otherwise, <c>false</c>.
             </returns>
         </member>
-        <member name="M:ReSharp.Extensions.StringExtensions.KmpIndexOf(System.String,System.String)">
+        <member name="M:ReSharp.Extensions.StringExtensions.KmpIndexOf(System.String,System.String,System.Boolean)">
             <summary>
             Reports the zero-based index of the first occurrence of the specified string in this
             instance by KMP algorithm.
             </summary>
-            <param name="source">The source string.</param>
-            <param name="value">The string to seek.</param>
+            <param name="source">The source string. </param>
+            <param name="value">The string to seek. </param>
+            <param name="ignoreCase">Specifies that <see cref="T:System.String"/> comparisons should ignore case. </param>
             <returns>
             The zero-based index position of <b>value</b> if that string is found, or -1 if it is
             not. If <b>value</b> is <see cref="F:System.String.Empty"/>, the return value is 0.
