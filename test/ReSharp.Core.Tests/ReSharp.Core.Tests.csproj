@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\ReSharp.Extensions\ReSharp.Extensions.csproj" />
+      <ProjectReference Include="..\..\src\ReSharp.Core\ReSharp.Core.csproj" />
     </ItemGroup>
 
 </Project>
