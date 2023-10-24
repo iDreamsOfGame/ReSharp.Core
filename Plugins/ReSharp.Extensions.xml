@@ -541,9 +541,9 @@
             Extension methods collection of <see cref="T:System.DateTime"/>.
             </summary>
         </member>
-        <member name="F:ReSharp.Extensions.DateTimeExtensions.StartTime">
+        <member name="F:ReSharp.Extensions.DateTimeExtensions.UtcTimestampStartTime">
             <summary>
-            The <see cref="T:System.DateTime"/> start position.
+            The start <see cref="T:System.DateTime"/> of UTC timestamp.
             </summary>
         </member>
         <member name="M:ReSharp.Extensions.DateTimeExtensions.ToTimestamp(System.DateTime)">
@@ -564,7 +564,7 @@
             The value of the current <see cref="T:System.DateTime"/> object expressed as a local timestamp in milliseconds.
             </returns>
         </member>
-        <member name="M:ReSharp.Extensions.DateTimeExtensions.ToTimestampUtc(System.DateTime)">
+        <member name="M:ReSharp.Extensions.DateTimeExtensions.ToUtcTimestamp(System.DateTime)">
             <summary>
             Converts the value of the current <see cref="T:System.DateTime"/> object to an UTC timestamp.
             </summary>
@@ -573,7 +573,7 @@
             The value of the current <see cref="T:System.DateTime"/> object expressed as an UTC timestamp.
             </returns>
         </member>
-        <member name="M:ReSharp.Extensions.DateTimeExtensions.ToTimestampInMillisecondsUtc(System.DateTime)">
+        <member name="M:ReSharp.Extensions.DateTimeExtensions.ToUtcTimestampInMilliseconds(System.DateTime)">
             <summary>
             Converts the value of the current <see cref="T:System.DateTime"/> object to an UTC timestamp in milliseconds.
             </summary>
@@ -613,14 +613,14 @@
             <param name="timestamp">The locale timestamp in milliseconds.</param>
             <returns>A <see cref="T:System.DateTime" /> object represents the local timestamp in milliseconds.</returns>
         </member>
-        <member name="M:ReSharp.Extensions.DateTimeUtility.ParseTimestampUtc(System.Int64)">
+        <member name="M:ReSharp.Extensions.DateTimeUtility.ParseUtcTimestamp(System.Int64)">
             <summary>
             Converts an UTC timestamp to a <see cref="T:System.DateTime" /> object.
             </summary>
             <param name="timestamp">The UTC timestamp.</param>
             <returns>A <see cref="T:System.DateTime" /> object represents the UTC timestamp.</returns>
         </member>
-        <member name="M:ReSharp.Extensions.DateTimeUtility.ParseTimestampInMillisecondsUtc(System.Int64)">
+        <member name="M:ReSharp.Extensions.DateTimeUtility.ParseUtcTimestampInMilliseconds(System.Int64)">
             <summary>
             Converts an UTC timestamp in milliseconds to a <see cref="T:System.DateTime" /> object.
             </summary>
