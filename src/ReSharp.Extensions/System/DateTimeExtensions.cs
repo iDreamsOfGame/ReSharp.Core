@@ -11,9 +11,9 @@ namespace ReSharp.Extensions
     public static class DateTimeExtensions
     {
         /// <summary>
-        /// The <see cref="System.DateTime"/> start position.
+        /// The start <see cref="System.DateTime"/> of UTC timestamp.
         /// </summary>
-        public static readonly DateTime StartTime = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+        public static readonly DateTime UtcTimestampStartTime = new DateTime(1970, 1, 1);
 
         /// <summary>
         /// Converts the value of the current <see cref="System.DateTime"/> object to a local timestamp.
@@ -24,7 +24,7 @@ namespace ReSharp.Extensions
         /// </returns>
         public static long ToTimestamp(this DateTime dateTime)
         {
-            var timeSpan = dateTime.ToLocalTime() - StartTime.ToLocalTime();
+            var timeSpan = dateTime.ToLocalTime() - UtcTimestampStartTime.ToLocalTime();
             return Convert.ToInt64(timeSpan.TotalSeconds);
         }
 
@@ -37,7 +37,7 @@ namespace ReSharp.Extensions
         /// </returns>
         public static long ToTimestampInMilliseconds(this DateTime dateTime)
         {
-            var timeSpan = dateTime.ToLocalTime() - StartTime.ToLocalTime();
+            var timeSpan = dateTime.ToLocalTime() - UtcTimestampStartTime.ToLocalTime();
             return Convert.ToInt64(timeSpan.TotalMilliseconds);
         }
 
@@ -48,9 +48,9 @@ namespace ReSharp.Extensions
         /// <returns>
         /// The value of the current <see cref="System.DateTime"/> object expressed as an UTC timestamp.
         /// </returns>
-        public static long ToTimestampUtc(this DateTime dateTime)
+        public static long ToUtcTimestamp(this DateTime dateTime)
         {
-            var timeSpan = dateTime.ToUniversalTime() - StartTime.ToUniversalTime();
+            var timeSpan = dateTime.ToUniversalTime() - UtcTimestampStartTime;
             return Convert.ToInt64(timeSpan.TotalSeconds);
         }
 
@@ -61,9 +61,9 @@ namespace ReSharp.Extensions
         /// <returns>
         /// The value of the current <see cref="System.DateTime"/> object expressed as an UTC timestamp in milliseconds.
         /// </returns>
-        public static long ToTimestampInMillisecondsUtc(this DateTime dateTime)
+        public static long ToUtcTimestampInMilliseconds(this DateTime dateTime)
         {
-            var timeSpan = dateTime.ToUniversalTime() - StartTime.ToUniversalTime();
+            var timeSpan = dateTime.ToUniversalTime() - UtcTimestampStartTime;
             return Convert.ToInt64(timeSpan.TotalMilliseconds);
         }
     }

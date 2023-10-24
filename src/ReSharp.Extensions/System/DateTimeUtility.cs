@@ -20,34 +20,34 @@ namespace ReSharp.Extensions
         /// Gets an UTC timestamp of the <see cref="System.DateTime.UtcNow" />.
         /// </summary>
         /// <value>The value of the <see cref="System.DateTime.UtcNow" /> expressed as an UTC timestamp.</value>
-        public static long UtcNowTimestamp => DateTime.UtcNow.ToTimestampUtc();
+        public static long UtcNowTimestamp => DateTime.UtcNow.ToUtcTimestamp();
 
         /// <summary>
         /// Converts a local timestamp to a <see cref="System.DateTime" /> object.
         /// </summary>
         /// <param name="timestamp">The locale timestamp.</param>
         /// <returns>A <see cref="System.DateTime" /> object represents the local timestamp.</returns>
-        public static DateTime ParseTimestamp(long timestamp) => DateTimeExtensions.StartTime.ToLocalTime().AddSeconds(timestamp);
+        public static DateTime ParseTimestamp(long timestamp) => DateTimeExtensions.UtcTimestampStartTime.ToLocalTime().AddSeconds(timestamp);
 
         /// <summary>
         /// Converts a local timestamp in milliseconds to a <see cref="System.DateTime" /> object.
         /// </summary>
         /// <param name="timestamp">The locale timestamp in milliseconds.</param>
         /// <returns>A <see cref="System.DateTime" /> object represents the local timestamp in milliseconds.</returns>
-        public static DateTime ParseTimestampInMilliseconds(long timestamp) => DateTimeExtensions.StartTime.ToLocalTime().AddMilliseconds(timestamp);
+        public static DateTime ParseTimestampInMilliseconds(long timestamp) => DateTimeExtensions.UtcTimestampStartTime.ToLocalTime().AddMilliseconds(timestamp);
 
         /// <summary>
         /// Converts an UTC timestamp to a <see cref="System.DateTime" /> object.
         /// </summary>
         /// <param name="timestamp">The UTC timestamp.</param>
         /// <returns>A <see cref="System.DateTime" /> object represents the UTC timestamp.</returns>
-        public static DateTime ParseTimestampUtc(long timestamp) => DateTimeExtensions.StartTime.ToUniversalTime().AddSeconds(timestamp);
+        public static DateTime ParseUtcTimestamp(long timestamp) => DateTimeExtensions.UtcTimestampStartTime.ToUniversalTime().AddSeconds(timestamp);
 
         /// <summary>
         /// Converts an UTC timestamp in milliseconds to a <see cref="System.DateTime" /> object.
         /// </summary>
         /// <param name="timestamp">The UTC timestamp in milliseconds.</param>
         /// <returns>A <see cref="System.DateTime" /> object represents the UTC timestamp in milliseconds.</returns>
-        public static DateTime ParseTimestampInMillisecondsUtc(long timestamp) => DateTimeExtensions.StartTime.ToUniversalTime().AddMilliseconds(timestamp);
+        public static DateTime ParseUtcTimestampInMilliseconds(long timestamp) => DateTimeExtensions.UtcTimestampStartTime.ToUniversalTime().AddMilliseconds(timestamp);
     }
 }
