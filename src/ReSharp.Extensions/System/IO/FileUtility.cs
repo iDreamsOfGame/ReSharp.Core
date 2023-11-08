@@ -44,7 +44,7 @@ namespace ReSharp.Extensions
         /// <param name="path">The path and name of the file to create. </param>
         /// <param name="fileStream">A <see cref="FileStream"/> that provides read/write access to the file specified in <c>path</c>.</param>
         /// <returns><c>true</c> if create or overwrites a file in the specified path successfully; <c>false</c> otherwise. </returns>
-        public static bool TryCrete(string path, out FileStream fileStream)
+        public static bool TryCreate(string path, out FileStream fileStream)
         {
             try
             {
