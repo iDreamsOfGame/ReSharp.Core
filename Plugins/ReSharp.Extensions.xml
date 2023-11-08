@@ -796,7 +796,7 @@
             <param name="fileStream">A new file with the specified buffer size. </param>
             <returns><c>true</c> if create or overwrites a file in the specified path successfully; <c>false</c> otherwise. </returns>
         </member>
-        <member name="M:ReSharp.Extensions.FileUtility.TryCrete(System.String,System.IO.FileStream@)">
+        <member name="M:ReSharp.Extensions.FileUtility.TryCreate(System.String,System.IO.FileStream@)">
             <summary>
             Tries to create or overwrites a file in the specified path.
             </summary>
