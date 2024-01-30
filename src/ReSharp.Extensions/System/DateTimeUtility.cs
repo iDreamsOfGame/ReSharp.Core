@@ -11,81 +11,45 @@ namespace ReSharp.Extensions
     public static class DateTimeUtility
     {
         /// <summary>
-        /// Gets a local timestamp of the <see cref="System.DateTime.Now" />.
+        /// The start <see cref="System.DateTime"/> of UNIX timestamp.
         /// </summary>
-        /// <value>The value of the <see cref="System.DateTime.Now" /> expressed as a local timestamp.</value>
-        public static long NowTimestamp => DateTime.Now.ToTimestamp();
+        public static readonly DateTime UnixTimestampStartTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         /// <summary>
-        /// Gets an UTC timestamp of the <see cref="System.DateTime.UtcNow" />.
+        /// Tries to convert an Unix timestamp to an UTC <see cref="System.DateTime" /> object.
         /// </summary>
-        /// <value>The value of the <see cref="System.DateTime.UtcNow" /> expressed as an UTC timestamp.</value>
-        public static long UtcNowTimestamp => DateTime.UtcNow.ToUtcTimestamp();
-
-        /// <summary>
-        /// Tries to convert a local timestamp to a <see cref="System.DateTime" /> object. 
-        /// </summary>
-        /// <param name="timestamp">The locale timestamp.</param>
-        /// <param name="inMilliseconds">Represents the local timestamp in milliseconds or not. <c>true</c> in milliseconds; otherwise in seconds. </param>
-        /// <param name="dateTime">A <see cref="System.DateTime" /> object represents the local timestamp. </param>
-        /// <returns><c>true</c> if the <c>timestamp</c> parameter was converted successfully; otherwise, <c>false</c>. </returns>
-        public static bool TryParseTimestamp(long timestamp, bool inMilliseconds, out DateTime dateTime)
+        /// <param name="unixTimestamp">The Unix timestamp. </param>
+        /// <param name="inMilliseconds">Represents timestamp in milliseconds or not. <c>true</c> in milliseconds; otherwise in seconds. </param>
+        /// <param name="utcDateTime">An UTC <see cref="System.DateTime" /> object represents the Unix timestamp. </param>
+        /// <returns><c>true</c> if the Unix <c>timestamp</c> parameter was converted successfully; otherwise, <c>false</c>. </returns>
+        public static bool TryToUtcDateTime(long unixTimestamp, bool inMilliseconds, out DateTime utcDateTime)
         {
             try
             {
-                dateTime = ParseTimestamp(timestamp, inMilliseconds);
+                utcDateTime = ToUtcDateTime(unixTimestamp, inMilliseconds);
                 return true;
             }
             catch (Exception)
             {
-                dateTime = DateTimeExtensions.UtcTimestampStartTime.ToLocalTime();
+                utcDateTime = UnixTimestampStartTime;
                 return false;
             }
-        }
-
-        /// <summary>
-        /// Converts a local timestamp to a <see cref="System.DateTime" /> object.
-        /// </summary>
-        /// <param name="timestamp">The locale timestamp.</param>
-        /// <param name="inMilliseconds">Represents timestamp in milliseconds or not. <c>true</c> in milliseconds; otherwise in seconds. </param>
-        /// <returns>A <see cref="System.DateTime" /> object represents the local timestamp.</returns>
-        public static DateTime ParseTimestamp(long timestamp, bool inMilliseconds = false)
-        {
-            var startTime = DateTimeExtensions.UtcTimestampStartTime.ToLocalTime();
-            return inMilliseconds ? startTime.AddMilliseconds(timestamp) : startTime.AddSeconds(timestamp);
         }
         
         /// <summary>
-        /// Tries to convert an UTC timestamp to a <see cref="System.DateTime" /> object. 
+        /// Converts an Unix timestamp to an UTC <see cref="System.DateTime" /> object.
         /// </summary>
-        /// <param name="timestamp">The UTC timestamp.</param>
-        /// <param name="inMilliseconds">Represents the UTC timestamp in milliseconds or not. <c>true</c> in milliseconds; otherwise in seconds. </param>
-        /// <param name="dateTime">A <see cref="System.DateTime" /> object represents the UTC timestamp. </param>
-        /// <returns><c>true</c> if the <c>timestamp</c> parameter was converted successfully; otherwise, <c>false</c>. </returns>
-        public static bool TryParseUtcTimestamp(long timestamp, bool inMilliseconds, out DateTime dateTime)
-        {
-            try
-            {
-                dateTime = ParseUtcTimestamp(timestamp, inMilliseconds);
-                return true;
-            }
-            catch (Exception)
-            {
-                dateTime = DateTimeExtensions.UtcTimestampStartTime.ToUniversalTime();
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Converts an UTC timestamp to a <see cref="System.DateTime" /> object.
-        /// </summary>
-        /// <param name="timestamp">The UTC timestamp.</param>
+        /// <param name="unixTimestamp">The Unix timestamp. </param>
         /// <param name="inMilliseconds">Represents timestamp in milliseconds or not. <c>true</c> in milliseconds; otherwise in seconds. </param>
-        /// <returns>A <see cref="System.DateTime" /> object represents the UTC timestamp.</returns>
-        public static DateTime ParseUtcTimestamp(long timestamp, bool inMilliseconds = false)
+        /// <returns>An UTC <see cref="System.DateTime" /> object represents the Unix timestamp. </returns>
+        public static DateTime ToUtcDateTime(long unixTimestamp, bool inMilliseconds = false)
         {
-            var startTime = DateTimeExtensions.UtcTimestampStartTime.ToUniversalTime();
-            return inMilliseconds ? startTime.AddMilliseconds(timestamp) : startTime.AddSeconds(timestamp);
+#if NETSTANDARD1_3 || NETSTANDARD1_4 || NETSTANDARD1_5 || NETSTANDARD1_6 || NETSTANDARD2_0 || NETSTANDARD2_1
+            var dateTimeOffset = inMilliseconds ? DateTimeOffset.FromUnixTimeSeconds(unixTimestamp) : DateTimeOffset.FromUnixTimeMilliseconds(unixTimestamp);
+            return dateTimeOffset.UtcDateTime;
+#else
+            return inMilliseconds ? UnixTimestampStartTime.AddMilliseconds(unixTimestamp) : UnixTimestampStartTime.AddSeconds(unixTimestamp);
+#endif
         }
     }
 }
