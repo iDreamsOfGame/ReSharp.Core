@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+## [1.4.0] - 2024-01-30
+
+### Changed
+
+- Rewrite **DateTimeUtility**.
+- Rewrite **DateTimeExtensions**.
+
+
+
 ## [1.3.0] - 2023-10-23
 
 ### Added
