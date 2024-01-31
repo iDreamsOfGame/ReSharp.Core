@@ -4,7 +4,7 @@
 
         <IsPackable>false</IsPackable>
 
-        <TargetFrameworks>net45;netstandard2.1</TargetFrameworks>
+        <TargetFrameworks>netstandard2.1;net46</TargetFrameworks>
     </PropertyGroup>
 
     <ItemGroup>

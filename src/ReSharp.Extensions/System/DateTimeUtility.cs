@@ -51,5 +51,31 @@ namespace ReSharp.Extensions
                 return false;
             }
         }
+
+        /// <summary>
+        /// Converts a <see cref="DateTime"/> represents an UTC to a <see cref="DateTime"/> represents an UTC Offset.
+        /// </summary>
+        /// <param name="utc">A <see cref="DateTime"/> represents an UTC. </param>
+        /// <param name="offset">UTC offset. </param>
+        /// <returns>A <see cref="DateTime"/> represents an UTC Offset. </returns>
+        public static DateTime ConvertUtcToUtcOffset(DateTime utc, int offset = 0)
+        {
+            var dateTime = utc.Kind == DateTimeKind.Utc ? utc : utc.ToUniversalTime();
+            dateTime = dateTime.AddHours(offset);
+            return new DateTime(dateTime.Ticks, DateTimeKind.Unspecified);
+        }
+
+        /// <summary>
+        /// Converts a <see cref="DateTime"/> represents an UTC offset to a <see cref="DateTime"/> represents an UTC.
+        /// </summary>
+        /// <param name="utcOffset">A <see cref="DateTime"/> represents an UTC Offset. </param>
+        /// <param name="offset">UTC offset. </param>
+        /// <returns>A <see cref="DateTime"/> represents an UTC. </returns>
+        public static DateTime ConvertUtcOffsetToUtc(DateTime utcOffset, int offset = 0)
+        {
+            var dateTime = utcOffset.Kind == DateTimeKind.Unspecified ? utcOffset : DateTime.SpecifyKind(utcOffset, DateTimeKind.Unspecified);
+            dateTime = dateTime.AddHours(-offset);
+            return new DateTime(dateTime.Ticks, DateTimeKind.Utc);
+        }
     }
 }

@@ -11,18 +11,6 @@ namespace ReSharp.Extensions
     public static class DateTimeExtensions
     {
         /// <summary>
-        /// Converts the value of the <see cref="System.DateTime"/> object to a <see cref="System.DateTime"/> in specific time zone.
-        /// </summary>
-        /// <param name="dateTime">The <see cref="System.DateTime"/> object to be converted. </param>
-        /// <param name="timeZone">The specific time zone which the result <see cref="System.DateTime"/> object is in. </param>
-        /// <returns>A <see cref="System.DateTime"/> in specific time zone. </returns>
-        public static DateTime ToDateTimeInTimeZone(this DateTime dateTime, int timeZone)
-        {
-            var utcDateTime = dateTime.Kind == DateTimeKind.Utc ? dateTime : dateTime.ToUniversalTime();
-            return new DateTimeOffset(utcDateTime).ToOffset(TimeSpan.FromHours(timeZone)).DateTime;
-        }
-        
-        /// <summary>
         /// Converts the value of the <see cref="System.DateTime"/> object to an Unix timestamp.
         /// </summary>
         /// <param name="dateTime">The <see cref="System.DateTime"/> object to be converted. </param>

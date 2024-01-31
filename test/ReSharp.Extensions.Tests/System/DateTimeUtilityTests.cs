@@ -44,5 +44,21 @@ namespace ReSharp.Extensions.Tests
             var result = DateTimeUtility.TryParseUnixTimestamp(long.MaxValue, false, out _);
             Assert.IsFalse(result);
         }
+
+        [Test]
+        public void ConvertUtcToUtcOffsetTest()
+        {
+            var testDateTime = new DateTime(2024, 1, 30, 16, 0, 0, DateTimeKind.Local);
+            var expected = new DateTime(2024, 1, 30, 0, 0, 0, DateTimeKind.Unspecified);
+            Assert.AreEqual(expected, DateTimeUtility.ConvertUtcToUtcOffset(testDateTime, -8));
+        }
+
+        [Test]
+        public void ConvertUtcOffsetToUtcTest()
+        {
+            var testDateTime = new DateTime(2024, 1, 30, 0, 0, 0, DateTimeKind.Unspecified);
+            var expected = new DateTime(2024, 1, 30, 8, 0, 0, DateTimeKind.Utc);
+            Assert.AreEqual(expected, DateTimeUtility.ConvertUtcOffsetToUtc(testDateTime, -8));
+        }
     }
 }

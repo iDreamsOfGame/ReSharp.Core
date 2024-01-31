@@ -39,14 +39,6 @@ namespace ReSharp.Extensions.Tests
             var dateTime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(TestLocaDateTime, TimeZoneInfo.Local.Id, "Asia/Shanghai");
             Assert.AreEqual(ExpectedTimestampInMillisecond, dateTime.ToUnixTimestamp(true));
         }
-
-        [Test]
-        public void ToDateTimeInTimeZoneTest()
-        {
-            var testDateTime = new DateTime(2024, 1, 30, 16, 0, 0, DateTimeKind.Local);
-            var expected = new DateTime(2024, 1, 30, 0, 0, 0, DateTimeKind.Unspecified);
-            Assert.AreEqual(expected, testDateTime.ToDateTimeInTimeZone(-8));
-        }
         
         [Test]
         public void TryToUnixTimestampTest1()
