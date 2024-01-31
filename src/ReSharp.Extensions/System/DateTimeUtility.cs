@@ -58,8 +58,12 @@ namespace ReSharp.Extensions
         /// <param name="utc">A <see cref="DateTime"/> represents an UTC. </param>
         /// <param name="offset">UTC offset. </param>
         /// <returns>A <see cref="DateTime"/> represents an UTC Offset. </returns>
+        /// <exception cref="ArgumentOutOfRangeException">The <c>offset</c> must be between -12 and 12. </exception>
         public static DateTime ConvertUtcToUtcOffset(DateTime utc, int offset = 0)
         {
+            if (offset < -12 || 12 < offset)
+                throw new ArgumentOutOfRangeException($"The {nameof(offset)} must be between -12 and 12.");
+            
             var dateTime = utc.Kind == DateTimeKind.Utc ? utc : utc.ToUniversalTime();
             dateTime = dateTime.AddHours(offset);
             return new DateTime(dateTime.Ticks, DateTimeKind.Unspecified);
@@ -71,8 +75,12 @@ namespace ReSharp.Extensions
         /// <param name="utcOffset">A <see cref="DateTime"/> represents an UTC Offset. </param>
         /// <param name="offset">UTC offset. </param>
         /// <returns>A <see cref="DateTime"/> represents an UTC. </returns>
+        /// <exception cref="ArgumentOutOfRangeException">The <c>offset</c> must be between -12 and 12. </exception>
         public static DateTime ConvertUtcOffsetToUtc(DateTime utcOffset, int offset = 0)
         {
+            if (offset < -12 || 12 < offset)
+                throw new ArgumentOutOfRangeException($"The {nameof(offset)} must be between -12 and 12.");
+            
             var dateTime = utcOffset.Kind == DateTimeKind.Unspecified ? utcOffset : DateTime.SpecifyKind(utcOffset, DateTimeKind.Unspecified);
             dateTime = dateTime.AddHours(-offset);
             return new DateTime(dateTime.Ticks, DateTimeKind.Utc);
