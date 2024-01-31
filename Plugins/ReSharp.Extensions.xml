@@ -592,6 +592,7 @@
             <param name="utc">A <see cref="T:System.DateTime"/> represents an UTC. </param>
             <param name="offset">UTC offset. </param>
             <returns>A <see cref="T:System.DateTime"/> represents an UTC Offset. </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">The <c>offset</c> must be between -12 and 12. </exception>
         </member>
         <member name="M:ReSharp.Extensions.DateTimeUtility.ConvertUtcOffsetToUtc(System.DateTime,System.Int32)">
             <summary>
@@ -600,6 +601,7 @@
             <param name="utcOffset">A <see cref="T:System.DateTime"/> represents an UTC Offset. </param>
             <param name="offset">UTC offset. </param>
             <returns>A <see cref="T:System.DateTime"/> represents an UTC. </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">The <c>offset</c> must be between -12 and 12. </exception>
         </member>
         <member name="T:ReSharp.Extensions.EnumUtility">
             <summary>
