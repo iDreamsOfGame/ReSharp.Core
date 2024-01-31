@@ -541,14 +541,13 @@
             Extension methods collection of <see cref="T:System.DateTime"/>.
             </summary>
         </member>
-        <member name="M:ReSharp.Extensions.DateTimeExtensions.TryToUnixTimestamp(System.DateTime,System.Boolean,System.Int64@)">
+        <member name="M:ReSharp.Extensions.DateTimeExtensions.ToDateTimeInTimeZone(System.DateTime,System.Int32)">
             <summary>
-            Tries to convert the value of the <see cref="T:System.DateTime"/> object to an Unix timestamp.
+            Converts the value of the <see cref="T:System.DateTime"/> object to a <see cref="T:System.DateTime"/> in specific time zone.
             </summary>
             <param name="dateTime">The <see cref="T:System.DateTime"/> object to be converted. </param>
-            <param name="inMilliseconds">Converts to Unix timestamp in milliseconds or not. <c>true</c> in milliseconds; otherwise in seconds. </param>
-            <param name="timestamp">The value of the <see cref="T:System.DateTime"/> object expressed as an Unix timestamp. </param>
-            <returns><c>true</c> if the <see cref="T:System.DateTime"/> was converted successfully; otherwise, <c>false</c>. </returns>
+            <param name="timeZone">The specific time zone which the result <see cref="T:System.DateTime"/> object is in. </param>
+            <returns>A <see cref="T:System.DateTime"/> in specific time zone. </returns>
         </member>
         <member name="M:ReSharp.Extensions.DateTimeExtensions.ToUnixTimestamp(System.DateTime,System.Boolean)">
             <summary>
@@ -558,13 +557,14 @@
             <param name="inMilliseconds">Converts to Unix timestamp in milliseconds or not. <c>true</c> in milliseconds; otherwise in seconds. </param>
             <returns>The value of the <see cref="T:System.DateTime"/> object expressed as an Unix timestamp. </returns>
         </member>
-        <member name="M:ReSharp.Extensions.DateTimeExtensions.ToDateTimeInTimeZone(System.DateTime,System.Int32)">
+        <member name="M:ReSharp.Extensions.DateTimeExtensions.TryToUnixTimestamp(System.DateTime,System.Boolean,System.Int64@)">
             <summary>
-            Converts the value of the <see cref="T:System.DateTime"/> object to a <see cref="T:System.DateTime"/> in specific time zone.
+            Tries to convert the value of the <see cref="T:System.DateTime"/> object to an Unix timestamp.
             </summary>
             <param name="dateTime">The <see cref="T:System.DateTime"/> object to be converted. </param>
-            <param name="timeZone">The specific time zone which the result <see cref="T:System.DateTime"/> object is in. </param>
-            <returns>A <see cref="T:System.DateTime"/> in specific time zone. </returns>
+            <param name="inMilliseconds">Converts to Unix timestamp in milliseconds or not. <c>true</c> in milliseconds; otherwise in seconds. </param>
+            <param name="timestamp">The value of the <see cref="T:System.DateTime"/> object expressed as an Unix timestamp. </param>
+            <returns><c>true</c> if the <see cref="T:System.DateTime"/> was converted successfully; otherwise, <c>false</c>. </returns>
         </member>
         <member name="T:ReSharp.Extensions.DateTimeUtility">
             <summary>
@@ -576,7 +576,15 @@
             The start <see cref="T:System.DateTime"/> of UNIX timestamp.
             </summary>
         </member>
-        <member name="M:ReSharp.Extensions.DateTimeUtility.TryToUtcDateTime(System.Int64,System.Boolean,System.DateTime@)">
+        <member name="M:ReSharp.Extensions.DateTimeUtility.ParseUnixTimestamp(System.Int64,System.Boolean)">
+            <summary>
+            Converts an Unix timestamp to an UTC <see cref="T:System.DateTime" /> object.
+            </summary>
+            <param name="unixTimestamp">The Unix timestamp. </param>
+            <param name="inMilliseconds">Represents timestamp in milliseconds or not. <c>true</c> in milliseconds; otherwise in seconds. </param>
+            <returns>An UTC <see cref="T:System.DateTime" /> object represents the Unix timestamp. </returns>
+        </member>
+        <member name="M:ReSharp.Extensions.DateTimeUtility.TryParseUnixTimestamp(System.Int64,System.Boolean,System.DateTime@)">
             <summary>
             Tries to convert an Unix timestamp to an UTC <see cref="T:System.DateTime" /> object.
             </summary>
@@ -584,14 +592,6 @@
             <param name="inMilliseconds">Represents timestamp in milliseconds or not. <c>true</c> in milliseconds; otherwise in seconds. </param>
             <param name="utcDateTime">An UTC <see cref="T:System.DateTime" /> object represents the Unix timestamp. </param>
             <returns><c>true</c> if the Unix <c>timestamp</c> parameter was converted successfully; otherwise, <c>false</c>. </returns>
-        </member>
-        <member name="M:ReSharp.Extensions.DateTimeUtility.ToUtcDateTime(System.Int64,System.Boolean)">
-            <summary>
-            Converts an Unix timestamp to an UTC <see cref="T:System.DateTime" /> object.
-            </summary>
-            <param name="unixTimestamp">The Unix timestamp. </param>
-            <param name="inMilliseconds">Represents timestamp in milliseconds or not. <c>true</c> in milliseconds; otherwise in seconds. </param>
-            <returns>An UTC <see cref="T:System.DateTime" /> object represents the Unix timestamp. </returns>
         </member>
         <member name="T:ReSharp.Extensions.EnumUtility">
             <summary>
