@@ -24,7 +24,7 @@ namespace ReSharp.Extensions
         public static DateTime ParseUnixTimestamp(long unixTimestamp, bool inMilliseconds = false)
         {
 #if NETSTANDARD1_3 || NETSTANDARD1_4 || NETSTANDARD1_5 || NETSTANDARD1_6 || NETSTANDARD2_0 || NETSTANDARD2_1
-            var dateTimeOffset = inMilliseconds ? DateTimeOffset.FromUnixTimeSeconds(unixTimestamp) : DateTimeOffset.FromUnixTimeMilliseconds(unixTimestamp);
+            var dateTimeOffset = inMilliseconds ? DateTimeOffset.FromUnixTimeMilliseconds(unixTimestamp) : DateTimeOffset.FromUnixTimeSeconds(unixTimestamp);
             return dateTimeOffset.UtcDateTime;
 #else
             return inMilliseconds ? UnixTimestampStartTime.AddMilliseconds(unixTimestamp) : UnixTimestampStartTime.AddSeconds(unixTimestamp);
