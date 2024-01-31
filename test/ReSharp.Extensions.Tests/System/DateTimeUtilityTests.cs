@@ -13,35 +13,35 @@ namespace ReSharp.Extensions.Tests
         private static readonly DateTime TargetUtcDateTime = new DateTime(2024, 1, 30, 0, 0, 0, DateTimeKind.Utc);
         
         [Test]
-        public void ToUtcDateTimeTest1()
+        public void ParseUnixTimestampTest1()
         {
-            Assert.AreEqual(TargetUtcDateTime, DateTimeUtility.ToUtcDateTime(Timestamp));
+            Assert.AreEqual(TargetUtcDateTime, DateTimeUtility.ParseUnixTimestamp(Timestamp));
         }
         
         [Test]
-        public void ToUtcDateTimeTest2()
+        public void ParseUnixTimestampTest2()
         {
-            Assert.AreEqual(TargetUtcDateTime, DateTimeUtility.ToUtcDateTime(TimestampInMillisecond, true));
+            Assert.AreEqual(TargetUtcDateTime, DateTimeUtility.ParseUnixTimestamp(TimestampInMillisecond, true));
         }
 
         [Test]
-        public void TryToUtcDateTimeTest1()
+        public void TryParseUnixTimestampTest1()
         {
-            DateTimeUtility.TryToUtcDateTime(Timestamp, false, out var actual);
+            DateTimeUtility.TryParseUnixTimestamp(Timestamp, false, out var actual);
             Assert.AreEqual(TargetUtcDateTime, actual);
         }
         
         [Test]
-        public void TryToUtcDateTimeTest2()
+        public void TryParseUnixTimestampTest2()
         {
-            DateTimeUtility.TryToUtcDateTime(TimestampInMillisecond, true, out var actual);
+            DateTimeUtility.TryParseUnixTimestamp(TimestampInMillisecond, true, out var actual);
             Assert.AreEqual(TargetUtcDateTime, actual);
         }
 
         [Test]
-        public void TryToUtcDateTimeTest3()
+        public void TryParseUnixTimestampTest3()
         {
-            var result = DateTimeUtility.TryToUtcDateTime(long.MaxValue, false, out _);
+            var result = DateTimeUtility.TryParseUnixTimestamp(long.MaxValue, false, out _);
             Assert.IsFalse(result);
         }
     }

@@ -11,24 +11,15 @@ namespace ReSharp.Extensions
     public static class DateTimeExtensions
     {
         /// <summary>
-        /// Tries to convert the value of the <see cref="System.DateTime"/> object to an Unix timestamp.
+        /// Converts the value of the <see cref="System.DateTime"/> object to a <see cref="System.DateTime"/> in specific time zone.
         /// </summary>
         /// <param name="dateTime">The <see cref="System.DateTime"/> object to be converted. </param>
-        /// <param name="inMilliseconds">Converts to Unix timestamp in milliseconds or not. <c>true</c> in milliseconds; otherwise in seconds. </param>
-        /// <param name="timestamp">The value of the <see cref="System.DateTime"/> object expressed as an Unix timestamp. </param>
-        /// <returns><c>true</c> if the <see cref="System.DateTime"/> was converted successfully; otherwise, <c>false</c>. </returns>
-        public static bool TryToUnixTimestamp(this DateTime dateTime, bool inMilliseconds, out long timestamp)
+        /// <param name="timeZone">The specific time zone which the result <see cref="System.DateTime"/> object is in. </param>
+        /// <returns>A <see cref="System.DateTime"/> in specific time zone. </returns>
+        public static DateTime ToDateTimeInTimeZone(this DateTime dateTime, int timeZone)
         {
-            try
-            {
-                timestamp = dateTime.ToUnixTimestamp(inMilliseconds);
-                return true;
-            }
-            catch (Exception)
-            {
-                timestamp = 0L;
-                return false;
-            }
+            var utcDateTime = dateTime.Kind == DateTimeKind.Utc ? dateTime : dateTime.ToUniversalTime();
+            return new DateTimeOffset(utcDateTime).ToOffset(TimeSpan.FromHours(timeZone)).DateTime;
         }
         
         /// <summary>
@@ -50,17 +41,26 @@ namespace ReSharp.Extensions
             return inMilliseconds ? ToUnixTimeMilliseconds(dateTimeOffset) : ToUnixTimeSeconds(dateTimeOffset);
 #endif
         }
-
+        
         /// <summary>
-        /// Converts the value of the <see cref="System.DateTime"/> object to a <see cref="System.DateTime"/> in specific time zone.
+        /// Tries to convert the value of the <see cref="System.DateTime"/> object to an Unix timestamp.
         /// </summary>
         /// <param name="dateTime">The <see cref="System.DateTime"/> object to be converted. </param>
-        /// <param name="timeZone">The specific time zone which the result <see cref="System.DateTime"/> object is in. </param>
-        /// <returns>A <see cref="System.DateTime"/> in specific time zone. </returns>
-        public static DateTime ToDateTimeInTimeZone(this DateTime dateTime, int timeZone)
+        /// <param name="inMilliseconds">Converts to Unix timestamp in milliseconds or not. <c>true</c> in milliseconds; otherwise in seconds. </param>
+        /// <param name="timestamp">The value of the <see cref="System.DateTime"/> object expressed as an Unix timestamp. </param>
+        /// <returns><c>true</c> if the <see cref="System.DateTime"/> was converted successfully; otherwise, <c>false</c>. </returns>
+        public static bool TryToUnixTimestamp(this DateTime dateTime, bool inMilliseconds, out long timestamp)
         {
-            var utcDateTime = dateTime.Kind == DateTimeKind.Utc ? dateTime : dateTime.ToUniversalTime();
-            return new DateTimeOffset(utcDateTime).ToOffset(TimeSpan.FromHours(timeZone)).DateTime;
+            try
+            {
+                timestamp = dateTime.ToUnixTimestamp(inMilliseconds);
+                return true;
+            }
+            catch (Exception)
+            {
+                timestamp = 0L;
+                return false;
+            }
         }
 
         private static long ToUnixTimeSeconds(DateTimeOffset dateTimeOffset) =>

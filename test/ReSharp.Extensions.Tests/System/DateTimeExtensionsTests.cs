@@ -15,6 +15,40 @@ namespace ReSharp.Extensions.Tests
         private static readonly DateTime TestLocaDateTime = new DateTime(2024, 1, 30, 8, 0, 0, DateTimeKind.Local);
         
         [Test]
+        public void ToUnixTimestampTest1()
+        {
+            Assert.AreEqual(ExpectedTimestamp, TestUtcDateTime.ToUnixTimestamp());
+        }
+        
+        [Test]
+        public void ToUnixTimestampTest2()
+        {
+            Assert.AreEqual(ExpectedTimestampInMillisecond, TestUtcDateTime.ToUnixTimestamp(true));
+        }
+
+        [Test]
+        public void ToUnixTimestampTest3()
+        {
+            var dateTime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(TestLocaDateTime, TimeZoneInfo.Local.Id, "Asia/Shanghai");
+            Assert.AreEqual(ExpectedTimestamp, dateTime.ToUnixTimestamp());
+        }
+        
+        [Test]
+        public void ToUnixTimestampTest4()
+        {
+            var dateTime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(TestLocaDateTime, TimeZoneInfo.Local.Id, "Asia/Shanghai");
+            Assert.AreEqual(ExpectedTimestampInMillisecond, dateTime.ToUnixTimestamp(true));
+        }
+
+        [Test]
+        public void ToDateTimeInTimeZoneTest()
+        {
+            var testDateTime = new DateTime(2024, 1, 30, 16, 0, 0, DateTimeKind.Local);
+            var expected = new DateTime(2024, 1, 30, 0, 0, 0, DateTimeKind.Unspecified);
+            Assert.AreEqual(expected, testDateTime.ToDateTimeInTimeZone(-8));
+        }
+        
+        [Test]
         public void TryToUnixTimestampTest1()
         {
             TestUtcDateTime.TryToUnixTimestamp(false, out var actual);
@@ -50,40 +84,6 @@ namespace ReSharp.Extensions.Tests
             var dateTime = new DateTime(0);
             var result = dateTime.TryToUnixTimestamp(false, out _);
             Assert.IsFalse(result);
-        }
-
-        [Test]
-        public void ToUnixTimestampTest1()
-        {
-            Assert.AreEqual(ExpectedTimestamp, TestUtcDateTime.ToUnixTimestamp());
-        }
-        
-        [Test]
-        public void ToUnixTimestampTest2()
-        {
-            Assert.AreEqual(ExpectedTimestampInMillisecond, TestUtcDateTime.ToUnixTimestamp(true));
-        }
-
-        [Test]
-        public void ToUnixTimestampTest3()
-        {
-            var dateTime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(TestLocaDateTime, TimeZoneInfo.Local.Id, "Asia/Shanghai");
-            Assert.AreEqual(ExpectedTimestamp, dateTime.ToUnixTimestamp());
-        }
-        
-        [Test]
-        public void ToUnixTimestampTest4()
-        {
-            var dateTime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(TestLocaDateTime, TimeZoneInfo.Local.Id, "Asia/Shanghai");
-            Assert.AreEqual(ExpectedTimestampInMillisecond, dateTime.ToUnixTimestamp(true));
-        }
-
-        [Test]
-        public void ToDateTimeInTimeZoneTest()
-        {
-            var testDateTime = new DateTime(2024, 1, 30, 16, 0, 0, DateTimeKind.Local);
-            var expected = new DateTime(2024, 1, 30, 0, 0, 0, DateTimeKind.Unspecified);
-            Assert.AreEqual(expected, testDateTime.ToDateTimeInTimeZone(-8));
         }
     }
 }
