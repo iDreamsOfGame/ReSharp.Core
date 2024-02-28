@@ -3,7 +3,9 @@
 
 using System;
 using System.Collections;
+
 // ReSharper disable InconsistentNaming
+// ReSharper disable SwapViaDeconstruction
 
 namespace ReSharp.Extensions
 {

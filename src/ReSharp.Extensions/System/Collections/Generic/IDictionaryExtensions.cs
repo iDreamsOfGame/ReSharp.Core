@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Jerry Lee. All rights reserved. Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
+
 // ReSharper disable InconsistentNaming
 
 namespace ReSharp.Extensions
@@ -26,16 +26,13 @@ namespace ReSharp.Extensions
         /// </param>
         public static void AddUnique<TKey, TValue>(this IDictionary<TKey, TValue> source, TKey key, TValue value, bool canReplace = true)
         {
-            try
+            if (!source.ContainsKey(key))
             {
                 source.Add(key, value);
             }
-            catch (ArgumentException)
+            else if (canReplace)
             {
-                if (canReplace)
-                {
-                    source[key] = value;
-                }
+                source[key] = value;
             }
         }
 
