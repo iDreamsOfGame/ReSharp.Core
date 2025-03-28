@@ -6,6 +6,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+## [1.5.2] - 2025-03-28
+
+### Fixed
+
+- Fixed the bug that the method **ObjectExtensions.GetFieldInfo** can not get the field information of the object that inherited from a class.
+
+
+
+### Changed
+
+- Adds test casese to **ObjectExtensionsTests**.
+
+
+
 ## [1.5.0] - 2024-10-16
 
 ### Added

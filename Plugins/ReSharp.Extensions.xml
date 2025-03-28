@@ -1128,7 +1128,7 @@
         </member>
         <member name="M:ReSharp.Extensions.ObjectExtensions.GetCustomAttribute``1(System.Object,System.Boolean)">
             <summary>
-            Gets an custom attribute on an object.
+            Gets a custom attribute on an object.
             </summary>
             <param name="source">The object. </param>
             <param name="inherit">
@@ -1137,14 +1137,29 @@
             <typeparam name="T">The type of the custom attribute you want to retrieve. </typeparam>
             <returns>The attribute of type <c>T</c> that exists on the object. </returns>
         </member>
-        <member name="M:ReSharp.Extensions.ObjectExtensions.GetEventField(System.Object,System.String,System.Reflection.BindingFlags)">
+        <member name="M:ReSharp.Extensions.ObjectExtensions.GetEventFieldInfo(System.Object,System.String,System.Reflection.BindingFlags)">
             <summary>
-            Searches for the event field with the specified name.
+            Searches for the event field information with the specified name.
             </summary>
-            <param name="source"></param>
-            <param name="eventName"></param>
-            <param name="bindingFlags"></param>
-            <returns></returns>
+            <param name="source">The object whose event field information will be returned.</param>
+            <param name="eventName">The string containing the name of the event field to get.</param>
+            <param name="bindingFlags">
+            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
+            search is conducted.
+            </param>
+            <returns>The <see cref="T:System.Reflection.FieldInfo"/> object of the searched event field. </returns>
+        </member>
+        <member name="M:ReSharp.Extensions.ObjectExtensions.GetFieldInfo(System.Object,System.String,System.Reflection.BindingFlags)">
+            <summary>
+            Searches for the field information with the specified name.
+            </summary>
+            <param name="source">The object whose field information will be returned.</param>
+            <param name="fieldName">The string containing the name of the data field information to get.</param>
+            <param name="bindingFlags">
+            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
+            search is conducted.
+            </param>
+            <returns>The <see cref="T:System.Reflection.FieldInfo"/> object of the specified object. </returns>
         </member>
         <member name="M:ReSharp.Extensions.ObjectExtensions.GetFieldValue(System.Object,System.String,System.Reflection.BindingFlags)">
             <summary>
@@ -1182,6 +1197,18 @@
             </param>
             <returns>The field value pairs of the type.</returns>
         </member>
+        <member name="M:ReSharp.Extensions.ObjectExtensions.GetPropertyInfo(System.Object,System.String,System.Reflection.BindingFlags)">
+            <summary>
+            Searches for the property information with the specified name.
+            </summary>
+            <param name="source">The object whose property information will be returned.</param>
+            <param name="propertyName">The string containing the name of the property information to get.</param>
+            <param name="bindingFlags">
+            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
+            search is conducted.
+            </param>
+            <returns>The <see cref="T:System.Reflection.PropertyInfo"/> object of the specified object. </returns>
+        </member>
         <member name="M:ReSharp.Extensions.ObjectExtensions.GetPropertyValue(System.Object,System.String,System.Object[],System.Reflection.BindingFlags)">
             <summary>
             Gets the property value of by a given property name, a bitmask comprised of one or more
@@ -1217,12 +1244,27 @@
             Gets the property value pairs.
             </summary>
             <param name="source">The source.</param>
-            <param name="bindingAttr">The binding attribute.</param>
+            <param name="bindingFlags">
+            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
+            search is conducted.
+            </param>
             <returns>The property value pairs of the type.</returns>
+        </member>
+        <member name="M:ReSharp.Extensions.ObjectExtensions.GetMethodInfo(System.Object,System.String,System.Reflection.BindingFlags)">
+            <summary>
+            Searches for the method information with the specified name.
+            </summary>
+            <param name="source">The object whose method information will be returned.</param>
+            <param name="methodName">The string containing the name of the method information to get.</param>
+            <param name="bindingFlags">
+            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
+            search is conducted.
+            </param>
+            <returns>The <see cref="T:System.Reflection.MethodInfo"/> object of the searched method. </returns>
         </member>
         <member name="M:ReSharp.Extensions.ObjectExtensions.HasMethod(System.Object,System.String,System.Reflection.BindingFlags)">
             <summary>
-            Determines whether has the specified method by a given name and a bitmask comprised of
+            Determines whether the object has the specified method by a given name and a bitmask comprised of
             one or more <see cref="T:System.Reflection.BindingFlags"/>.
             </summary>
             <param name="source">The object to search.</param>
@@ -1264,6 +1306,17 @@
             search is conducted.
             </param>
             <returns>An object containing the return value of the invoked method.</returns>
+        </member>
+        <member name="M:ReSharp.Extensions.ObjectExtensions.GetEventInfoList(System.Object,System.Reflection.BindingFlags)">
+            <summary>
+            Gets the list of <see cref="T:System.Reflection.EventInfo"/> of the specified object.
+            </summary>
+            <param name="source">The object whose event information list will be returned.</param>
+            <param name="bindingFlags">
+            A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the
+            search is conducted.
+            </param>
+            <returns>The <see cref="T:System.Reflection.EventInfo"/> object list of the specified object. </returns>
         </member>
         <member name="M:ReSharp.Extensions.ObjectExtensions.RemoveEventHandlers(System.Object,System.String,System.Reflection.BindingFlags)">
             <summary>
