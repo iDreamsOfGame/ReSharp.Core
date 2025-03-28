@@ -72,28 +72,28 @@ namespace ReSharp.Extensions
                         var propertyInfo = (PropertyInfo)memberInfo;
                         var setMethodInfo = propertyInfo.GetSetMethod(false);
 
-                        if (setMethodInfo != null)
+                        if (setMethodInfo == null) 
+                            continue;
+                        
+                        var propertyValue = propertyInfo.GetValue(source, null);
+
+                        if (propertyValue == null)
+                            continue;
+
+                        try
                         {
-                            var propertyValue = propertyInfo.GetValue(source, null);
-
-                            if (propertyValue == null)
-                                continue;
-
-                            try
+                            if (propertyValue is ICloneable cloneable)
                             {
-                                if (propertyValue is ICloneable cloneable)
-                                {
-                                    propertyInfo.SetValue(target, cloneable.Clone(), null);
-                                }
-                                else
-                                {
-                                    propertyInfo.SetValue(target, propertyValue.DeepClone(), null);
-                                }
+                                propertyInfo.SetValue(target, cloneable.Clone(), null);
                             }
-                            catch (Exception)
+                            else
                             {
-                                // ignored
+                                propertyInfo.SetValue(target, propertyValue.DeepClone(), null);
                             }
+                        }
+                        catch (Exception)
+                        {
+                            // ignored
                         }
                     }
                 }
@@ -175,7 +175,7 @@ namespace ReSharp.Extensions
         }
         
         /// <summary>
-        /// Gets an custom attribute on an object.
+        /// Gets a custom attribute on an object.
         /// </summary>
         /// <param name="source">The object. </param>
         /// <param name="inherit">
@@ -188,40 +188,72 @@ namespace ReSharp.Extensions
             var type = source.GetType();
             var memberInfoCollection = type.GetMember(source.ToString());
             var attributes = memberInfoCollection[0].GetCustomAttributes(typeof(T), inherit);
-            return attributes.Length > 0 ? (T)attributes[0] : default;
+            return attributes.Length > 0 ? (T)attributes[0] : null;
         }
 
         /// <summary>
-        /// Searches for the event field with the specified name.
+        /// Searches for the event field information with the specified name.
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="eventName"></param>
-        /// <param name="bindingFlags"></param>
-        /// <returns></returns>
-        public static FieldInfo GetEventField(this object source, string eventName, BindingFlags bindingFlags = BindingFlagsCollection.InstanceGetFieldBindingFlags)
+        /// <param name="source">The object whose event field information will be returned.</param>
+        /// <param name="eventName">The string containing the name of the event field to get.</param>
+        /// <param name="bindingFlags">
+        /// A bitmask comprised of one or more <see cref="BindingFlags"/> that specify how the
+        /// search is conducted.
+        /// </param>
+        /// <returns>The <see cref="FieldInfo"/> object of the searched event field. </returns>
+        public static FieldInfo GetEventFieldInfo(this object source, string eventName, BindingFlags bindingFlags = BindingFlagsCollection.InstanceGetFieldBindingFlags)
         {
             if (source == null || string.IsNullOrEmpty(eventName))
                 return null;
             
-            FieldInfo field = null;
+            FieldInfo fieldInfo = null;
             var type = source.GetType();
             while (type != null)
             {
                 // Find events defined as field
-                field = type.GetField(eventName, bindingFlags);
-                if (field != null && (field.FieldType == typeof(MulticastDelegate) || field.FieldType.IsSubclassOf(typeof(MulticastDelegate))))
+                fieldInfo = type.GetField(eventName, bindingFlags);
+                if (fieldInfo != null && (fieldInfo.FieldType == typeof(MulticastDelegate) || fieldInfo.FieldType.IsSubclassOf(typeof(MulticastDelegate))))
                     break;
                 
                 // Find events defined as property { add; remove; }
                 var fieldName = $"EVENT_{eventName.ToUpper()}";
-                field = type.GetField(fieldName, bindingFlags);
-                if (field != null)
+                fieldInfo = type.GetField(fieldName, bindingFlags);
+                if (fieldInfo != null)
                     break;
                 
                 type = type.BaseType;
             }
             
-            return field;
+            return fieldInfo;
+        }
+
+        /// <summary>
+        /// Searches for the field information with the specified name.
+        /// </summary>
+        /// <param name="source">The object whose field information will be returned.</param>
+        /// <param name="fieldName">The string containing the name of the data field information to get.</param>
+        /// <param name="bindingFlags">
+        /// A bitmask comprised of one or more <see cref="BindingFlags"/> that specify how the
+        /// search is conducted.
+        /// </param>
+        /// <returns>The <see cref="FieldInfo"/> object of the specified object. </returns>
+        public static FieldInfo GetFieldInfo(this object source, string fieldName, BindingFlags bindingFlags = BindingFlagsCollection.InstanceGetFieldBindingFlags)
+        {
+            if (string.IsNullOrEmpty(fieldName)) 
+                return null;
+            
+            FieldInfo fieldInfo = null;
+            var type = source.GetType();
+            while (type != null)
+            {
+                fieldInfo = type.GetField(fieldName, bindingFlags);
+                if (fieldInfo != null)
+                    break;
+                
+                type = type.BaseType;
+            }
+
+            return fieldInfo;
         }
 
         /// <summary>
@@ -236,12 +268,8 @@ namespace ReSharp.Extensions
         /// <returns>An object containing the value of the field reflected by this instance.</returns>
         public static object GetFieldValue(this object source, string fieldName, BindingFlags bindingFlags = BindingFlagsCollection.InstanceGetFieldBindingFlags)
         {
-            if (string.IsNullOrEmpty(fieldName)) 
-                return null;
-            
-            var type = source.GetType();
-            var info = type.GetField(fieldName, bindingFlags);
-            return info != null ? info.GetValue(source) : null;
+            var fieldInfo = source.GetFieldInfo(fieldName, bindingFlags);
+            return fieldInfo != null ? fieldInfo.GetValue(source) : null;
         }
         
         /// <summary>
@@ -257,11 +285,11 @@ namespace ReSharp.Extensions
         /// </param>
         public static void SetFieldValue(this object source, string fieldName, object value, BindingFlags bindingFlags = BindingFlagsCollection.InstanceSetFieldBindingFlags)
         {
-            var info = source.GetType().GetField(fieldName, bindingFlags);
-            if (info == null)
+            var fieldInfo = source.GetFieldInfo(fieldName, bindingFlags);
+            if (fieldInfo == null)
                 return;
             
-            info.SetValue(source, value);
+            fieldInfo.SetValue(source, value);
         }
 
         /// <summary>
@@ -275,9 +303,46 @@ namespace ReSharp.Extensions
         /// <returns>The field value pairs of the type.</returns>
         public static Dictionary<string, object> GetFieldValuePairs(this object source, BindingFlags bindingFlags = BindingFlagsCollection.InstanceGetFieldBindingFlags)
         {
+            var list = new List<FieldInfo>();
             var type = source.GetType();
-            var infos = type.GetFields(bindingFlags);
-            return infos.ToDictionary(info => info.Name, info => info.GetValue(source));
+            while (type != null)
+            {
+                var fields = type.GetFields(bindingFlags);
+                list.AddRange(fields);
+                type = type.BaseType;
+            }
+            
+            return list.GroupBy(fieldInfo => fieldInfo.Name).Select(fieldInfo => fieldInfo.First())
+                .ToDictionary(fieldInfo => fieldInfo.Name, fieldInfo => fieldInfo.GetValue(source));
+        }
+
+        /// <summary>
+        /// Searches for the property information with the specified name.
+        /// </summary>
+        /// <param name="source">The object whose property information will be returned.</param>
+        /// <param name="propertyName">The string containing the name of the property information to get.</param>
+        /// <param name="bindingFlags">
+        /// A bitmask comprised of one or more <see cref="BindingFlags"/> that specify how the
+        /// search is conducted.
+        /// </param>
+        /// <returns>The <see cref="PropertyInfo"/> object of the specified object. </returns>
+        public static PropertyInfo GetPropertyInfo(this object source, string propertyName, BindingFlags bindingFlags = BindingFlagsCollection.InstanceGetPropertyBindingFlags)
+        {
+            if (string.IsNullOrEmpty(propertyName))
+                return null;
+            
+            var type = source.GetType();
+            PropertyInfo propertyInfo = null;
+            while (type != null)
+            {
+                propertyInfo = type.GetProperty(propertyName, bindingFlags);
+                if (propertyInfo != null)
+                    break;
+
+                type = type.BaseType;
+            }
+
+            return propertyInfo;
         }
 
         /// <summary>
@@ -297,12 +362,8 @@ namespace ReSharp.Extensions
         /// <returns>An object containing the value of the property reflected by this instance.</returns>
         public static object GetPropertyValue(this object source, string propertyName, object[] index = null, BindingFlags bindingFlags = BindingFlagsCollection.InstanceGetPropertyBindingFlags)
         {
-            if (string.IsNullOrEmpty(propertyName)) 
-                return null;
-            
-            var type = source.GetType();
-            var info = type.GetProperty(propertyName, bindingFlags);
-            return info != null ? info.GetValue(source, index) : null;
+            var propertyInfo = source.GetPropertyInfo(propertyName, bindingFlags);
+            return propertyInfo != null ? propertyInfo.GetValue(source, index) : null;
         }
         
         /// <summary>
@@ -318,28 +379,68 @@ namespace ReSharp.Extensions
         /// </param>
         public static void SetPropertyValue(this object source, string propertyName, object value, BindingFlags bindingFlags = BindingFlagsCollection.InstanceSetPropertyBindingFlags)
         {
-            var info = source.GetType().GetProperty(propertyName, bindingFlags);
-            if (info == null) 
+            var propertyInfo = source.GetPropertyInfo(propertyName, bindingFlags);
+            if (propertyInfo == null) 
                 return;
             
-            info.SetValue(source, value, null);
+            propertyInfo.SetValue(source, value, null);
         }
 
         /// <summary>
         /// Gets the property value pairs.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <param name="bindingAttr">The binding attribute.</param>
+        /// <param name="bindingFlags">
+        /// A bitmask comprised of one or more <see cref="BindingFlags"/> that specify how the
+        /// search is conducted.
+        /// </param>
         /// <returns>The property value pairs of the type.</returns>
-        public static Dictionary<string, object> GetPropertyValuePairs(this object source, BindingFlags bindingAttr = BindingFlagsCollection.InstanceGetPropertyBindingFlags)
+        public static Dictionary<string, object> GetPropertyValuePairs(this object source, BindingFlags bindingFlags = BindingFlagsCollection.InstanceGetPropertyBindingFlags)
         {
+            var list = new List<PropertyInfo>();
             var type = source.GetType();
-            var infos = type.GetProperties(bindingAttr);
-            return infos.ToDictionary(info => info.Name, info => info.GetValue(source, null));
+            while (type != null)
+            {
+                var properties = type.GetProperties(bindingFlags);
+                list.AddRange(properties);
+                type = type.BaseType;
+            }
+            
+            return list.GroupBy(propertyInfo => propertyInfo.Name).Select(propertyInfo => propertyInfo.First())
+                .ToDictionary(propertyInfo => propertyInfo.Name, propertyInfo => propertyInfo.GetValue(source, null));
         }
 
         /// <summary>
-        /// Determines whether has the specified method by a given name and a bitmask comprised of
+        /// Searches for the method information with the specified name.
+        /// </summary>
+        /// <param name="source">The object whose method information will be returned.</param>
+        /// <param name="methodName">The string containing the name of the method information to get.</param>
+        /// <param name="bindingFlags">
+        /// A bitmask comprised of one or more <see cref="BindingFlags"/> that specify how the
+        /// search is conducted.
+        /// </param>
+        /// <returns>The <see cref="MethodInfo"/> object of the searched method. </returns>
+        public static MethodInfo GetMethodInfo(this object source, string methodName, BindingFlags bindingFlags = BindingFlagsCollection.InstanceBindingFlags)
+        {
+            if (string.IsNullOrEmpty(methodName))
+                return null;
+            
+            var type = source.GetType();
+            MethodInfo methodInfo = null;
+            while (type != null)
+            {
+                methodInfo = type.GetMethod(methodName, bindingFlags);
+                if (methodInfo != null)
+                    break;
+                
+                type = type.BaseType;
+            }
+
+            return methodInfo;
+        }
+
+        /// <summary>
+        /// Determines whether the object has the specified method by a given name and a bitmask comprised of
         /// one or more <see cref="BindingFlags"/>.
         /// </summary>
         /// <param name="source">The object to search.</param>
@@ -351,9 +452,8 @@ namespace ReSharp.Extensions
         /// <returns><c>true</c> if this object has the specified method; otherwise, <c>false</c>.</returns>
         public static bool HasMethod(this object source, string methodName, BindingFlags bindingFlags = BindingFlagsCollection.InstanceBindingFlags)
         {
-            var type = source.GetType();
-            var info = type.GetMethod(methodName, bindingFlags);
-            return info != null;
+            var methodInfo = source.GetMethodInfo(methodName, bindingFlags);
+            return methodInfo != null;
         }
         
         /// <summary>
@@ -370,9 +470,8 @@ namespace ReSharp.Extensions
         /// <returns>An object containing the return value of the invoked method.</returns>
         public static object InvokeMethod(this object source, string methodName, object[] parameters = null, BindingFlags bindingFlags = BindingFlagsCollection.InstanceBindingFlags)
         {
-            var type = source.GetType();
-            var info = type.GetMethod(methodName, bindingFlags);
-            return info != null ? info.Invoke(source, parameters) : null;
+            var methodInfo = source.GetMethodInfo(methodName, bindingFlags);
+            return methodInfo != null ? methodInfo.Invoke(source, parameters) : null;
         }
 
         /// <summary>
@@ -393,12 +492,35 @@ namespace ReSharp.Extensions
         /// <returns>An object containing the return value of the invoked method.</returns>
         public static object InvokeGenericMethod(this object source, string methodName, Type[] genericTypes, object[] parameters = null, BindingFlags bindingFlags = BindingFlagsCollection.InstanceBindingFlags)
         {
-            var methodInfo = source.GetType().GetMethod(methodName, bindingFlags);
+            var methodInfo = source.GetMethodInfo(methodName, bindingFlags);
             if (methodInfo == null)
                 return null;
             
             var genericMethodInfo = methodInfo.MakeGenericMethod(genericTypes);
             return genericMethodInfo.Invoke(source, parameters);
+        }
+        
+        /// <summary>
+        /// Gets the list of <see cref="EventInfo"/> of the specified object.
+        /// </summary>
+        /// <param name="source">The object whose event information list will be returned.</param>
+        /// <param name="bindingFlags">
+        /// A bitmask comprised of one or more <see cref="BindingFlags"/> that specify how the
+        /// search is conducted.
+        /// </param>
+        /// <returns>The <see cref="EventInfo"/> object list of the specified object. </returns>
+        public static List<EventInfo> GetEventInfoList(this object source, BindingFlags bindingFlags = BindingFlagsCollection.InstanceBindingFlags)
+        {
+            var result = new List<EventInfo>();
+            var type = source.GetType();
+            while (type != null)
+            {
+                var collection = type.GetEvents(bindingFlags);
+                result.AddRange(collection);
+                type = type.BaseType;
+            }
+
+            return result.GroupBy(eventInfo => eventInfo.Name).Select(eventInfo => eventInfo.First()).ToList();
         }
 
         /// <summary>
@@ -415,11 +537,11 @@ namespace ReSharp.Extensions
             if (source == null || string.IsNullOrEmpty(eventName))
                 return;
 
-            var eventField = source.GetEventField(eventName, bindingFlags);
-            if (eventField == null)
+            var eventFieldInfo = source.GetEventFieldInfo(eventName, bindingFlags);
+            if (eventFieldInfo == null)
                 return;
             
-            eventField.SetValue(source, null);
+            eventFieldInfo.SetValue(source, null);
         }
         
         /// <summary>
@@ -432,10 +554,9 @@ namespace ReSharp.Extensions
         /// </param>
         public static void RemoveAllEventHandlers(this object source, BindingFlags bindingFlags = BindingFlagsCollection.InstanceBindingFlags)
         {
-            var type = source.GetType();
-            var eventInfos = type.GetEvents(bindingFlags);
+            var list = source.GetEventInfoList(bindingFlags);
             
-            foreach (var eventInfo in eventInfos)
+            foreach (var eventInfo in list)
             {
                 source.RemoveEventHandlers(eventInfo.Name, bindingFlags);
             }
