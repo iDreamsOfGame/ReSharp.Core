@@ -1,0 +1,1473 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ReSharp.Core</name>
+    </assembly>
+    <members>
+        <member name="T:ReSharp.Compression.Deflate">
+            <summary>
+            Provides methods for compressing and decompressing data by using the Deflate algorithm.
+            </summary>
+        </member>
+        <member name="F:ReSharp.Compression.Deflate.DefaultEncoding">
+            <summary>
+            The default <see cref="T:System.Text.Encoding"/> instance for <see cref="T:System.String"/>.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Compression.Deflate.Compress(System.Byte[],System.IO.Compression.CompressionLevel)">
+            <summary>
+            Compress binary data into binary data by using the Deflate algorithm.
+            </summary>
+            <param name="input">The original binary data. </param>
+            <param name="level">One of the enumeration values that indicates whether to emphasize speed or compression efficiency when compressing data to the stream. </param>
+            <returns>The compressed binary data. </returns>
+        </member>
+        <member name="M:ReSharp.Compression.Deflate.Compress(System.String,System.Text.Encoding,System.IO.Compression.CompressionLevel)">
+            <summary>
+            Compress <see cref="T:System.String"/> which encoded in <c>encoding</c> into binary data by using the Deflate algorithm.
+            </summary>
+            <param name="source">The original <see cref="T:System.String"/>. </param>
+            <param name="encoding">The <see cref="T:System.Text.Encoding"/> instance to get binary data from the original <see cref="T:System.String"/>. </param>
+            <param name="level">One of the enumeration values that indicates whether to emphasize speed or compression efficiency when compressing data to the stream. </param>
+            <returns>The compressed binary data. </returns>
+        </member>
+        <member name="M:ReSharp.Compression.Deflate.CompressToBase64String(System.Byte[],System.IO.Compression.CompressionLevel)">
+            <summary>
+            Compress binary data into Base64 <see cref="T:System.String"/> by using the Deflate algorithm.
+            </summary>
+            <param name="input">The original binary data. </param>
+            <param name="level">One of the enumeration values that indicates whether to emphasize speed or compression efficiency when compressing data to the stream. </param>
+            <returns>The compressed data which converted to Base64 <see cref="T:System.String"/>. </returns>
+        </member>
+        <member name="M:ReSharp.Compression.Deflate.CompressToBase64String(System.String,System.Text.Encoding,System.IO.Compression.CompressionLevel)">
+            <summary>
+            Compress <see cref="T:System.String"/> which encoded in <c>encoding</c> into Base64 <see cref="T:System.String"/> by using the Deflate algorithm.
+            </summary>
+            <param name="source">The original <see cref="T:System.String"/>. </param>
+            <param name="encoding">The <see cref="T:System.Text.Encoding"/> instance to get binary data from the original <see cref="T:System.String"/>. </param>
+            <param name="level">One of the enumeration values that indicates whether to emphasize speed or compression efficiency when compressing data to the stream. </param>
+            <returns>The compressed data which converted to Base64 <see cref="T:System.String"/>. </returns>
+        </member>
+        <member name="M:ReSharp.Compression.Deflate.Decompress(System.Byte[])">
+            <summary>
+            Decompress into original binary data from input binary data by using the Deflate algorithm.
+            </summary>
+            <param name="input">The compressed binary data. </param>
+            <returns>The original data. </returns>
+        </member>
+        <member name="M:ReSharp.Compression.Deflate.Decompress(System.Byte[],System.Text.Encoding)">
+            <summary>
+            Decompress into <see cref="T:System.String"/> which encoded in <c>encoding</c> from input binary data by using the Deflate algorithm.
+            </summary>
+            <param name="input">The compressed binary data. </param>
+            <param name="encoding">The <see cref="T:System.Text.Encoding"/> instance to get binary data from the original binary data. </param>
+            <returns>The original <see cref="T:System.String"/>. </returns>
+        </member>
+        <member name="M:ReSharp.Compression.Deflate.DecompressFromBase64String(System.String)">
+            <summary>
+            Decompress into binary data from Base64 <see cref="T:System.String"/> by using the Deflate algorithm.
+            </summary>
+            <param name="source">The Bass64 <see cref="T:System.String"/>. </param>
+            <returns>The original data. </returns>
+        </member>
+        <member name="M:ReSharp.Compression.Deflate.DecompressFromBase64String(System.String,System.Text.Encoding)">
+            <summary>
+            Decompress into <see cref="T:System.String"/> which encoded in <c>encoding</c> from Base64 <see cref="T:System.String"/> by using the Deflate algorithm.
+            </summary>
+            <param name="source">The Bass64 <see cref="T:System.String"/>. </param>
+            <param name="encoding">The <see cref="T:System.Text.Encoding"/> instance to get binary data from the original binary data. </param>
+            <returns>The original <see cref="T:System.String"/>. </returns>
+        </member>
+        <member name="T:ReSharp.Compression.GZip">
+            <summary>
+            Provides methods for compressing and decompressing data by using the GZip data format specification.
+            </summary>
+        </member>
+        <member name="F:ReSharp.Compression.GZip.DefaultEncoding">
+            <summary>
+            The default <see cref="T:System.Text.Encoding"/> instance for <see cref="T:System.String"/>.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Compression.GZip.Compress(System.Byte[],System.IO.Compression.CompressionLevel)">
+            <summary>
+            Compress binary data into binary data by using the GZip data format specification.
+            </summary>
+            <param name="input">The original binary data. </param>
+            <param name="level">One of the enumeration values that indicates whether to emphasize speed or compression efficiency when compressing data to the stream. </param>
+            <returns>The compressed binary data. </returns>
+        </member>
+        <member name="M:ReSharp.Compression.GZip.Compress(System.String,System.Text.Encoding,System.IO.Compression.CompressionLevel)">
+            <summary>
+            Compress <see cref="T:System.String"/> which encoded in <c>encoding</c> into binary data by using the GZip data format specification.
+            </summary>
+            <param name="source">The original <see cref="T:System.String"/>. </param>
+            <param name="encoding">The <see cref="T:System.Text.Encoding"/> instance to get binary data from the original <see cref="T:System.String"/>. </param>
+            <param name="level">One of the enumeration values that indicates whether to emphasize speed or compression efficiency when compressing data to the stream. </param>
+            <returns>The compressed binary data. </returns>
+        </member>
+        <member name="M:ReSharp.Compression.GZip.CompressToBase64String(System.Byte[],System.IO.Compression.CompressionLevel)">
+            <summary>
+            Compress binary data into Base64 <see cref="T:System.String"/> by using the GZip data format specification.
+            </summary>
+            <param name="input">The original binary data. </param>
+            <param name="level">One of the enumeration values that indicates whether to emphasize speed or compression efficiency when compressing data to the stream. </param>
+            <returns>The compressed data which converted to Base64 <see cref="T:System.String"/>. </returns>
+        </member>
+        <member name="M:ReSharp.Compression.GZip.CompressToBase64String(System.String,System.Text.Encoding,System.IO.Compression.CompressionLevel)">
+            <summary>
+            Compress <see cref="T:System.String"/> which encoded in <c>encoding</c> into Base64 <see cref="T:System.String"/> by using the GZip data format specification.
+            </summary>
+            <param name="source">The original <see cref="T:System.String"/>. </param>
+            <param name="encoding">The <see cref="T:System.Text.Encoding"/> instance to get binary data from the original <see cref="T:System.String"/>. </param>
+            <param name="level">One of the enumeration values that indicates whether to emphasize speed or compression efficiency when compressing data to the stream. </param>
+            <returns>The compressed data which converted to Base64 <see cref="T:System.String"/>. </returns>
+        </member>
+        <member name="M:ReSharp.Compression.GZip.Decompress(System.Byte[])">
+            <summary>
+            Decompress into original binary data from input binary data by using the GZip data format specification.
+            </summary>
+            <param name="input">The compressed binary data. </param>
+            <returns>The original data. </returns>
+        </member>
+        <member name="M:ReSharp.Compression.GZip.Decompress(System.Byte[],System.Text.Encoding)">
+            <summary>
+            Decompress into <see cref="T:System.String"/> which encoded in <c>encoding</c> from input binary data by using the GZip data format specification.
+            </summary>
+            <param name="input">The compressed binary data. </param>
+            <param name="encoding">The <see cref="T:System.Text.Encoding"/> instance to get binary data from the original binary data. </param>
+            <returns>The original <see cref="T:System.String"/>. </returns>
+        </member>
+        <member name="M:ReSharp.Compression.GZip.DecompressFromBase64String(System.String)">
+            <summary>
+            Decompress into binary data from Base64 <see cref="T:System.String"/> by using the GZip data format specification.
+            </summary>
+            <param name="source">The Bass64 <see cref="T:System.String"/>. </param>
+            <returns>The original data. </returns>
+        </member>
+        <member name="M:ReSharp.Compression.GZip.DecompressFromBase64String(System.String,System.Text.Encoding)">
+            <summary>
+            Decompress into <see cref="T:System.String"/> which encoded in <c>encoding</c> from Base64 <see cref="T:System.String"/> by using the GZip data format specification.
+            </summary>
+            <param name="source">The Bass64 <see cref="T:System.String"/>. </param>
+            <param name="encoding">The <see cref="T:System.Text.Encoding"/> instance to get binary data from the original binary data. </param>
+            <returns>The original <see cref="T:System.String"/>. </returns>
+        </member>
+        <member name="T:ReSharp.Patterns.Command.AsyncCommand">
+            <summary>
+            A base <see cref="T:ReSharp.Patterns.Command.IAsyncCommand" /> implementation to execute asynchronous operation.
+            </summary>
+            <seealso cref="T:ReSharp.Patterns.Command.IAsyncCommand" />
+        </member>
+        <member name="M:ReSharp.Patterns.Command.AsyncCommand.Abort">
+            <summary>
+            Aborts the asynchronous operation.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.AsyncCommand.Execute(System.Action)">
+            <summary>
+            Executes this command.
+            </summary>
+            <param name="executedCallback">
+            The callback method when <see cref="T:ReSharp.Patterns.Command.AsyncCommand" /> executed to invoke.
+            </param>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.AsyncCommand.Executed">
+            <summary>
+            The <see cref="T:ReSharp.Patterns.Command.AsyncCommand" /> executed.
+            </summary>
+        </member>
+        <member name="T:ReSharp.Patterns.Command.AsyncMacroCommand">
+            <summary>
+            A base <see cref="T:ReSharp.Patterns.Command.IAsyncMacroCommand" /> implementation to executes other <see
+            cref="T:ReSharp.Patterns.Command.IAsyncCommand" /> s.
+            </summary>
+            <seealso cref="T:ReSharp.Patterns.Command.AsyncCommand" />
+            <seealso cref="T:ReSharp.Patterns.Command.IAsyncMacroCommand" />
+        </member>
+        <member name="M:ReSharp.Patterns.Command.AsyncMacroCommand.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Patterns.Command.AsyncMacroCommand" /> class.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.AsyncMacroCommand.Abort">
+            <summary>
+            Aborts asynchronous commands execution.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.AsyncMacroCommand.AddSubCommand(ReSharp.Patterns.Command.IAsyncCommand)">
+            <summary>
+            Adds an <see cref="T:ReSharp.Patterns.Command.IAsyncCommand" />.
+            </summary>
+            <param name="subCommand">
+            The <see cref="T:ReSharp.Patterns.Command.IAsyncCommand" /> to be executed by this <see cref="T:ReSharp.Patterns.Command.IAsyncMacroCommand" />.
+            </param>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.AsyncMacroCommand.Execute(System.Action)">
+            <summary>
+            Executes this command.
+            </summary>
+            <param name="executedCallback">
+            The callback method when <see cref="T:ReSharp.Patterns.Command.AsyncCommand" /> executed to invoke.
+            </param>
+        </member>
+        <member name="T:ReSharp.Patterns.Command.IAsyncCommand">
+            <summary>
+            The interface definition for an asynchronous command.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.IAsyncCommand.Abort">
+            <summary>
+            Aborts the asynchronous operation.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.IAsyncCommand.Execute(System.Action)">
+            <summary>
+            Executes this command.
+            </summary>
+            <param name="executedCallback">
+            The callback method when <see cref="T:ReSharp.Patterns.Command.IAsyncCommand" /> executed to invoke.
+            </param>
+        </member>
+        <member name="T:ReSharp.Patterns.Command.IAsyncMacroCommand">
+            <summary>
+            The interface definition for the command can execute other <see cref="T:ReSharp.Patterns.Command.IAsyncCommand" /> s.
+            </summary>
+            <seealso cref="T:ReSharp.Patterns.Command.IAsyncCommand" />
+        </member>
+        <member name="M:ReSharp.Patterns.Command.IAsyncMacroCommand.AddSubCommand(ReSharp.Patterns.Command.IAsyncCommand)">
+            <summary>
+            Adds an <see cref="T:ReSharp.Patterns.Command.IAsyncCommand" />.
+            </summary>
+            <param name="subCommand">
+            The <see cref="T:ReSharp.Patterns.Command.IAsyncCommand" /> to be executed by this <see cref="T:ReSharp.Patterns.Command.IAsyncMacroCommand" />.
+            </param>
+        </member>
+        <member name="T:ReSharp.Patterns.Command.ICommand">
+            <summary>
+            The interface definition for the command.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.ICommand.Execute">
+            <summary>
+            Executes this command.
+            </summary>
+        </member>
+        <member name="T:ReSharp.Patterns.Command.IMacroCommand">
+            <summary>
+            The interface definition for the command can execute other <see cref="T:ReSharp.Patterns.Command.ICommand" /> s.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.IMacroCommand.AddSubCommand(ReSharp.Patterns.Command.ICommand)">
+            <summary>
+            Adds an <see cref="T:ReSharp.Patterns.Command.ICommand" />.
+            </summary>
+            <param name="subCommand">
+            The <see cref="T:ReSharp.Patterns.Command.ICommand" /> to be executed by this <see cref="T:ReSharp.Patterns.Command.IMacroCommand" />.
+            </param>
+        </member>
+        <member name="T:ReSharp.Patterns.Command.IUndoableCommand">
+            <summary>
+            The interface definition for the command that can perform undo operation.
+            </summary>
+            <seealso cref="T:ReSharp.Patterns.Command.ICommand" />
+        </member>
+        <member name="M:ReSharp.Patterns.Command.IUndoableCommand.Undo">
+            <summary>
+            Performs undo operation.
+            </summary>
+        </member>
+        <member name="T:ReSharp.Patterns.Command.IUndoableMacroCommand">
+            <summary>
+            The interface definition for the macro command that can execute <see cref="T:ReSharp.Patterns.Command.IUndoableCommand"
+            />, perform undo and redo operation.
+            </summary>
+        </member>
+        <member name="P:ReSharp.Patterns.Command.IUndoableMacroCommand.CanRedo">
+            <summary>
+            Gets a value indicating whether this <see cref="T:ReSharp.Patterns.Command.IUndoableMacroCommand" /> can perform
+            redo operation.
+            </summary>
+            <value>
+            <c>true</c> if this <see cref="T:ReSharp.Patterns.Command.IUndoableMacroCommand" /> can perform redo operation;
+            otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:ReSharp.Patterns.Command.IUndoableMacroCommand.CanUndo">
+            <summary>
+            Gets a value indicating whether this <see cref="T:ReSharp.Patterns.Command.IUndoableMacroCommand" /> can perform
+            undo operation.
+            </summary>
+            <value>
+            <c>true</c> if this <see cref="T:ReSharp.Patterns.Command.IUndoableMacroCommand" /> can perform undo operation;
+            otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.IUndoableMacroCommand.Execute(ReSharp.Patterns.Command.IUndoableCommand)">
+            <summary>
+            Executes the specific <see cref="T:ReSharp.Patterns.Command.IUndoableCommand" />.
+            </summary>
+            <param name="command">The specified <see cref="T:ReSharp.Patterns.Command.IUndoableCommand" /> to execute.</param>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.IUndoableMacroCommand.Redo">
+            <summary>
+            Performs redo operation.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.IUndoableMacroCommand.Undo">
+            <summary>
+            Performs undo operation.
+            </summary>
+        </member>
+        <member name="T:ReSharp.Patterns.Command.MacroCommand">
+            <summary>
+            A base <see cref="T:ReSharp.Patterns.Command.IMacroCommand" /> implementation to executes other <see cref="T:ReSharp.Patterns.Command.ICommand" /> s.
+            </summary>
+            <seealso cref="T:ReSharp.Patterns.Command.ICommand" />
+            <seealso cref="T:ReSharp.Patterns.Command.IMacroCommand" />
+        </member>
+        <member name="M:ReSharp.Patterns.Command.MacroCommand.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Patterns.Command.MacroCommand" /> class.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.MacroCommand.AddSubCommand(ReSharp.Patterns.Command.ICommand)">
+            <summary>
+            Adds sub command.
+            </summary>
+            <param name="subCommand">The sub command.</param>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.MacroCommand.Execute">
+            <summary>
+            Executes this command.
+            </summary>
+        </member>
+        <member name="T:ReSharp.Patterns.Command.UndoableMacroCommand">
+            <summary>
+            A base <see cref="T:ReSharp.Patterns.Command.IUndoableMacroCommand" /> implementation to execute <see
+            cref="T:ReSharp.Patterns.Command.IUndoableCommand" />, perform undo and redo operation.
+            </summary>
+            <seealso cref="T:ReSharp.Patterns.Command.IUndoableMacroCommand" />
+        </member>
+        <member name="M:ReSharp.Patterns.Command.UndoableMacroCommand.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Patterns.Command.UndoableMacroCommand" /> class.
+            </summary>
+        </member>
+        <member name="P:ReSharp.Patterns.Command.UndoableMacroCommand.CanRedo">
+            <summary>
+            Gets a value indicating whether this <see cref="T:ReSharp.Patterns.Command.UndoableMacroCommand" /> can perform
+            redo operation.
+            </summary>
+            <value>
+            <c>true</c> if this <see cref="T:ReSharp.Patterns.Command.UndoableMacroCommand" /> can perform redo operation;
+            otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:ReSharp.Patterns.Command.UndoableMacroCommand.CanUndo">
+            <summary>
+            Gets a value indicating whether this <see cref="T:ReSharp.Patterns.Command.UndoableMacroCommand" /> can perform
+            undo operation.
+            </summary>
+            <value>
+            <c>true</c> if this <see cref="T:ReSharp.Patterns.Command.UndoableMacroCommand" /> can perform undo operation;
+            otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.UndoableMacroCommand.Execute(ReSharp.Patterns.Command.IUndoableCommand)">
+            <summary>
+            Executes the specific <see cref="T:ReSharp.Patterns.Command.IUndoableCommand" />.
+            </summary>
+            <param name="command">The specified <see cref="T:ReSharp.Patterns.Command.IUndoableCommand" /> to execute.</param>
+            <exception cref="T:System.ArgumentNullException"><c>command</c> is <c>null</c>.</exception>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.UndoableMacroCommand.Redo">
+            <summary>
+            Performs redo operation.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Command.UndoableMacroCommand.Undo">
+            <summary>
+            Performs undo operation.
+            </summary>
+        </member>
+        <member name="T:ReSharp.Patterns.Factory.CachingFactoryTemplate`3">
+            <summary>
+            The template of caching factory design pattern.
+            </summary>
+            <typeparam name="TInstance">The type of the factory instance. </typeparam>
+            <typeparam name="TKey">The type of key to get instance type. </typeparam>
+            <typeparam name="TInterface">The type of interface that instance implemented. </typeparam>
+        </member>
+        <member name="M:ReSharp.Patterns.Factory.CachingFactoryTemplate`3.#ctor(System.Collections.Generic.Dictionary{`1,System.Type})">
+            <summary>
+            Initializes a new instance of the <see>
+                <cref>CachingFactoryTemplate</cref>
+            </see>.
+            </summary>
+            <param name="keyTypeMap">The key and instance type pairs. </param>
+        </member>
+        <member name="M:ReSharp.Patterns.Factory.CachingFactoryTemplate`3.GetInstance(`1,System.Object[])">
+            <summary>
+            Gets an instance.
+            </summary>
+            <param name="key">The key of the instance type to get. </param>
+            <param name="parameters">The parameters of instance constructor. </param>
+            <returns></returns>
+        </member>
+        <member name="M:ReSharp.Patterns.Factory.CachingFactoryTemplate`3.ClearCache(System.Action{`2})">
+            <summary>
+            Clear the instance cache.
+            </summary>
+            <param name="handler"></param>
+        </member>
+        <member name="M:ReSharp.Patterns.Factory.CachingFactoryTemplate`3.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing">
+            <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release
+            only unmanaged resources.
+            </param>
+        </member>
+        <member name="T:ReSharp.Patterns.Factory.SimpleFactoryTemplate`3">
+            <summary>
+            The template of simple factory design pattern.
+            </summary>
+            <typeparam name="TInstance">The type of the factory instance. </typeparam>
+            <typeparam name="TKey">The type of key to get instance type. </typeparam>
+            <typeparam name="TInterface">The type of interface that instance implemented. </typeparam>
+        </member>
+        <member name="M:ReSharp.Patterns.Factory.SimpleFactoryTemplate`3.#ctor(System.Collections.Generic.Dictionary{`1,System.Type})">
+            <summary>
+            Initializes a new instance of the <see>
+                <cref>SimpleFactoryTemplate</cref>
+            </see>.
+            </summary>
+            <param name="keyTypeMap">The key and instance type pairs. </param>
+        </member>
+        <member name="M:ReSharp.Patterns.Factory.SimpleFactoryTemplate`3.GetInstance(`1,System.Object[])">
+            <summary>
+            Gets an instance.
+            </summary>
+            <param name="key">The key of the instance type to get. </param>
+            <param name="parameters">The parameters of instance constructor. </param>
+            <returns></returns>
+        </member>
+        <member name="T:ReSharp.Patterns.Singleton`1">
+            <summary>
+            Abstract class for implementing singleton pattern of thread-safety by using double-check locking.
+            </summary>
+            <typeparam name="T">The type of the class.</typeparam>
+        </member>
+        <member name="M:ReSharp.Patterns.Singleton`1.Finalize">
+            <summary>
+            Finalizes an instance of the <see cref="T:ReSharp.Patterns.Singleton`1" /> class.
+            </summary>
+        </member>
+        <member name="P:ReSharp.Patterns.Singleton`1.Instance">
+            <summary>
+            Gets the static instance.
+            </summary>
+            <value>The static instance.</value>
+        </member>
+        <member name="M:ReSharp.Patterns.Singleton`1.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting
+            unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.Singleton`1.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing">
+            <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release
+            only unmanaged resources.
+            </param>
+        </member>
+        <member name="T:ReSharp.Patterns.State.IState">
+            <summary>
+            The interface definition for the state class.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.State.IState.OnEnter(ReSharp.Patterns.State.IState)">
+            <summary>
+            Called when the state is entered.
+            </summary>
+            <param name="prevState">The previous state.</param>
+        </member>
+        <member name="M:ReSharp.Patterns.State.IState.OnExecute">
+            <summary>
+            Called when the state is executing.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.State.IState.OnExit(ReSharp.Patterns.State.IState)">
+            <summary>
+            Called when the active state is exited.
+            </summary>
+            <param name="nextState">The next state.</param>
+        </member>
+        <member name="T:ReSharp.Patterns.State.StateChangedEventArgs">
+            <summary>
+            The event args given to listeners of the <see cref="E:ReSharp.Patterns.State.StateMachine.StateChanged" /> event.
+            </summary>
+            <seealso cref="T:System.EventArgs" />
+        </member>
+        <member name="M:ReSharp.Patterns.State.StateChangedEventArgs.#ctor(ReSharp.Patterns.State.IState,ReSharp.Patterns.State.IState)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Patterns.State.StateChangedEventArgs" /> class with the
+            given information.
+            </summary>
+            <param name="previousState">
+            The state before the <see cref="E:ReSharp.Patterns.State.StateMachine.StateChanged" /> event.
+            </param>
+            <param name="currentState">The state after the <see cref="E:ReSharp.Patterns.State.StateMachine.StateChanged" /> event.</param>
+        </member>
+        <member name="P:ReSharp.Patterns.State.StateChangedEventArgs.PreviousState">
+            <summary>
+            Gets the state before the <see cref="E:ReSharp.Patterns.State.StateMachine.StateChanged" /> event.
+            </summary>
+            <value>The the previous state.</value>
+        </member>
+        <member name="P:ReSharp.Patterns.State.StateChangedEventArgs.CurrentState">
+            <summary>
+            Gets the state after the <see cref="E:ReSharp.Patterns.State.StateMachine.StateChanged" /> event.
+            </summary>
+            <value>The current state.</value>
+        </member>
+        <member name="T:ReSharp.Patterns.State.StateMachine">
+            <summary>
+            Represents a state machine to handle the context of state transition.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Patterns.State.StateMachine.#ctor(ReSharp.Patterns.State.IState)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Patterns.State.StateMachine" /> class with the given information.
+            </summary>
+            <param name="initialState">The initial state.</param>
+        </member>
+        <member name="E:ReSharp.Patterns.State.StateMachine.StateChanged">
+            <summary>
+            Occurs when the state changed.
+            </summary>
+        </member>
+        <member name="P:ReSharp.Patterns.State.StateMachine.CurrentState">
+            <summary>
+            Gets the state of the current.
+            </summary>
+            <value>The current state.</value>
+        </member>
+        <member name="P:ReSharp.Patterns.State.StateMachine.PreviousState">
+            <summary>
+            Gets the previous state.
+            </summary>
+            <value>The previous state.</value>
+        </member>
+        <member name="M:ReSharp.Patterns.State.StateMachine.ChangeState(ReSharp.Patterns.State.IState)">
+            <summary>
+            Change the state of this <see cref="T:ReSharp.Patterns.State.StateMachine" />.
+            </summary>
+            <param name="state">
+            The state value to set for this <see cref="T:ReSharp.Patterns.State.StateMachine" />.
+            </param>
+            <exception cref="T:System.ArgumentNullException">state</exception>
+        </member>
+        <member name="M:ReSharp.Patterns.State.StateMachine.Execute">
+            <summary>
+            Runs the state's execution logic.
+            </summary>
+        </member>
+        <member name="T:ReSharp.Security.DataProtection.InvalidSecretDataException">
+            <summary>
+            The exception that is thrown when the value in secret data has been modified.
+            </summary>
+            <seealso cref="T:System.Exception"/>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.InvalidSecretDataException.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Security.DataProtection.InvalidSecretDataException"/> class.
+            </summary>
+            <param name="result">The result.</param>
+            <param name="check">The check.</param>
+            <param name="key">The key.</param>
+            <param name="checkKey">The check key.</param>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.InvalidSecretDataException.#ctor(System.Int64,System.Int64,System.Int64,System.Int64)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Security.DataProtection.InvalidSecretDataException"/> class.
+            </summary>
+            <param name="result">The result.</param>
+            <param name="check">The check.</param>
+            <param name="key">The key.</param>
+            <param name="checkKey">The check key.</param>
+        </member>
+        <member name="T:ReSharp.Security.DataProtection.SecretDouble">
+            <summary>
+            Represents <see cref="T:System.Double" /> value with data protection in memory.
+            Implements the <see cref="T:System.IEquatable`1" />
+            Implements the <see cref="T:System.IComparable`1" />
+            Implements the <see cref="T:System.Runtime.Serialization.ISerializable" />
+            </summary>
+            <seealso cref="T:System.IEquatable`1" />
+            <seealso cref="T:System.IComparable`1" />
+            <seealso cref="T:System.Runtime.Serialization.ISerializable" />
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.#ctor(System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> struct with the <see cref="T:System.Double" /> to encrypt.
+            </summary>
+            <param name="value">The <see cref="T:System.Double" /> to encrypt.</param>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> struct.
+            </summary>
+            <param name="info">The information.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="P:ReSharp.Security.DataProtection.SecretDouble.Value">
+            <summary>
+            Gets the original <see cref="T:System.Double" /> value.
+            </summary>
+            <value>The original <see cref="T:System.Double" /> value.</value>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.op_Implicit(ReSharp.Security.DataProtection.SecretDouble)~System.Double">
+            <summary>
+            Performs an implicit conversion from <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> to <see cref="T:System.Double" />.
+            </summary>
+            <param name="value">The <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.op_Implicit(System.Double)~ReSharp.Security.DataProtection.SecretDouble">
+            <summary>
+            Performs an implicit conversion from <see cref="T:System.Double" /> to <see cref="T:ReSharp.Security.DataProtection.SecretDouble" />.
+            </summary>
+            <param name="value">The <see cref="T:System.Double" /> value.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.op_Implicit(ReSharp.Security.DataProtection.SecretInt32)~ReSharp.Security.DataProtection.SecretDouble">
+            <summary>
+            Performs an implicit conversion from <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> to <see cref="T:ReSharp.Security.DataProtection.SecretDouble" />.
+            </summary>
+            <param name="value">The <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.op_Implicit(ReSharp.Security.DataProtection.SecretInt64)~ReSharp.Security.DataProtection.SecretDouble">
+            <summary>
+            Performs an implicit conversion from <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> to <see cref="T:ReSharp.Security.DataProtection.SecretDouble" />.
+            </summary>
+            <param name="value">The <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.op_Implicit(ReSharp.Security.DataProtection.SecretSingle)~ReSharp.Security.DataProtection.SecretDouble">
+            <summary>
+            Performs an implicit conversion from <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> to <see cref="T:ReSharp.Security.DataProtection.SecretDouble" />.
+            </summary>
+            <param name="value">The <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.op_Subtraction(ReSharp.Security.DataProtection.SecretDouble,ReSharp.Security.DataProtection.SecretDouble)">
+            <summary>
+            Subtracts a <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure from a <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <returns>A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure whose <see name="Value" /> property contains the results of the subtraction.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.op_Decrement(ReSharp.Security.DataProtection.SecretDouble)">
+            <summary>
+            Decrements the <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> operand by one.
+            </summary>
+            <param name="value">The value to decrement.</param>
+            <returns>
+            A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure whose <see name="Value" /> property contains the value of <c>value</c> decremented by 1.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.op_Inequality(ReSharp.Security.DataProtection.SecretDouble,ReSharp.Security.DataProtection.SecretDouble)">
+            <summary>
+            Performs a logical comparison of the two <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> parameters to determine whether they are not equal.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <returns>
+            <c>true</c> if the two <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structures are not equal or <c>false</c> if the two <see cref="T:ReSharp.Security.DataProtection.SecretDouble" />
+            structures are equal.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.op_Modulus(ReSharp.Security.DataProtection.SecretDouble,ReSharp.Security.DataProtection.SecretDouble)">
+            <summary>
+            Computes the remainder after dividing the first <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> parameter by the second.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <returns>A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure whose <see name="Value" /> property contains the remainder.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.op_Multiply(ReSharp.Security.DataProtection.SecretDouble,ReSharp.Security.DataProtection.SecretDouble)">
+            <summary>
+            Computes the product of the two <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> parameters.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <returns>A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure whose <see name="Value" /> property contains the product of the two parameters.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.op_Division(ReSharp.Security.DataProtection.SecretDouble,ReSharp.Security.DataProtection.SecretDouble)">
+            <summary>
+            Divides the first <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> parameter from the second.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <returns>A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure whose <see name="Value" /> property contains the result of the division.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.op_Addition(ReSharp.Security.DataProtection.SecretDouble,ReSharp.Security.DataProtection.SecretDouble)">
+            <summary>
+            Computes the sum of the two specified <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structures.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <returns>
+            A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure whose <see name="Value" /> property contains the sum of the specified <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structures.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.op_Increment(ReSharp.Security.DataProtection.SecretDouble)">
+            <summary>
+            Increments the <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> operand by 1.
+            </summary>
+            <param name="value">The value to increment.</param>
+            <returns>
+            A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure whose <see name="Value" /> property contains the value of <c>value</c> incremented by 1.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.op_LessThan(ReSharp.Security.DataProtection.SecretDouble,ReSharp.Security.DataProtection.SecretDouble)">
+            <summary>
+            Compares the two <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> parameters to determine whether the first is less than the second.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <returns><c>true</c> if the first instance is less than the second instance. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.op_LessThanOrEqual(ReSharp.Security.DataProtection.SecretDouble,ReSharp.Security.DataProtection.SecretDouble)">
+            <summary>
+            Compares the two <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> parameters to determine whether the first is less than or equal to the second.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <returns><c>true</c> if the first instance is less than or equal to the second instance. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.op_Equality(ReSharp.Security.DataProtection.SecretDouble,ReSharp.Security.DataProtection.SecretDouble)">
+            <summary>
+            Performs a logical comparison of the two <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> parameters to determine whether they are equal.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <returns><c>true</c> if the two instances are equal or <c>false</c> if the two instances are not equal.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.op_GreaterThan(ReSharp.Security.DataProtection.SecretDouble,ReSharp.Security.DataProtection.SecretDouble)">
+            <summary>
+            Compares the two <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> parameters to determine whether the first is greater than the second.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <returns><c>true</c> if the first instance is greater than the second instance. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.op_GreaterThanOrEqual(ReSharp.Security.DataProtection.SecretDouble,ReSharp.Security.DataProtection.SecretDouble)">
+            <summary>
+            Compares the two <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> parameters to determine whether the first is greater than or equal to the second.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretDouble" /> structure.</param>
+            <returns><c>true</c> if the first instance is greater than or equal to the second instance. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.CompareTo(ReSharp.Security.DataProtection.SecretDouble)">
+            <summary>
+            Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance
+            precedes, follows, or occurs in the same position in the sort order as the other object.
+            </summary>
+            <param name="other">An object to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the objects being compared.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.Equals(System.Object)">
+            <summary>
+            Determines whether the specified object is equal to the current object.
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns><c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.Equals(ReSharp.Security.DataProtection.SecretDouble)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>true if the current object is equal to the <paramref name="other">other</paramref> parameter; otherwise, false.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with the data needed to serialize the target object.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> to populate with data.</param>
+            <param name="context">The destination (see <see cref="T:System.Runtime.Serialization.StreamingContext" />) for this serialization.</param>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretDouble.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="T:ReSharp.Security.DataProtection.SecretInt32">
+            <summary>
+            Represents <see cref="T:System.Int32" /> value with data protection in memory.
+            Implements the <see cref="T:System.IEquatable`1" />
+            Implements the <see cref="T:System.IComparable`1" />
+            Implements the <see cref="T:System.Runtime.Serialization.ISerializable" />
+            </summary>
+            <seealso cref="T:System.IEquatable`1" />
+            <seealso cref="T:System.IComparable`1" />
+            <seealso cref="T:System.Runtime.Serialization.ISerializable" />
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> struct with the <see cref="T:System.Int32" /> value to encrypt.
+            </summary>
+            <param name="value">The <see cref="T:System.Int32" /> value to encrypt.</param>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> struct.
+            </summary>
+            <param name="info">The information.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="P:ReSharp.Security.DataProtection.SecretInt32.Value">
+            <summary>
+            Gets the original <see cref="T:System.Int32" /> value.
+            </summary>
+            <value>The original <see cref="T:System.Int32" /> value.</value>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.op_Implicit(ReSharp.Security.DataProtection.SecretInt32)~System.Double">
+            <summary>
+            Performs an implicit conversion from <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> to <see cref="T:System.Double" />.
+            </summary>
+            <param name="value">The <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.op_Implicit(ReSharp.Security.DataProtection.SecretInt32)~System.Single">
+            <summary>
+            Performs an implicit conversion from <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> to <see cref="T:System.Single" />.
+            </summary>
+            <param name="value">The <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.op_Implicit(ReSharp.Security.DataProtection.SecretInt32)~System.Int32">
+            <summary>
+            Performs an implicit conversion from <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> to <see cref="T:System.Int32" />.
+            </summary>
+            <param name="value">The <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.op_Implicit(ReSharp.Security.DataProtection.SecretInt32)~System.Int64">
+            <summary>
+            Performs an implicit conversion from <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> to <see cref="T:System.Int64" />.
+            </summary>
+            <param name="value">The <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.op_Implicit(System.Int32)~ReSharp.Security.DataProtection.SecretInt32">
+            <summary>
+            Performs an implicit conversion from <see cref="T:System.Int32" /> to <see cref="T:ReSharp.Security.DataProtection.SecretInt32" />.
+            </summary>
+            <param name="value">The <see cref="T:System.Int32" /> value.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.op_Subtraction(ReSharp.Security.DataProtection.SecretInt32,ReSharp.Security.DataProtection.SecretInt32)">
+            <summary>
+            Subtracts a <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure from a <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <returns>A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure whose <see name="Value" /> property contains the results of the subtraction.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.op_Decrement(ReSharp.Security.DataProtection.SecretInt32)">
+            <summary>
+            Decrements the <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> operand by one.
+            </summary>
+            <param name="value">The value to decrement.</param>
+            <returns>
+            A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure whose <see name="Value" /> property contains the value of <c>value</c> decremented by 1.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.op_Inequality(ReSharp.Security.DataProtection.SecretInt32,ReSharp.Security.DataProtection.SecretInt32)">
+            <summary>
+            Performs a logical comparison of the two <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> parameters to determine whether they are not equal.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <returns>
+            <c>true</c> if the two <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structures are not equal or <c>false</c> if the two <see cref="T:ReSharp.Security.DataProtection.SecretInt32" />
+            structures are equal.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.op_Modulus(ReSharp.Security.DataProtection.SecretInt32,ReSharp.Security.DataProtection.SecretInt32)">
+            <summary>
+            Computes the remainder after dividing the first <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> parameter by the second.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <returns>A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure whose <see name="Value" /> property contains the remainder.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.op_Multiply(ReSharp.Security.DataProtection.SecretInt32,ReSharp.Security.DataProtection.SecretInt32)">
+            <summary>
+            Computes the product of the two <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> parameters.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <returns>A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure whose <see name="Value" /> property contains the product of the two parameters.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.op_Division(ReSharp.Security.DataProtection.SecretInt32,ReSharp.Security.DataProtection.SecretInt32)">
+            <summary>
+            Divides the first <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> parameter from the second.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <returns>A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure whose <see name="Value" /> property contains the result of the division.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.op_Addition(ReSharp.Security.DataProtection.SecretInt32,ReSharp.Security.DataProtection.SecretInt32)">
+            <summary>
+            Computes the sum of the two specified <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structures.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <returns>
+            A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure whose <see name="Value" /> property contains the sum of the specified <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structures.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.op_Increment(ReSharp.Security.DataProtection.SecretInt32)">
+            <summary>
+            Increments the <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> operand by 1.
+            </summary>
+            <param name="value">The value to increment.</param>
+            <returns>
+            A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure whose <see name="Value" /> property contains the value of <c>value</c> incremented by 1.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.op_LessThan(ReSharp.Security.DataProtection.SecretInt32,ReSharp.Security.DataProtection.SecretInt32)">
+            <summary>
+            Compares the two <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> parameters to determine whether the first is less than the second.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <returns><c>true</c> if the first instance is less than the second instance. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.op_LessThanOrEqual(ReSharp.Security.DataProtection.SecretInt32,ReSharp.Security.DataProtection.SecretInt32)">
+            <summary>
+            Compares the two <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> parameters to determine whether the first is less than or equal to the second.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <returns><c>true</c> if the first instance is less than or equal to the second instance. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.op_Equality(ReSharp.Security.DataProtection.SecretInt32,ReSharp.Security.DataProtection.SecretInt32)">
+            <summary>
+            Performs a logical comparison of the two <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> parameters to determine whether they are equal.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <returns><c>true</c> if the two instances are equal or <c>false</c> if the two instances are not equal.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.op_GreaterThan(ReSharp.Security.DataProtection.SecretInt32,ReSharp.Security.DataProtection.SecretInt32)">
+            <summary>
+            Compares the two <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> parameters to determine whether the first is greater than the second.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <returns><c>true</c> if the first instance is greater than the second instance. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.op_GreaterThanOrEqual(ReSharp.Security.DataProtection.SecretInt32,ReSharp.Security.DataProtection.SecretInt32)">
+            <summary>
+            Compares the two <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> parameters to determine whether the first is greater than or equal to the second.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <returns><c>true</c> if the first instance is greater than or equal to the second instance. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.CompareTo(ReSharp.Security.DataProtection.SecretInt32)">
+            <summary>
+            Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance
+            precedes, follows, or occurs in the same position in the sort order as the other object.
+            </summary>
+            <param name="other">An object to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the objects being compared.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.Equals(System.Object)">
+            <summary>
+            Determines whether the specified object is equal to the current object.
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns><c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.Equals(ReSharp.Security.DataProtection.SecretInt32)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>true if the current object is equal to the <paramref name="other">other</paramref> parameter; otherwise, false.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with the data needed to serialize the target object.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> to populate with data.</param>
+            <param name="context">The destination (see <see cref="T:System.Runtime.Serialization.StreamingContext" />) for this serialization.</param>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt32.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="T:ReSharp.Security.DataProtection.SecretInt64">
+            <summary>
+            Represents <see cref="T:System.Int64" /> value with data protection in memory.
+            Implements the <see cref="T:System.IEquatable`1" />
+            Implements the <see cref="T:System.IComparable`1" />
+            Implements the <see cref="T:System.Runtime.Serialization.ISerializable" />
+            </summary>
+            <seealso cref="T:System.IEquatable`1" />
+            <seealso cref="T:System.IComparable`1" />
+            <seealso cref="T:System.Runtime.Serialization.ISerializable" />
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.#ctor(System.Int64)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> struct with the <see cref="T:System.Int64" /> value to encrypt.
+            </summary>
+            <param name="value">The <see cref="T:System.Int64" /> value to encrypt.</param>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> struct.
+            </summary>
+            <param name="info">The information.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="P:ReSharp.Security.DataProtection.SecretInt64.Value">
+            <summary>
+            Gets the original <see cref="T:System.Int64" /> value.
+            </summary>
+            <value>The original <see cref="T:System.Int64" /> value.</value>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.op_Implicit(ReSharp.Security.DataProtection.SecretInt64)~System.Double">
+            <summary>
+            Performs an implicit conversion from <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> to <see cref="T:System.Double" />.
+            </summary>
+            <param name="value">The <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.op_Implicit(ReSharp.Security.DataProtection.SecretInt64)~System.Single">
+            <summary>
+            Performs an implicit conversion from <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> to <see cref="T:System.Single" />.
+            </summary>
+            <param name="value">The <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.op_Implicit(ReSharp.Security.DataProtection.SecretInt64)~System.Int64">
+            <summary>
+            Performs an implicit conversion from <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> to <see cref="T:System.Int64" />.
+            </summary>
+            <param name="value">The <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.op_Implicit(System.Int64)~ReSharp.Security.DataProtection.SecretInt64">
+            <summary>
+            Performs an implicit conversion from <see cref="T:System.Int64" /> to <see cref="T:ReSharp.Security.DataProtection.SecretInt64" />.
+            </summary>
+            <param name="value">The <see cref="T:System.Int64" /> value.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.op_Implicit(ReSharp.Security.DataProtection.SecretInt32)~ReSharp.Security.DataProtection.SecretInt64">
+            <summary>
+            Performs an implicit conversion from <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> to <see cref="T:ReSharp.Security.DataProtection.SecretInt64" />.
+            </summary>
+            <param name="value">The <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.op_Subtraction(ReSharp.Security.DataProtection.SecretInt64,ReSharp.Security.DataProtection.SecretInt64)">
+            <summary>
+            Subtracts a <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure from a <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <returns>A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure whose <see name="Value" /> property contains the results of the subtraction.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.op_Decrement(ReSharp.Security.DataProtection.SecretInt64)">
+            <summary>
+            Decrements the <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> operand by one.
+            </summary>
+            <param name="value">The value to decrement.</param>
+            <returns>
+            A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure whose <see name="Value" /> property contains the value of <c>value</c> decremented by 1.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.op_Inequality(ReSharp.Security.DataProtection.SecretInt64,ReSharp.Security.DataProtection.SecretInt64)">
+            <summary>
+            Performs a logical comparison of the two <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> parameters to determine whether they are not equal.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <returns>
+            <c>true</c> if the two <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structures are not equal or <c>false</c> if the two <see cref="T:ReSharp.Security.DataProtection.SecretInt64" />
+            structures are equal.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.op_Modulus(ReSharp.Security.DataProtection.SecretInt64,ReSharp.Security.DataProtection.SecretInt64)">
+            <summary>
+            Computes the remainder after dividing the first <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> parameter by the second.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <returns>A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure whose <see name="Value" /> property contains the remainder.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.op_Multiply(ReSharp.Security.DataProtection.SecretInt64,ReSharp.Security.DataProtection.SecretInt64)">
+            <summary>
+            Computes the product of the two <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> parameters.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <returns>A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure whose <see name="Value" /> property contains the product of the two parameters.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.op_Division(ReSharp.Security.DataProtection.SecretInt64,ReSharp.Security.DataProtection.SecretInt64)">
+            <summary>
+            Divides the first <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> parameter from the second.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <returns>A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure whose <see name="Value" /> property contains the result of the division.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.op_Addition(ReSharp.Security.DataProtection.SecretInt64,ReSharp.Security.DataProtection.SecretInt64)">
+            <summary>
+            Computes the sum of the two specified <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structures.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <returns>
+            A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure whose <see name="Value" /> property contains the sum of the specified <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structures.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.op_Increment(ReSharp.Security.DataProtection.SecretInt64)">
+            <summary>
+            Increments the <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> operand by 1.
+            </summary>
+            <param name="value">The value to increment.</param>
+            <returns>
+            A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure whose <see name="Value" /> property contains the value of <c>value</c> incremented by 1.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.op_LessThan(ReSharp.Security.DataProtection.SecretInt64,ReSharp.Security.DataProtection.SecretInt64)">
+            <summary>
+            Compares the two <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> parameters to determine whether the first is less than the second.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <returns><c>true</c> if the first instance is less than the second instance. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.op_LessThanOrEqual(ReSharp.Security.DataProtection.SecretInt64,ReSharp.Security.DataProtection.SecretInt64)">
+            <summary>
+            Compares the two <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> parameters to determine whether the first is less than or equal to the second.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <returns><c>true</c> if the first instance is less than or equal to the second instance. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.op_Equality(ReSharp.Security.DataProtection.SecretInt64,ReSharp.Security.DataProtection.SecretInt64)">
+            <summary>
+            Performs a logical comparison of the two <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> parameters to determine whether they are equal.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <returns><c>true</c> if the two instances are equal or <c>false</c> if the two instances are not equal.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.op_GreaterThan(ReSharp.Security.DataProtection.SecretInt64,ReSharp.Security.DataProtection.SecretInt64)">
+            <summary>
+            Compares the two <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> parameters to determine whether the first is greater than the second.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <returns><c>true</c> if the first instance is greater than the second instance. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.op_GreaterThanOrEqual(ReSharp.Security.DataProtection.SecretInt64,ReSharp.Security.DataProtection.SecretInt64)">
+            <summary>
+            Compares the two <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> parameters to determine whether the first is greater than or equal to the second.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <returns><c>true</c> if the first instance is greater than or equal to the second instance. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.CompareTo(ReSharp.Security.DataProtection.SecretInt64)">
+            <summary>
+            Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance
+            precedes, follows, or occurs in the same position in the sort order as the other object.
+            </summary>
+            <param name="other">An object to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the objects being compared.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.Equals(System.Object)">
+            <summary>
+            Determines whether the specified object is equal to the current object.
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns><c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.Equals(ReSharp.Security.DataProtection.SecretInt64)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>true if the current object is equal to the <paramref name="other">other</paramref> parameter; otherwise, false.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with the data needed to serialize the target object.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> to populate with data.</param>
+            <param name="context">The destination (see <see cref="T:System.Runtime.Serialization.StreamingContext" />) for this serialization.</param>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretInt64.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="T:ReSharp.Security.DataProtection.SecretSingle">
+            <summary>
+            Represents <see cref="T:System.Single" /> value with data protection in memory.
+            Implements the <see cref="T:System.IEquatable`1" />
+            Implements the <see cref="T:System.IComparable`1" />
+            Implements the <see cref="T:System.Runtime.Serialization.ISerializable" />
+            </summary>
+            <seealso cref="T:System.IEquatable`1" />
+            <seealso cref="T:System.IComparable`1" />
+            <seealso cref="T:System.Runtime.Serialization.ISerializable" />
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.#ctor(System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> struct with the <see cref="T:System.Single" /> value to encrypt.
+            </summary>
+            <param name="value">The <see cref="T:System.Single" /> value to encrypt.</param>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> struct.
+            </summary>
+            <param name="info">The information.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="P:ReSharp.Security.DataProtection.SecretSingle.Value">
+            <summary>
+            Gets the original <see cref="T:System.Single" /> value.
+            </summary>
+            <value>The original <see cref="T:System.Single" /> value.</value>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.op_Implicit(ReSharp.Security.DataProtection.SecretSingle)~System.Double">
+            <summary>
+            Performs an implicit conversion from <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> to <see cref="T:System.Double" />.
+            </summary>
+            <param name="value">The <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.op_Implicit(ReSharp.Security.DataProtection.SecretSingle)~System.Single">
+            <summary>
+            Performs an implicit conversion from <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> to <see cref="T:System.Single" />.
+            </summary>
+            <param name="value">The <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.op_Implicit(System.Single)~ReSharp.Security.DataProtection.SecretSingle">
+            <summary>
+            Performs an implicit conversion from <see cref="T:System.Single" /> to <see cref="T:ReSharp.Security.DataProtection.SecretSingle" />.
+            </summary>
+            <param name="value">The <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.op_Implicit(ReSharp.Security.DataProtection.SecretInt32)~ReSharp.Security.DataProtection.SecretSingle">
+            <summary>
+            Performs an implicit conversion from <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> to <see cref="T:ReSharp.Security.DataProtection.SecretSingle" />.
+            </summary>
+            <param name="value">The <see cref="T:ReSharp.Security.DataProtection.SecretInt32" /> structure.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.op_Implicit(ReSharp.Security.DataProtection.SecretInt64)~ReSharp.Security.DataProtection.SecretSingle">
+            <summary>
+            Performs an implicit conversion from <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> to <see cref="T:ReSharp.Security.DataProtection.SecretSingle" />.
+            </summary>
+            <param name="value">The <see cref="T:ReSharp.Security.DataProtection.SecretInt64" /> structure.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.op_Subtraction(ReSharp.Security.DataProtection.SecretSingle,ReSharp.Security.DataProtection.SecretSingle)">
+            <summary>
+            Subtracts a <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure from a <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <returns>A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure whose <see name="Value" /> property contains the results of the subtraction.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.op_Decrement(ReSharp.Security.DataProtection.SecretSingle)">
+            <summary>
+            Decrements the <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> operand by one.
+            </summary>
+            <param name="value">The value to decrement.</param>
+            <returns>
+            A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure whose <see name="Value" /> property contains the value of <c>value</c> decremented by 1.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.op_Inequality(ReSharp.Security.DataProtection.SecretSingle,ReSharp.Security.DataProtection.SecretSingle)">
+            <summary>
+            Performs a logical comparison of the two <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> parameters to determine whether they are not equal.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <returns>
+            <c>true</c> if the two <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structures are not equal or <c>false</c> if the two <see cref="T:ReSharp.Security.DataProtection.SecretSingle" />
+            structures are equal.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.op_Modulus(ReSharp.Security.DataProtection.SecretSingle,ReSharp.Security.DataProtection.SecretSingle)">
+            <summary>
+            Computes the remainder after dividing the first <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> parameter by the second.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <returns>A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure whose <see name="Value" /> property contains the remainder.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.op_Multiply(ReSharp.Security.DataProtection.SecretSingle,ReSharp.Security.DataProtection.SecretSingle)">
+            <summary>
+            Computes the product of the two <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> parameters.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <returns>A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure whose <see name="Value" /> property contains the product of the two parameters.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.op_Division(ReSharp.Security.DataProtection.SecretSingle,ReSharp.Security.DataProtection.SecretSingle)">
+            <summary>
+            Divides the first <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> parameter from the second.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <returns>A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure whose <see name="Value" /> property contains the result of the division.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.op_Addition(ReSharp.Security.DataProtection.SecretSingle,ReSharp.Security.DataProtection.SecretSingle)">
+            <summary>
+            Computes the sum of the two specified <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structures.
+            </summary>
+            <param name="x">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <param name="y">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <returns>
+            A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure whose <see name="Value" /> property contains the sum of the specified <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structures.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.op_Increment(ReSharp.Security.DataProtection.SecretSingle)">
+            <summary>
+            Increments the <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> operand by 1.
+            </summary>
+            <param name="value">The value to increment.</param>
+            <returns>
+            A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure whose <see name="Value" /> property contains the value of <c>value</c> incremented by 1.
+            </returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.op_LessThan(ReSharp.Security.DataProtection.SecretSingle,ReSharp.Security.DataProtection.SecretSingle)">
+            <summary>
+            Compares the two <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> parameters to determine whether the first is less than the second.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <returns><c>true</c> if the first instance is less than the second instance. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.op_LessThanOrEqual(ReSharp.Security.DataProtection.SecretSingle,ReSharp.Security.DataProtection.SecretSingle)">
+            <summary>
+            Compares the two <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> parameters to determine whether the first is less than or equal to the second.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <returns><c>true</c> if the first instance is less than or equal to the second instance. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.op_Equality(ReSharp.Security.DataProtection.SecretSingle,ReSharp.Security.DataProtection.SecretSingle)">
+            <summary>
+            Performs a logical comparison of the two <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> parameters to determine whether they are equal.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <returns><c>true</c> if the two instances are equal or <c>false</c> if the two instances are not equal.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.op_GreaterThan(ReSharp.Security.DataProtection.SecretSingle,ReSharp.Security.DataProtection.SecretSingle)">
+            <summary>
+            Compares the two <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> parameters to determine whether the first is greater than the second.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <returns><c>true</c> if the first instance is greater than the second instance. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.op_GreaterThanOrEqual(ReSharp.Security.DataProtection.SecretSingle,ReSharp.Security.DataProtection.SecretSingle)">
+            <summary>
+            Compares the two <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> parameters to determine whether the first is greater than or equal to the second.
+            </summary>
+            <param name="left">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <param name="right">A <see cref="T:ReSharp.Security.DataProtection.SecretSingle" /> structure.</param>
+            <returns><c>true</c> if the first instance is greater than or equal to the second instance. Otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.CompareTo(ReSharp.Security.DataProtection.SecretSingle)">
+            <summary>
+            Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance
+            precedes, follows, or occurs in the same position in the sort order as the other object.
+            </summary>
+            <param name="other">An object to compare with this instance.</param>
+            <returns>A value that indicates the relative order of the objects being compared.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.Equals(System.Object)">
+            <summary>
+            Determines whether the specified object is equal to the current object.
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns><c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.Equals(ReSharp.Security.DataProtection.SecretSingle)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>true if the current object is equal to the <paramref name="other">other</paramref> parameter; otherwise, false.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with the data needed to serialize the target object.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> to populate with data.</param>
+            <param name="context">The destination (see <see cref="T:System.Runtime.Serialization.StreamingContext" />) for this serialization.</param>
+        </member>
+        <member name="M:ReSharp.Security.DataProtection.SecretSingle.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+    </members>
+</doc>

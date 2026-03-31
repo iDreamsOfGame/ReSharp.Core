@@ -1,4 +1,0 @@
-[submodule "upm"]
-	path = upm/Assets/ReSharp.Core
-	url = https://github.com/iDreamsOfGame/ReSharp.Core.git
-	branch = upm
