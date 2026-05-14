@@ -6,6 +6,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+## [2.0.1] - 2026-05-14
+
+### Changed
+
+- Refactor class **RandomExtensions** and **RandomUtility**.
+
+
+
+### Added
+
+- Adds some methods to class **RandomExtensions**.
+- Adds some methods to class **RandomUtility**.
+
+
+
 ## [2.0.0] - 2026-03-31
 
 ### Changed
