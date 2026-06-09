@@ -49,16 +49,35 @@ namespace ReSharp.Patterns
                     if (instance != null)
                         return instance;
                     var type = typeof(T);
-                    var ctor = type.GetConstructor(BindingFlags.CreateInstance | BindingFlags.Instance | BindingFlags.NonPublic, null, Type.EmptyTypes, null);
+                    
+                    // Try to find non-public constructor.
+                    var privateCtor = type.GetConstructor(
+                        BindingFlags.Instance | BindingFlags.NonPublic,
+                        null,
+                        Type.EmptyTypes,
+                        null);
 
-                    if (ctor != null)
+                    T newInstance;
+                    
+                    if (privateCtor != null)
                     {
-                        instance = (T)ctor.Invoke(null);
+                        newInstance = (T)privateCtor.Invoke(null);
                     }
                     else
                     {
-                        throw new MissingMethodException(type.FullName, "non-public Constructor");
+                        // Try to find  public constructor.
+                        var publicCtor = type.GetConstructor(Type.EmptyTypes);
+                        if (publicCtor != null)
+                        {
+                            newInstance = (T)publicCtor.Invoke(null);
+                        }
+                        else
+                        {
+                            throw new MissingMethodException(type.FullName, "Private constructor or public constructor without parameters.");
+                        }
                     }
+
+                    instance = newInstance;
                 }
 
                 return instance;
