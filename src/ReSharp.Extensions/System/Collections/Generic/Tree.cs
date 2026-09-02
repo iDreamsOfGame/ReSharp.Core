@@ -49,7 +49,8 @@ namespace ReSharp.Extensions
         /// <returns>An <see cref="System.Collections.IEnumerator"></see> object that can be used to iterate through the collection.</returns>
         public IEnumerator GetEnumerator()
         {
-            yield return (this as IEnumerable<T>).GetEnumerator();
+            using var enumerator = (this as IEnumerable<T>).GetEnumerator();
+            yield return enumerator;
         }
 
         /// <summary>

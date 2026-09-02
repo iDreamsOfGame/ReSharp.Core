@@ -536,6 +536,31 @@
             <param name="source">The source <see cref="T:System.Collections.IList"/> object.</param>
             <returns>The array string representation of the value of <see cref="T:System.Collections.IList"/>.</returns>
         </member>
+        <member name="T:ReSharp.Extensions.StringReferenceEqualityComparer">
+            <summary>
+            A string comparer that compares strings by reference.
+            </summary>
+        </member>
+        <member name="P:ReSharp.Extensions.StringReferenceEqualityComparer.Instance">
+            <summary>
+            The singleton instance of the <see cref="T:ReSharp.Extensions.StringReferenceEqualityComparer"/> class.
+            </summary>
+        </member>
+        <member name="M:ReSharp.Extensions.StringReferenceEqualityComparer.Equals(System.String,System.String)">
+            <summary>
+            Compares two strings for reference equality.
+            </summary>
+            <param name="x">The first string to compare.</param>
+            <param name="y">The second string to compare.</param>
+            <returns><see langword="true"/> if the strings are equal; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:ReSharp.Extensions.StringReferenceEqualityComparer.GetHashCode(System.String)">
+            <summary>
+            Gets the hash code of a string.
+            </summary>
+            <param name="obj">The string to get the hash code for.</param>
+            <returns>The hash code of the string.</returns>
+        </member>
         <member name="T:ReSharp.Extensions.DateTimeExtensions">
             <summary>
             Extension methods collection of <see cref="T:System.DateTime"/>.
