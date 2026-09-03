@@ -2,7 +2,7 @@
 	"name": "io.github.idreamsofgame.resharp.core",
 	"displayName": "ReSharp.Core",
 	"description": "ReSharp.Core is a .NET Standard library.",
-	"version": "2.0.3",
+	"version": "2.0.4",
 	"unity": "2021.3",
 	"author": {
 		"name": "iDreamsOfGame",

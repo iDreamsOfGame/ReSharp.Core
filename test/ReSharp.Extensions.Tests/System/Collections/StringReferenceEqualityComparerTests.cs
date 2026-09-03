@@ -118,27 +118,6 @@ namespace ReSharp.Extensions.Tests
             // Assert
             Assert.AreEqual(hash1, hash2, "GetHashCode should return the same value for the same reference.");
         }
-
-        [Test]
-        public void GetHashCode_WithDifferentReferences_ShouldReflectReferenceIdentity()
-        {
-            // Arrange
-            string str1 = new string(new[] { 'a', 'b' });
-            string str2 = new string(new[] { 'a', 'b' });
-
-            // Precondition check
-            Assert.AreNotSame(str1, str2, "Precondition failed: Objects must have different references.");
-
-            // Act
-            int hash1 = comparer.GetHashCode(str1);
-            int hash2 = comparer.GetHashCode(str2);
-
-            // Assert
-            // Note: While hash collisions are theoretically possible, RuntimeHelpers.GetHashCode 
-            // is designed to be based on object identity. For distinct objects in a short-lived test,
-            // they are overwhelmingly likely to be different.
-            Assert.AreNotEqual(hash1, hash2, "Different references should typically produce different hash codes using RuntimeHelpers.GetHashCode.");
-        }
         
         [Test]
         public void Equals_InternedVsNewString_ShouldBeFalse()

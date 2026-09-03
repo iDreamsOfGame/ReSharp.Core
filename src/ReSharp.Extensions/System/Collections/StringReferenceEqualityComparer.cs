@@ -2,7 +2,6 @@
 // See LICENSE in the project root for license information.
 
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 
 namespace ReSharp.Extensions
 {
@@ -33,6 +32,6 @@ namespace ReSharp.Extensions
         /// </summary>
         /// <param name="obj">The string to get the hash code for.</param>
         /// <returns>The hash code of the string.</returns>
-        public int GetHashCode(string obj) => RuntimeHelpers.GetHashCode(obj);
+        public int GetHashCode(string obj) => obj.GetHashCode();
     }
 }
